@@ -16,6 +16,7 @@
 		63F806C22A59ACCD00135630 /* moontakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806C12A59ACCD00135630 /* moontakeUITests.swift */; };
 		63F806C42A59ACCD00135630 /* moontakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806C32A59ACCD00135630 /* moontakeUITestsLaunchTests.swift */; };
 		63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806D02A59ADC700135630 /* UIColor+Extension.swift */; };
+		63F806D42A59BA8E00135630 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63F806D32A59BA8E00135630 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = moontake;
+			packageProductDependencies = (
+				63F806D32A59BA8E00135630 /* SnapKit */,
+			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 63F806942A59ACCC00135630;
+			packageReferences = (
+				63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -432,11 +440,13 @@
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take Photo";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save Photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,11 +470,13 @@
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take Photo";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save Photo";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,6 +606,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63F806D32A59BA8E00135630 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 63F806952A59ACCC00135630 /* Project object */;
 }
