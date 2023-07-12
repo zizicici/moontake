@@ -252,11 +252,15 @@ class ViewController: UIViewController {
     
     func setupInputs(){
         //get back camera
-        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+        if let device = AVCaptureDevice.default(.builtInTelephotoCamera, for: .video, position: .back) {
             captureDevice = device
         } else {
-            //handle this appropriately for production purposes
-            fatalError("no back camera")
+            if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+                captureDevice = device
+            } else {
+                //handle this appropriately for production purposes
+                fatalError("no back camera")
+            }
         }
         // 检查是否支持ISO设置
         guard captureDevice.isExposureModeSupported(.custom) else {
