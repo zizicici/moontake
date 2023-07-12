@@ -293,7 +293,7 @@ class ViewController: UIViewController {
             apertureFactor = captureDevice.lensAperture
 
             // 设置ISO值
-            let desiredISO: Float = minISO
+            let desiredISO: Float = max(minISO, 50.0)
             iso = desiredISO
             // f/2.8 1/200 iso100
             let isoScale = desiredISO / 100.0
