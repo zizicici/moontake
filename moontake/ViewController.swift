@@ -156,6 +156,9 @@ class ViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
         
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchToZoomRecognizer(_:)))
+        previewView.addGestureRecognizer(pinchGesture)
+        
         DispatchQueue.main.async {
             self.spinner = UIActivityIndicatorView(style: .large)
             self.spinner.color = UIColor.moonColor
@@ -499,6 +502,31 @@ class ViewController: UIViewController {
         }
 
         return closestNumber
+    }
+    
+    var pivotPinchScale: CGFloat = 0.0
+    
+    @objc func handlePinchToZoomRecognizer(_ gesture: UIPinchGestureRecognizer) {
+        guard gesture.numberOfTouches == 2 else {
+            return
+        }
+        
+        switch gesture.state {
+        case .began:
+            pivotPinchScale = captureDevice.videoZoomFactor
+        case .changed:
+            do {
+                try captureDevice.lockForConfiguration()
+                var factor = self.pivotPinchScale * gesture.scale
+                factor = max(1, min(factor, captureDevice.activeFormat.videoMaxZoomFactor))
+                captureDevice.videoZoomFactor = factor
+                captureDevice.unlockForConfiguration()
+            } catch {
+                NSLog("error: \(error)")
+            }
+        default:
+            break
+        }
     }
 }
 
