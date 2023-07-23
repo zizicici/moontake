@@ -64,6 +64,12 @@ class ViewController: UIViewController {
         
         return button
     }()
+    let lensPositionSlider: UISlider = {
+        var slider = UISlider()
+        slider.minimumTrackTintColor = .moonColor
+        
+        return slider
+    }()
     private let focusView: FocusView = FocusView()
     private let exposureStops: [Int32] = [
         100,
@@ -90,6 +96,9 @@ class ViewController: UIViewController {
     }
     private var lensPosition: Float = 0.0 {
         didSet {
+            if abs(lensPosition - lensPositionSlider.value) <= 0.01 {
+                lensPositionSlider.value = lensPosition
+            }
             updateHintLabel()
         }
     }
@@ -152,6 +161,14 @@ class ViewController: UIViewController {
             make.top.equalTo(previewView.snp.bottom).offset(10)
         }
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
+        
+        view.addSubview(lensPositionSlider)
+        lensPositionSlider.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view)
+            make.top.equalTo(plusButton.snp.bottom)
+            make.height.equalTo(20)
+        }
+        lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
