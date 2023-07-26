@@ -141,33 +141,31 @@ class ViewController: UIViewController {
         hintLabel.snp.makeConstraints { make in
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(20)
         }
         
         view.addSubview(minusButton)
         minusButton.snp.makeConstraints { make in
-            make.leading.equalTo(view)
-            make.trailing.equalTo(view.snp.centerX)
-            make.height.equalTo(40)
-            make.top.equalTo(previewView.snp.bottom).offset(10)
+            make.top.bottom.equalTo(captureButton)
+            make.trailing.equalTo(captureButton.snp.leading).offset(-10)
+            make.width.equalTo(100)
         }
         minusButton.addTarget(self, action: #selector(minusShutterScale), for: .touchUpInside)
         
         view.addSubview(plusButton)
         plusButton.snp.makeConstraints { make in
-            make.leading.equalTo(view.snp.centerX)
-            make.trailing.equalTo(view)
-            make.height.equalTo(40)
-            make.top.equalTo(previewView.snp.bottom).offset(10)
+            make.top.bottom.equalTo(captureButton)
+            make.leading.equalTo(captureButton.snp.trailing).offset(10)
+            make.width.equalTo(100)
         }
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
         
         view.addSubview(lensPositionSlider)
         lensPositionSlider.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view)
-            make.top.equalTo(plusButton.snp.bottom)
-            make.height.equalTo(20)
+            make.leading.trailing.equalTo(view).inset(20)
+            make.top.equalTo(previewView.snp.bottom).offset(20)
+            make.height.equalTo(40)
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
         
