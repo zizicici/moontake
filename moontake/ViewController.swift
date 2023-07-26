@@ -363,7 +363,7 @@ class ViewController: UIViewController {
     
     //MARK:- Actions
     @objc
-    func captureImage(_ sender: UIButton?){
+    func captureImage(_ sender: UIButton?) {
         let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation
         sessionQueue.async {
             if let photoOutputConnection = self.photoOutput.connection(with: .video) {
