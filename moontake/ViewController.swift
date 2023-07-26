@@ -132,7 +132,7 @@ class ViewController: UIViewController {
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
             make.centerX.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(0)
             make.height.greaterThanOrEqualTo(view.snp.width).multipliedBy(4.0/3.0)
         }
         
@@ -172,7 +172,7 @@ class ViewController: UIViewController {
         view.addSubview(lensPositionSlider)
         lensPositionSlider.snp.makeConstraints { make in
             make.leading.trailing.equalTo(view).inset(20)
-            make.top.equalTo(previewView.snp.bottom).offset(20)
+            make.bottom.equalTo(captureButton.snp.top).offset(-16)
             make.height.equalTo(40)
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
@@ -189,6 +189,15 @@ class ViewController: UIViewController {
             self.spinner = UIActivityIndicatorView(style: .large)
             self.spinner.color = UIColor.moonColor
             self.previewView.addSubview(self.spinner)
+        }
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        if view.safeAreaInsets.top > 1.0, previewView.superview != nil {
+            previewView.snp.updateConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide).inset(40)
+            }
         }
     }
     
