@@ -1,9 +1,9 @@
-/*
-See the LICENSE.txt file for this sample’s licensing information.
-
-Abstract:
-The app's photo capture delegate object.
-*/
+//
+//  PhotoCaptureProcessor.swift
+//  moontake
+//
+//  Created by Ci Zi on 2023/7/27.
+//
 
 import AVFoundation
 import Photos
@@ -23,13 +23,9 @@ class PhotoCaptureProcessor: NSObject {
     
     private var maxPhotoProcessingTime: CMTime?
 
-    // Save the location of captured photos
     var location: CLLocation?
 
-    init(with requestedPhotoSettings: AVCapturePhotoSettings,
-         willCapturePhotoAnimation: @escaping () -> Void,
-         completionHandler: @escaping (PhotoCaptureProcessor) -> Void,
-         photoProcessingHandler: @escaping (Bool) -> Void) {
+    init(with requestedPhotoSettings: AVCapturePhotoSettings, willCapturePhotoAnimation: @escaping () -> Void, completionHandler: @escaping (PhotoCaptureProcessor) -> Void, photoProcessingHandler: @escaping (Bool) -> Void) {
         self.requestedPhotoSettings = requestedPhotoSettings
         self.willCapturePhotoAnimation = willCapturePhotoAnimation
         self.completionHandler = completionHandler
@@ -42,10 +38,6 @@ class PhotoCaptureProcessor: NSObject {
 }
 
 extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
-    /*
-     This extension adopts all of the AVCapturePhotoCaptureDelegate protocol methods.
-     */
-    
     /// - Tag: WillBeginCapture
     func photoOutput(_ output: AVCapturePhotoOutput, willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         maxPhotoProcessingTime = resolvedSettings.photoProcessingTimeRange.start + resolvedSettings.photoProcessingTimeRange.duration
@@ -103,17 +95,13 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     let creationRequest = PHAssetCreationRequest.forAsset()
                     options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
                     creationRequest.addResource(with: .photo, data: photoData, options: options)
-                    
-                    // Specify the location the photo was taken
                     creationRequest.location = self.location
                 }, completionHandler: { _, error in
                     if let error = error {
                         print("Error occurred while saving photo to photo library: \(error)")
                     }
-                    
                     self.didFinish()
-                }
-                )
+                })
             } else {
                 self.didFinish()
             }
