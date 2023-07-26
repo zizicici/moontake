@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     }
     private var lensPosition: Float = 0.0 {
         didSet {
-            if abs(lensPosition - lensPositionSlider.value) <= 0.01 {
+            if abs(lensPosition - lensPositionSlider.value) >= 0.01 {
                 lensPositionSlider.value = lensPosition
             }
             updateHintLabel()
