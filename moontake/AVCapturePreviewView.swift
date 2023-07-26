@@ -78,6 +78,22 @@ class AVCaptureVideoPreviewView: UIView {
             make.width.equalTo(1)
             make.height.equalTo(AVCaptureVideoPreviewView.lineWidth)
         }
+        
+        let middleLine1 = getCenterLine()
+        addSubview(middleLine1)
+        middleLine1.snp.makeConstraints { make in
+            make.centerX.equalTo(self)
+            make.width.equalTo(1)
+            make.top.bottom.equalTo(self)
+        }
+        
+        let middleLine2 = getCenterLine()
+        addSubview(middleLine2)
+        middleLine2.snp.makeConstraints { make in
+            make.centerY.equalTo(self)
+            make.height.equalTo(1)
+            make.leading.trailing.equalTo(self)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -108,7 +124,13 @@ class AVCaptureVideoPreviewView: UIView {
 extension AVCaptureVideoPreviewView {
     func getLine() -> UIView {
         let line = UIView()
-        line.backgroundColor = .white
+        line.backgroundColor = .moonColor
+        return line
+    }
+    
+    func getCenterLine() -> UIView {
+        let line = UIView()
+        line.backgroundColor = .moonColor.withAlphaComponent(0.25)
         return line
     }
 }
