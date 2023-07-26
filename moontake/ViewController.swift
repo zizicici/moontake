@@ -122,15 +122,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .skyColor
-        view.addSubview(captureButton)
-        
-        captureButton.snp.makeConstraints { make in
-            make.centerX.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.width.equalTo(60.0)
-            make.height.equalTo(60.0)
-        }
-        captureButton.addTarget(self, action: #selector(captureImage(_:)), for: .touchUpInside)
         
         view.addSubview(previewView)
         previewView.snp.makeConstraints { make in
@@ -140,6 +131,15 @@ class ViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).inset(40)
             make.height.greaterThanOrEqualTo(view.snp.width).multipliedBy(4.0/3.0)
         }
+        
+        view.addSubview(captureButton)
+        captureButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.width.equalTo(60.0)
+            make.height.equalTo(60.0)
+        }
+        captureButton.addTarget(self, action: #selector(captureImage(_:)), for: .touchUpInside)
         
         view.addSubview(hintLabel)
         hintLabel.snp.makeConstraints { make in
