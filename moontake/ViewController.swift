@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textAlignment = .center
-        label.textColor = .moonColor
+        label.textColor = .moonColor.withAlphaComponent(0.25)
         label.numberOfLines = 1
         
         return label
