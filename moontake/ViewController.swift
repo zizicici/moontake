@@ -72,6 +72,7 @@ class ViewController: UIViewController {
     }()
     private let focusView: FocusView = FocusView()
     private let exposureStops: [Int32] = [
+        60, 65, 70, 75, 80, 85, 90, 95,
         100,
         110, 120, 130, 140, 150, 160, 170, 180, 190, 200,
         220, 240, 260, 280, 300,
