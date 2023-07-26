@@ -466,8 +466,9 @@ class ViewController: UIViewController {
     
     @objc
     func plusShutterScale() {
+        guard let first = exposureStops.first else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
-            let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : 100
+            let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : first
             sessionQueue.async {
                 self.update(shutterScale: nextStop)
             }
@@ -476,8 +477,9 @@ class ViewController: UIViewController {
     
     @objc
     func minusShutterScale() {
+        guard let last = exposureStops.last else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
-            let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : 2000
+            let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : last
             sessionQueue.async {
                 self.update(shutterScale: nextStop)
             }
