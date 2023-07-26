@@ -9,6 +9,7 @@ import AVKit
 import Photos
 import SnapKit
 import UIKit
+import CoreMotion
 
 class ViewController: UIViewController {
     private var session: AVCaptureSession!
@@ -114,6 +115,9 @@ class ViewController: UIViewController {
         }
     }
     
+    var orientationLast = UIInterfaceOrientation.unknown
+    var motionManager: CMMotionManager?
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -139,7 +143,7 @@ class ViewController: UIViewController {
             make.width.equalTo(60.0)
             make.height.equalTo(60.0)
         }
-        captureButton.addTarget(self, action: #selector(captureImage(_:)), for: .touchUpInside)
+        captureButton.addTarget(self, action: #selector(capturePhoto(_:)), for: .touchUpInside)
         
         view.addSubview(hintLabel)
         hintLabel.snp.makeConstraints { make in
@@ -179,6 +183,8 @@ class ViewController: UIViewController {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchToZoomRecognizer(_:)))
         previewView.addGestureRecognizer(pinchGesture)
         
+        initializeMotionManager()
+        
         DispatchQueue.main.async {
             self.spinner = UIActivityIndicatorView(style: .large)
             self.spinner.color = UIColor.moonColor
@@ -192,6 +198,20 @@ class ViewController: UIViewController {
         checkPhotoPremissions()
         setupAndStartCaptureSession()
     }
+    
+    func initializeMotionManager() {
+        guard let current = OperationQueue.current else { return }
+        motionManager = CMMotionManager()
+        motionManager?.accelerometerUpdateInterval = 0.2
+        motionManager?.gyroUpdateInterval = 0.2
+        motionManager?.startAccelerometerUpdates(to: current, withHandler: { [weak self] accelerometerData, error in
+           if error == nil {
+               self?.outputAccelerationData(accelerometerData?.acceleration)
+           } else {
+               print(error.debugDescription)
+           }
+        })
+     }
     
     //MARK:- Permissions
     func checkCameraPermissions() {
@@ -367,11 +387,13 @@ class ViewController: UIViewController {
     
     //MARK:- Actions
     @objc
-    func captureImage(_ sender: UIButton?) {
-        let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection?.videoOrientation
+    func capturePhoto(_ sender: UIButton?) {
+        guard let videoPreviewLayerOrientation = AVCaptureVideoOrientation(interfaceOrientation: orientationLast) else {
+            return
+        }
         sessionQueue.async {
             if let photoOutputConnection = self.photoOutput.connection(with: .video) {
-                photoOutputConnection.videoOrientation = videoPreviewLayerOrientation!
+                photoOutputConnection.videoOrientation = videoPreviewLayerOrientation
             }
             var photoSettings = AVCapturePhotoSettings()
             
@@ -552,6 +574,31 @@ class ViewController: UIViewController {
             break
         }
     }
+    
+    func outputAccelerationData(_ acceleration: CMAcceleration?) {
+        guard let acceleration = acceleration else { return }
+        
+        let orientationNew: UIInterfaceOrientation
+        
+        if acceleration.x >= 0.75 {
+            orientationNew = .landscapeLeft
+        } else if acceleration.x <= -0.75 {
+            orientationNew = .landscapeRight
+        } else if acceleration.y <= -0.75 {
+            orientationNew = .portrait
+        } else if acceleration.y >= 0.75 {
+            orientationNew = .portraitUpsideDown
+        } else {
+            // Consider same as last time
+            return
+        }
+        
+        if orientationNew != orientationLast {
+            orientationLast = orientationNew
+        } else {
+            return
+        }
+   }
 }
 
 class FocusView: UIView {

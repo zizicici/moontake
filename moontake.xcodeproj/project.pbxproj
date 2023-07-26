@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */; };
 		6304F6F02A5AC2410068C1C4 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6EF2A5AC2410068C1C4 /* PhotoCaptureDelegate.swift */; };
+		63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */; };
 		63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806A02A59ACCC00135630 /* AppDelegate.swift */; };
 		63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806A22A59ACCC00135630 /* SceneDelegate.swift */; };
 		63F806A52A59ACCC00135630 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806A42A59ACCC00135630 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCapturePreviewView.swift; sourceTree = "<group>"; };
 		6304F6EF2A5AC2410068C1C4 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		63F8069D2A59ACCC00135630 /* moontake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moontake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F806A02A59ACCC00135630 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63F806A22A59ACCC00135630 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				6304F6EF2A5AC2410068C1C4 /* PhotoCaptureDelegate.swift */,
 				6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */,
 				63F806D02A59ADC700135630 /* UIColor+Extension.swift */,
+				63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */,
 				63F806A92A59ACCD00135630 /* Assets.xcassets */,
 				63F806AB2A59ACCD00135630 /* LaunchScreen.storyboard */,
 				63F806AE2A59ACCD00135630 /* Info.plist */,
@@ -277,6 +280,7 @@
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
 				63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */,
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
+				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
