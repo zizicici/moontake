@@ -14,7 +14,7 @@ import CoreMotion
 class CameraViewController: UIViewController {
     private var session: AVCaptureSession!
     private let sessionQueue = DispatchQueue(label: "capture")
-
+    
     private var captureDevice: AVCaptureDevice!
     private var captureDeviceInput: AVCaptureDeviceInput!
     private let photoOutput = AVCapturePhotoOutput()
@@ -214,13 +214,13 @@ class CameraViewController: UIViewController {
         motionManager?.accelerometerUpdateInterval = 0.2
         motionManager?.gyroUpdateInterval = 0.2
         motionManager?.startAccelerometerUpdates(to: current, withHandler: { [weak self] accelerometerData, error in
-           if error == nil {
-               self?.outputAccelerationData(accelerometerData?.acceleration)
-           } else {
-               print(error.debugDescription)
-           }
+            if error == nil {
+                self?.outputAccelerationData(accelerometerData?.acceleration)
+            } else {
+                print(error.debugDescription)
+            }
         })
-     }
+    }
     
     //MARK:- Permissions
     func checkCameraPermissions() {
@@ -344,7 +344,7 @@ class CameraViewController: UIViewController {
             try captureDevice.lockForConfiguration()
             
             apertureFactor = captureDevice.lensAperture
-
+            
             // 设置ISO值
             let desiredISO: Float = max(minISO, 50.0)
             iso = desiredISO
@@ -421,7 +421,7 @@ class CameraViewController: UIViewController {
             }
             
             photoSettings.photoQualityPrioritization = .speed
-
+            
             let photoCaptureProcessor = PhotoCaptureProcessor(with: photoSettings, willCapturePhotoAnimation: {
                 // Flash the screen to signal that AVCam took a photo.
                 DispatchQueue.main.async {
@@ -546,7 +546,7 @@ class CameraViewController: UIViewController {
     func findClosestNumber(to target: Int32, in numbers: [Int32]) -> Int32 {
         var closestNumber: Int32 = 0
         var minDifference = Int32.max
-
+        
         for number in numbers {
             let difference = abs(number - target)
             
@@ -557,7 +557,7 @@ class CameraViewController: UIViewController {
                 closestNumber = number
             }
         }
-
+        
         return closestNumber
     }
     
@@ -609,5 +609,5 @@ class CameraViewController: UIViewController {
         } else {
             return
         }
-   }
+    }
 }
