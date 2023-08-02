@@ -362,6 +362,18 @@ class CameraViewController: UIViewController {
             // 处理设备配置错误的情况
         }
         
+        do {
+            try captureDevice.lockForConfiguration()
+            if captureDevice.isWhiteBalanceModeSupported(.locked) {
+                let temperatureAndTintValues = AVCaptureDevice.WhiteBalanceTemperatureAndTintValues(temperature: 5500, tint: 0)
+                let deviceGains = captureDevice.deviceWhiteBalanceGains(for: temperatureAndTintValues)
+                captureDevice.setWhiteBalanceModeLocked(with: deviceGains, completionHandler: nil)
+            }
+            captureDevice.unlockForConfiguration()
+        } catch  {
+            // 处理设备配置错误的情况
+        }
+        
         //now we need to create an input objects from our devices
         guard let bInput = try? AVCaptureDeviceInput(device: captureDevice) else {
             fatalError("could not create input device from back camera")
