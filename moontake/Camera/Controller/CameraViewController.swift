@@ -45,7 +45,7 @@ class CameraViewController: UIViewController {
         
         return label
     }()
-    let plusButton: UIButton = {
+    private let plusButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "plus")
         configuration.contentInsets = .zero
@@ -55,7 +55,7 @@ class CameraViewController: UIViewController {
         
         return button
     }()
-    let minusButton: UIButton = {
+    private let minusButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "minus")
         configuration.contentInsets = .zero
@@ -65,11 +65,22 @@ class CameraViewController: UIViewController {
         
         return button
     }()
-    let lensPositionSlider: UISlider = {
+    private let lensPositionSlider: UISlider = {
         var slider = UISlider()
         slider.minimumTrackTintColor = .moonColor
         
         return slider
+    }()
+    private let moreButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "ellipsis")
+        configuration.contentInsets = .zero
+        
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityLabel = "More".localized
+
+        return button
     }()
     private let focusView: FocusView = FocusView()
     private let exposureStops: [Int32] = [
@@ -156,16 +167,16 @@ class CameraViewController: UIViewController {
         view.addSubview(minusButton)
         minusButton.snp.makeConstraints { make in
             make.top.bottom.equalTo(captureButton)
-            make.trailing.equalTo(captureButton.snp.leading).offset(-10)
-            make.width.equalTo(100)
+            make.trailing.equalTo(captureButton.snp.leading).offset(-15)
+            make.width.equalTo(70)
         }
         minusButton.addTarget(self, action: #selector(minusShutterScale), for: .touchUpInside)
         
         view.addSubview(plusButton)
         plusButton.snp.makeConstraints { make in
             make.top.bottom.equalTo(captureButton)
-            make.leading.equalTo(captureButton.snp.trailing).offset(10)
-            make.width.equalTo(100)
+            make.leading.equalTo(captureButton.snp.trailing).offset(15)
+            make.width.equalTo(70)
         }
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
         
@@ -176,6 +187,15 @@ class CameraViewController: UIViewController {
             make.height.equalTo(40)
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
+        
+        view.addSubview(moreButton)
+        moreButton.snp.makeConstraints { make in
+            make.leading.equalTo(plusButton.snp.trailing)
+            make.trailing.equalTo(view)
+            make.height.equalTo(plusButton)
+            make.top.equalTo(plusButton)
+        }
+        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
@@ -575,7 +595,8 @@ class CameraViewController: UIViewController {
     
     var pivotPinchScale: CGFloat = 0.0
     
-    @objc func handlePinchToZoomRecognizer(_ gesture: UIPinchGestureRecognizer) {
+    @objc
+    func handlePinchToZoomRecognizer(_ gesture: UIPinchGestureRecognizer) {
         guard gesture.numberOfTouches == 2 else {
             return
         }
@@ -621,5 +642,12 @@ class CameraViewController: UIViewController {
         } else {
             return
         }
+    }
+    
+    @objc
+    func moreButtonTapped() {
+        let settingsVC = SettingsViewController()
+        let nav = UINavigationController(rootViewController: settingsVC)
+        present(nav, animated: true)
     }
 }
