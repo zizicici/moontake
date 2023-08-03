@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  moontake
+
+  Created by Ci Zi on 2023/8/3.
+  
+*/
+
+// More
+"More" = "更多";
+
+"Settings" = "设置";
+
+"Membership" = "会员";
+
+"General" = "通用";
+"Language" = "语言";
+"🍋Language" = "简体中文";
+"Watermark" = "水印";
+
+"AppJun" = "App君";
+"Other Apps" = "其他App";
+"Follow us on Bilibili" = "在Bilibili关注我们";
+"Follow us on Xiaohongshu" = "在小红书关注我们";
+
+"About" = "关于";
+"Specifications" = "版本信息";
+"Email" = "邮箱";
+"EULA" = "最终用户许可协议";
+"Policy of Privacy" = "隐私政策";
+"Follow us on Bilibili" = "在Bilibili关注我们";
+"Follow us on Xiaohongshu" = "在小红书关注我们";
+"Follow us on Youtube" = "在Youtube关注我们";

@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  MoreViewController.swift
 //  moontake
 //
 //  Created by Ci Zi on 2023/7/27.
@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController {
+class MoreViewController: UIViewController {
     private var tableView: UITableView!
     private var dataSource: DataSource!
     
     enum Section: Hashable {
         case membership
-        case general
+        case settings
         case appjun
         case about
         
@@ -22,8 +22,8 @@ class SettingsViewController: UIViewController {
             switch self {
             case .membership:
                 return "Membership".localized()
-            case .general:
-                return "General".localized()
+            case .settings:
+                return "Settings".localized()
             case .appjun:
                 return "AppJun".localized()
             case .about:
@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
                 case .language:
                     return "Language".localized()
                 case .waterMarkInfo:
-                    return "Water Mark Info".localized()
+                    return "Watermark".localized()
                 case .enableRaw:
                     return "Enable Raw".localized()
                 }
@@ -84,9 +84,9 @@ class SettingsViewController: UIViewController {
                 case .otherApps:
                     return "Other Apps".localized()
                 case .bilibili:
-                    return "Follow @App君 in Bilibili".localized()
+                    return "Follow us on Bilibili".localized()
                 case .xiaohongshu:
-                    return "Follow @App君 in Xiaohongshu".localized()
+                    return "Follow us on Xiaohongshu".localized()
                 }
             }
         }
@@ -125,7 +125,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Settings".localized()
+        self.title = "More".localized()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
@@ -202,8 +202,8 @@ class SettingsViewController: UIViewController {
         snapshot.appendSections([.membership])
         snapshot.appendItems([.membership], toSection: .membership)
         
-        snapshot.appendSections([.general])
-        snapshot.appendItems([.general(.language), .general(.waterMarkInfo)], toSection: .general)
+        snapshot.appendSections([.settings])
+        snapshot.appendItems([.general(.language), .general(.waterMarkInfo)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
         snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
@@ -215,7 +215,7 @@ class SettingsViewController: UIViewController {
     }
 }
 
-extension SettingsViewController: UITableViewDelegate {
+extension MoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

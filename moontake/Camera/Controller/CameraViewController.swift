@@ -646,7 +646,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func moreButtonTapped() {
-        let settingsVC = SettingsViewController()
+        let settingsVC = MoreViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
     }
