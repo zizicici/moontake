@@ -10,6 +10,8 @@
 		6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */; };
 		6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6EF2A5AC2410068C1C4 /* PhotoCaptureProcessor.swift */; };
 		6305CD122A7BA27A001CF9C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6305CD142A7BA27A001CF9C6 /* Localizable.strings */; };
+		6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */; };
+		6305CD1A2A7BAB19001CF9C6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD192A7BAB19001CF9C6 /* UIViewController+Extension.swift */; };
 		63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */; };
 		63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5E3322A72ACD8008CAA07 /* FocusView.swift */; };
 		63F5E3392A72B0F8008CAA07 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */; };
@@ -51,6 +53,8 @@
 		6305CD132A7BA27A001CF9C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6305CD152A7BA27D001CF9C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6305CD162A7BA27E001CF9C6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationsViewController.swift; sourceTree = "<group>"; };
+		6305CD192A7BAB19001CF9C6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		63F5E3322A72ACD8008CAA07 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				63FE1DF12A75579500D31B04 /* String+Extension.swift */,
 				63F806D02A59ADC700135630 /* UIColor+Extension.swift */,
 				63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */,
+				6305CD192A7BAB19001CF9C6 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 		63F5E33B2A72B144008CAA07 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */,
 				63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */,
 			);
 			path = Controller;
@@ -341,6 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6305CD1A2A7BAB19001CF9C6 /* UIViewController+Extension.swift in Sources */,
+				6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */,
 				6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */,
 				6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */,
 				63F806A52A59ACCC00135630 /* CameraViewController.swift in Sources */,
@@ -550,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -586,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

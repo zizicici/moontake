@@ -257,7 +257,7 @@ extension MoreViewController: UITableViewDelegate {
             case .about(let item):
                 switch item {
                 case .specifications:
-                    break
+                    enterSpecifications()
                 case .eula:
                     openEULA()
                 case .privacyPolicy:
@@ -271,6 +271,12 @@ extension MoreViewController: UITableViewDelegate {
 }
 
 extension MoreViewController {
+    func enterSpecifications() {
+        let specificationViewController = SpecificationsViewController()
+        
+        navigationController?.pushViewController(specificationViewController, animated: true)
+    }
+    
     func sendEmailToCustomerSupport() {
         let recipient = MoreViewController.supportEmail
         
@@ -314,10 +320,5 @@ extension MoreViewController {
         if let url = URL(string: "https://www.youtube.com/@app_jun") {
             openSF(with: url)
         }
-    }
-    
-    func openSF(with url: URL) {
-        let safariViewController = SFSafariViewController(url: url)
-        navigationController?.present(safariViewController, animated: true)
     }
 }

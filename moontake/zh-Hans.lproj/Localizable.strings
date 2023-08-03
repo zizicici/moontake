@@ -31,3 +31,12 @@
 "Follow us on Bilibili" = "在Bilibili关注我们";
 "Follow us on Xiaohongshu" = "在小红书关注我们";
 "Follow us on Youtube" = "在Youtube关注我们";
+
+// Specifications
+"Name" = "名称";
+"Version" = "版本";
+"Manufacturer" = "制造商";
+"Publisher" = "发行商";
+"Date of Production" = "出厂日期";
+"Third Party Framework" = "第三方组件";
+"We extend our heartfelt appreciation to all developers of open-source projects." = "在此向所有开源项目开发者表达感谢与敬意。";
