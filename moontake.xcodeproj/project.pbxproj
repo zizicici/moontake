@@ -55,6 +55,8 @@
 		6305CD162A7BA27E001CF9C6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationsViewController.swift; sourceTree = "<group>"; };
 		6305CD192A7BAB19001CF9C6 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		6305CD1B2A7BAE39001CF9C6 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		6305CD1C2A7BAE3A001CF9C6 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		63F5E3322A72ACD8008CAA07 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
 		63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				Base,
 				"zh-Hans",
 				"zh-Hant",
+				"zh-HK",
 			);
 			mainGroup = 63F806942A59ACCC00135630;
 			packageReferences = (
@@ -401,6 +404,7 @@
 				6305CD132A7BA27A001CF9C6 /* en */,
 				6305CD152A7BA27D001CF9C6 /* zh-Hans */,
 				6305CD162A7BA27E001CF9C6 /* zh-Hant */,
+				6305CD1C2A7BAE3A001CF9C6 /* zh-HK */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -411,6 +415,7 @@
 				63F806AC2A59ACCD00135630 /* Base */,
 				6305CD102A7BA257001CF9C6 /* zh-Hans */,
 				6305CD112A7BA261001CF9C6 /* zh-Hant */,
+				6305CD1B2A7BAE39001CF9C6 /* zh-HK */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
