@@ -55,6 +55,15 @@ class MoreViewController: UIViewController {
                     return "Enable Raw".localized()
                 }
             }
+            
+            var value: String? {
+                switch self {
+                case .language:
+                    return "🍋Language".localized()
+                default:
+                    return nil
+                }
+            }
         }
         
         enum AboutItem {
@@ -186,13 +195,13 @@ class MoreViewController: UIViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .none
                 return cell
-            case .settings(_):
+            case .settings(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
                 var content = UIListContentConfiguration.valueCell()
                 content.text = identifier.title
                 content.textProperties.color = .label
-                content.secondaryText = "value"
+                content.secondaryText = item.value
                 cell.contentConfiguration = content
                 return cell
             case .appjun(let item):
@@ -244,7 +253,14 @@ extension MoreViewController: UITableViewDelegate {
             case .membership:
                 break
             case .settings(let item):
-                break
+                switch item {
+                case .language:
+                    jumpToSettings()
+                case .waterMarkInfo:
+                    break
+                case .enableRaw:
+                    break
+                }
             case .appjun(let item):
                 switch item {
                 case .otherApps:
@@ -271,6 +287,15 @@ extension MoreViewController: UITableViewDelegate {
 }
 
 extension MoreViewController {
+    func jumpToSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {
+           return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+           UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     func enterSpecifications() {
         let specificationViewController = SpecificationsViewController()
         
