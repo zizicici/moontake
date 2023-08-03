@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import SafariServices
 
 class MoreViewController: UIViewController {
+    static let supportEmail = "moon@zi.ci"
+
     private var tableView: UITableView!
     private var dataSource: DataSource!
     
@@ -72,6 +75,15 @@ class MoreViewController: UIViewController {
                     return "Email".localized()
                 }
             }
+            
+            var value: String? {
+                switch self {
+                case .email:
+                    return MoreViewController.supportEmail
+                default:
+                    return nil
+                }
+            }
         }
         
         enum AppJunItem {
@@ -89,10 +101,19 @@ class MoreViewController: UIViewController {
                     return "Follow us on Xiaohongshu".localized()
                 }
             }
+            
+            var value: String? {
+                switch self {
+                case .otherApps:
+                    return nil
+                case .bilibili, .xiaohongshu:
+                    return "@App君"
+                }
+            }
         }
         
         case membership
-        case general(GeneralItem)
+        case settings(GeneralItem)
         case appjun(AppJunItem)
         case about(AboutItem)
         
@@ -100,7 +121,7 @@ class MoreViewController: UIViewController {
             switch self {
             case .membership:
                 return ""
-            case .general(let item):
+            case .settings(let item):
                 return item.title
             case .appjun(let item):
                 return item.title
@@ -165,7 +186,7 @@ class MoreViewController: UIViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .none
                 return cell
-            case .general(_):
+            case .settings(_):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
                 var content = UIListContentConfiguration.valueCell()
@@ -174,22 +195,22 @@ class MoreViewController: UIViewController {
                 content.secondaryText = "value"
                 cell.contentConfiguration = content
                 return cell
-            case .appjun:
+            case .appjun(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
                 var content = UIListContentConfiguration.valueCell()
                 content.text = identifier.title
                 content.textProperties.color = .label
-                content.secondaryText = "value"
+                content.secondaryText = item.value
                 cell.contentConfiguration = content
                 return cell
-            case .about(_):
+            case .about(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
                 var content = UIListContentConfiguration.valueCell()
                 content.text = identifier.title
                 content.textProperties.color = .label
-                content.secondaryText = "value"
+                content.secondaryText = item.value
                 cell.contentConfiguration = content
                 return cell
             }
@@ -203,7 +224,7 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.membership], toSection: .membership)
         
         snapshot.appendSections([.settings])
-        snapshot.appendItems([.general(.language), .general(.waterMarkInfo)], toSection: .settings)
+        snapshot.appendItems([.settings(.language), .settings(.waterMarkInfo)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
         snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
@@ -218,5 +239,85 @@ class MoreViewController: UIViewController {
 extension MoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if let item = dataSource.itemIdentifier(for: indexPath) {
+            switch item {
+            case .membership:
+                break
+            case .settings(let item):
+                break
+            case .appjun(let item):
+                switch item {
+                case .otherApps:
+                    break
+                case .bilibili:
+                    openBilibiliWebpage()
+                case .xiaohongshu:
+                    openXiaohongshuWebpage()
+                }
+            case .about(let item):
+                switch item {
+                case .specifications:
+                    break
+                case .eula:
+                    openEULA()
+                case .privacyPolicy:
+                    openPrivacyPolicy()
+                case .email:
+                    sendEmailToCustomerSupport()
+                }
+            }
+        }
+    }
+}
+
+extension MoreViewController {
+    func sendEmailToCustomerSupport() {
+        let recipient = MoreViewController.supportEmail
+        
+        guard let emailUrlString = "mailto:\(recipient)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let emailUrl = URL(string: emailUrlString) else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(emailUrl) {
+            UIApplication.shared.open(emailUrl, options: [:], completionHandler: nil)
+        } else {
+            // 打开邮件应用失败，进行适当的处理或提醒用户
+        }
+    }
+    
+    func openEULA() {
+        if let url = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+            openSF(with: url)
+        }
+    }
+    
+    func openPrivacyPolicy() {
+        if let url = URL(string: "https://zizicici.medium.com/policy-of-privacy-for-a-lemon-diary-c4b49b020647") {
+            openSF(with: url)
+        }
+    }
+    
+    func openBilibiliWebpage() {
+        if let url = URL(string: "https://space.bilibili.com/4969209") {
+            openSF(with: url)
+        }
+    }
+    
+    func openXiaohongshuWebpage() {
+        if let url = URL(string: "https://www.xiaohongshu.com/user/profile/63f05fc5000000001001e524") {
+            openSF(with: url)
+        }
+    }
+    
+    func openYoutubeWebpage() {
+        if let url = URL(string: "https://www.youtube.com/@app_jun") {
+            openSF(with: url)
+        }
+    }
+    
+    func openSF(with url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        navigationController?.present(safariViewController, animated: true)
     }
 }
