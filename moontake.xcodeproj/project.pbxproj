@@ -26,6 +26,8 @@
 		63F806C42A59ACCD00135630 /* moontakeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806C32A59ACCD00135630 /* moontakeUITestsLaunchTests.swift */; };
 		63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F806D02A59ADC700135630 /* UIColor+Extension.swift */; };
 		63F806D42A59BA8E00135630 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63F806D32A59BA8E00135630 /* SnapKit */; };
+		63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */; };
+		63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDEA312A7D01CD002E02C2 /* MoonManager.swift */; };
 		63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE1DF12A75579500D31B04 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		63F806C12A59ACCD00135630 /* moontakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moontakeUITests.swift; sourceTree = "<group>"; };
 		63F806C32A59ACCD00135630 /* moontakeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moontakeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		63F806D02A59ADC700135630 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Mooninfo.xcframework; sourceTree = "<group>"; };
+		63FDEA312A7D01CD002E02C2 /* MoonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManager.swift; sourceTree = "<group>"; };
 		63FE1DF12A75579500D31B04 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,10 +198,12 @@
 			children = (
 				63F806A02A59ACCC00135630 /* AppDelegate.swift */,
 				63F806A22A59ACCC00135630 /* SceneDelegate.swift */,
+				63FDEA332A7D01D2002E02C2 /* Moon */,
 				63F5E3352A72ADD6008CAA07 /* Camera */,
 				63F5E33A2A72B108008CAA07 /* More */,
 				63F5E3342A72ADC0008CAA07 /* Extension */,
 				63F806A92A59ACCD00135630 /* Assets.xcassets */,
+				63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */,
 				63F806AB2A59ACCD00135630 /* LaunchScreen.storyboard */,
 				63F806AE2A59ACCD00135630 /* Info.plist */,
 				6305CD142A7BA27A001CF9C6 /* Localizable.strings */,
@@ -219,6 +226,14 @@
 				63F806C32A59ACCD00135630 /* moontakeUITestsLaunchTests.swift */,
 			);
 			path = moontakeUITests;
+			sourceTree = "<group>";
+		};
+		63FDEA332A7D01D2002E02C2 /* Moon */ = {
+			isa = PBXGroup;
+			children = (
+				63FDEA312A7D01CD002E02C2 /* MoonManager.swift */,
+			);
+			path = Moon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +388,7 @@
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
 				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */,
+				63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */,
 				63F5E3392A72B0F8008CAA07 /* MoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -541,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -557,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
@@ -593,7 +609,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
