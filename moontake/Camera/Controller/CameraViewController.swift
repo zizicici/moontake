@@ -79,7 +79,7 @@ class CameraViewController: UIViewController {
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = "More".localized
-
+        
         return button
     }()
     private let focusView: FocusView = FocusView()
@@ -287,7 +287,7 @@ class CameraViewController: UIViewController {
     
     //MARK:- Camera Setup
     func setupAndStartCaptureSession(){
-        sessionQueue.async{
+        sessionQueue.async {
             //init session
             self.session = AVCaptureSession()
             //start configuration
