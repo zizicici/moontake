@@ -628,9 +628,9 @@ class CameraViewController: UIViewController {
             orientationNew = .landscapeLeft
         } else if acceleration.x <= -0.75 {
             orientationNew = .landscapeRight
-        } else if acceleration.y <= -0.75 {
+        } else if acceleration.y <= 0.0 {
             orientationNew = .portrait
-        } else if acceleration.y >= 0.75 {
+        } else if acceleration.y > 0.0 {
             orientationNew = .portraitUpsideDown
         } else {
             // Consider same as last time
