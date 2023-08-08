@@ -55,4 +55,37 @@ struct MoonManager {
         
         return currentPhase
     }
+    
+    func getPhaseName() -> String {
+        switch getPhase() {
+        case .newMoon:
+            return "New Moon".localized()
+        case .waxingMoon:
+            let percent = getPhasePercent()
+            if percent < 0.49 {
+                // 娥眉月
+                return "WaxingMoon1".localized()
+            } else if percent < 0.51 {
+                // 上弦月
+                return "WaxingMoon2".localized()
+            } else {
+                // 上凸月
+                return "WaxingMoon3".localized()
+            }
+        case .fullMoon:
+            return "Full Moon".localized()
+        case .waningMoon:
+            let percent = getPhasePercent()
+            if percent < 0.49 {
+                // 残月
+                return "WaningMoon1".localized()
+            } else if percent < 0.51 {
+                // 下弦月
+                return "WaningMoon2".localized()
+            } else {
+                // 下凸月
+                return "WaningMoon3".localized()
+            }
+        }
+    }
 }

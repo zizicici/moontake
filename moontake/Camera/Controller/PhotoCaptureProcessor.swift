@@ -87,6 +87,8 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             didFinish()
             return
         }
+        
+        var newData = addWaterMark(for: photoData) ?? photoData
 
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             if status == .authorized {
@@ -94,7 +96,7 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                     let options = PHAssetResourceCreationOptions()
                     let creationRequest = PHAssetCreationRequest.forAsset()
                     options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
-                    creationRequest.addResource(with: .photo, data: photoData, options: options)
+                    creationRequest.addResource(with: .photo, data: newData, options: options)
                     creationRequest.location = self.location
                 }, completionHandler: { _, error in
                     if let error = error {

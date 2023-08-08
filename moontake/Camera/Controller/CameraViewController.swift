@@ -439,8 +439,8 @@ class CameraViewController: UIViewController {
             var photoSettings = AVCapturePhotoSettings()
             
             // Capture HEIF photos when supported. Enable auto-flash and high-resolution photos.
-            if  self.photoOutput.availablePhotoCodecTypes.contains(.hevc) {
-                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            if  self.photoOutput.availablePhotoCodecTypes.contains(.jpeg) {
+                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             }
             
             if self.captureDeviceInput.device.isFlashAvailable {

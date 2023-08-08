@@ -37,3 +37,14 @@
 "Date of Production" = "出厂日期";
 "Third Party Framework" = "第三方组件";
 "We extend our heartfelt appreciation to all developers of open-source projects." = "在此向所有开源项目开发者表达感谢与敬意。";
+
+//
+"moontake\nA Moon Camera" = "moontake\n一个只拍月亮的App";
+"New Moon" = "朔月";
+"Full Moon" = "望月";
+"WaxingMoon1" = "娥眉月";
+"WaxingMoon2" = "上弦月";
+"WaxingMoon3" = "上凸月";
+"WaningMoon1" = "残月";
+"WaningMoon2" = "下弦月";
+"WaningMoon3" = "下凸月";
