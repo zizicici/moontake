@@ -98,12 +98,16 @@ class CameraViewController: UIViewController {
     
     var cameraPermissionAuthorized: Authorization = .notDetermined {
         didSet {
-            showPermissionViewIfNeeded()
+            runOnMainThreadIfNeeded {
+                self.showPermissionViewIfNeeded()
+            }
         }
     }
     var addPhotoPermissionAuthorized: Authorization = .notDetermined {
         didSet {
-            showPermissionViewIfNeeded()
+            runOnMainThreadIfNeeded {
+                self.showPermissionViewIfNeeded()
+            }
         }
     }
     
@@ -290,6 +294,7 @@ class CameraViewController: UIViewController {
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (authorized) in
                 if authorized {
                     self.cameraPermissionAuthorized = .authorized
+                    self.setupAndStartCaptureSession()
                 } else {
                     self.cameraPermissionAuthorized = .denied
                 }
@@ -715,6 +720,18 @@ class CameraViewController: UIViewController {
         }
         if UIApplication.shared.canOpenURL(url) {
            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
+    func runOnMainThreadIfNeeded(_ block: @escaping () -> Void) {
+        if Thread.isMainThread {
+            // 当前线程是主线程，直接执行代码块
+            block()
+        } else {
+            DispatchQueue.main.async {
+                // 切换到主线程执行代码块
+                block()
+            }
         }
     }
 }
