@@ -340,7 +340,7 @@ extension MoreViewController {
     }
     
     func openPrivacyPolicy() {
-        if let url = URL(string: "https://zizicici.medium.com/policy-of-privacy-for-a-lemon-diary-c4b49b020647") {
+        if let url = URL(string: "https://zizicici.medium.com/policy-of-privacy-for-moontake-afc746183ab7") {
             openSF(with: url)
         }
     }
