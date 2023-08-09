@@ -13,6 +13,7 @@
 		6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */; };
 		6305CD1A2A7BAB19001CF9C6 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD192A7BAB19001CF9C6 /* UIViewController+Extension.swift */; };
 		6305CD1E2A7BAEAA001CF9C6 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD1D2A7BAEAA001CF9C6 /* Language.swift */; };
+		630642952A836E8400A918DE /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642942A836E8400A918DE /* PermissionView.swift */; };
 		63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */; };
 		63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1125F2A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift */; };
 		63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */; };
@@ -63,6 +64,7 @@
 		6305CD1B2A7BAE39001CF9C6 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		6305CD1C2A7BAE3A001CF9C6 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6305CD1D2A7BAEAA001CF9C6 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		630642942A836E8400A918DE /* PermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionView.swift; sourceTree = "<group>"; };
 		63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
 		63E1125F2A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoCaptureProcessor+WaterMark.swift"; sourceTree = "<group>"; };
 		63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				63F5E3322A72ACD8008CAA07 /* FocusView.swift */,
 				6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */,
+				630642942A836E8400A918DE /* PermissionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */,
 				6305CD1E2A7BAEAA001CF9C6 /* Language.swift in Sources */,
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
+				630642952A836E8400A918DE /* PermissionView.swift in Sources */,
 				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */,
 				63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */,

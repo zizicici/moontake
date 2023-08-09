@@ -83,6 +83,30 @@ class CameraViewController: UIViewController {
         return button
     }()
     private let focusView: FocusView = FocusView()
+    
+    private let permissionView: PermissionView = {
+        let view = PermissionView()
+        
+        return view
+    }()
+    
+    enum Authorization {
+        case notDetermined
+        case authorized
+        case denied
+    }
+    
+    var cameraPermissionAuthorized: Authorization = .notDetermined {
+        didSet {
+            showPermissionViewIfNeeded()
+        }
+    }
+    var addPhotoPermissionAuthorized: Authorization = .notDetermined {
+        didSet {
+            showPermissionViewIfNeeded()
+        }
+    }
+    
     private let exposureStops: [Int32] = [
         60, 65, 70, 75, 80, 85, 90, 95,
         100,
@@ -197,6 +221,18 @@ class CameraViewController: UIViewController {
         }
         moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         
+        view.addSubview(permissionView)
+        permissionView.snp.makeConstraints { make in
+            make.edges.equalTo(previewView)
+        }
+        permissionView.isHidden = true
+        permissionView.cameraClosure = { [weak self] in
+            self?.jumpToSettings()
+        }
+        permissionView.albumClosure = { [weak self] in
+            self?.jumpToSettings()
+        }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
         
@@ -247,19 +283,21 @@ class CameraViewController: UIViewController {
         let cameraAuthStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         switch cameraAuthStatus {
         case .authorized:
-            return
+            cameraPermissionAuthorized = .authorized
         case .denied:
-            abort()
+            cameraPermissionAuthorized = .denied
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (authorized) in
-                if(!authorized){
-                    abort()
+                if authorized {
+                    self.cameraPermissionAuthorized = .authorized
+                } else {
+                    self.cameraPermissionAuthorized = .denied
                 }
             })
         case .restricted:
-            abort()
+            cameraPermissionAuthorized = .denied
         @unknown default:
-            fatalError()
+            cameraPermissionAuthorized = .denied
         }
     }
     
@@ -268,25 +306,42 @@ class CameraViewController: UIViewController {
         switch photoAuthStatus {
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization(for: .addOnly) { authrized in
-                if authrized != .authorized {
-                    abort()
+                if authrized == .authorized {
+                    self.addPhotoPermissionAuthorized = .authorized
+                } else {
+                    self.addPhotoPermissionAuthorized = .denied
                 }
             }
         case .restricted:
-            abort()
+            addPhotoPermissionAuthorized = .denied
         case .denied:
-            abort()
+            addPhotoPermissionAuthorized = .denied
         case .authorized:
-            return
+            addPhotoPermissionAuthorized = .authorized
         case .limited:
-            return
+            addPhotoPermissionAuthorized = .denied
         @unknown default:
-            fatalError()
+            addPhotoPermissionAuthorized = .denied
+        }
+    }
+    
+    func showPermissionViewIfNeeded() {
+        if cameraPermissionAuthorized == .denied || addPhotoPermissionAuthorized == .denied {
+            permissionView.isHidden = false
+            permissionView.update(showCameraButton: cameraPermissionAuthorized == .denied, showAlbumButton: addPhotoPermissionAuthorized == .denied)
+            captureButton.isEnabled = false
+        } else {
+            permissionView.isHidden = true
+            captureButton.isEnabled = true
         }
     }
     
     //MARK:- Camera Setup
-    func setupAndStartCaptureSession(){
+    func setupAndStartCaptureSession() {
+        guard cameraPermissionAuthorized == .authorized else {
+            return
+        }
+        
         sessionQueue.async {
             //init session
             self.session = AVCaptureSession()
@@ -430,6 +485,9 @@ class CameraViewController: UIViewController {
     @objc
     func capturePhoto(_ sender: UIButton?) {
         guard let videoPreviewLayerOrientation = AVCaptureVideoOrientation(interfaceOrientation: orientationLast) else {
+            return
+        }
+        guard cameraPermissionAuthorized == .authorized, addPhotoPermissionAuthorized == .authorized else {
             return
         }
         sessionQueue.async {
@@ -649,5 +707,14 @@ class CameraViewController: UIViewController {
         let settingsVC = MoreViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
+    }
+    
+    func jumpToSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {
+           return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+           UIApplication.shared.open(url, options: [:])
+        }
     }
 }

@@ -48,3 +48,5 @@
 "WaningMoon1" = "残月";
 "WaningMoon2" = "下弦月";
 "WaningMoon3" = "下凸月";
+"Enable Camera Permission" = "開啟照相機權限";
+"Enable Add Photo Permission" = "開啟添加照片權限";
