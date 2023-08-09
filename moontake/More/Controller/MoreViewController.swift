@@ -42,17 +42,14 @@ class MoreViewController: UIViewController {
     enum Item: Hashable {
         enum GeneralItem {
             case language
-            case waterMarkInfo
-            case enableRaw
+            case saveOptions
             
             var title: String {
                 switch self {
                 case .language:
                     return "Language".localized()
-                case .waterMarkInfo:
-                    return "Watermark".localized()
-                case .enableRaw:
-                    return "Enable Raw".localized()
+                case .saveOptions:
+                    return "Photo Save Options".localized()
                 }
             }
             
@@ -248,7 +245,7 @@ class MoreViewController: UIViewController {
             snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .tier(User.shared.proTier()), membership: Store.shared.membershipDisplayPrice()))], toSection: .membership)
         }
         snapshot.appendSections([.settings])
-        snapshot.appendItems([.settings(.language), .settings(.waterMarkInfo)], toSection: .settings)
+        snapshot.appendItems([.settings(.language), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
         snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
@@ -271,10 +268,8 @@ extension MoreViewController: UITableViewDelegate {
                 switch item {
                 case .language:
                     jumpToSettings()
-                case .waterMarkInfo:
-                    break
-                case .enableRaw:
-                    break
+                case .saveOptions:
+                    enterWatermarkSettings()
                 }
             case .appjun(let item):
                 switch item {
@@ -309,6 +304,12 @@ extension MoreViewController {
         if UIApplication.shared.canOpenURL(url) {
            UIApplication.shared.open(url, options: [:])
         }
+    }
+
+    func enterWatermarkSettings() {
+        let watermarkViewController = WatermarkViewController()
+        
+        navigationController?.pushViewController(watermarkViewController, animated: true)
     }
     
     func enterSpecifications() {

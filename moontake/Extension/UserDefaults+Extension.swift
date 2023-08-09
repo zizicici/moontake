@@ -10,6 +10,7 @@ import Foundation
 extension UserDefaults {
     enum Custom: String {
         case LifetimeMemberShip = "com.zizicici.moontake.store.purchase.lifetime"
+        case SaveToAlbum = "com.zizicici.moontake.settings.saveToAlbum"
     }
 }
 

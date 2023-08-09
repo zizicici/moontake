@@ -22,9 +22,7 @@ class PhotoCaptureProcessor: NSObject {
     private var photoData: Data?
     
     private var maxPhotoProcessingTime: CMTime?
-
-    var location: CLLocation?
-
+    
     init(with requestedPhotoSettings: AVCapturePhotoSettings, willCapturePhotoAnimation: @escaping () -> Void, completionHandler: @escaping (PhotoCaptureProcessor) -> Void, photoProcessingHandler: @escaping (Bool) -> Void) {
         self.requestedPhotoSettings = requestedPhotoSettings
         self.willCapturePhotoAnimation = willCapturePhotoAnimation
@@ -88,16 +86,25 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        var newData = addWaterMark(for: photoData) ?? photoData
+        let currentSettings = Settings.shared.getSaveToAlbumSettings()
 
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             if status == .authorized {
                 PHPhotoLibrary.shared().performChanges({
                     let options = PHAssetResourceCreationOptions()
-                    let creationRequest = PHAssetCreationRequest.forAsset()
                     options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
-                    creationRequest.addResource(with: .photo, data: newData, options: options)
-                    creationRequest.location = self.location
+                    
+                    if currentSettings == .both || currentSettings == .photoWithWatermark {
+                        if let newData = self.addWaterMark(for: photoData) {
+                            let creationRequest = PHAssetCreationRequest.forAsset()
+                            creationRequest.addResource(with: .photo, data: newData, options: options)
+                        }
+                    }
+
+                    if currentSettings == .both || currentSettings == .photoWithoutWatermark {
+                        let creationRequest = PHAssetCreationRequest.forAsset()
+                        creationRequest.addResource(with: .photo, data: photoData, options: options)
+                    }
                 }, completionHandler: { _, error in
                     if let error = error {
                         print("Error occurred while saving photo to photo library: \(error)")

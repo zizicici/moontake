@@ -17,6 +17,13 @@
 "Language" = "语言";
 "🍋Language" = "简体中文";
 "Watermark" = "水印";
+"Photo Save Options" = "照片保存选项";
+"Save to Album" = "保存到相册";
+"Photo with Watermark" = "带水印的照片";
+"Photo without Watermark" = "不带水印的照片";
+"Both above" = "以上两项";
+"This option is only for Pro user." = "只有Pro用户可以选择此选项";
+"For free users, the default option is automatically selected and not customizable." = "免费用户只支持导出带水印的照片。";
 
 "AppJun" = "App君";
 "Other Apps" = "其他App";
