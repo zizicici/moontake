@@ -50,3 +50,11 @@
 "WaningMoon3" = "下凸月";
 "Enable Camera Permission" = "開啟照相機權限";
 "Enable Add Photo Permission" = "開啟添加照片權限";
+
+// IAP
+"Manage Photo Watermark" = "管理照片水印";
+"Restore Purchases" = "恢復已購買項目";
+"Lifetime" = "買斷";
+"Tap to Request Store Information" = "點擊請求商店信息";
+"Order Failure" = "訂單失敗";
+"OK" = "好的";

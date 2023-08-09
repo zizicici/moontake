@@ -24,7 +24,7 @@ class MoreViewController: UIViewController {
         var header: String? {
             switch self {
             case .membership:
-                return "Membership".localized()
+                return " "
             case .settings:
                 return "Settings".localized()
             case .appjun:
@@ -121,7 +121,7 @@ class MoreViewController: UIViewController {
             }
         }
         
-        case membership
+        case membership(MembershipCell.DisplayItem)
         case settings(GeneralItem)
         case appjun(AppJunItem)
         case about(AboutItem)
@@ -174,6 +174,7 @@ class MoreViewController: UIViewController {
         tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = .backgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(MembershipCell.self, forCellReuseIdentifier: NSStringFromClass(MembershipCell.self))
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50.0
@@ -183,7 +184,7 @@ class MoreViewController: UIViewController {
             make.top.leading.trailing.equalTo(view)
             make.bottom.equalTo(view)
         }
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func configureDataSource() {
@@ -192,8 +193,19 @@ class MoreViewController: UIViewController {
             guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return nil }
             switch identifier {
             case .membership:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-                cell.accessoryType = .none
+                let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(MembershipCell.self), for: indexPath)
+                if let cell = cell as? MembershipCell {
+                    if case let Item.membership(displayItem) = identifier {
+                        cell.update(item: displayItem)
+                    }
+                    
+                    cell.lifetimeClosure = { [weak self] in
+                        self?.lifetimeAction()
+                    }
+                    cell.manageClosure = { [weak self] in
+                        self?.manageAction()
+                    }
+                }
                 return cell
             case .settings(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -230,8 +242,11 @@ class MoreViewController: UIViewController {
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.membership])
-        snapshot.appendItems([.membership], toSection: .membership)
-        
+        if Store.shared.networkIssueOccurs {
+            snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .issue))], toSection: .membership)
+        } else {
+            snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .tier(User.shared.proTier()), membership: Store.shared.membershipDisplayPrice()))], toSection: .membership)
+        }
         snapshot.appendSections([.settings])
         snapshot.appendItems([.settings(.language), .settings(.waterMarkInfo)], toSection: .settings)
         
@@ -345,5 +360,90 @@ extension MoreViewController {
         if let url = URL(string: "https://www.youtube.com/@app_jun") {
             openSF(with: url)
         }
+    }
+    
+    func lifetimeAction() {
+        showOverlayViewController()
+        Task {
+            do {
+                if let _ = try await Store.shared.purchaseLifetimeMembership() {
+                    reloadData()
+                }
+            }
+            catch {
+                showAlert(title: "Order Failure".localized(), message: error.localizedDescription)
+            }
+            
+            hideOverlayViewController()
+        }
+    }
+    
+    func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func manageAction() {
+        if Store.shared.networkIssueOccurs {
+            Store.shared.retryRequestProducts()
+        } else {
+            switch User.shared.proTier() {
+            case .lifetime:
+                restorePurchases()
+            case .none:
+                restorePurchases()
+            }
+        }
+    }
+    
+    func restorePurchases() {
+        Task {
+            showOverlayViewController()
+            await Store.shared.sync()
+            hideOverlayViewController()
+        }
+    }
+}
+
+extension MoreViewController {
+    func showOverlayViewController() {
+        let overlayVC = OverlayViewController()
+        
+        // 让当前视图控制器的内容可见但不可交互
+        overlayVC.modalPresentationStyle = .overCurrentContext
+        overlayVC.modalTransitionStyle = .crossDissolve
+        
+        // 显示覆盖全屏的遮罩层
+        present(overlayVC, animated: true, completion: nil)
+    }
+
+    func hideOverlayViewController() {
+        // 隐藏覆盖全屏的遮罩层
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+class OverlayViewController: UIViewController {
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 设置背景颜色和透明度
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        
+        // 添加指示器到视图并居中
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        // 开始旋转
+        activityIndicator.startAnimating()
     }
 }
