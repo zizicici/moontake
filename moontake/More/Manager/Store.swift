@@ -146,7 +146,6 @@ class Store: ObservableObject {
     @MainActor
     func updateCustomerProductStatus() async {
         var purchasedMemberships: [Product] = []
-        var purchasedSubscriptions: [Product] = []
 
         for await result in Transaction.currentEntitlements {
             do {
@@ -166,7 +165,6 @@ class Store: ObservableObject {
                 print(error)
             }
         }
-        print(purchasedSubscriptions)
         self.purchasedMemberships = purchasedMemberships
         
         NotificationCenter.default.post(name: NSNotification.Name.StoreInfoLoaded, object: nil)
