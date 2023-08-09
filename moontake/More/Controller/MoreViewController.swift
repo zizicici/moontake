@@ -248,7 +248,7 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.settings(.language), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
-        snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
+        snapshot.appendItems([.appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
         
         snapshot.appendSections([.about])
         snapshot.appendItems([.about(.specifications), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
