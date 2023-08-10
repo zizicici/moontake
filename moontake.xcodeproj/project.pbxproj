@@ -39,6 +39,7 @@
 		63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */; };
 		63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDEA312A7D01CD002E02C2 /* MoonManager.swift */; };
 		63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE1DF12A75579500D31B04 /* String+Extension.swift */; };
+		63FF94192A84E4C100FD5689 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63FF941B2A84E4C100FD5689 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,10 @@
 		63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Mooninfo.xcframework; sourceTree = "<group>"; };
 		63FDEA312A7D01CD002E02C2 /* MoonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManager.swift; sourceTree = "<group>"; };
 		63FE1DF12A75579500D31B04 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		63FF941A2A84E4C100FD5689 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		63FF941D2A84E4C600FD5689 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		63FF941E2A84E4C700FD5689 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		63FF941F2A84E4E700FD5689 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +249,7 @@
 				63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */,
 				63F806AB2A59ACCD00135630 /* LaunchScreen.storyboard */,
 				63F806AE2A59ACCD00135630 /* Info.plist */,
+				63FF941B2A84E4C100FD5689 /* InfoPlist.strings */,
 				6305CD142A7BA27A001CF9C6 /* Localizable.strings */,
 			);
 			path = moontake;
@@ -388,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63F806AD2A59ACCD00135630 /* LaunchScreen.storyboard in Resources */,
+				63FF94192A84E4C100FD5689 /* InfoPlist.strings in Resources */,
 				6305CD122A7BA27A001CF9C6 /* Localizable.strings in Resources */,
 				63F806AA2A59ACCD00135630 /* Assets.xcassets in Resources */,
 			);
@@ -494,6 +501,17 @@
 				6305CD1B2A7BAE39001CF9C6 /* zh-HK */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		63FF941B2A84E4C100FD5689 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63FF941A2A84E4C100FD5689 /* en */,
+				63FF941D2A84E4C600FD5689 /* zh-Hans */,
+				63FF941E2A84E4C700FD5689 /* zh-Hant */,
+				63FF941F2A84E4E700FD5689 /* zh-HK */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -626,8 +644,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Take Photo";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save Photo";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need add-only authrization to save photo to album.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -662,8 +680,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Take Photo";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save Photo";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need add-only authrization to save photo to album.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
