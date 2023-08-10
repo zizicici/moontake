@@ -28,7 +28,7 @@ class MoreViewController: UIViewController {
             case .settings:
                 return "Settings".localized()
             case .appjun:
-                return "AppJun".localized()
+                return "App from AppJun".localized()
             case .about:
                 return "About".localized()
             }
@@ -100,7 +100,7 @@ class MoreViewController: UIViewController {
             var title: String {
                 switch self {
                 case .otherApps:
-                    return "Other Apps".localized()
+                    return ""
                 case .bilibili:
                     return "Follow us on Bilibili".localized()
                 case .xiaohongshu:
@@ -174,6 +174,7 @@ class MoreViewController: UIViewController {
         tableView.backgroundColor = .backgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         tableView.register(MembershipCell.self, forCellReuseIdentifier: NSStringFromClass(MembershipCell.self))
+        tableView.register(AppCell.self, forCellReuseIdentifier: NSStringFromClass(AppCell.self))
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50.0
@@ -216,14 +217,22 @@ class MoreViewController: UIViewController {
                 cell.contentConfiguration = content
                 return cell
             case .appjun(let item):
-                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-                cell.accessoryType = .disclosureIndicator
-                var content = UIListContentConfiguration.valueCell()
-                content.text = identifier.title
-                content.textProperties.color = .label
-                content.secondaryText = item.value
-                cell.contentConfiguration = content
-                return cell
+                switch item {
+                case .otherApps:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(AppCell.self), for: indexPath)
+                    cell.accessoryType = .disclosureIndicator
+                    return cell
+                default:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+                    cell.accessoryType = .disclosureIndicator
+                    var content = UIListContentConfiguration.valueCell()
+                    content.text = identifier.title
+                    content.textProperties.color = .label
+                    content.secondaryText = item.value
+                    cell.contentConfiguration = content
+                    return cell
+                }
+
             case .about(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
@@ -250,7 +259,7 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.settings(.language), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
-        snapshot.appendItems([.appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
+        snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
         
         snapshot.appendSections([.about])
         snapshot.appendItems([.about(.specifications), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
@@ -276,7 +285,7 @@ extension MoreViewController: UITableViewDelegate {
             case .appjun(let item):
                 switch item {
                 case .otherApps:
-                    break
+                    openLemonStorePage()
                 case .bilibili:
                     openBilibiliWebpage()
                 case .xiaohongshu:
@@ -362,6 +371,16 @@ extension MoreViewController {
     func openYoutubeWebpage() {
         if let url = URL(string: "https://www.youtube.com/@app_jun") {
             openSF(with: url)
+        }
+    }
+    
+    func openLemonStorePage() {
+        guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id6449700998") else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(appStoreURL) {
+            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
         }
     }
     

@@ -25,10 +25,11 @@
 "This option is only for Pro user." = "只有Pro用户可以选择此选项";
 "For free users, the default option is automatically selected and not customizable." = "免费用户只支持导出带水印的照片。";
 
-"AppJun" = "App君";
-"Other Apps" = "其他App";
+"App from AppJun" = "App君做的App";
 "Follow us on Bilibili" = "在Bilibili关注我们";
 "Follow us on Xiaohongshu" = "在小红书关注我们";
+"A Lemon Diary" = "柠檬日记本";
+"A pure text diary" = "一个简单的纯文字日记本";
 
 "About" = "关于";
 "Specifications" = "版本信息";

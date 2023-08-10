@@ -40,6 +40,7 @@
 		63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDEA312A7D01CD002E02C2 /* MoonManager.swift */; };
 		63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE1DF12A75579500D31B04 /* String+Extension.swift */; };
 		63FF94192A84E4C100FD5689 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63FF941B2A84E4C100FD5689 /* InfoPlist.strings */; };
+		63FF94212A851B2000FD5689 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF94202A851B2000FD5689 /* AppCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		63FF941D2A84E4C600FD5689 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		63FF941E2A84E4C700FD5689 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		63FF941F2A84E4E700FD5689 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		63FF94202A851B2000FD5689 /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				6306429E2A83947500A918DE /* MembershipCell.swift */,
+				63FF94202A851B2000FD5689 /* AppCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */,
 				6306429F2A83947500A918DE /* MembershipCell.swift in Sources */,
 				6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */,
+				63FF94212A851B2000FD5689 /* AppCell.swift in Sources */,
 				63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */,
 				63F806A52A59ACCC00135630 /* CameraViewController.swift in Sources */,
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
