@@ -27,6 +27,20 @@ struct Settings {
         }
     }
     
+    enum WatermarkTypeOption: Int, Hashable {
+        case qrCode = 0
+        case icon = 1
+        
+        var title: String {
+            switch self {
+            case .qrCode:
+                return "QR Code".localized()
+            case .icon:
+                return "App Icon".localized()
+            }
+        }
+    }
+    
     func getSaveToAlbumSettings() -> SaveToAlbumOption {
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
         return SaveToAlbumOption(rawValue: rawValue ?? 0) ?? .photoWithWatermark
@@ -46,6 +60,29 @@ struct Settings {
         }
         if allowSave {
             UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
+        }
+        return allowSave
+    }
+    
+    func getWatermarkTypeSettings() -> WatermarkTypeOption {
+        let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.WatermarkType.rawValue)
+        return WatermarkTypeOption(rawValue: rawValue ?? 0) ?? .qrCode
+    }
+    
+    func save(option: WatermarkTypeOption) -> Bool {
+        var allowSave: Bool = false
+        if User.shared.proTier() == .none {
+            switch option {
+            case .qrCode:
+                allowSave = true
+            default:
+                allowSave = false
+            }
+        } else {
+            allowSave = true
+        }
+        if allowSave {
+            UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.WatermarkType.rawValue)
         }
         return allowSave
     }

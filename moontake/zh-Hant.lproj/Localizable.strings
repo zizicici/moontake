@@ -23,7 +23,11 @@
 "Photo without Watermark" = "不帶水印的照片";
 "Both above" = "以上兩項";
 "This option is only for Pro user." = "只有Pro用戶可以選擇此選項";
-"For free users, the default option is automatically selected and not customizable." = "免費用戶默認選擇導出帶水印的照片。";
+"For free users, the default option is automatically selected and not customizable." = "免費用戶默認選擇導出帶水印的照片並且不可修改。";
+"Watermark Type" = "水印類型";
+"QR Code" = "二維碼";
+"App Icon" = "App圖標";
+"For free users, the default watermark is embedded with a QR code and not customizable.." = "免費用戶的默認水印將包含一個二維碼並且不可修改。";
 
 "App from AppJun" = "App君做的App";
 "Follow us on Bilibili" = "在Bilibili關注我們";
@@ -50,6 +54,7 @@
 
 //
 "moontake\nA Moon Camera" = "moontake\n一個只拍月亮的App";
+"Scan QR Code to Get\nmoontake" = "掃描QR碼獲取\nmoontake";
 "New Moon" = "朔月";
 "Full Moon" = "望月";
 "WaxingMoon1" = "娥眉月";

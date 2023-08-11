@@ -24,6 +24,10 @@
 "Both above" = "以上两项";
 "This option is only for Pro user." = "只有Pro用户可以选择此选项";
 "For free users, the default option is automatically selected and not customizable." = "免费用户只支持导出带水印的照片。";
+"Watermark Type" = "水印类型";
+"QR Code" = "二维码";
+"App Icon" = "App图标";
+"For free users, the default watermark is embedded with a QR code and not customizable." = "免费用户只支持包含App二维码的默认水印。";
 
 "App from AppJun" = "App君做的App";
 "Follow us on Bilibili" = "在Bilibili关注我们";
@@ -50,6 +54,7 @@
 
 //
 "moontake\nA Moon Camera" = "moontake\n一个只拍月亮的App";
+"Scan QR Code to Get\nmoontake" = "扫描二维码下载\nmoontake";
 "New Moon" = "朔月";
 "Full Moon" = "望月";
 "WaxingMoon1" = "娥眉月";

@@ -14,29 +14,34 @@ class WatermarkViewController: UIViewController {
     
     enum Section: Hashable {
         case save
+        case watermark
         
         var header: String? {
-            return "Save to Album".localized()
+            switch self {
+            case .save:
+                return "Save to Album".localized()
+            case .watermark:
+                return "Watermark Type".localized()
+            }
         }
         
         var footer: String? {
             if User.shared.proTier() == .lifetime {
                 return nil
             } else {
-                return "For free users, the default option is automatically selected and not customizable.".localized()                
+                switch self {
+                case .save:
+                    return "For free users, the default option is automatically selected and not customizable.".localized()
+                case .watermark:
+                    return "For free users, the default watermark is embedded with a QR code and not customizable.".localized()
+                }
             }
         }
     }
     
     enum Item: Hashable {
         case save(Settings.SaveToAlbumOption, Bool)
-        
-        var title: String {
-            switch self {
-            case .save(let item, _):
-                return item.title
-            }
-        }
+        case watermark(Settings.WatermarkTypeOption, Bool)
     }
     
     class DataSource: UITableViewDiffableDataSource<Section, Item> {
@@ -94,6 +99,15 @@ class WatermarkViewController: UIViewController {
                 content.textProperties.color = .label
                 cell.contentConfiguration = content
                 return cell
+            case .watermark(let item, let isSelected):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+                cell.accessoryType = isSelected ? .checkmark : .none
+                cell.tintColor = .systemRed
+                var content = UIListContentConfiguration.valueCell()
+                content.text = item.title
+                content.textProperties.color = .label
+                cell.contentConfiguration = content
+                return cell
             }
         }
     }
@@ -102,8 +116,11 @@ class WatermarkViewController: UIViewController {
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.save])
-        let current = Settings.shared.getSaveToAlbumSettings()
-        snapshot.appendItems([.save(.photoWithWatermark, current == .photoWithWatermark), .save(.photoWithoutWatermark, current == .photoWithoutWatermark), .save(.both, current == .both)], toSection: .save)
+        let saveToAlbumSettings = Settings.shared.getSaveToAlbumSettings()
+        snapshot.appendItems([.save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
+        snapshot.appendSections([.watermark])
+        let watermarkTypeSettings = Settings.shared.getWatermarkTypeSettings()
+        snapshot.appendItems([.watermark(.qrCode, watermarkTypeSettings == .qrCode), .watermark(.icon, watermarkTypeSettings == .icon)], toSection: .watermark)
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -115,6 +132,11 @@ extension WatermarkViewController: UITableViewDelegate {
         guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return }
         switch identifier {
         case .save(let item, _):
+            let result = Settings.shared.save(option: item)
+            if !result {
+                showUserTierAlert()
+            }
+        case .watermark(let item, _):
             let result = Settings.shared.save(option: item)
             if !result {
                 showUserTierAlert()
