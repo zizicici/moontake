@@ -65,6 +65,8 @@ class MoreViewController: UIViewController {
         
         enum AboutItem {
             case specifications
+            case share
+            case review
             case eula
             case privacyPolicy
             case email
@@ -73,6 +75,10 @@ class MoreViewController: UIViewController {
                 switch self {
                 case .specifications:
                     return "Specifications".localized()
+                case .share:
+                    return "Share App".localized()
+                case .review:
+                    return "Write Review".localized()
                 case .eula:
                     return "EULA".localized()
                 case .privacyPolicy:
@@ -262,7 +268,7 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
         
         snapshot.appendSections([.about])
-        snapshot.appendItems([.about(.specifications), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
+        snapshot.appendItems([.about(.specifications), .about(.share), .about(.review), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -295,6 +301,10 @@ extension MoreViewController: UITableViewDelegate {
                 switch item {
                 case .specifications:
                     enterSpecifications()
+                case .share:
+                    shareApp()
+                case .review:
+                    openAppStoreForReview()
                 case .eula:
                     openEULA()
                 case .privacyPolicy:
@@ -310,13 +320,13 @@ extension MoreViewController: UITableViewDelegate {
 extension MoreViewController {
     func jumpToSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else {
-           return
+            return
         }
         if UIApplication.shared.canOpenURL(url) {
-           UIApplication.shared.open(url, options: [:])
+            UIApplication.shared.open(url, options: [:])
         }
     }
-
+    
     func enterWatermarkSettings() {
         let watermarkViewController = WatermarkViewController()
         
@@ -384,6 +394,26 @@ extension MoreViewController {
         }
     }
     
+    func openAppStoreForReview() {
+        guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id6451189717?action=write-review") else {
+            return
+        }
+        
+        if UIApplication.shared.canOpenURL(appStoreURL) {
+            UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+        }
+    }
+    
+    func shareApp() {
+        if let url = URL(string: "https://apps.apple.com/cn/app/id6451189717") {
+            let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            
+            present(controller, animated: true)
+        }
+    }
+}
+
+extension MoreViewController {
     func lifetimeAction() {
         showOverlayViewController()
         Task {
