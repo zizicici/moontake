@@ -405,7 +405,7 @@ extension MoreViewController {
     }
     
     func shareApp() {
-        if let url = URL(string: "https://apps.apple.com/cn/app/id6451189717") {
+        if let url = URL(string: "https://apps.apple.com/app/id6451189717") {
             let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             
             present(controller, animated: true)
