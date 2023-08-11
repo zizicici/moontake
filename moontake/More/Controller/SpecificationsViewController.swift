@@ -81,22 +81,17 @@ class SpecificationsViewController: UIViewController {
             let version: String
             
             static let current: [ThirdParty] = {
-                let GRDB = ThirdParty(
-                    urlString: "https://github.com/groue/GRDB.swift",
-                    name: "GRDB",
-                    version: "6.14.0"
+                let astro = ThirdParty(
+                    urlString: "https://github.com/Starainrt/astro",
+                    name: "astro",
+                    version: "master"
                 )
                 let SnapKit = ThirdParty(
                     urlString: "https://github.com/SnapKit/SnapKit",
                     name: "SnapKit",
                     version: "5.6.0"
                 )
-                let Toast = ThirdParty(
-                    urlString: "https://github.com/scalessec/Toast-Swift",
-                    name: "Toast",
-                    version: "5.0.1"
-                )
-                return [GRDB, SnapKit, Toast]
+                return [astro, SnapKit]
             }()
         }
         
