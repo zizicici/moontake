@@ -64,7 +64,7 @@ class SpecificationsViewController: UIViewController {
                 case .name:
                     return "moontake"
                 case .version:
-                    return "1.0.0"
+                    return SpecificationsViewController.getAppVersion() ?? ""
                 case .manufacturer:
                     return "@App君"
                 case .publisher:
@@ -207,5 +207,13 @@ extension SpecificationsViewController {
         snapshot.appendItems(Item.ThirdParty.current.map{ Item.thirdParty($0) })
         
         dataSource.apply(snapshot)
+    }
+    
+    static func getAppVersion() -> String? {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            return nil
+        }
+        
+        return version
     }
 }
