@@ -21,7 +21,7 @@ class WatermarkViewController: UIViewController {
             case .save:
                 return "Save to Album".localized()
             case .watermark:
-                return "Watermark Type".localized()
+                return "Right Side Watermark".localized()
             }
         }
         
@@ -33,7 +33,7 @@ class WatermarkViewController: UIViewController {
                 case .save:
                     return "For free users, the default option is automatically selected and not customizable.".localized()
                 case .watermark:
-                    return "For free users, the default watermark is embedded with a QR code and not customizable.".localized()
+                    return "The App Icon watermark is only for Pro User.".localized()
                 }
             }
         }
@@ -120,7 +120,7 @@ class WatermarkViewController: UIViewController {
         snapshot.appendItems([.save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
         snapshot.appendSections([.watermark])
         let watermarkTypeSettings = Settings.shared.getWatermarkTypeSettings()
-        snapshot.appendItems([.watermark(.qrCode, watermarkTypeSettings == .qrCode), .watermark(.icon, watermarkTypeSettings == .icon)], toSection: .watermark)
+        snapshot.appendItems([.watermark(.qrCode, watermarkTypeSettings == .qrCode), .watermark(.icon, watermarkTypeSettings == .icon), .watermark(.blank, watermarkTypeSettings == .blank)], toSection: .watermark)
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
