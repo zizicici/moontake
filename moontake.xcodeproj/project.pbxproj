@@ -61,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		630335632A9861A7002A1F99 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		630335642A9861A7002A1F99 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		630335652A9861A7002A1F99 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCapturePreviewView.swift; sourceTree = "<group>"; };
 		6304F6EF2A5AC2410068C1C4 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
 		6305CD102A7BA257001CF9C6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -375,6 +378,7 @@
 				"zh-Hans",
 				"zh-Hant",
 				"zh-HK",
+				ja,
 			);
 			mainGroup = 63F806942A59ACCC00135630;
 			packageReferences = (
@@ -492,6 +496,7 @@
 				6305CD152A7BA27D001CF9C6 /* zh-Hans */,
 				6305CD162A7BA27E001CF9C6 /* zh-Hant */,
 				6305CD1C2A7BAE3A001CF9C6 /* zh-HK */,
+				630335652A9861A7002A1F99 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 				6305CD102A7BA257001CF9C6 /* zh-Hans */,
 				6305CD112A7BA261001CF9C6 /* zh-Hant */,
 				6305CD1B2A7BAE39001CF9C6 /* zh-HK */,
+				630335632A9861A7002A1F99 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				63FF941D2A84E4C600FD5689 /* zh-Hans */,
 				63FF941E2A84E4C700FD5689 /* zh-Hant */,
 				63FF941F2A84E4E700FD5689 /* zh-HK */,
+				630335642A9861A7002A1F99 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

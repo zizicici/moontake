@@ -1,0 +1,83 @@
+/* 
+  Localizable.strings
+  moontake
+
+  Created by Ci Zi on 2023/8/3.
+  
+*/
+
+// More
+"More" = "その他";
+
+"Settings" = "設定";
+
+"Membership" = "メンバーシップ";
+
+"General" = "一般";
+"Language" = "言語";
+"🍋Language" = "日本語";
+"Watermark" = "ウォーターマーク";
+"Photo Save Options" = "写真保存オプション";
+"Save to Album" = "アルバムに保存";
+"Photo with Watermark" = "ウォーターマーク付き写真";
+"Photo without Watermark" = "ウォーターマークなしの写真";
+"Both above" = "上記の両方";
+"This option is only for Pro user." = "このオプションはProユーザーのみです。";
+"For free users, the default option is automatically selected and not customizable." = "無料ユーザー向けでは、デフォルトのオプションが自動的に選択され、カスタマイズできません。";
+"Right Side Watermark" = "右側のウォーターマーク";
+"QR Code" = "QRコード";
+"App Icon" = "アプリアイコン";
+"None" = "なし";
+"The App Icon watermark is only for Pro User." = "アプリアイコンのウォーターマークはProユーザーのみです。";
+
+"App from AppJun" = "AppJunからのアプリ";
+"Follow us on Bilibili" = "Bilibiliでフォローしてください";
+"Follow us on Xiaohongshu" = "Xiaohongshuでフォローしてください";
+"A Lemon Diary" = "柠檬日记本";
+"A pure text diary" = "純文本の日記帳";
+
+// About
+"About" = "について";
+"Specifications" = "仕様情報";
+"Share App" = "アプリの共有";
+"Write Review" = "レビューを書く";
+"Email" = "メール";
+"EULA" = "エンドユーザーライセンス契約書";
+"Policy of Privacy" = "プライバシーポリシー";
+
+// Specifications
+"Name" = "名前";
+"Version" = "バージョン";
+"Manufacturer" = "製造元";
+"Publisher" = "発行者";
+"Date of Production" = "製造日";
+"Third Party Framework" = "サードパーティフレームワーク";
+"We extend our heartfelt appreciation to all developers of open-source projects." = "オープンソースプロジェクトのすべての開発者に心から感謝申し上げます。";
+
+//
+"moontake\nA Moon Camera" = "moontake\n月撮影専用カメラ";
+"Scan QR Code to Get\nmoontake" = "QRコードをスキャンして\nmoontake を入手";
+"New Moon" = "新月";
+"Full Moon" = "満月";
+"WaxingMoon1" = "上弦の月";
+"WaxingMoon2" = "上弦の月";
+"WaxingMoon3" = "上弦の月";
+"WaningMoon1" = "下弦の月";
+"WaningMoon2" = "下弦の月";
+"WaningMoon3" = "下弦の月";
+"Enable Camera Permission" = "カメラの許可を有効にする";
+"Enable Add Photo Permission" = "写真の追加許可を有効にする";
+
+// IAP
+"Manage Photo Watermark" = "写真のウォーターマークを管理";
+"Restore Purchases" = "購入アイテムの復元";
+"Lifetime" = "ライフタイム";
+"Tap to Request Store Information" = "ストア情報をリクエストするにはタップしてください";
+"Order Failure" = "注文失敗";
+"OK" = "OK";
+
+// Hint
+"iso:" = "ISO:";
+"position:" = "フォーカス位置:";
+"aperture:" = "絞り:";
+"shutter:" = "シャッタースピード:";

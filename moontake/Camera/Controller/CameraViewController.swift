@@ -38,10 +38,12 @@ class CameraViewController: UIViewController {
     }()
     private let hintLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular)
         label.textAlignment = .center
         label.textColor = .moonColor.withAlphaComponent(0.25)
         label.numberOfLines = 1
+        label.minimumScaleFactor = 0.5
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }()
@@ -482,7 +484,11 @@ class CameraViewController: UIViewController {
     
     func updateHintLabel() {
         DispatchQueue.main.async {
-            self.hintLabel.text = String(format: "iso:%.0f, position:%.4f, aperture:1/%.1f, shutter:1/%d", self.iso, self.lensPosition, self.apertureFactor, self.shutterScale)
+            let iso = "iso:".localized()
+            let position = "position:".localized()
+            let aperture = "aperture:".localized()
+            let shutter = "shutter:".localized()
+            self.hintLabel.text = String(format: "%@%.0f, %@%.4f, %@1/%.1f, %@1/%d", iso ,self.iso, position,  self.lensPosition, aperture, self.apertureFactor, shutter, self.shutterScale)
         }
     }
     
