@@ -6,5 +6,5 @@
   
 */
 
-"NSCameraUsageDescription" = "写真を撮るためにカメラへのアクセスが必要です。";
-"NSPhotoLibraryAddUsageDescription" = "アルバムに写真を保存するための追加専用権限が必要です。";
+NSCameraUsageDescription = "写真を撮るためにカメラへのアクセスが必要です。";
+NSPhotoLibraryAddUsageDescription = "アルバムに写真を保存するための追加専用権限が必要です。";

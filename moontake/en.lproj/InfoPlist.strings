@@ -6,5 +6,5 @@
   
 */
 
-"NSCameraUsageDescription" = "We need access to your camera to take photos.";
-"NSPhotoLibraryAddUsageDescription" = "We need add-only authorization to save photos to the album.";
+NSCameraUsageDescription = "We need access to your camera to take photos.";
+NSPhotoLibraryAddUsageDescription = "We need add-only authorization to save photos to the album.";

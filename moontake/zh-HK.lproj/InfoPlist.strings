@@ -6,5 +6,5 @@
   
 */
 
-"NSCameraUsageDescription" = "我們需要訪問您的相機以拍攝照片。";
-"NSPhotoLibraryAddUsageDescription" = "我們需要「僅添加照片」權限以保存您拍攝的照片到相簿。";
+NSCameraUsageDescription = "我們需要訪問您的相機以拍攝照片。";
+NSPhotoLibraryAddUsageDescription = "我們需要「僅添加照片」權限以保存您拍攝的照片到相簿。";
