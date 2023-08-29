@@ -8,8 +8,14 @@
 import Foundation
 import Mooninfo
 
-struct MoonManager {
+class MoonManager {
     static let shared = MoonManager()
+    
+    var fullMoonDates: [TimeInterval] = []
+    
+    var newMoonDates: [TimeInterval] = []
+    
+    var isLoading: Bool = false
     
     enum Phase {
         case newMoon
@@ -42,7 +48,11 @@ struct MoonManager {
                 currentPhase = .waxingMoon
             }
         case nextFullMoon:
-            currentPhase = .waxingMoon
+            if getPhasePercent() > 0.9975 {
+                currentPhase = .fullMoon
+            } else {
+                currentPhase = .waxingMoon
+            }
         case nextWaningMoon:
             if getPhasePercent() > 0.975 {
                 currentPhase = .fullMoon
@@ -87,5 +97,55 @@ struct MoonManager {
                 return "WaningMoon3".localized()
             }
         }
+    }
+    
+    func loadData(year from: Int, to: Int) {
+        isLoading = true
+        fullMoonDates = []
+        newMoonDates = []
+        for year in Array(from...to) {
+            let result = AstronomyManager.shared.calculate(year: year)
+            for element in result {
+                switch element.state {
+                case .fullMoon:
+                    fullMoonDates.append(element.date.timeIntervalSince1970)
+                case .newMoon:
+                    newMoonDates.append(element.date.timeIntervalSince1970)
+                default:
+                    break
+                }
+            }
+        }
+        isLoading = false
+    }
+    
+    func findClosestFullMoon(target: TimeInterval) -> TimeInterval? {
+        guard !isLoading else {
+            return nil
+        }
+        return findClosestValue(target, in: fullMoonDates)
+    }
+    
+    func findClosestNewMoon(target: TimeInterval) -> TimeInterval? {
+        guard !isLoading else {
+            return nil
+        }
+        return findClosestValue(target, in: newMoonDates)
+    }
+    
+    func findClosestValue(_ target: TimeInterval, in array: [TimeInterval]) -> TimeInterval? {
+        guard !array.isEmpty else {
+            return nil // 如果数组为空，则返回nil
+        }
+        
+        var closestValue = array[0] // 假设第一个元素为初始最接近的值
+        
+        for value in array {
+            if abs(target - value) < abs(target - closestValue) {
+                closestValue = value // 更新最接近的值
+            }
+        }
+        
+        return closestValue
     }
 }

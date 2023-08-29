@@ -38,7 +38,30 @@ extension PhotoCaptureProcessor {
             .font: UIFont.systemFont(ofSize: 80, weight: .medium),
             .foregroundColor: UIColor.black
         ]
-        let firstText: String = String(format: "%@ %.1f%%", MoonManager.shared.getPhaseName(), MoonManager.shared.getPhasePercent() * 100)
+        var phasePercent = MoonManager.shared.getPhasePercent()
+        let currentDate = Date().timeIntervalSince1970
+        if phasePercent > 0.975 {
+            if let result = MoonManager.shared.findClosestFullMoon(target: currentDate) {
+                if abs(currentDate - result) < 60 * 60 * 2 {
+                    phasePercent = 1.0
+                }
+            } else {
+                if phasePercent > 0.9975 {
+                    phasePercent = 1.0
+                }
+            }
+        } else if phasePercent < 0.025 {
+            if let result = MoonManager.shared.findClosestNewMoon(target: currentDate) {
+                if abs(currentDate - result) < 60 * 60 * 2 {
+                    phasePercent = 0.0
+                }
+            } else {
+                if phasePercent < 0.005 {
+                    phasePercent = 0.0
+                }
+            }
+        }
+        let firstText: String = String(format: "%@ %.1f%%", MoonManager.shared.getPhaseName(), phasePercent * 100)
         let firstAttributedString = NSAttributedString(string: firstText, attributes: firstAttributes)
         
         let firstHeight = firstAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude).height

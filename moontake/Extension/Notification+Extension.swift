@@ -8,6 +8,7 @@
 import Foundation
 
 extension Notification.Name {
+    static let TodayUpdated = Notification.Name(rawValue: "com.zizicici.moontake.todayUpdate")
     static let LifetimeMemberShip = Notification.Name(rawValue: "com.zizicici.moontake.store.purchase.lifetime")
     static let StoreInfoLoaded = Notification.Name(rawValue: "com.zizicici.moontake.store.info.loaded")
 }

@@ -39,6 +39,17 @@
 		63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */; };
 		63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDEA312A7D01CD002E02C2 /* MoonManager.swift */; };
 		63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE1DF12A75579500D31B04 /* String+Extension.swift */; };
+		63FF46152A9E581700C9FDCA /* Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46142A9E581700C9FDCA /* Load.swift */; };
+		63FF46182A9E582D00C9FDCA /* moon_phases.json in Resources */ = {isa = PBXBuildFile; fileRef = 63FF46162A9E582D00C9FDCA /* moon_phases.json */; };
+		63FF461C2A9E583E00C9FDCA /* AstronomyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF461B2A9E583E00C9FDCA /* AstronomyManager.swift */; };
+		63FF46292A9E5AE200C9FDCA /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF461F2A9E5AE100C9FDCA /* CalendarManager.swift */; };
+		63FF462A2A9E5AE200C9FDCA /* ChineseDayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46212A9E5AE100C9FDCA /* ChineseDayInfo.swift */; };
+		63FF462B2A9E5AE200C9FDCA /* ChineseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46222A9E5AE100C9FDCA /* ChineseDay.swift */; };
+		63FF462C2A9E5AE200C9FDCA /* GregorianDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46232A9E5AE100C9FDCA /* GregorianDay.swift */; };
+		63FF462D2A9E5AE200C9FDCA /* ChineseMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46242A9E5AE100C9FDCA /* ChineseMonth.swift */; };
+		63FF462E2A9E5AE200C9FDCA /* ChineseYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46252A9E5AE100C9FDCA /* ChineseYear.swift */; };
+		63FF462F2A9E5AE200C9FDCA /* GregorianDayContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46272A9E5AE100C9FDCA /* GregorianDayContainerProtocol.swift */; };
+		63FF46302A9E5AE200C9FDCA /* ChineseCalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF46282A9E5AE100C9FDCA /* ChineseCalendarDataSource.swift */; };
 		63FF94192A84E4C100FD5689 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63FF941B2A84E4C100FD5689 /* InfoPlist.strings */; };
 		63FF94212A851B2000FD5689 /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FF94202A851B2000FD5689 /* AppCell.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +116,17 @@
 		63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Mooninfo.xcframework; sourceTree = "<group>"; };
 		63FDEA312A7D01CD002E02C2 /* MoonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManager.swift; sourceTree = "<group>"; };
 		63FE1DF12A75579500D31B04 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		63FF46142A9E581700C9FDCA /* Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Load.swift; sourceTree = "<group>"; };
+		63FF46162A9E582D00C9FDCA /* moon_phases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moon_phases.json; sourceTree = "<group>"; };
+		63FF461B2A9E583E00C9FDCA /* AstronomyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstronomyManager.swift; sourceTree = "<group>"; };
+		63FF461F2A9E5AE100C9FDCA /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		63FF46212A9E5AE100C9FDCA /* ChineseDayInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseDayInfo.swift; sourceTree = "<group>"; };
+		63FF46222A9E5AE100C9FDCA /* ChineseDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseDay.swift; sourceTree = "<group>"; };
+		63FF46232A9E5AE100C9FDCA /* GregorianDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregorianDay.swift; sourceTree = "<group>"; };
+		63FF46242A9E5AE100C9FDCA /* ChineseMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseMonth.swift; sourceTree = "<group>"; };
+		63FF46252A9E5AE100C9FDCA /* ChineseYear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseYear.swift; sourceTree = "<group>"; };
+		63FF46272A9E5AE100C9FDCA /* GregorianDayContainerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GregorianDayContainerProtocol.swift; sourceTree = "<group>"; };
+		63FF46282A9E5AE100C9FDCA /* ChineseCalendarDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseCalendarDataSource.swift; sourceTree = "<group>"; };
 		63FF941A2A84E4C100FD5689 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63FF941D2A84E4C600FD5689 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		63FF941E2A84E4C700FD5689 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -162,6 +184,7 @@
 		63F5E3342A72ADC0008CAA07 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				63FF46142A9E581700C9FDCA /* Load.swift */,
 				63FE1DF12A75579500D31B04 /* String+Extension.swift */,
 				63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */,
 				63F806D02A59ADC700135630 /* UIColor+Extension.swift */,
@@ -250,9 +273,12 @@
 				63FDEA332A7D01D2002E02C2 /* Moon */,
 				63F5E3352A72ADD6008CAA07 /* Camera */,
 				63F5E33A2A72B108008CAA07 /* More */,
+				63FF461D2A9E5AE100C9FDCA /* Calendar */,
+				63FF461A2A9E583E00C9FDCA /* Astronomy */,
 				63F5E3342A72ADC0008CAA07 /* Extension */,
 				63F806A92A59ACCD00135630 /* Assets.xcassets */,
 				63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */,
+				63FF46162A9E582D00C9FDCA /* moon_phases.json */,
 				63F806AB2A59ACCD00135630 /* LaunchScreen.storyboard */,
 				63F806AE2A59ACCD00135630 /* Info.plist */,
 				63FF941B2A84E4C100FD5689 /* InfoPlist.strings */,
@@ -284,6 +310,53 @@
 				63FDEA312A7D01CD002E02C2 /* MoonManager.swift */,
 			);
 			path = Moon;
+			sourceTree = "<group>";
+		};
+		63FF461A2A9E583E00C9FDCA /* Astronomy */ = {
+			isa = PBXGroup;
+			children = (
+				63FF461B2A9E583E00C9FDCA /* AstronomyManager.swift */,
+			);
+			path = Astronomy;
+			sourceTree = "<group>";
+		};
+		63FF461D2A9E5AE100C9FDCA /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				63FF461E2A9E5AE100C9FDCA /* Manager */,
+				63FF46202A9E5AE100C9FDCA /* Model */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		63FF461E2A9E5AE100C9FDCA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				63FF461F2A9E5AE100C9FDCA /* CalendarManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		63FF46202A9E5AE100C9FDCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63FF46212A9E5AE100C9FDCA /* ChineseDayInfo.swift */,
+				63FF46222A9E5AE100C9FDCA /* ChineseDay.swift */,
+				63FF46232A9E5AE100C9FDCA /* GregorianDay.swift */,
+				63FF46242A9E5AE100C9FDCA /* ChineseMonth.swift */,
+				63FF46252A9E5AE100C9FDCA /* ChineseYear.swift */,
+				63FF46262A9E5AE100C9FDCA /* Protocol */,
+				63FF46282A9E5AE100C9FDCA /* ChineseCalendarDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		63FF46262A9E5AE100C9FDCA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				63FF46272A9E5AE100C9FDCA /* GregorianDayContainerProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +477,7 @@
 				63FF94192A84E4C100FD5689 /* InfoPlist.strings in Resources */,
 				6305CD122A7BA27A001CF9C6 /* Localizable.strings in Resources */,
 				63F806AA2A59ACCD00135630 /* Assets.xcassets in Resources */,
+				63FF46182A9E582D00C9FDCA /* moon_phases.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,19 +505,28 @@
 				6305CD1A2A7BAB19001CF9C6 /* UIViewController+Extension.swift in Sources */,
 				6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */,
 				6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */,
+				63FF46152A9E581700C9FDCA /* Load.swift in Sources */,
 				6306429F2A83947500A918DE /* MembershipCell.swift in Sources */,
+				63FF46302A9E5AE200C9FDCA /* ChineseCalendarDataSource.swift in Sources */,
 				6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */,
+				63FF461C2A9E583E00C9FDCA /* AstronomyManager.swift in Sources */,
 				63FF94212A851B2000FD5689 /* AppCell.swift in Sources */,
 				63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */,
 				63F806A52A59ACCC00135630 /* CameraViewController.swift in Sources */,
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
 				63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */,
 				63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */,
+				63FF462E2A9E5AE200C9FDCA /* ChineseYear.swift in Sources */,
+				63FF462A2A9E5AE200C9FDCA /* ChineseDayInfo.swift in Sources */,
 				63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */,
 				6305CD1E2A7BAEAA001CF9C6 /* Language.swift in Sources */,
+				63FF462F2A9E5AE200C9FDCA /* GregorianDayContainerProtocol.swift in Sources */,
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
 				630642952A836E8400A918DE /* PermissionView.swift in Sources */,
+				63FF462D2A9E5AE200C9FDCA /* ChineseMonth.swift in Sources */,
+				63FF46292A9E5AE200C9FDCA /* CalendarManager.swift in Sources */,
 				6306429D2A83926000A918DE /* UserDefaults+Extension.swift in Sources */,
+				63FF462B2A9E5AE200C9FDCA /* ChineseDay.swift in Sources */,
 				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				630642992A838CD700A918DE /* Store.swift in Sources */,
 				630642A22A83CFBA00A918DE /* WatermarkViewController.swift in Sources */,
@@ -452,6 +535,7 @@
 				63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */,
 				63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */,
 				6306429B2A83923800A918DE /* Notification+Extension.swift in Sources */,
+				63FF462C2A9E5AE200C9FDCA /* GregorianDay.swift in Sources */,
 				63F5E3392A72B0F8008CAA07 /* MoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
