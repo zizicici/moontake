@@ -113,6 +113,9 @@ extension PhotoCaptureProcessor {
             if let codeImage = UIImage(named: "qrcode") {
                 codeImage.draw(in: CGRect(x: imageSize.width - 280, y: imageSize.height + 60, width: 240, height: 240), blendMode: .normal, alpha: 0.8)
             }
+        case .location:
+            // TODO
+            break
         case .blank:
             // Do nothing
             break

@@ -30,6 +30,7 @@ struct Settings {
     enum WatermarkTypeOption: Int, Hashable {
         case qrCode = 0
         case icon = 1
+        case location = 2
         case blank = 10
         
         var title: String {
@@ -38,6 +39,8 @@ struct Settings {
                 return "QR Code".localized()
             case .icon:
                 return "App Icon".localized()
+            case .location:
+                return "Location".localized()
             case .blank:
                 return "None".localized()
             }
@@ -80,6 +83,8 @@ struct Settings {
                 allowSave = true
             case .blank:
                 allowSave = true
+            case .location:
+                allowSave = false
             case .icon:
                 allowSave = false
             }
