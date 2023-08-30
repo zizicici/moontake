@@ -40,7 +40,7 @@ class CameraViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular)
         label.textAlignment = .center
-        label.textColor = .moonColor.withAlphaComponent(0.25)
+        label.textColor = .moonColor.withAlphaComponent(0.75)
         label.numberOfLines = 1
         label.minimumScaleFactor = 0.5
         label.adjustsFontSizeToFitWidth = true
@@ -48,9 +48,8 @@ class CameraViewController: UIViewController {
         return label
     }()
     private let plusButton: UIButton = {
-        var configuration = UIButton.Configuration.plain()
+        var configuration = UIButton.Configuration.bordered()
         configuration.image = UIImage(systemName: "plus")
-        configuration.contentInsets = .zero
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
@@ -58,10 +57,9 @@ class CameraViewController: UIViewController {
         return button
     }()
     private let minusButton: UIButton = {
-        var configuration = UIButton.Configuration.plain()
+        var configuration = UIButton.Configuration.bordered()
         configuration.image = UIImage(systemName: "minus")
-        configuration.contentInsets = .zero
-        
+
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         
@@ -212,7 +210,7 @@ class CameraViewController: UIViewController {
         minusButton.snp.makeConstraints { make in
             make.top.bottom.equalTo(captureButton)
             make.trailing.equalTo(captureButton.snp.leading).offset(-15)
-            make.width.equalTo(70)
+            make.width.equalTo(60)
         }
         minusButton.addTarget(self, action: #selector(minusShutterScale), for: .touchUpInside)
         
@@ -220,7 +218,7 @@ class CameraViewController: UIViewController {
         plusButton.snp.makeConstraints { make in
             make.top.bottom.equalTo(captureButton)
             make.leading.equalTo(captureButton.snp.trailing).offset(15)
-            make.width.equalTo(70)
+            make.width.equalTo(60)
         }
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
         
