@@ -129,7 +129,7 @@ class CameraViewController: UIViewController {
         1200,
         1400,
         1600,
-        2000,
+        2000, 2500, 3000
     ]
     
     private var iso: Float = 0.0 {
