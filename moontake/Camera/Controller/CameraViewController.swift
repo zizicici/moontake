@@ -163,18 +163,32 @@ class CameraViewController: UIViewController {
         return true
     }
     
+    var isRegularHorizontalSizeClass: Bool {
+        return traitCollection.horizontalSizeClass == .regular
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .skyColor
         
         view.addSubview(previewView)
-        previewView.snp.makeConstraints { make in
-            make.leading.equalTo(view)
-            make.trailing.equalTo(view)
-            make.centerX.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(0)
-            make.height.greaterThanOrEqualTo(view.snp.width).multipliedBy(4.0/3.0)
+        if isRegularHorizontalSizeClass {
+            previewView.snp.makeConstraints { make in
+                make.leading.equalTo(view).inset(80)
+                make.trailing.equalTo(view).inset(80)
+                make.centerX.equalTo(view)
+                make.top.equalTo(view.safeAreaLayoutGuide).inset(50)
+                make.height.greaterThanOrEqualTo(previewView.snp.width).multipliedBy(4.0/3.0)
+            }
+        } else {
+            previewView.snp.makeConstraints { make in
+                make.leading.equalTo(view)
+                make.trailing.equalTo(view)
+                make.centerX.equalTo(view)
+                make.top.equalTo(view.safeAreaLayoutGuide).inset(0)
+                make.height.greaterThanOrEqualTo(previewView.snp.width).multipliedBy(4.0/3.0)
+            }
         }
         
         view.addSubview(captureButton)
@@ -211,10 +225,19 @@ class CameraViewController: UIViewController {
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
         
         view.addSubview(lensPositionSlider)
-        lensPositionSlider.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(view).inset(20)
-            make.bottom.equalTo(captureButton.snp.top).offset(-16)
-            make.height.equalTo(40)
+        if isRegularHorizontalSizeClass {
+            lensPositionSlider.snp.makeConstraints { make in
+                make.centerX.equalTo(view)
+                make.width.equalTo(450)
+                make.bottom.equalTo(captureButton.snp.top).offset(-16)
+                make.height.equalTo(40)
+            }
+        } else {
+            lensPositionSlider.snp.makeConstraints { make in
+                make.leading.trailing.equalTo(view).inset(20)
+                make.bottom.equalTo(captureButton.snp.top).offset(-16)
+                make.height.equalTo(40)
+            }
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
         
@@ -252,6 +275,10 @@ class CameraViewController: UIViewController {
             self.spinner.color = UIColor.moonColor
             self.previewView.addSubview(self.spinner)
         }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
     }
     
     override func viewSafeAreaInsetsDidChange() {
