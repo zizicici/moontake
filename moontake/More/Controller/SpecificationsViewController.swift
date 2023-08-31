@@ -70,7 +70,7 @@ class SpecificationsViewController: UIViewController {
                 case .publisher:
                     return "ZIZICICI LIMITED"
                 case .date:
-                    return "2023/08/15"
+                    return "2023/08/31"
                 }
             }
         }
@@ -91,7 +91,12 @@ class SpecificationsViewController: UIViewController {
                     name: "SnapKit",
                     version: "5.6.0"
                 )
-                return [astro, SnapKit]
+                let Toast = ThirdParty(
+                    urlString: "https://github.com/scalessec/Toast-Swift",
+                    name: "Toast",
+                    version: "5.0.1"
+                )
+                return [astro, SnapKit, Toast]
             }()
         }
         
