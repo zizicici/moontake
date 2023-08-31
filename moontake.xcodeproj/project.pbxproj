@@ -21,6 +21,7 @@
 		6306429F2A83947500A918DE /* MembershipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306429E2A83947500A918DE /* MembershipCell.swift */; };
 		630642A22A83CFBA00A918DE /* WatermarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642A12A83CFBA00A918DE /* WatermarkViewController.swift */; };
 		630642A42A83D8DC00A918DE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642A32A83D8DC00A918DE /* Settings.swift */; };
+		6306D0582AA0913A003B3A23 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6306D0572AA0913A003B3A23 /* Toast */; };
 		63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */; };
 		63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1125F2A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift */; };
 		63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */; };
@@ -139,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
 				63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
 			);
@@ -377,6 +379,7 @@
 			name = moontake;
 			packageProductDependencies = (
 				63F806D32A59BA8E00135630 /* SnapKit */,
+				6306D0572AA0913A003B3A23 /* Toast */,
 			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
@@ -456,6 +459,7 @@
 			mainGroup = 63F806942A59ACCC00135630;
 			packageReferences = (
 				63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
@@ -916,6 +920,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -927,6 +939,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6306D0572AA0913A003B3A23 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		63F806D32A59BA8E00135630 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */;

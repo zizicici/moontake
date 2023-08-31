@@ -77,10 +77,13 @@
 "OK" = "OK";
 
 // Hint
-"iso:" = "ISO:";
-"position:" = "フォーカス位置:";
-"aperture:" = "絞り:";
-"shutter:" = "シャッタースピード:";
+"ISO:" = "ISO:";
+"Position:" = "フォーカス位置:";
+"Aperture:" = "絞り:";
+"Shutter Speed:" = "シャッタースピード:";
+"Maximum Shutter Speed Value Reached" = "最大シャッタースピード値に達しました";
+"Minimum Shutter Speed Value Reached" = "最小シャッタースピード値に達しました";
+"s" = "秒";
 "Lighten" = "明るくする";
 "Darken" = "暗くする";
 "Focus Slider" = "フォーカススライダー";

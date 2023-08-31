@@ -76,10 +76,13 @@
 "OK" = "好的";
 
 // Hint
-"iso:" = "ISO:";
-"position:" = "对焦值:";
-"aperture:" = "光圈:";
-"shutter:" = "曝光时间:";
+"ISO:" = "ISO:";
+"Position:" = "对焦值:";
+"Aperture:" = "光圈:";
+"Shutter Speed:" = "曝光时间:";
+"s" = "秒";
+"Maximum Shutter Speed Value Reached" = "已达最大曝光时间值";
+"Minimum Shutter Speed Value Reached" = "已达最小曝光时间值";
 "Lighten" = "调亮";
 "Darken" = "调暗";
 "Focus Slider" = "对焦滑杆";

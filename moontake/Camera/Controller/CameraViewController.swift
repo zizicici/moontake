@@ -10,6 +10,7 @@ import Photos
 import SnapKit
 import UIKit
 import CoreMotion
+import Toast
 
 class CameraViewController: UIViewController {
     private var session: AVCaptureSession!
@@ -38,7 +39,7 @@ class CameraViewController: UIViewController {
 
         return button
     }()
-    private let hintLabel: UILabel = {
+    private let informationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular)
         label.textAlignment = .center
@@ -187,7 +188,7 @@ class CameraViewController: UIViewController {
     
     private var iso: Float = 0.0 {
         didSet {
-            updateHintLabel()
+            updateInformationLabel()
         }
     }
     private var lensPosition: Float = 0.0 {
@@ -195,17 +196,17 @@ class CameraViewController: UIViewController {
             if abs(lensPosition - lensPositionSlider.value) >= 0.01 {
                 lensPositionSlider.value = lensPosition
             }
-            updateHintLabel()
+            updateSliderLabel()
         }
     }
     private var shutterScale: Int32 = 0 {
         didSet {
-            updateHintLabel()
+            updateInformationLabel()
         }
     }
     private var apertureFactor: Float = 0.0 {
         didSet {
-            updateHintLabel()
+            updateInformationLabel()
         }
     }
     
@@ -252,8 +253,8 @@ class CameraViewController: UIViewController {
         }
         captureButton.addTarget(self, action: #selector(capturePhoto(_:)), for: .touchUpInside)
         
-        view.addSubview(hintLabel)
-        hintLabel.snp.makeConstraints { make in
+        view.addSubview(informationLabel)
+        informationLabel.snp.makeConstraints { make in
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -599,13 +600,18 @@ class CameraViewController: UIViewController {
         previewView.session = session
     }
     
-    func updateHintLabel() {
+    func updateInformationLabel() {
         DispatchQueue.main.async {
-            let iso = "iso:".localized()
-            let position = "position:".localized()
-            let aperture = "aperture:".localized()
-            let shutter = "shutter:".localized()
-            self.hintLabel.text = String(format: "%@%.0f, %@%.4f, %@1/%.1f, %@1/%d", iso ,self.iso, position,  self.lensPosition, aperture, self.apertureFactor, shutter, self.shutterScale)
+            let iso = "ISO:".localized()
+            let aperture = "Aperture:".localized()
+            self.informationLabel.text = String(format: "%@%.0f, %@F/%.1f, %@", iso ,self.iso, aperture, self.apertureFactor, self.shutterTimeString(self.shutterScale))
+        }
+    }
+    
+    func updateSliderLabel() {
+        DispatchQueue.main.async {
+            let position = "Position:".localized()
+            self.sliderLabel.text = "Focus Slider".localized() + String(format: " [%@%.4f]", position, self.lensPosition)
         }
     }
     
@@ -691,11 +697,29 @@ class CameraViewController: UIViewController {
         }
     }
     
+    func showToast(text: String) {
+        var style = ToastStyle()
+        style.backgroundColor = .black.withAlphaComponent(0.8)
+        style.messageAlignment = .center
+        style.messageFont = UIFont.systemFont(ofSize: 12)
+        style.messageColor = .moonColor
+        view.makeToast(text, duration: 0.25, point: CGPoint(x: captureButton.frame.midX, y: captureButton.frame.minY - 20), title: nil, image: nil, style: style, completion: nil)
+    }
+    
+    func shutterTimeString(_ time: Int32) -> String {
+        return "Shutter Speed:".localized() + " 1/\(time)" + "s".localized()
+    }
+    
     @objc
     func plusShutterScale() {
         guard let first = exposureStops.first else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : first
+            if currentIndex == 0 {
+                showToast(text: "Maximum Shutter Speed Value Reached".localized())
+            } else {
+                showToast(text: shutterTimeString(nextStop))
+            }
             sessionQueue.async {
                 self.update(shutterScale: nextStop)
             }
@@ -707,6 +731,11 @@ class CameraViewController: UIViewController {
         guard let last = exposureStops.last else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : last
+            if currentIndex + 1 == exposureStops.count {
+                showToast(text: "Minimum Shutter Speed Value Reached".localized())
+            } else {
+                showToast(text: shutterTimeString(nextStop))
+            }
             sessionQueue.async {
                 self.update(shutterScale: nextStop)
             }
