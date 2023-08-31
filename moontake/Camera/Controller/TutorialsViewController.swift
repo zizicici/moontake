@@ -40,6 +40,8 @@ class TutorialsViewController: UIViewController {
         }
         
         setupText()
+        
+        textView.scrollRangeToVisible(NSRange(location: 0, length: 1))
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
