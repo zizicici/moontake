@@ -1,0 +1,72 @@
+//
+//  TutorialsViewController.swift
+//  moontake
+//
+//  Created by Ci Zi on 2023/8/31.
+//
+
+import UIKit
+import SnapKit
+
+class TutorialsViewController: UIViewController {
+    var textView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
+        textView.backgroundColor = .backgroundColor
+        textView.isEditable = false
+        textView.textContainerInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        return textView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.title = "Tutorials".localized()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        let style = NSMutableParagraphStyle()
+        style.alignment = .justified
+        style.firstLineHeadIndent = 10
+        navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8), .paragraphStyle: style]
+        navigationController?.navigationBar.tintColor = .systemRed
+        view.backgroundColor = .backgroundColor
+        
+        view.addSubview(textView)
+        textView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view)
+            make.leading.trailing.equalTo(view).inset(16)
+        }
+        
+        setupText()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        setupText()
+    }
+    
+    private func setupText() {
+        let text = "__moontake__tutorials__".localized()
+
+        let attributedString = NSMutableAttributedString(string: text)
+        
+        // 创建段落样式对象
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        paragraphStyle.paragraphSpacing = 20
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.systemFont(ofSize: 17),
+            .foregroundColor: UIColor.label
+        ]
+        
+        // 将段落样式应用于属性字符串的范围
+        attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
+        
+        textView.attributedText = attributedString
+    }
+}

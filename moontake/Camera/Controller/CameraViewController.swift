@@ -126,14 +126,14 @@ class CameraViewController: UIViewController {
         
         return button
     }()
-    private let helpButton: UIButton = {
+    private let tutorialsButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "questionmark.circle")
         configuration.contentInsets = .zero
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = "Help".localized()
+        button.accessibilityLabel = "Tutorials".localized()
         button.alpha = 0.83
         
         return button
@@ -324,22 +324,22 @@ class CameraViewController: UIViewController {
         }
         moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         
-        view.addSubview(helpButton)
+        view.addSubview(tutorialsButton)
         if view.frame.width == 320 {
-            helpButton.snp.makeConstraints { make in
+            tutorialsButton.snp.makeConstraints { make in
                 make.leading.equalTo(view)
                 make.trailing.equalTo(minusButton.snp.leading)
                 make.height.equalTo(minusButton)
                 make.top.equalTo(minusButton)
             }
         } else {
-            helpButton.snp.makeConstraints { make in
+            tutorialsButton.snp.makeConstraints { make in
                 make.leading.equalTo(view).inset(8)
                 make.height.width.equalTo(minusButton)
                 make.top.equalTo(minusButton)
             }
         }
-        helpButton.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
+        tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
         
         view.addSubview(permissionView)
         permissionView.snp.makeConstraints { make in
@@ -867,8 +867,10 @@ class CameraViewController: UIViewController {
     }
     
     @objc
-    func helpButtonTapped() {
-        
+    func tutorialsButtonTapped() {
+        let tutorialsVC = TutorialsViewController()
+        let nav = UINavigationController(rootViewController: tutorialsVC)
+        present(nav, animated: true)
     }
     
     func jumpToSettings() {
