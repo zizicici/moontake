@@ -17,4 +17,4 @@
 "WaningMoon2" = "Waning Moon";
 "WaningMoon3" = "Waning Moon";
 
-"moontake__tutorials" = "1. Please align the camera with the moon🌕\n2. Use two fingers to adjust the size of the moon📏 (Note: Bigger is not always better, excessive zoom may result in decreased image quality)\n3. You can tap on the position of the moon for autofocus. If autofocus is not clear enough, you can drag the focus slider for manual focusing🎯\n4. Tap the \"-\" and \"+\" buttons to adjust the brightness. Lowering the brightness ensures more details of the moon🌖\n5. Tap the circular capture button to take a photo📷";
+"__moontake__tutorials__" = "1. Please align the camera with the moon🌕\n2. Use two fingers to adjust the size of the moon📏 (Note: Bigger is not always better, excessive zoom may result in decreased image quality)\n3. You can tap on the position of the moon for autofocus. If autofocus is not clear enough, you can drag the focus slider for manual focusing🎯\n4. Tap the \"-\" and \"+\" buttons to adjust the brightness. Lowering the brightness ensures more details of the moon🌖\n5. Tap the circular capture button to take a photo📷";
