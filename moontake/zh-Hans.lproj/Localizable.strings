@@ -80,3 +80,5 @@
 "position:" = "对焦值:";
 "aperture:" = "光圈:";
 "shutter:" = "曝光时间:";
+"Lighten" = "调亮";
+"Darken" = "调暗";

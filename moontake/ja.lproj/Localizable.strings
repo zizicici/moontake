@@ -81,3 +81,5 @@
 "position:" = "フォーカス位置:";
 "aperture:" = "絞り:";
 "shutter:" = "シャッタースピード:";
+"Lighten" = "明るくする";
+"Darken" = "暗くする";

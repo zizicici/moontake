@@ -27,7 +27,7 @@ class CameraViewController: UIViewController {
         let button = ColorHighlightButton()
         button.normalColor = .moonColor
         button.highlightedColor = .moonColor.withAlphaComponent(0.6)
-        button.layer.cornerRadius = 30
+        button.layer.cornerRadius = 36
         button.layer.shadowColor = UIColor.moonColor.cgColor
         button.layer.shadowOpacity = 1.0
         button.layer.shadowOffset = CGSize(width: 0, height: 0)
@@ -48,8 +48,18 @@ class CameraViewController: UIViewController {
         return label
     }()
     private let plusButton: UIButton = {
-        var configuration = UIButton.Configuration.bordered()
+        var configuration = UIButton.Configuration.borderedTinted()
         configuration.image = UIImage(systemName: "plus")
+        configuration.imagePlacement = .top
+        configuration.imagePadding = 10.0
+        configuration.title = "Lighten".localized()
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.systemFont(ofSize: 12)
+
+            return outgoing
+        })
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0)
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
@@ -57,8 +67,18 @@ class CameraViewController: UIViewController {
         return button
     }()
     private let minusButton: UIButton = {
-        var configuration = UIButton.Configuration.bordered()
+        var configuration = UIButton.Configuration.borderedTinted()
         configuration.image = UIImage(systemName: "minus")
+        configuration.imagePlacement = .top
+        configuration.imagePadding = 10.0
+        configuration.title = "Darken".localized()
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.systemFont(ofSize: 12)
+
+            return outgoing
+        })
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0)
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
@@ -193,8 +213,7 @@ class CameraViewController: UIViewController {
         captureButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.width.equalTo(60.0)
-            make.height.equalTo(60.0)
+            make.width.height.equalTo(72.0)
         }
         captureButton.addTarget(self, action: #selector(capturePhoto(_:)), for: .touchUpInside)
         
@@ -208,17 +227,17 @@ class CameraViewController: UIViewController {
         
         view.addSubview(minusButton)
         minusButton.snp.makeConstraints { make in
-            make.top.bottom.equalTo(captureButton)
-            make.trailing.equalTo(captureButton.snp.leading).offset(-15)
-            make.width.equalTo(60)
+            make.centerY.equalTo(captureButton)
+            make.trailing.equalTo(captureButton.snp.leading).offset(isRegularHorizontalSizeClass ? -60 : -15)
+            make.width.height.equalTo(60)
         }
         minusButton.addTarget(self, action: #selector(minusShutterScale), for: .touchUpInside)
         
         view.addSubview(plusButton)
         plusButton.snp.makeConstraints { make in
-            make.top.bottom.equalTo(captureButton)
-            make.leading.equalTo(captureButton.snp.trailing).offset(15)
-            make.width.equalTo(60)
+            make.centerY.equalTo(captureButton)
+            make.leading.equalTo(captureButton.snp.trailing).offset(isRegularHorizontalSizeClass ? 60 : 15)
+            make.width.height.equalTo(60)
         }
         plusButton.addTarget(self, action: #selector(plusShutterScale), for: .touchUpInside)
         
@@ -240,12 +259,21 @@ class CameraViewController: UIViewController {
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
         
         view.addSubview(moreButton)
-        moreButton.snp.makeConstraints { make in
-            make.leading.equalTo(plusButton.snp.trailing)
-            make.trailing.equalTo(view)
-            make.height.equalTo(plusButton)
-            make.top.equalTo(plusButton)
+        if view.frame.width == 320 {
+            moreButton.snp.makeConstraints { make in
+                make.trailing.equalTo(view)
+                make.leading.equalTo(plusButton.snp.trailing)
+                make.height.equalTo(plusButton)
+                make.top.equalTo(plusButton)
+            }
+        } else {
+            moreButton.snp.makeConstraints { make in
+                make.trailing.equalTo(view).inset(8)
+                make.height.width.equalTo(plusButton)
+                make.top.equalTo(plusButton)
+            }
         }
+
         moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         
         view.addSubview(permissionView)
