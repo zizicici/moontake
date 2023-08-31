@@ -83,3 +83,10 @@
 "shutter:" = "シャッタースピード:";
 "Lighten" = "明るくする";
 "Darken" = "暗くする";
+"Focus Slider" = "フォーカススライダー";
+
+// a11y
+"Capture" = "撮影";
+"Help" = "ヘルプ";
+"Lighten Image" = "明るくする";
+"Darken Image" = "暗くする";

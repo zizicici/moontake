@@ -82,3 +82,10 @@
 "shutter:" = "曝光时间:";
 "Lighten" = "调亮";
 "Darken" = "调暗";
+"Focus Slider" = "对焦滑杆";
+
+// a11y
+"Capture" = "拍摄";
+"Help" = "帮助";
+"Lighten Image" = "调亮画面";
+"Darken Image" = "调暗画面";
