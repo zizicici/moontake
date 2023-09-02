@@ -546,7 +546,7 @@ class CameraViewController: UIViewController {
             apertureFactor = captureDevice.lensAperture
             
             // 设置ISO值
-            let desiredISO: Float = max(minISO, 50.0)
+            let desiredISO: Float = minISO// max(minISO, 50.0)
             iso = desiredISO
             // f/2.8 1/200 iso100
             let isoScale = desiredISO / 100.0
@@ -591,8 +591,18 @@ class CameraViewController: UIViewController {
         if session.canAddOutput(photoOutput) {
             session.addOutput(photoOutput)
             
-            photoOutput.isHighResolutionCaptureEnabled = true
+            if #available(iOS 16.0, *) {
+                if let first = captureDevice.activeFormat.supportedMaxPhotoDimensions.first {
+                    photoOutput.maxPhotoDimensions = first
+                }
+            } else {
+                photoOutput.isHighResolutionCaptureEnabled = true
+            }
             photoOutput.maxPhotoQualityPrioritization = .quality
+            
+            if let connection = photoOutput.connection(with: .video), connection.isVideoStabilizationSupported {
+                connection.preferredVideoStabilizationMode = .standard
+            }
         }
     }
     
