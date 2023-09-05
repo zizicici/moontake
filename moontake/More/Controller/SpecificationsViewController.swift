@@ -70,7 +70,7 @@ class SpecificationsViewController: UIViewController {
                 case .publisher:
                     return "ZIZICICI LIMITED"
                 case .date:
-                    return "2023/08/31"
+                    return "2023/09/05"
                 }
             }
         }
