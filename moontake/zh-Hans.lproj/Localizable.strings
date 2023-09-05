@@ -29,6 +29,9 @@
 "App Icon" = "App图标";
 "None" = "无";
 "The App Icon watermark is only for Pro User." = "App图标水印目前只为Pro用户开放。";
+"ISO Options" = "ISO选项";
+"Default" = "默认";
+"In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image." = "理论上，在相同曝光时间下，ISO 值越低，画面噪点有减少的趋势。\n但是 ISO 值越低，可能会导致曝光时间延长，更长的曝光时间往往需要更加稳定的固定相机，否则画面可能发生模糊。";
 
 "App from AppJun" = "App君做的App";
 "Follow us on Bilibili" = "在Bilibili关注我们";

@@ -24,6 +24,8 @@
 		6306D0582AA0913A003B3A23 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6306D0572AA0913A003B3A23 /* Toast */; };
 		6306D05A2AA0A4AC003B3A23 /* TutorialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306D0592AA0A4AC003B3A23 /* TutorialsViewController.swift */; };
 		63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */; };
+		631122272AA71481005C7106 /* ISOOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631122262AA71481005C7106 /* ISOOptionsViewController.swift */; };
+		631122292AA7200F005C7106 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631122282AA7200F005C7106 /* Camera.swift */; };
 		63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1125F2A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift */; };
 		63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */; };
 		63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F5E3322A72ACD8008CAA07 /* FocusView.swift */; };
@@ -99,6 +101,8 @@
 		630642A32A83D8DC00A918DE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6306D0592AA0A4AC003B3A23 /* TutorialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsViewController.swift; sourceTree = "<group>"; };
 		63102E492A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+Extension.swift"; sourceTree = "<group>"; };
+		631122262AA71481005C7106 /* ISOOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOOptionsViewController.swift; sourceTree = "<group>"; };
+		631122282AA7200F005C7106 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		63E1125F2A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoCaptureProcessor+WaterMark.swift"; sourceTree = "<group>"; };
 		63ED894F2A81480600EA1545 /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		63F5E3322A72ACD8008CAA07 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				630642962A838CD700A918DE /* User.swift */,
 				6305CD1D2A7BAEAA001CF9C6 /* Language.swift */,
 				630642A32A83D8DC00A918DE /* Settings.swift */,
+				631122282AA7200F005C7106 /* Camera.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */,
+				631122262AA71481005C7106 /* ISOOptionsViewController.swift */,
 				630642A12A83CFBA00A918DE /* WatermarkViewController.swift */,
 				6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */,
 			);
@@ -511,6 +517,7 @@
 			files = (
 				6305CD1A2A7BAB19001CF9C6 /* UIViewController+Extension.swift in Sources */,
 				6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */,
+				631122272AA71481005C7106 /* ISOOptionsViewController.swift in Sources */,
 				6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */,
 				63FF46152A9E581700C9FDCA /* Load.swift in Sources */,
 				6306429F2A83947500A918DE /* MembershipCell.swift in Sources */,
@@ -520,6 +527,7 @@
 				63FF94212A851B2000FD5689 /* AppCell.swift in Sources */,
 				63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */,
 				63F806A52A59ACCC00135630 /* CameraViewController.swift in Sources */,
+				631122292AA7200F005C7106 /* Camera.swift in Sources */,
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
 				63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */,
 				63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */,

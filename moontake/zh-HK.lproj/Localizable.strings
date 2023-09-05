@@ -29,6 +29,9 @@
 "App Icon" = "App圖標";
 "None" = "無";
 "The App Icon watermark is only for Pro User." = "App圖標水印僅限於Pro用戶使用。";
+"ISO Options" = "ISO選項";
+"Default" = "預設";
+"理论上，在相同曝光时间下，ISO 值越低，画面噪點有減少的趨勢。\n但是 ISO 值越低，可能會導致曝光時間延長，更長的曝光時間往往需要更加穩定的固定相機，否則畫面可能產生模糊。";
 
 "App from AppJun" = "App君做的App";
 "Follow us on Bilibili" = "在Bilibili關注我們";

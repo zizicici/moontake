@@ -366,6 +366,8 @@ class CameraViewController: UIViewController {
             self.spinner.color = UIColor.moonColor
             self.previewView.addSubview(self.spinner)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -536,8 +538,8 @@ class CameraViewController: UIViewController {
         let minISO = captureDevice.activeFormat.minISO
         let maxISO = captureDevice.activeFormat.maxISO
         
-        print("最小ISO值: \(minISO)")
-        print("最大ISO值: \(maxISO)")
+        Camera.shared.update(minISO: minISO, maxISO: maxISO)
+
         print("\(captureDevice.activeFormat.maxExposureDuration)")
         print("\(captureDevice.activeFormat.minExposureDuration)")
         do {
@@ -546,16 +548,15 @@ class CameraViewController: UIViewController {
             apertureFactor = captureDevice.lensAperture
             
             // 设置ISO值
-            let desiredISO: Float = minISO// max(minISO, 50.0)
-            iso = desiredISO
+            iso = Settings.shared.getISOSettings().isoValue
             // f/2.8 1/200 iso100
-            let isoScale = desiredISO / 100.0
+            let isoScale = iso / 100.0
             let apertureScale = (2.8 * 2.8) / (apertureFactor * apertureFactor)
             let stop = Int32(200.0 * isoScale * apertureScale)
             
             let initExposureStop = findClosestNumber(to: stop, in: exposureStops)
             shutterScale = initExposureStop
-            captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(shutterScale)), iso: desiredISO, completionHandler: nil)
+            captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(shutterScale)), iso: iso, completionHandler: nil)
             
             captureDevice.unlockForConfiguration()
         } catch {
@@ -704,6 +705,21 @@ class CameraViewController: UIViewController {
         }
         catch {
             print(error)
+        }
+    }
+    
+    @objc
+    func ISOUpdated() {
+        iso = Settings.shared.getISOSettings().isoValue
+        sessionQueue.async {
+            do {
+                try self.captureDevice.lockForConfiguration()
+                self.captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(self.shutterScale)), iso: self.iso, completionHandler: nil)
+                self.captureDevice.unlockForConfiguration()
+            }
+            catch {
+                print(error)
+            }
         }
     }
     

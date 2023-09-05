@@ -12,6 +12,7 @@ extension UserDefaults {
         case LifetimeMemberShip = "com.zizicici.moontake.store.purchase.lifetime"
         case SaveToAlbum = "com.zizicici.moontake.settings.saveToAlbum"
         case WatermarkType = "com.zizicici.moontake.settings.watermarkType"
+        case ISO = "com.zizicici.moontake.settings.iso"
     }
 }
 
@@ -21,6 +22,14 @@ extension UserDefaults {
             return nil
         } else {
             return integer(forKey: key)
+        }
+    }
+    
+    func getFloat(forKey key: String) -> Float? {
+        if value(forKey: key) == nil {
+            return nil
+        } else {
+            return float(forKey: key)
         }
     }
     

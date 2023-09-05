@@ -29,6 +29,9 @@
 "App Icon" = "アプリアイコン";
 "None" = "なし";
 "The App Icon watermark is only for Pro User." = "アプリアイコンのウォーターマークはProユーザーのみです。";
+"ISO Options" = "ISOオプション";
+"Default" = "デフォルト";
+"理論上、同じ露光時間の場合、ISO値が低いほど画像のノイズが減少する傾向にあります。\nただし、ISO値が低いと露光時間が長くなる可能性があり、より安定したカメラ固定が必要となります。そうしないと画像がぼやける可能性があります。";
 
 "App from AppJun" = "AppJunからのアプリ";
 "Follow us on Bilibili" = "Bilibiliでフォローしてください";

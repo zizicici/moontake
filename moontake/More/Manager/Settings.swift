@@ -47,6 +47,29 @@ struct Settings {
         }
     }
     
+    enum ISOOption: Hashable {
+        case `default`
+        case value(Float)
+        
+        var title: String {
+            switch self {
+            case .default:
+                return "Default".localized() + String(format: " [%.0f]", Camera.shared.preferredValue())
+            case .value(let isoValue):
+                return String(format: "%.0f", isoValue)
+            }
+        }
+        
+        var isoValue: Float {
+            switch self {
+            case .default:
+                return Camera.shared.preferredValue()
+            case .value(let storedValue):
+                return storedValue
+            }
+        }
+    }
+    
     func getSaveToAlbumSettings() -> SaveToAlbumOption {
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
         return SaveToAlbumOption(rawValue: rawValue ?? 0) ?? .photoWithWatermark
@@ -95,5 +118,25 @@ struct Settings {
             UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.WatermarkType.rawValue)
         }
         return allowSave
+    }
+    
+    func getISOSettings() -> ISOOption {
+        if let isoValue = UserDefaults.standard.getFloat(forKey: UserDefaults.Custom.ISO.rawValue) {
+            return .value(isoValue)
+        } else {
+            return .default
+        }
+    }
+    
+    @discardableResult
+    func save(option: ISOOption) -> Bool {
+        switch option {
+        case .default:
+            UserDefaults.standard.removeObject(forKey: UserDefaults.Custom.ISO.rawValue)
+        case .value(let value):
+            UserDefaults.standard.setValue(value, forKey: UserDefaults.Custom.ISO.rawValue)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name.ISOUpdated, object: nil)
+        return true
     }
 }
