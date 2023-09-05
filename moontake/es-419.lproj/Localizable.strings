@@ -1,0 +1,101 @@
+/* 
+  Localizable.strings
+  moontake
+
+  Created by Ci Zi on 2023/8/3.
+  
+*/
+
+// More
+"More" = "Más";
+
+"Settings" = "Configuración";
+
+"Membership" = "Membresía";
+
+"General" = "General";
+"Language" = "Idioma";
+"🍋Language" = "Español";
+"Watermark" = "Marca de agua";
+"Photo Save Options" = "Opciones de guardado de fotos";
+"Save to Album" = "Guardar en álbum";
+"Photo with Watermark" = "Foto con marca de agua";
+"Photo without Watermark" = "Foto sin marca de agua";
+"Both above" = "Ambas opciones";
+"This option is only for Pro user." = "Esta opción es solo para usuarios Pro.";
+"For free users, the default option is automatically selected and not customizable." = "Para usuarios gratuitos, la opción predeterminada se selecciona automáticamente y no se puede personalizar.";
+"Right Side Watermark" = "Marca de agua en el lado derecho";
+"QR Code" = "Código QR";
+"App Icon" = "Ícono de la aplicación";
+"None" = "Ninguno";
+"The App Icon watermark is only for Pro User." = "La marca de agua del ícono de la aplicación solo está disponible para usuarios Pro.";
+"ISO Options" = "Opciones de ISO";
+"Default" = "Predeterminado";
+"In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image." = "En teoría, bajo el mismo tiempo de exposición, un valor ISO más bajo tiende a reducir el ruido de la imagen.\nSin embargo, un valor ISO más bajo puede resultar en un tiempo de exposición más largo, lo cual a menudo requiere un soporte de cámara más estable para evitar posibles borrosidades en la imagen.";
+
+"App from AppJun" = "App de AppJun";
+"Follow us on Bilibili" = "Síguenos en Bilibili";
+"Follow us on Xiaohongshu" = "Síguenos en Xiaohongshu";
+"A Lemon Diary" = "Un diario de limón";
+"A pure text diary" = "Un diario de texto puro";
+
+"About" = "Acerca de";
+"Specifications" = "Especificaciones";
+"Share App" = "Compartir App";
+"Write Review" = "Escribir reseña";
+"Email" = "Correo electrónico";
+"EULA" = "Contrato de licencia de usuario final";
+"Policy of Privacy" = "Política de privacidad";
+
+// Specifications
+"Name" = "Nombre";
+"Version" = "Versión";
+"Manufacturer" = "Fabricante";
+"Publisher" = "Editor";
+"Date of Production" = "Fecha de producción";
+"Third Party Framework" = "Framework de terceros";
+"We extend our heartfelt appreciation to all developers of open-source projects." = "Extendemos nuestro sincero agradecimiento a todos los desarrolladores de proyectos de código abierto.";
+
+//
+"moontake\nA Moon Camera" = "moontake\nUna cámara lunar";
+"Scan QR Code to Get\nmoontake" = "Escanee el código QR para obtener\nmoontake";
+"New Moon" = "Luna nueva";
+"Full Moon" = "Luna llena";
+"WaxingMoon1" = "Luna creciente";
+"WaxingMoon2" = "Luna creciente";
+"WaxingMoon3" = "Luna creciente";
+"WaningMoon1" = "Luna menguante";
+"WaningMoon2" = "Luna menguante";
+"WaningMoon3" = "Luna menguante";
+"Enable Camera Permission" = "Activar permiso de cámara";
+"Enable Add Photo Permission" = "Activar permiso para agregar fotos";
+
+// IAP
+"Manage Photo Watermark" = "Administrar marca de agua en fotos";
+"Restore Purchases" = "Restaurar compras";
+"Lifetime" = "Permanente";
+"Tap to Request Store Information" = "Toca para solicitar información de la tienda";
+"Order Failure" = "Error en el pedido";
+"OK" = "Aceptar";
+
+// Hint
+"ISO:" = "ISO:";
+"Position:" = "Posición:";
+"Aperture:" = "Apertura:";
+"Shutter Speed:" = "Velocidad de obturación:";
+"s" = "s";
+"Maximum Shutter Speed Value Reached" = "Se ha alcanzado el valor máximo de velocidad de obturación";
+"Minimum Shutter Speed Value Reached" = "Se ha alcanzado el valor mínimo de velocidad de obturación";
+"Lighten" = "Aclarar";
+"Darken" = "Oscurecer";
+"Focus Slider" = "Deslizador de enfoque";
+
+// Tutorials
+"Tutorials" = "Tutoriales";
+"__moontake__tutorials__" = "1. Apunta la cámara a la luna🌕\n2. Haz zoom con dos dedos para ajustar el tamaño de la luna📏 (ten en cuenta que un tamaño demasiado grande puede afectar la calidad de la imagen)\n3. Puedes hacer clic en la posición de la luna para enfocar automáticamente. Si el enfoque automático no es lo suficientemente nítido, puedes arrastrar el deslizador de enfoque para ajustarlo manualmente🎯\n4. Haz clic en los botones '-' y '+' para ajustar el brillo. Reducir el brillo permite mostrar más detalles de la luna🌖\n5. Haz clic en el botón circular de captura📷";
+
+// a11y
+"Capture" = "Capturar";
+"Help" = "Ayuda";
+"Lighten Image" = "Aclarar imagen";
+"Darken Image" = "Oscurecer imagen";

@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  moontake
+
+  Created by Ci Zi on 2023/8/10.
+  
+*/
+
+NSCameraUsageDescription = "Nous avons besoin d'accéder à votre appareil photo pour prendre des photos.";
+NSPhotoLibraryAddUsageDescription = "Nous avons besoin d'une autorisation exclusive pour ajouter des photos à l'album.";

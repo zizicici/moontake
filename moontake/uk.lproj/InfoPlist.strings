@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  moontake
+
+  Created by Ci Zi on 2023/8/10.
+  
+*/
+
+NSCameraUsageDescription = "Нам потрібен доступ до вашої камери для зйомки фотографій.";
+NSPhotoLibraryAddUsageDescription = "Нам потрібне виключне дозвіл на додавання для збереження фотографій у альбомі.";
