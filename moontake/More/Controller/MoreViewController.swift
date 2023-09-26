@@ -178,6 +178,7 @@ class MoreViewController: UIViewController {
         reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.ISOUpdated, object: nil)
     }
     
     func configureHierarchy() {
