@@ -32,6 +32,7 @@
 "ISO Options" = "Опции ISO";
 "Default" = "По умолчанию";
 "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image." = "В теории, при одинаковом времени экспозиции более низкое значение ISO склонно снижать шум на изображении.\nОднако более низкое значение ISO может привести к более длительному времени экспозиции, что часто требует более надежной фиксации камеры, чтобы избежать потенциального размытия на изображении.";
+"White Balance Temperature" = "Температура баланса белого";
 
 "App from AppJun" = "Приложение от AppJun";
 "Follow us on Bilibili" = "Подписывайтесь на нас в Bilibili";

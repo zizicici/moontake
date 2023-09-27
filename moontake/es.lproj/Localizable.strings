@@ -32,6 +32,7 @@
 "ISO Options" = "Opciones de ISO";
 "Default" = "Predeterminado";
 "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image." = "En teoría, bajo el mismo tiempo de exposición, un valor ISO más bajo tiende a reducir el ruido de la imagen.\nSin embargo, un valor ISO más bajo puede resultar en un tiempo de exposición más largo, lo cual a menudo requiere un soporte de cámara más estable para evitar posibles borrosidades en la imagen.";
+"White Balance Temperature" = "Temperatura de balance de blancos";
 
 "App from AppJun" = "App de AppJun";
 "Follow us on Bilibili" = "Síguenos en Bilibili";

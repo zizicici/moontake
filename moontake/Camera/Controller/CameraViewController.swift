@@ -368,6 +368,7 @@ class CameraViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(whiteBalanceUpdated), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -566,7 +567,8 @@ class CameraViewController: UIViewController {
         do {
             try captureDevice.lockForConfiguration()
             if captureDevice.isWhiteBalanceModeSupported(.locked) {
-                let temperatureAndTintValues = AVCaptureDevice.WhiteBalanceTemperatureAndTintValues(temperature: 5500, tint: 0)
+                let temperature = Settings.shared.getWhiteBalanceSettings().temperatureValue
+                let temperatureAndTintValues = AVCaptureDevice.WhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0)
                 let deviceGains = captureDevice.deviceWhiteBalanceGains(for: temperatureAndTintValues)
                 captureDevice.setWhiteBalanceModeLocked(with: deviceGains, completionHandler: nil)
             }
@@ -719,6 +721,24 @@ class CameraViewController: UIViewController {
             }
             catch {
                 print(error)
+            }
+        }
+    }
+    
+    @objc
+    func whiteBalanceUpdated() {
+        let temperature = Settings.shared.getWhiteBalanceSettings().temperatureValue
+        sessionQueue.async {
+            do {
+                try self.captureDevice.lockForConfiguration()
+                if self.captureDevice.isWhiteBalanceModeSupported(.locked) {
+                    let temperatureAndTintValues = AVCaptureDevice.WhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0)
+                    let deviceGains = self.captureDevice.deviceWhiteBalanceGains(for: temperatureAndTintValues)
+                    self.captureDevice.setWhiteBalanceModeLocked(with: deviceGains, completionHandler: nil)
+                }
+                self.captureDevice.unlockForConfiguration()
+            } catch  {
+                // 处理设备配置错误的情况
             }
         }
     }

@@ -33,4 +33,12 @@ class Camera {
     func preferredValue() -> Float {
         return max(minISO, 50.0)
     }
+    
+    func getWhiteBalanceCandidates() -> [Float] {
+        return [3000.0, 3500.0, 4000.0, 4500.0, 5000.0, 5500.0, 6000.0, 6500.0, 7000.0, 7500.0]
+    }
+    
+    func preferredWhiteBalanceValue() -> Float {
+        return 5500.0
+    }
 }

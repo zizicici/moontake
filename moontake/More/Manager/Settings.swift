@@ -70,6 +70,29 @@ struct Settings {
         }
     }
     
+    enum WhiteBalanceOption: Hashable {
+        case `default`
+        case value(Float)
+        
+        var title: String {
+            switch self {
+            case .default:
+                return "Default".localized() + String(format: " [%.0fK]", Camera.shared.preferredWhiteBalanceValue())
+            case .value(let tempValue):
+                return String(format: "%.0fK", tempValue)
+            }
+        }
+        
+        var temperatureValue: Float {
+            switch self {
+            case .default:
+                return Camera.shared.preferredWhiteBalanceValue()
+            case .value(let storedValue):
+                return storedValue
+            }
+        }
+    }
+    
     func getSaveToAlbumSettings() -> SaveToAlbumOption {
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
         return SaveToAlbumOption(rawValue: rawValue ?? 0) ?? .photoWithWatermark
@@ -139,4 +162,25 @@ struct Settings {
         NotificationCenter.default.post(name: NSNotification.Name.ISOUpdated, object: nil)
         return true
     }
+    
+    func getWhiteBalanceSettings() -> WhiteBalanceOption {
+        if let tempValue = UserDefaults.standard.getFloat(forKey: UserDefaults.Custom.WhiteBalance.rawValue) {
+            return .value(tempValue)
+        } else {
+            return .default
+        }
+    }
+    
+    @discardableResult
+    func save(option: WhiteBalanceOption) -> Bool {
+        switch option {
+        case .default:
+            UserDefaults.standard.removeObject(forKey: UserDefaults.Custom.WhiteBalance.rawValue)
+        case .value(let value):
+            UserDefaults.standard.setValue(value, forKey: UserDefaults.Custom.WhiteBalance.rawValue)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
+        return true
+    }
+    
 }

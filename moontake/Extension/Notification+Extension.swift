@@ -12,4 +12,5 @@ extension Notification.Name {
     static let LifetimeMemberShip = Notification.Name(rawValue: "com.zizicici.moontake.store.purchase.lifetime")
     static let StoreInfoLoaded = Notification.Name(rawValue: "com.zizicici.moontake.store.info.loaded")
     static let ISOUpdated = Notification.Name(rawValue: "com.zizicici.moontake.ISOUpate")
+    static let WhiteBalanceUpdated = Notification.Name(rawValue: "com.zizicici.moontake.WhiteBalanceUpate")
 }

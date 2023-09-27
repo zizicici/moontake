@@ -43,6 +43,7 @@ class MoreViewController: UIViewController {
         enum GeneralItem {
             case language
             case iso
+            case whiteBalance
             case saveOptions
             
             var title: String {
@@ -51,6 +52,8 @@ class MoreViewController: UIViewController {
                     return "Language".localized()
                 case .iso:
                     return "ISO".localized()
+                case .whiteBalance:
+                    return "White Balance Temperature".localized()
                 case .saveOptions:
                     return "Photo Save Options".localized()
                 }
@@ -62,6 +65,8 @@ class MoreViewController: UIViewController {
                     return "🍋Language".localized()
                 case .iso:
                     return Settings.shared.getISOSettings().title
+                case .whiteBalance:
+                    return Settings.shared.getWhiteBalanceSettings().title
                 default:
                     return nil
                 }
@@ -179,6 +184,7 @@ class MoreViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.ISOUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
     }
     
     func configureHierarchy() {
@@ -268,7 +274,7 @@ class MoreViewController: UIViewController {
             snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .tier(User.shared.proTier()), membership: Store.shared.membershipDisplayPrice()))], toSection: .membership)
         }
         snapshot.appendSections([.settings])
-        snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.saveOptions)], toSection: .settings)
+        snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
         snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
@@ -293,6 +299,8 @@ extension MoreViewController: UITableViewDelegate {
                     jumpToSettings()
                 case .iso:
                     enterISOSettings()
+                case .whiteBalance:
+                    enterWhiteBalanceSettings()
                 case .saveOptions:
                     enterWatermarkSettings()
                 }
@@ -339,6 +347,12 @@ extension MoreViewController {
         let isoViewController = ISOOptionsViewController()
         
         navigationController?.pushViewController(isoViewController, animated: true)
+    }
+    
+    func enterWhiteBalanceSettings() {
+        let whiteBalanceViewController = WhiteBalanceOptionsViewController()
+        
+        navigationController?.pushViewController(whiteBalanceViewController, animated: true)
     }
     
     func enterWatermarkSettings() {
