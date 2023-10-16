@@ -48,11 +48,11 @@ class MembershipCell: UITableViewCell {
     
     private var secondLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .callout)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .center
         label.textColor = .label
         label.numberOfLines = 0
-        label.text = "Manage Photo Watermark".localized()
+        label.text = "Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks".localized()
         
         return label
     }()
@@ -175,6 +175,8 @@ class MembershipCell: UITableViewCell {
                     make.leading.trailing.equalTo(contentView)
                     make.height.greaterThanOrEqualTo(12)
                 }
+                
+                updateHintLabelForPromotion()
             case .lifetime:
                 dynamicView.subviews.forEach { $0.removeFromSuperview() }
                 
@@ -184,6 +186,8 @@ class MembershipCell: UITableViewCell {
                     make.leading.trailing.equalTo(contentView)
                     make.height.greaterThanOrEqualTo(20)
                 }
+                
+                updateHintLabelForThanks()
             }
         case .issue:
             dynamicView.subviews.forEach { $0.removeFromSuperview() }
@@ -202,6 +206,8 @@ class MembershipCell: UITableViewCell {
                 make.leading.trailing.equalTo(contentView)
                 make.height.greaterThanOrEqualTo(12)
             }
+            
+            updateHintLabelForPromotion()
         }
     }
     
@@ -215,6 +221,16 @@ class MembershipCell: UITableViewCell {
         var config = restoreButton.configuration
         config?.title = "Tap to Request Store Information".localized()
         restoreButton.configuration = config
+    }
+    
+    private func updateHintLabelForPromotion() {
+        secondLabel.text = "Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks".localized()
+        secondLabel.alpha = 1.0
+    }
+    
+    private func updateHintLabelForThanks() {
+        secondLabel.text = "Wishing you a great moon".localized()
+        secondLabel.alpha = 0.62
     }
     
     @objc
