@@ -43,6 +43,7 @@ class SpecificationsViewController: UIViewController {
             case manufacturer
             case publisher
             case date
+            case license
             
             var title: String {
                 switch self {
@@ -56,6 +57,8 @@ class SpecificationsViewController: UIViewController {
                     return "Publisher".localized()
                 case .date:
                     return "Date of Production".localized()
+                case .license:
+                    return "ICP Filing Number".localized()
                 }
             }
             
@@ -70,7 +73,9 @@ class SpecificationsViewController: UIViewController {
                 case .publisher:
                     return "ZIZICICI LIMITED"
                 case .date:
-                    return "2023/09/27"
+                    return "2023/10/16"
+                case .license:
+                    return "闽ICP备2023015823号-1A"
                 }
             }
         }
@@ -206,7 +211,7 @@ extension SpecificationsViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         
         snapshot.appendSections([.summary])
-        snapshot.appendItems([.summary(.name), .summary(.version), .summary(.manufacturer), .summary(.publisher), .summary(.date)])
+        snapshot.appendItems([.summary(.name), .summary(.version), .summary(.manufacturer), .summary(.publisher), .summary(.date), .summary(.license)])
         
         snapshot.appendSections([.thirdParty])
         snapshot.appendItems(Item.ThirdParty.current.map{ Item.thirdParty($0) })
