@@ -203,6 +203,7 @@ extension Store {
         //This call displays a system prompt that asks users to authenticate with their App Store credentials.
         //Call this function only in response to an explicit user action, such as tapping a button.
         try? await AppStore.sync()
+        await updateCustomerProductStatus()
     }
     
     func membershipDisplayPrice() -> String? {
