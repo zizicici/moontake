@@ -315,7 +315,7 @@ class MoreViewController: UIViewController {
     
     func startTimer() {
         guard timer == nil else { return }
-        timer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(updateMembershipCell), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateMembershipCell), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
