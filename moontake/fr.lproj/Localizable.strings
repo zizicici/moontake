@@ -73,8 +73,11 @@
 
 // IAP
 "Manage Photo Watermark" = "Gérer le filigrane des photos";
-"Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks" = "Votre soutien est la plus grande motivation pour @AppJun de continuer à créer.\n\nLes utilisateurs Pro peuvent utiliser tous les filigranes photo";
-"Wishing you a great moon" = "Je vous souhaite une belle lune";
+"Become a Pro user & support @AppJun" = "Devenez un utilisateur Pro et soutenez @AppJun";
+"Pro users can unlock all watermarks and have the ability to save the original images." = "Les utilisateurs Pro peuvent déverrouiller tous les filigranes et ont la possibilité de sauvegarder les images originales.";
+"Your support is the biggest motivation for @AppJun to keep creating." = "Votre soutien est la plus grande motivation pour @AppJun de continuer à créer.";
+"Wishing you a great moon." = "Je vous souhaite une belle lune.";
+"Thanks for your support." = "Merci pour votre soutien.";
 "Restore Purchases" = "Restaurer les achats";
 "Lifetime" = "À vie";
 "Tap to Request Store Information" = "Appuyez pour demander les informations de la boutique";

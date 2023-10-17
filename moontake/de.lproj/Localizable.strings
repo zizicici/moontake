@@ -73,8 +73,11 @@
 
 // IAP
 "Manage Photo Watermark" = "Foto-Wasserzeichen verwalten";
-"Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks" = "Deine Unterstützung ist die größte Motivation für @AppJun, um weiterhin zu kreieren.\n\nPro-Benutzer können alle Foto-Wasserzeichen verwenden";
-"Wishing you a great moon" = "Ich wünsche dir einen schönen Mond";
+"Become a Pro user & support @AppJun" = "Werde ein Pro-Benutzer und unterstütze @AppJun";
+"Pro users can unlock all watermarks and have the ability to save the original images." = "Pro-Benutzer können alle Wasserzeichen freischalten und die Originalbilder speichern.";
+"Your support is the biggest motivation for @AppJun to keep creating." = "Deine Unterstützung ist die größte Motivation für @AppJun, um weiterhin zu kreieren.";
+"Wishing you a great moon." = "Ich wünsche dir einen schönen Mond.";
+"Thanks for your support." = "Vielen Dank für Ihre Unterstützung.";
 "Restore Purchases" = "Käufe wiederherstellen";
 "Lifetime" = "Lebenslang";
 "Tap to Request Store Information" = "Tippen Sie hier, um Informationen zum Store anzufragen";

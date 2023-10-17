@@ -15,6 +15,9 @@ class MoreViewController: UIViewController {
     private var tableView: UITableView!
     private var dataSource: DataSource!
     
+    private weak var membershipCell: MembershipCell?
+    private var timer: Timer?
+    
     enum Section: Hashable {
         case membership
         case settings
@@ -165,6 +168,11 @@ class MoreViewController: UIViewController {
         }
     }
     
+    deinit {
+        stopTimer()
+        print("MoreViewController is deinited")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -185,6 +193,20 @@ class MoreViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
+        
+        startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        stopTimer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        startTimer()
     }
     
     func configureHierarchy() {
@@ -223,6 +245,7 @@ class MoreViewController: UIViewController {
                     cell.manageClosure = { [weak self] in
                         self?.manageAction()
                     }
+                    self.membershipCell = cell
                 }
                 return cell
             case .settings(let item):
@@ -283,6 +306,21 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.about(.specifications), .about(.share), .about(.review), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
         
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    @objc
+    func updateMembershipCell() {
+        membershipCell?.togglePromotionText()
+    }
+    
+    func startTimer() {
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(timeInterval: 8, target: self, selector: #selector(updateMembershipCell), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }
 

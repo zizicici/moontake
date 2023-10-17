@@ -74,8 +74,11 @@
 
 // IAP
 "Manage Photo Watermark" = "写真のウォーターマークを管理";
-"Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks" = "あなたのサポートは@AppJunが創作を続ける最大の動機です。\n\nProユーザーはすべての写真ウォーターマークを使用できます";
-"Wishing you a great moon" = "素晴らしい月をお楽しみください";
+"Become a Pro user & support @AppJun" = "Proユーザーになって@AppJunをサポートしましょう";
+"Pro users can unlock all watermarks and have the ability to save the original images." = "Proユーザーはすべてのウォーターマークを解除し、元の画像を保存することができます";
+"Your support is the biggest motivation for @AppJun to keep creating." = "あなたのサポートは@AppJunが創作を続ける最大の動機です";
+"Wishing you a great moon." = "素晴らしい月をお楽しみください";
+"Thanks for your support." = "ご支援ありがとうございます";
 "Restore Purchases" = "購入アイテムの復元";
 "Lifetime" = "ライフタイム";
 "Tap to Request Store Information" = "ストア情報をリクエストするにはタップしてください";

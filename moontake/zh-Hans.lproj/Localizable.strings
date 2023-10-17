@@ -74,8 +74,11 @@
 
 // IAP
 "Manage Photo Watermark" = "管理照片水印";
-"Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks" = "你的支持是 @App君 继续创作的最大动力\n\nPro用户可以使用所有的照片水印";
-"Wishing you a great moon" = "愿你拍到好月亮";
+"Become a Pro user & support @AppJun" = "成为Pro用户 & 支持@App君";
+"Pro users can unlock all watermarks and have the ability to save the original images." = "Pro用户可以解锁全部水印并能保存原图";
+"Your support is the biggest motivation for @AppJun to keep creating." = "你的支持是 @App君 继续创作的最大动力";
+"Thanks for your support." = "感谢你的支持";
+"Wishing you a great moon." = "愿你拍到好月亮";
 "Restore Purchases" = "恢复已购买项目";
 "Lifetime" = "买断";
 "Tap to Request Store Information" = "点击请求商店信息";

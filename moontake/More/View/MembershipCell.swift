@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import MorphingLabel
 
 class MembershipCell: UITableViewCell {
     enum DisplayType: Hashable {
@@ -46,13 +47,14 @@ class MembershipCell: UITableViewCell {
         return label
     }()
     
-    private var secondLabel: UILabel = {
-        let label = UILabel()
+    private var secondLabel: LTMorphingLabel = {
+        let label = LTMorphingLabel()
+        label.morphingEffect = .evaporate
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .center
         label.textColor = .label
         label.numberOfLines = 0
-        label.text = "Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks".localized()
+        label.text = ""
         
         return label
     }()
@@ -75,9 +77,10 @@ class MembershipCell: UITableViewCell {
     
     private let lifetimeButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Lifetime".localized()
+        configuration.title = "Become a Pro user & support @AppJun".localized()
         configuration.titleAlignment = .center
         configuration.cornerStyle = .medium
+        configuration.titlePadding = 10.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.preferredFont(forTextStyle: .callout)
@@ -104,6 +107,36 @@ class MembershipCell: UITableViewCell {
         }
     }
     
+    private var shouldUpdateContent: Bool = false {
+        didSet {
+            if shouldUpdateContent {
+                if isPurchased {
+                    contentToUpdate = "Wishing you a great moon.".localized()
+                } else {
+                    contentToUpdate = "Pro users can unlock all watermarks and have the ability to save the original images.".localized()
+                }
+            } else {
+                if isPurchased {
+                    contentToUpdate = "Thanks for your support.".localized()
+                } else {
+                    contentToUpdate = "Your support is the biggest motivation for @AppJun to keep creating.".localized()
+                }
+            }
+        }
+    }
+    
+    private var contentToUpdate: String = "" {
+        didSet {
+            secondLabel.text = contentToUpdate
+        }
+    }
+    
+    private var isPurchased: Bool = false {
+        didSet {
+            secondLabel.alpha = isPurchased ? 0.62 : 1.0
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -124,7 +157,7 @@ class MembershipCell: UITableViewCell {
         
         contentView.addSubview(secondLabel)
         secondLabel.snp.makeConstraints { make in
-            make.top.equalTo(firstLabel.snp.bottom).offset(12)
+            make.top.equalTo(firstLabel.snp.bottom).offset(16)
             make.leading.trailing.equalTo(contentView).inset(16)
         }
         
@@ -224,13 +257,13 @@ class MembershipCell: UITableViewCell {
     }
     
     private func updateHintLabelForPromotion() {
-        secondLabel.text = "Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks".localized()
-        secondLabel.alpha = 1.0
+        isPurchased = false
+        togglePromotionText()
     }
     
     private func updateHintLabelForThanks() {
-        secondLabel.text = "Wishing you a great moon".localized()
-        secondLabel.alpha = 0.62
+        isPurchased = true
+        togglePromotionText()
     }
     
     @objc
@@ -241,5 +274,9 @@ class MembershipCell: UITableViewCell {
     @objc
     private func restoreAction() {
         manageClosure?()
+    }
+    
+    public func togglePromotionText() {
+        shouldUpdateContent.toggle()
     }
 }

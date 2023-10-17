@@ -73,8 +73,11 @@
 
 // IAP
 "Manage Photo Watermark" = "Управление водяным знаком на фото";
-"Your support is the biggest motivation for @AppJun to keep creating\n\nPro users can use all photo watermarks" = "Ваша поддержка - это наибольшая мотивация для @AppJun продолжать творчество.\n\nПользователи Pro могут использовать все водяные знаки на фото";
-"Wishing you a great moon" = "Желаю вам замечательной луны";
+"Become a Pro user & support @AppJun" = "Станьте пользователем Pro и поддержите @AppJun";
+"Pro users can unlock all watermarks and have the ability to save the original images." = "Пользователи Pro могут разблокировать все водяные знаки и имеют возможность сохранять оригинальные изображения.";
+"Your support is the biggest motivation for @AppJun to keep creating." = "Ваша поддержка - это наибольшая мотивация для @AppJun продолжать творчество.";
+"Wishing you a great moon." = "Желаю вам замечательной луны.";
+"Thanks for your support." = "Спасибо за поддержку.";
 "Restore Purchases" = "Восстановить покупки";
 "Lifetime" = "Пожизненная";
 "Tap to Request Store Information" = "Нажмите, чтобы запросить информацию из магазина";
