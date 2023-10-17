@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import MorphingLabel
 
 class MembershipCell: UITableViewCell {
     enum DisplayType: Hashable {
@@ -47,9 +46,8 @@ class MembershipCell: UITableViewCell {
         return label
     }()
     
-    private var secondLabel: LTMorphingLabel = {
-        let label = LTMorphingLabel()
-        label.morphingEffect = .evaporate
+    private var secondLabel: UILabel = {
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .center
         label.textColor = .label

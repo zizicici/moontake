@@ -101,12 +101,7 @@ class SpecificationsViewController: UIViewController {
                     name: "Toast",
                     version: "5.0.1"
                 )
-                let LTMorphingLabel = ThirdParty(
-                    urlString: "https://github.com/lexrus/LTMorphingLabel",
-                    name: "LTMorphingLabel",
-                    version: "0.9.3"
-                )
-                return [astro, SnapKit, Toast, LTMorphingLabel]
+                return [astro, SnapKit, Toast]
             }()
         }
         
