@@ -75,7 +75,7 @@ class MembershipCell: UITableViewCell {
     
     private let lifetimeButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Become a Pro user & support @AppJun".localized()
+        configuration.title = "Become a Pro User".localized()
         configuration.titleAlignment = .center
         configuration.cornerStyle = .medium
         configuration.titlePadding = 10.0
@@ -126,6 +126,15 @@ class MembershipCell: UITableViewCell {
     private var contentToUpdate: String = "" {
         didSet {
             secondLabel.text = contentToUpdate
+            if shouldUpdateContent {
+                var config = lifetimeButton.configuration
+                config?.title = "Become a Pro User".localized()
+                lifetimeButton.configuration = config
+            } else {
+                var config = lifetimeButton.configuration
+                config?.title = "Support @AppJun".localized()
+                lifetimeButton.configuration = config
+            }
         }
     }
     
