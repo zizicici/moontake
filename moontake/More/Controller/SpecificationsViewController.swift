@@ -73,7 +73,7 @@ class SpecificationsViewController: UIViewController {
                 case .publisher:
                     return "ZIZICICI LIMITED"
                 case .date:
-                    return "2023/10/16"
+                    return "2023/10/17"
                 case .license:
                     return "闽ICP备2023015823号-1A"
                 }
@@ -101,7 +101,12 @@ class SpecificationsViewController: UIViewController {
                     name: "Toast",
                     version: "5.0.1"
                 )
-                return [astro, SnapKit, Toast]
+                let LTMorphingLabel = ThirdParty(
+                    urlString: "https://github.com/lexrus/LTMorphingLabel",
+                    name: "LTMorphingLabel",
+                    version: "0.9.3"
+                )
+                return [astro, SnapKit, Toast, LTMorphingLabel]
             }()
         }
         
