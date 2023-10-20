@@ -7,17 +7,21 @@
 
 import UIKit
 import SnapKit
+import CoreLocation
 
 class WatermarkViewController: UIViewController {
     private var tableView: UITableView!
     private var dataSource: DataSource!
     
     enum Section: Hashable {
+        case location
         case save
         case watermark
         
         var header: String? {
             switch self {
+            case .location:
+                return "Location".localized()
             case .save:
                 return "Save to Album".localized()
             case .watermark:
@@ -26,13 +30,19 @@ class WatermarkViewController: UIViewController {
         }
         
         var footer: String? {
-            if User.shared.proTier() == .lifetime {
+            switch self {
+            case .location:
                 return nil
-            } else {
-                switch self {
-                case .save:
+            case .save:
+                if User.shared.proTier() == .lifetime {
+                    return nil
+                } else {
                     return "For free users, the default option is automatically selected and not customizable.".localized()
-                case .watermark:
+                }
+            case .watermark:
+                if User.shared.proTier() == .lifetime {
+                    return nil
+                } else {
                     return "The App Icon watermark is only for Pro User.".localized()
                 }
             }
@@ -40,6 +50,7 @@ class WatermarkViewController: UIViewController {
     }
     
     enum Item: Hashable {
+        case location(CLAuthorizationStatus)
         case save(Settings.SaveToAlbumOption, Bool)
         case watermark(Settings.WatermarkTypeOption, Bool)
     }
@@ -67,6 +78,8 @@ class WatermarkViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: .LocationAuthorizationDidChanged, object: nil)
     }
     
     func configureHierarchy() {
@@ -90,6 +103,24 @@ class WatermarkViewController: UIViewController {
             guard let self = self else { return nil }
             guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return nil }
             switch identifier {
+            case .location(let authorizationStatus):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+                var content = UIListContentConfiguration.valueCell()
+                switch authorizationStatus {
+                case .notDetermined:
+                    content.text = "Requst Authorization".localized()
+                case .restricted, .denied:
+                    content.text = "Location".localized()
+                    content.secondaryText = "Never".localized()
+                case .authorizedAlways, .authorizedWhenInUse:
+                    content.text = "Location".localized()
+                    content.secondaryText = "While Using the App".localized()
+                @unknown default:
+                    break
+                }
+                content.textProperties.color = .label
+                cell.contentConfiguration = content
+                return cell
             case .save(let item, let isSelected):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = isSelected ? .checkmark : .none
@@ -115,6 +146,8 @@ class WatermarkViewController: UIViewController {
     @objc
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([.location])
+        snapshot.appendItems([.location(Location.shared.authorizationStatus())], toSection: .location)
         snapshot.appendSections([.save])
         let saveToAlbumSettings = Settings.shared.getSaveToAlbumSettings()
         snapshot.appendItems([.save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
@@ -131,6 +164,17 @@ extension WatermarkViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return }
         switch identifier {
+        case .location(let authorizationStatus):
+            switch authorizationStatus {
+            case .notDetermined:
+                Location.shared.requestPermission()
+            case .restricted, .denied:
+                jumpToSettings()
+            case .authorizedAlways, .authorizedWhenInUse:
+                jumpToSettings()
+            @unknown default:
+                break
+            }
         case .save(let item, _):
             let result = Settings.shared.save(option: item)
             if !result {
@@ -157,5 +201,18 @@ extension WatermarkViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func showRestrictedLocationPermissionAlert() {
+        showAlert(title: "This option is only for Pro user.".localized(), message: nil)
+    }
+    
+    func jumpToSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else {
+           return
+        }
+        if UIApplication.shared.canOpenURL(url) {
+           UIApplication.shared.open(url, options: [:])
+        }
     }
 }
