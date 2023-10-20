@@ -686,6 +686,8 @@ class CameraViewController: UIViewController {
             }
             )
             
+            photoCaptureProcessor.location = Location.shared.location
+            
             self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = photoCaptureProcessor
             self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureProcessor)
         }

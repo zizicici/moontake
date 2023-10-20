@@ -32,6 +32,10 @@ class Location: NSObject {
     func authorizationStatus() -> CLAuthorizationStatus {
         return locationManager.authorizationStatus
     }
+    
+    var location: CLLocation? {
+        return locationManager.location
+    }
 }
 
 extension Location: CLLocationManagerDelegate {
