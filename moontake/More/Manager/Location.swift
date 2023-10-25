@@ -20,7 +20,7 @@ class Location: NSObject {
         locationManager.delegate = self
     }
     
-    func requestPermission() {
+    func requestAuthorization() {
         switch authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()

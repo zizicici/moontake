@@ -47,6 +47,23 @@ struct Settings {
         }
     }
     
+    enum LocationDisplayTypeOption: Int, Hashable {
+        case longitudeAndLatitude = 0
+        case address = 1
+        case custom = 100
+        
+        var title: String {
+            switch self {
+            case .longitudeAndLatitude:
+                return "Longitude And Latitude".localized()
+            case .address:
+                return "City".localized()
+            case .custom:
+                return "Custom".localized()
+            }
+        }
+    }
+    
     enum ISOOption: Hashable {
         case `default`
         case value(Float)

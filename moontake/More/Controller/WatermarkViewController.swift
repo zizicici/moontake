@@ -167,7 +167,7 @@ extension WatermarkViewController: UITableViewDelegate {
         case .location(let authorizationStatus):
             switch authorizationStatus {
             case .notDetermined:
-                Location.shared.requestPermission()
+                Location.shared.requestAuthorization()
             case .restricted, .denied:
                 jumpToSettings()
             case .authorizedAlways, .authorizedWhenInUse:
@@ -201,10 +201,6 @@ extension WatermarkViewController {
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)
-    }
-    
-    func showRestrictedLocationPermissionAlert() {
-        showAlert(title: "This option is only for Pro user.".localized(), message: nil)
     }
     
     func jumpToSettings() {
