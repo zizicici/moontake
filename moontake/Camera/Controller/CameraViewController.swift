@@ -887,13 +887,15 @@ class CameraViewController: UIViewController {
         
         let orientationNew: UIInterfaceOrientation
         
-        if acceleration.x >= 0.75 {
+        let threshold = 0.75 // 方向判断的阈值
+
+        if acceleration.x >= threshold {
             orientationNew = .landscapeLeft
-        } else if acceleration.x <= -0.75 {
+        } else if acceleration.x <= -threshold {
             orientationNew = .landscapeRight
-        } else if acceleration.y <= 0.0 {
+        } else if acceleration.y <= -threshold {
             orientationNew = .portrait
-        } else if acceleration.y > 0.0 {
+        } else if acceleration.y > threshold {
             orientationNew = .portraitUpsideDown
         } else {
             // Consider same as last time
