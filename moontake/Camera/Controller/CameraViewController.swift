@@ -16,7 +16,7 @@ class CameraViewController: UIViewController {
     private var session: AVCaptureSession!
     private let sessionQueue = DispatchQueue(label: "capture")
     
-    private var captureDevice: AVCaptureDevice!
+    private var captureDevice: AVCaptureDevice?
     private var captureDeviceInput: AVCaptureDeviceInput!
     private let photoOutput = AVCapturePhotoOutput()
     
@@ -514,6 +514,9 @@ class CameraViewController: UIViewController {
                 fatalError("no back camera")
             }
         }
+        guard let captureDevice = captureDevice else {
+            return
+        }
         // 检查是否支持ISO设置
         guard captureDevice.isExposureModeSupported(.custom) else {
             // 处理不支持自定义曝光模式的情况
@@ -591,6 +594,9 @@ class CameraViewController: UIViewController {
     }
     
     func setupOutput(){
+        guard let captureDevice = captureDevice else {
+            return
+        }
         if session.canAddOutput(photoOutput) {
             session.addOutput(photoOutput)
             
@@ -702,6 +708,9 @@ class CameraViewController: UIViewController {
     }
     
     func update(lensPosition: Float) {
+        guard let captureDevice = captureDevice else {
+            return
+        }
         do {
             try captureDevice.lockForConfiguration()
             captureDevice.setFocusModeLocked(lensPosition: lensPosition, completionHandler: nil)
@@ -714,12 +723,15 @@ class CameraViewController: UIViewController {
     
     @objc
     func ISOUpdated() {
+        guard let captureDevice = captureDevice else {
+            return
+        }
         iso = Settings.shared.getISOSettings().isoValue
         sessionQueue.async {
             do {
-                try self.captureDevice.lockForConfiguration()
-                self.captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(self.shutterScale)), iso: self.iso, completionHandler: nil)
-                self.captureDevice.unlockForConfiguration()
+                try captureDevice.lockForConfiguration()
+                captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(self.shutterScale)), iso: self.iso, completionHandler: nil)
+                captureDevice.unlockForConfiguration()
             }
             catch {
                 print(error)
@@ -729,16 +741,19 @@ class CameraViewController: UIViewController {
     
     @objc
     func whiteBalanceUpdated() {
+        guard let captureDevice = captureDevice else {
+            return
+        }
         let temperature = Settings.shared.getWhiteBalanceSettings().temperatureValue
         sessionQueue.async {
             do {
-                try self.captureDevice.lockForConfiguration()
-                if self.captureDevice.isWhiteBalanceModeSupported(.locked) {
+                try captureDevice.lockForConfiguration()
+                if captureDevice.isWhiteBalanceModeSupported(.locked) {
                     let temperatureAndTintValues = AVCaptureDevice.WhiteBalanceTemperatureAndTintValues(temperature: temperature, tint: 0)
-                    let deviceGains = self.captureDevice.deviceWhiteBalanceGains(for: temperatureAndTintValues)
-                    self.captureDevice.setWhiteBalanceModeLocked(with: deviceGains, completionHandler: nil)
+                    let deviceGains = captureDevice.deviceWhiteBalanceGains(for: temperatureAndTintValues)
+                    captureDevice.setWhiteBalanceModeLocked(with: deviceGains, completionHandler: nil)
                 }
-                self.captureDevice.unlockForConfiguration()
+                captureDevice.unlockForConfiguration()
             } catch  {
                 // 处理设备配置错误的情况
             }
@@ -791,6 +806,9 @@ class CameraViewController: UIViewController {
     }
     
     func update(shutterScale: Int32) {
+        guard let captureDevice = captureDevice else {
+            return
+        }
         do {
             try captureDevice.lockForConfiguration()
             captureDevice.setExposureModeCustom(duration: CMTimeMake(value: 1, timescale: Int32(shutterScale)), iso: iso, completionHandler: nil)
@@ -860,6 +878,10 @@ class CameraViewController: UIViewController {
     
     @objc
     func handlePinchToZoomRecognizer(_ gesture: UIPinchGestureRecognizer) {
+        guard let captureDevice = captureDevice else {
+            return
+        }
+        
         guard gesture.numberOfTouches == 2 else {
             return
         }
