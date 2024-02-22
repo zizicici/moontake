@@ -107,3 +107,14 @@
 "Help" = "帮助";
 "Lighten Image" = "调亮画面";
 "Darken Image" = "调暗画面";
+
+"app.lemon.title" = "柠檬日记本";
+"app.lemon.subtitle" = "一个简单的纯文字日记本";
+"app.festivals.title" = "中国节日";
+"app.festivals.subtitle" = "今天的节日是？";
+"app.coconut.title" = "日历岛";
+"app.coconut.subtitle" = "日历 + 灵动岛";
+"app.pigeon.title" = "飞鸽模式";
+"app.pigeon.subtitle" = "专注模式，启动";
+"app.oneone.title" = "1/1";
+"app.oneone.subtitle" = "人生格子";

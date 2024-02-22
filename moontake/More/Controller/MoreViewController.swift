@@ -111,8 +111,8 @@ class MoreViewController: UIViewController {
             }
         }
         
-        enum AppJunItem {
-            case otherApps
+        enum AppJunItem: Hashable {
+            case otherApps(App)
             case bilibili
             case xiaohongshu
             
@@ -259,8 +259,11 @@ class MoreViewController: UIViewController {
                 return cell
             case .appjun(let item):
                 switch item {
-                case .otherApps:
+                case .otherApps(let app):
                     let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(AppCell.self), for: indexPath)
+                    if let cell = cell as? AppCell {
+                        cell.update(app)
+                    }
                     cell.accessoryType = .disclosureIndicator
                     return cell
                 default:
@@ -300,7 +303,12 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
-        snapshot.appendItems([.appjun(.otherApps), .appjun(.bilibili), .appjun(.xiaohongshu)], toSection: .appjun)
+        var appItems: [Item] = [.appjun(.otherApps(.lemon)), .appjun(.otherApps(.coconut)), .appjun(.otherApps(.pigeon)), .appjun(.otherApps(.oneone))]
+        if Language.type() == .zh {
+            appItems.append(.appjun(.otherApps(.festivals)))
+        }
+        appItems.append(contentsOf: [.appjun(.bilibili), .appjun(.xiaohongshu)])
+        snapshot.appendItems(appItems, toSection: .appjun)
         
         snapshot.appendSections([.about])
         snapshot.appendItems([.about(.specifications), .about(.share), .about(.review), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
@@ -344,8 +352,8 @@ extension MoreViewController: UITableViewDelegate {
                 }
             case .appjun(let item):
                 switch item {
-                case .otherApps:
-                    openLemonStorePage()
+                case .otherApps(let app):
+                    openStorePage(for: app)
                 case .bilibili:
                     openBilibiliWebpage()
                 case .xiaohongshu:
@@ -450,8 +458,8 @@ extension MoreViewController {
         }
     }
     
-    func openLemonStorePage() {
-        guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/id6449700998") else {
+    func openStorePage(for app: App) {
+        guard let appStoreURL = URL(string: "itms-apps://itunes.apple.com/app/" + app.storeId) else {
             return
         }
         

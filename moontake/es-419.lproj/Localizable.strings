@@ -106,3 +106,14 @@
 "Help" = "Ayuda";
 "Lighten Image" = "Aclarar imagen";
 "Darken Image" = "Oscurecer imagen";
+
+"app.lemon.title" = "A Lemon Diary";
+"app.lemon.subtitle" = "A pure text diary";
+"app.festivals.title" = "China Festivals";
+"app.festivals.subtitle" = "What festival is it today?";
+"app.coconut.title" = "Calendar Island";
+"app.coconut.subtitle" = "Calendar + Dynamic Island";
+"app.pigeon.title" = "Air Pigeon";
+"app.pigeon.subtitle" = "Focus Mode On";
+"app.oneone.title" = "1/1";
+"app.oneone.subtitle" = "Life Grid";
