@@ -14,7 +14,8 @@ enum App: Hashable {
     case coconut
     case festivals
     case pigeon
-    case oneone
+    case one
+    case offDay
     
     var image: UIImage? {
         switch self {
@@ -28,8 +29,10 @@ enum App: Hashable {
             return UIImage(named: "FestivalsIcon")
         case .pigeon:
             return UIImage(named: "PigeonIcon")
-        case .oneone:
+        case .one:
             return UIImage(named: "OneOneIcon")
+        case .offDay:
+            return UIImage(named: "OffDayIcon")
         }
     }
     
@@ -45,8 +48,10 @@ enum App: Hashable {
             return String(localized: "app.festivals.title", comment: "China Festivals")
         case .pigeon:
             return String(localized: "app.pigeon.title", comment: "Air Pigeon")
-        case .oneone:
+        case .one:
             return String(localized: "app.oneone.title", comment: "1/1")
+        case .offDay:
+            return String(localized: "app.offDay.title")
         }
     }
     
@@ -62,8 +67,10 @@ enum App: Hashable {
             return String(localized: "app.festivals.subtitle", comment: "What festival is it today?")
         case .pigeon:
             return String(localized: "app.pigeon.subtitle", comment: "Focus Mode On")
-        case .oneone:
+        case .one:
             return String(localized: "app.oneone.subtitle", comment: "Life Grid")
+        case .offDay:
+            return String(localized: "app.offDay.subtitle")
         }
     }
     
@@ -79,8 +86,10 @@ enum App: Hashable {
             return "id6460976841"
         case .pigeon:
             return "id6473819512"
-        case .oneone:
+        case .one:
             return "id6474681491"
+        case .offDay:
+            return "id6501973975"
         }
     }
 }

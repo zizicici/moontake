@@ -303,7 +303,7 @@ class MoreViewController: UIViewController {
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
         
         snapshot.appendSections([.appjun])
-        var appItems: [Item] = [.appjun(.otherApps(.lemon)), .appjun(.otherApps(.coconut)), .appjun(.otherApps(.pigeon)), .appjun(.otherApps(.oneone))]
+        var appItems: [Item] = [.appjun(.otherApps(.offDay)), .appjun(.otherApps(.lemon)), .appjun(.otherApps(.coconut)), .appjun(.otherApps(.pigeon)), .appjun(.otherApps(.one))]
         if Language.type() == .zh {
             appItems.append(.appjun(.otherApps(.festivals)))
         }

@@ -107,6 +107,8 @@
 "Lighten Image" = "Bild aufhellen";
 "Darken Image" = "Bild abdunkeln";
 
+"app.offDay.title" = "Off Day";
+"app.offDay.subtitle" = "Disable Alarms in Off Day";
 "app.lemon.title" = "A Lemon Diary";
 "app.lemon.subtitle" = "A pure text diary";
 "app.festivals.title" = "China Festivals";

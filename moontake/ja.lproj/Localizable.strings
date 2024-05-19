@@ -108,6 +108,8 @@
 "Lighten Image" = "明るくする";
 "Darken Image" = "暗くする";
 
+"app.offDay.title" = "Off Day";
+"app.offDay.subtitle" = "Disable Alarms in Off Day";
 "app.lemon.title" = "レモン手帳";
 "app.lemon.subtitle" = "純文本の日記帳";
 "app.festivals.title" = "China Festivals";

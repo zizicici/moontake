@@ -108,6 +108,8 @@
 "Lighten Image" = "调亮画面";
 "Darken Image" = "调暗画面";
 
+"app.offDay.title" = "休息日";
+"app.offDay.subtitle" = "节假日闹钟助手";
 "app.lemon.title" = "柠檬日记本";
 "app.lemon.subtitle" = "一个简单的纯文字日记本";
 "app.festivals.title" = "中国节日";
