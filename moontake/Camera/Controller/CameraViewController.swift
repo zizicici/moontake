@@ -378,8 +378,14 @@ class CameraViewController: UIViewController {
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         if view.safeAreaInsets.top > 1.0, previewView.superview != nil {
-            previewView.snp.updateConstraints { make in
-                make.top.equalTo(view.safeAreaLayoutGuide).inset(40)
+            if isRegularHorizontalSizeClass {
+                previewView.snp.updateConstraints { make in
+                    make.top.equalTo(view.safeAreaLayoutGuide).inset(40)
+                }
+            } else {
+                previewView.snp.updateConstraints { make in
+                    make.top.equalTo(view.safeAreaLayoutGuide).inset(0)
+                }
             }
         }
     }
