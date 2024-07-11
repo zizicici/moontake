@@ -14,7 +14,7 @@ class TutorialsViewController: UIViewController {
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.backgroundColor = .backgroundColor
         textView.isEditable = false
-        textView.textContainerInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        textView.textContainerInset = UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
         
         return textView
     }()
@@ -27,7 +27,6 @@ class TutorialsViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
         style.alignment = .justified
-        style.firstLineHeadIndent = 10
         navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8), .paragraphStyle: style]
         navigationController?.navigationBar.tintColor = .systemRed
         view.backgroundColor = .backgroundColor
@@ -36,7 +35,7 @@ class TutorialsViewController: UIViewController {
         textView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view)
-            make.leading.trailing.equalTo(view).inset(16)
+            make.leading.trailing.equalTo(view)
         }
         
         setupText()
