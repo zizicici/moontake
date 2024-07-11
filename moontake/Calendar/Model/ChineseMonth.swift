@@ -73,7 +73,7 @@ enum RepeatableChineseMonth: RawRepresentable {
         case let .normal(chineseMonth):
             return chineseMonth.displayString()
         case let .interCalary(chineseMonth):
-            return "閏".localized() + chineseMonth.displayString()
+            return String(localized: "閏") + chineseMonth.displayString()
         }
     }
 
@@ -91,7 +91,7 @@ enum RepeatableChineseMonth: RawRepresentable {
         case let .normal(chineseMonth):
             return chineseMonth.displayString(false, showMonth: false)
         case let .interCalary(chineseMonth):
-            return "閏".localized() + chineseMonth.displayString(false, showMonth: false)
+            return String(localized: "閏") + chineseMonth.displayString(false, showMonth: false)
         }
     }
     
@@ -100,7 +100,7 @@ enum RepeatableChineseMonth: RawRepresentable {
         case let .normal(chineseMonth):
             return chineseMonth.displayString(false, showMonth: false)
         case let .interCalary(chineseMonth):
-            return "閏".localized() + chineseMonth.displayString(false, showMonth: false)
+            return String(localized: "閏") + chineseMonth.displayString(false, showMonth: false)
         }
     }
 }

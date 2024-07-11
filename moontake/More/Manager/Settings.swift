@@ -18,11 +18,11 @@ struct Settings {
         var title: String {
             switch self {
             case .photoWithWatermark:
-                return "Photo with Watermark".localized()
+                return String(localized: "Photo with Watermark")
             case .photoWithoutWatermark:
-                return "Photo without Watermark".localized()
+                return String(localized: "Photo without Watermark")
             case .both:
-                return "Both above".localized()
+                return String(localized: "Both above")
             }
         }
     }
@@ -36,13 +36,13 @@ struct Settings {
         var title: String {
             switch self {
             case .qrCode:
-                return "QR Code".localized()
+                return String(localized: "QR Code")
             case .icon:
-                return "App Icon".localized()
+                return String(localized: "App Icon")
             case .location:
-                return "Location".localized()
+                return String(localized: "Location")
             case .blank:
-                return "None".localized()
+                return String(localized: "None")
             }
         }
     }
@@ -55,11 +55,11 @@ struct Settings {
         var title: String {
             switch self {
             case .longitudeAndLatitude:
-                return "Longitude And Latitude".localized()
+                return String(localized: "Longitude And Latitude")
             case .address:
-                return "City".localized()
+                return String(localized: "City")
             case .custom:
-                return "Custom".localized()
+                return String(localized: "Custom")
             }
         }
     }
@@ -71,7 +71,7 @@ struct Settings {
         var title: String {
             switch self {
             case .default:
-                return "Default".localized() + String(format: " [%.0f]", Camera.shared.preferredValue())
+                return String(localized: "Default") + String(format: " [%.0f]", Camera.shared.preferredValue())
             case .value(let isoValue):
                 return String(format: "%.0f", isoValue)
             }
@@ -94,7 +94,7 @@ struct Settings {
         var title: String {
             switch self {
             case .default:
-                return "Default".localized() + String(format: " [%.0fK]", Camera.shared.preferredWhiteBalanceValue())
+                return String(localized: "Default") + String(format: " [%.0fK]", Camera.shared.preferredWhiteBalanceValue())
             case .value(let tempValue):
                 return String(format: "%.0fK", tempValue)
             }

@@ -59,7 +59,7 @@ class MembershipCell: UITableViewCell {
     
     private let restoreButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
-        configuration.title = "Restore Purchases".localized()
+        configuration.title = String(localized: "Restore Purchases")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -75,7 +75,7 @@ class MembershipCell: UITableViewCell {
     
     private let lifetimeButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = "Become a Pro User".localized()
+        configuration.title = String(localized: "Become a Pro User")
         configuration.titleAlignment = .center
         configuration.cornerStyle = .medium
         configuration.titlePadding = 10.0
@@ -109,15 +109,15 @@ class MembershipCell: UITableViewCell {
         didSet {
             if shouldUpdateContent {
                 if isPurchased {
-                    contentToUpdate = "Wishing you a great moon.".localized()
+                    contentToUpdate = String(localized: "Wishing you a great moon.")
                 } else {
-                    contentToUpdate = "Pro users can unlock all watermarks and have the ability to save the original images.".localized()
+                    contentToUpdate = String(localized: "Pro users can unlock all watermarks and have the ability to save the original images.")
                 }
             } else {
                 if isPurchased {
-                    contentToUpdate = "Thanks for your support.".localized()
+                    contentToUpdate = String(localized: "Thanks for your support.")
                 } else {
-                    contentToUpdate = "Your support is the biggest motivation for @AppJun to keep creating.".localized()
+                    contentToUpdate = String(localized: "Your support is the biggest motivation for @AppJun to keep creating.")
                 }
             }
         }
@@ -128,11 +128,11 @@ class MembershipCell: UITableViewCell {
             secondLabel.text = contentToUpdate
             if shouldUpdateContent {
                 var config = lifetimeButton.configuration
-                config?.title = "Become a Pro User".localized()
+                config?.title = String(localized: "Become a Pro User")
                 lifetimeButton.configuration = config
             } else {
                 var config = lifetimeButton.configuration
-                config?.title = "Support @AppJun".localized()
+                config?.title = String(localized: "Support @AppJun")
                 lifetimeButton.configuration = config
             }
         }
@@ -253,13 +253,13 @@ class MembershipCell: UITableViewCell {
     
     private func updateRestoreButtonToRestoreButton() {
         var config = restoreButton.configuration
-        config?.title = "Restore Purchases".localized()
+        config?.title = String(localized: "Restore Purchases")
         restoreButton.configuration = config
     }
     
     private func updateRestoreButtonToRetryButton() {
         var config = restoreButton.configuration
-        config?.title = "Tap to Request Store Information".localized()
+        config?.title = String(localized: "Tap to Request Store Information")
         restoreButton.configuration = config
     }
     

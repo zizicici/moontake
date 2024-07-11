@@ -93,7 +93,7 @@ extension PhotoCaptureProcessor {
                 .foregroundColor: UIColor.black.withAlphaComponent(0.6),
                 .paragraphStyle: paragraphStyle
             ]
-            let promotionText: String = "moontake\nA Moon Camera".localized()
+            let promotionText: String = String(localized: "moontake\nA Moon Camera")
             let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
             let range = (promotionText as NSString).range(of: "moontake")
             promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .medium), .foregroundColor: UIColor.black], range: range)
@@ -122,7 +122,7 @@ extension PhotoCaptureProcessor {
                 .foregroundColor: UIColor.black.withAlphaComponent(0.8),
                 .paragraphStyle: paragraphStyle
             ]
-            let promotionText: String = "Scan QR Code to Get\nmoontake".localized()
+            let promotionText: String = String(localized: "Scan QR Code to Get\nmoontake")
             let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
             let range = (promotionText as NSString).range(of: "moontake")
             promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .light), .foregroundColor: UIColor.black.withAlphaComponent(0.8)], range: range)

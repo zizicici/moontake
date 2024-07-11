@@ -23,7 +23,7 @@ class ISOOptionsViewController: UIViewController {
         }
         
         var footer: String? {
-            return "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image.".localized()
+            return String(localized: "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image.")
         }
     }
     
@@ -46,7 +46,7 @@ class ISOOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "ISO Options".localized()
+        self.title = String(localized: "ISO Options")
         
         view.backgroundColor = UIColor.backgroundColor
         navigationItem.largeTitleDisplayMode = .never

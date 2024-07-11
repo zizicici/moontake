@@ -21,11 +21,11 @@ class WatermarkViewController: UIViewController {
         var header: String? {
             switch self {
             case .location:
-                return "Location".localized()
+                return String(localized: "Location")
             case .save:
-                return "Save to Album".localized()
+                return String(localized: "Save to Album")
             case .watermark:
-                return "Right Side Watermark".localized()
+                return String(localized: "Right Side Watermark")
             }
         }
         
@@ -37,13 +37,13 @@ class WatermarkViewController: UIViewController {
                 if User.shared.proTier() == .lifetime {
                     return nil
                 } else {
-                    return "For free users, the default option is automatically selected and not customizable.".localized()
+                    return String(localized: "For free users, the default option is automatically selected and not customizable.")
                 }
             case .watermark:
                 if User.shared.proTier() == .lifetime {
                     return nil
                 } else {
-                    return "The App Icon watermark is only for Pro User.".localized()
+                    return String(localized: "The App Icon watermark is only for Pro User.")
                 }
             }
         }
@@ -70,7 +70,7 @@ class WatermarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Photo Save Options".localized()
+        self.title = String(localized: "Photo Save Options")
         
         view.backgroundColor = UIColor.backgroundColor
         navigationItem.largeTitleDisplayMode = .never
@@ -108,13 +108,13 @@ class WatermarkViewController: UIViewController {
                 var content = UIListContentConfiguration.valueCell()
                 switch authorizationStatus {
                 case .notDetermined:
-                    content.text = "Requst Authorization".localized()
+                    content.text = String(localized: "Requst Authorization")
                 case .restricted, .denied:
-                    content.text = "Location".localized()
-                    content.secondaryText = "Never".localized()
+                    content.text = String(localized: "Location")
+                    content.secondaryText = String(localized: "Never")
                 case .authorizedAlways, .authorizedWhenInUse:
-                    content.text = "Location".localized()
-                    content.secondaryText = "While Using the App".localized()
+                    content.text = String(localized: "Location")
+                    content.secondaryText = String(localized: "While Using the App")
                 @unknown default:
                     break
                 }
@@ -146,8 +146,8 @@ class WatermarkViewController: UIViewController {
     @objc
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections([.location])
-        snapshot.appendItems([.location(Location.shared.authorizationStatus())], toSection: .location)
+//        snapshot.appendSections([.location])
+//        snapshot.appendItems([.location(Location.shared.authorizationStatus())], toSection: .location)
         snapshot.appendSections([.save])
         let saveToAlbumSettings = Settings.shared.getSaveToAlbumSettings()
         snapshot.appendItems([.save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
@@ -192,12 +192,12 @@ extension WatermarkViewController: UITableViewDelegate {
 
 extension WatermarkViewController {
     func showUserTierAlert() {
-        showAlert(title: "This option is only for Pro user.".localized(), message: nil)
+        showAlert(title: String(localized: "This option is only for Pro user."), message: nil)
     }
     
     func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)

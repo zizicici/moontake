@@ -20,13 +20,13 @@ struct MoonPhase {
         var title: String {
             switch self {
             case .newMoon:
-                return "New Moon".localized()
+                return String(localized: "New Moon")
             case .firstQuarter:
-                return "First Quarter".localized()
+                return String(localized: "First Quarter")
             case .fullMoon:
-                return "Full Moon".localized()
+                return String(localized: "Full Moon")
             case .thirdQuarter:
-                return "Third Quarter".localized()
+                return String(localized: "Third Quarter")
             case .error:
                 return "Error"
             }

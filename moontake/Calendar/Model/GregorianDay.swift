@@ -304,10 +304,6 @@ enum Month: Int, Codable, CaseIterable {
     static func >= (left: Month, right: Month) -> Bool {
         return left.rawValue >= right.rawValue
     }
-    
-    var title: String {
-        return String(format: "Month%02d", rawValue).localized()
-    }
 }
 
 enum WeekdayOrder: Int {
@@ -336,10 +332,6 @@ enum WeekdayOrder: Int {
         case .sun:
             return "周日"
         }
-    }
-    
-    var shortName: String {
-        return String(format: "Week%02dShort", rawValue).localized()
     }
     
     var isWeekEnd: Bool {

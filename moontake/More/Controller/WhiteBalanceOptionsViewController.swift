@@ -43,7 +43,7 @@ class WhiteBalanceOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "White Balance Temperature".localized()
+        self.title = String(localized: "White Balance Temperature")
         
         view.backgroundColor = UIColor.backgroundColor
         navigationItem.largeTitleDisplayMode = .never

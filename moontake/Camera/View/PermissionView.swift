@@ -11,7 +11,7 @@ import SnapKit
 class PermissionView: UIView {
     private let cameraButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Enable Camera Permission".localized()
+        configuration.title = String(localized: "Enable Camera Permission")
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .skyColor
@@ -21,7 +21,7 @@ class PermissionView: UIView {
     
     private let albumButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Enable Add Photo Permission".localized()
+        configuration.title = String(localized: "Enable Add Photo Permission")
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .skyColor

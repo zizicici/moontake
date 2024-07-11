@@ -22,14 +22,14 @@ class SpecificationsViewController: UIViewController {
             case .summary:
                 return nil
             case .thirdParty:
-                return "Third Party Framework".localized()
+                return String(localized: "Third Party Framework")
             }
         }
         
         func footerTitle() -> String? {
             switch self {
             case .thirdParty:
-                return "We extend our heartfelt appreciation to all developers of open-source projects.".localized()
+                return String(localized: "We extend our heartfelt appreciation to all developers of open-source projects.")
             default:
                 return nil
             }
@@ -48,17 +48,17 @@ class SpecificationsViewController: UIViewController {
             var title: String {
                 switch self {
                 case .name:
-                    return "Name".localized()
+                    return String(localized: "Name")
                 case .version:
-                    return "Version".localized()
+                    return String(localized: "Version")
                 case .manufacturer:
-                    return "Manufacturer".localized()
+                    return String(localized: "Manufacturer")
                 case .publisher:
-                    return "Publisher".localized()
+                    return String(localized: "Publisher")
                 case .date:
-                    return "Date of Production".localized()
+                    return String(localized: "Date of Production")
                 case .license:
-                    return "ICP Filing Number".localized()
+                    return String(localized: "ICP Filing Number")
                 }
             }
             
@@ -133,7 +133,7 @@ class SpecificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Specifications".localized()
+        self.title = String(localized: "Specifications")
         navigationItem.largeTitleDisplayMode = .never
         
         view.backgroundColor = .backgroundColor

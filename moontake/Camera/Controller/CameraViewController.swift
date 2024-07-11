@@ -35,7 +35,7 @@ class CameraViewController: UIViewController {
         button.layer.shadowRadius = 10.0
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.accessibilityLabel = "Capture".localized()
+        button.accessibilityLabel = String(localized: "Capture")
 
         return button
     }()
@@ -55,7 +55,7 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "plus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = "Lighten".localized()
+        configuration.title = String(localized: "Lighten")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)
@@ -66,7 +66,7 @@ class CameraViewController: UIViewController {
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = "Lighten Image".localized()
+        button.accessibilityLabel = String(localized: "Lighten Image")
         
         return button
     }()
@@ -75,7 +75,7 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "minus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = "Darken".localized()
+        configuration.title = String(localized: "Darken")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)
@@ -86,20 +86,20 @@ class CameraViewController: UIViewController {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = "Darken Image".localized()
+        button.accessibilityLabel = String(localized: "Darken Image")
         
         return button
     }()
     private let lensPositionSlider: UISlider = {
         var slider = UISlider()
         slider.minimumTrackTintColor = .moonColor
-        slider.accessibilityLabel = "Focus Slider".localized()
+        slider.accessibilityLabel = String(localized: "Focus Slider")
 
         return slider
     }()
     private let sliderLabel: UILabel = {
         var label = UILabel()
-        label.text = "Focus Slider".localized()
+        label.text = String(localized: "Focus Slider")
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .moonColor.withAlphaComponent(0.75)
         label.isUserInteractionEnabled = false
@@ -111,7 +111,7 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "ellipsis")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = "More".localized()
+        configuration.title = String(localized: "More")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)
@@ -122,7 +122,7 @@ class CameraViewController: UIViewController {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = "More".localized()
+        button.accessibilityLabel = String(localized: "More")
         
         return button
     }()
@@ -133,7 +133,7 @@ class CameraViewController: UIViewController {
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = "Tutorials".localized()
+        button.accessibilityLabel = String(localized: "Tutorials")
         button.alpha = 0.83
         
         return button
@@ -621,16 +621,16 @@ class CameraViewController: UIViewController {
     
     func updateInformationLabel() {
         DispatchQueue.main.async {
-            let iso = "ISO:".localized()
-            let aperture = "Aperture:".localized()
+            let iso = String(localized: "ISO:")
+            let aperture = String(localized: "Aperture:")
             self.informationLabel.text = String(format: "%@%.0f, %@F/%.1f, %@", iso ,self.iso, aperture, self.apertureFactor, self.shutterTimeString(self.shutterScale))
         }
     }
     
     func updateSliderLabel() {
         DispatchQueue.main.async {
-            let position = "Position:".localized()
-            self.sliderLabel.text = "Focus Slider".localized() + String(format: " [%@%.4f]", position, self.lensPosition)
+            let position = String(localized: "Position:")
+            self.sliderLabel.text = String(localized: "Focus Slider") + String(format: " [%@%.4f]", position, self.lensPosition)
         }
     }
     
@@ -770,7 +770,7 @@ class CameraViewController: UIViewController {
     }
     
     func shutterTimeString(_ time: Int32) -> String {
-        return "Shutter Speed:".localized() + " 1/\(time)" + "s".localized()
+        return String(localized: "Shutter Speed:") + " 1/\(time)" + String(localized: "s")
     }
     
     @objc
@@ -779,7 +779,7 @@ class CameraViewController: UIViewController {
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : first
             if currentIndex == 0 {
-                showToast(text: "Maximum Shutter Speed Value Reached".localized())
+                showToast(text: String(localized: "Maximum Shutter Speed Value Reached"))
             } else {
                 showToast(text: shutterTimeString(nextStop))
             }
@@ -795,7 +795,7 @@ class CameraViewController: UIViewController {
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : last
             if currentIndex + 1 == exposureStops.count {
-                showToast(text: "Minimum Shutter Speed Value Reached".localized())
+                showToast(text: String(localized: "Minimum Shutter Speed Value Reached"))
             } else {
                 showToast(text: shutterTimeString(nextStop))
             }

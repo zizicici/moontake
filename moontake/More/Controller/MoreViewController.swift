@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SafariServices
+import AppInfo
 
 class MoreViewController: UIViewController {
     static let supportEmail = "moon@zi.ci"
@@ -29,11 +30,11 @@ class MoreViewController: UIViewController {
             case .membership:
                 return " "
             case .settings:
-                return "Settings".localized()
+                return String(localized: "Settings")
             case .appjun:
-                return "App from AppJun".localized()
+                return String(localized: "App from AppJun")
             case .about:
-                return "About".localized()
+                return String(localized: "About")
             }
         }
         
@@ -52,20 +53,20 @@ class MoreViewController: UIViewController {
             var title: String {
                 switch self {
                 case .language:
-                    return "Language".localized()
+                    return String(localized: "Language")
                 case .iso:
-                    return "ISO".localized()
+                    return String(localized: "ISO")
                 case .whiteBalance:
-                    return "White Balance Temperature".localized()
+                    return String(localized: "White Balance Temperature")
                 case .saveOptions:
-                    return "Photo Save Options".localized()
+                    return String(localized: "Photo Save Options")
                 }
             }
             
             var value: String? {
                 switch self {
                 case .language:
-                    return "🍋Language".localized()
+                    return String(localized: "🍋Language")
                 case .iso:
                     return Settings.shared.getISOSettings().title
                 case .whiteBalance:
@@ -87,17 +88,17 @@ class MoreViewController: UIViewController {
             var title: String {
                 switch self {
                 case .specifications:
-                    return "Specifications".localized()
+                    return String(localized: "Specifications")
                 case .share:
-                    return "Share App".localized()
+                    return String(localized: "Share App")
                 case .review:
-                    return "Write Review".localized()
+                    return String(localized: "Write Review")
                 case .eula:
-                    return "EULA".localized()
+                    return String(localized: "EULA")
                 case .privacyPolicy:
-                    return "Policy of Privacy".localized()
+                    return String(localized: "Policy of Privacy")
                 case .email:
-                    return "Email".localized()
+                    return String(localized: "Email")
                 }
             }
             
@@ -121,9 +122,9 @@ class MoreViewController: UIViewController {
                 case .otherApps:
                     return ""
                 case .bilibili:
-                    return "Follow us on Bilibili".localized()
+                    return String(localized: "Follow us on Bilibili")
                 case .xiaohongshu:
-                    return "Follow us on Xiaohongshu".localized()
+                    return String(localized: "Follow us on Xiaohongshu")
                 }
             }
             
@@ -176,7 +177,7 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "More".localized()
+        self.title = String(localized: "More")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
@@ -497,7 +498,7 @@ extension MoreViewController {
                 }
             }
             catch {
-                showAlert(title: "Order Failure".localized(), message: error.localizedDescription)
+                showAlert(title: String(localized: "Order Failure"), message: error.localizedDescription)
             }
             
             hideOverlayViewController()
@@ -506,7 +507,7 @@ extension MoreViewController {
     
     func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK".localized(), style: .cancel)
+        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)

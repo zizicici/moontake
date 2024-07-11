@@ -22,7 +22,7 @@ class TutorialsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Tutorials".localized()
+        self.title = String(localized: "Tutorials")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
@@ -51,7 +51,7 @@ class TutorialsViewController: UIViewController {
     }
     
     private func setupText() {
-        let text = "__moontake__tutorials__".localized()
+        let text = String(localized: "__moontake__tutorials__")
 
         let attributedString = NSMutableAttributedString(string: text)
         
