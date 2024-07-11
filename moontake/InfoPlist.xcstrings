@@ -173,10 +173,82 @@
       "comment" : "Privacy - Location When In Use Usage Description",
       "extractionState" : "extracted_with_value",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir müssen auf Ihren Standort zugreifen, um Geotags zu den Fotos hinzuzufügen."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "We need location information to add to photo."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesitamos acceder a su ubicación para agregar etiquetas geográficas a las fotos."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Necesitamos acceder a su ubicación para agregar etiquetas geográficas a las fotos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous devons accéder à votre emplacement pour ajouter des balises géographiques aux photos."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真にジオタグを追加するために、あなたの位置情報にアクセスする必要があります。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Precisamos acessar sua localização para adicionar geotags às fotos."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Precisamos acessar sua localização para adicionar geotags às fotos."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нам нужен доступ к вашему местоположению, чтобы добавить геометки к фотографиям."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нам потрібен доступ до вашого місцезнаходження, щоб додати геомітки до фотографій."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们需要访问您的地理位置，才能向照片添加地理信息。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我們需要訪問您的地理位置，才能向照片添加地理信息。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我們需要訪問您的地理位置，才能向照片添加地理信息。"
           }
         }
       }

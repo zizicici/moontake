@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "__moontake__tutorials__" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -86,7 +85,6 @@
     },
     "🍋Language" : {
       "comment" : "Localizable.strings\n  moontake\n\n  Created by Ci Zi on 2023/8/3.",
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -169,7 +167,6 @@
       }
     },
     "About" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -245,85 +242,7 @@
         }
       }
     },
-    "Aperture:" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Blende:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apertura:"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apertura:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ouverture :"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "絞り:"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abertura:"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abertura:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Диафрагма:"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Діафрагма:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "光圈:"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "光圈:"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "光圈:"
-          }
-        }
-      }
-    },
     "App from AppJun" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -400,7 +319,6 @@
       }
     },
     "App Icon" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -477,7 +395,6 @@
       }
     },
     "Become a Pro User" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -554,7 +471,6 @@
       }
     },
     "Both above" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -632,7 +548,6 @@
     },
     "Capture" : {
       "comment" : "a11y",
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -715,7 +630,6 @@
 
     },
     "Darken" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -792,7 +706,6 @@
       }
     },
     "Darken Image" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -869,7 +782,6 @@
       }
     },
     "Date of Production" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -946,7 +858,6 @@
       }
     },
     "Default" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1023,7 +934,6 @@
       }
     },
     "Email" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1100,7 +1010,6 @@
       }
     },
     "Enable Add Photo Permission" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1177,7 +1086,6 @@
       }
     },
     "Enable Camera Permission" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1254,7 +1162,6 @@
       }
     },
     "EULA" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1334,7 +1241,6 @@
 
     },
     "Focus Slider" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1410,8 +1316,89 @@
         }
       }
     },
+    "Focus Slider [Position: %.4f]" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fokusschieberegler [%.4f]"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Slider [Position: %.4f]"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deslizador de enfoque [%.4f]"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deslizador de enfoque [%.4f]"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Curseur de mise au point [%.4f]"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォーカススライダー [%.4f]"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controle de Foco [%.4f]"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controle de Foco [%.4f]"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Регулятор фокусировки [%.4f]"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повзунок фокусування [%.4f]"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "对焦滑杆 [对焦值: %.4f]"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對焦滑桿 [對焦值: %.4f]"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "對焦滑桿 [對焦值: %.4f]"
+          }
+        }
+      }
+    },
     "Follow us on Bilibili" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1488,7 +1475,6 @@
       }
     },
     "Follow us on Xiaohongshu" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1565,7 +1551,6 @@
       }
     },
     "For free users, the default option is automatically selected and not customizable." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1642,7 +1627,6 @@
       }
     },
     "Full Moon" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1724,162 +1708,7 @@
         }
       }
     },
-    "General" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Allgemein"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "General"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "General"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Général"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "一般"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geral"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geral"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Общие"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Загальні"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通用"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通用"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "通用"
-          }
-        }
-      }
-    },
-    "Help" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hilfe"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayuda"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayuda"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aide"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ヘルプ"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajuda"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajuda"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Помощь"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Допомога"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "帮助"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "幫助"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "幫助"
-          }
-        }
-      }
-    },
     "ICP Filing Number" : {
-      "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1902,7 +1731,6 @@
       }
     },
     "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1982,7 +1810,6 @@
 
     },
     "ISO Options" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2058,86 +1885,89 @@
         }
       }
     },
-    "ISO:" : {
-      "comment" : "Hint",
-      "extractionState" : "manual",
+    "ISO: %.0f, Aperture: F/%.1f, %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Blende: F/%2$.1f, %3$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ISO: %1$.0f, Aperture: F/%2$.1f, %3$@"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Apertura: F/%2$.1f, %3$@"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Apertura: F/%2$.1f, %3$@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO :"
+            "value" : "ISO: %1$.0f, Ouverture: F/%2$.1f, %3$@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, 絞り: F/%2$.1f, %3$@"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Abertura: F/%2$.1f, %3$@"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Abertura: F/%2$.1f, %3$@"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Диафрагма: F/%2$.1f, %3$@"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, Діафрагма: F/%2$.1f, %3$@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, 光圈: F/%2$.1f, %3$@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, 光圈: F/%2$.1f, %3$@"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ISO:"
+            "value" : "ISO: %1$.0f, 光圈: F/%2$.1f, %3$@"
           }
         }
       }
     },
     "Language" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2213,85 +2043,7 @@
         }
       }
     },
-    "Lifetime" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lebenslang"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permanente"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permanente"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "À vie"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ライフタイム"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vitalício"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vitalício"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пожизненная"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На повне життя"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "买断"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "買斷"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "買斷"
-          }
-        }
-      }
-    },
     "Lighten" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2368,7 +2120,6 @@
       }
     },
     "Lighten Image" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2450,86 +2201,7 @@
     "Longitude And Latitude" : {
 
     },
-    "Manage Photo Watermark" : {
-      "comment" : "IAP",
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Foto-Wasserzeichen verwalten"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Administrar marca de agua en fotos"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Administrar marca de agua en fotos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gérer le filigrane des photos"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "写真のウォーターマークを管理"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Marca d'água da Foto"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Marca d'água da Foto"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Управление водяным знаком на фото"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Управління водяним знаком на фото"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理照片水印"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理照片水印"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "管理照片水印"
-          }
-        }
-      }
-    },
     "Manufacturer" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2606,7 +2278,6 @@
       }
     },
     "Maximum Shutter Speed Value Reached" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2682,85 +2353,7 @@
         }
       }
     },
-    "Membership" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mitgliedschaft"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Membresía"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Membresía"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adhésion"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メンバーシップ"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Associação"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Associação"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Подписка"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Платна підписка"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "会员"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "会员"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "会员"
-          }
-        }
-      }
-    },
     "Minimum Shutter Speed Value Reached" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2837,7 +2430,6 @@
       }
     },
     "moontake\nA Moon Camera" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2915,7 +2507,6 @@
     },
     "More" : {
       "comment" : "More",
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2993,7 +2584,6 @@
     },
     "Name" : {
       "comment" : "Specifications",
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3073,7 +2663,6 @@
 
     },
     "New Moon" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3156,7 +2745,6 @@
       }
     },
     "None" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3233,7 +2821,6 @@
       }
     },
     "OK" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3310,7 +2897,6 @@
       }
     },
     "Order Failure" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3387,7 +2973,6 @@
       }
     },
     "Photo Save Options" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3464,7 +3049,6 @@
       }
     },
     "Photo with Watermark" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3541,7 +3125,6 @@
       }
     },
     "Photo without Watermark" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3618,7 +3201,6 @@
       }
     },
     "Policy of Privacy" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3694,85 +3276,7 @@
         }
       }
     },
-    "Position:" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Position:"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posición:"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posición:"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Position :"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フォーカス位置:"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posição:"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posição:"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Позиция:"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Положення:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "对焦值:"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "對焦值:"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "對焦值:"
-          }
-        }
-      }
-    },
     "Pro users can unlock all watermarks and have the ability to save the original images." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3849,7 +3353,6 @@
       }
     },
     "Publisher" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3926,7 +3429,6 @@
       }
     },
     "QR Code" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4006,7 +3508,6 @@
 
     },
     "Restore Purchases" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4083,7 +3584,6 @@
       }
     },
     "Right Side Watermark" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4159,85 +3659,7 @@
         }
       }
     },
-    "s" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "秒"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "s"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "с"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "сек."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "秒"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "秒"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "秒"
-          }
-        }
-      }
-    },
     "Save to Album" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4314,7 +3736,6 @@
       }
     },
     "Scan QR Code to Get\nmoontake" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4391,7 +3812,6 @@
       }
     },
     "Settings" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4468,7 +3888,6 @@
       }
     },
     "Share App" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4544,85 +3963,83 @@
         }
       }
     },
-    "Shutter Speed:" : {
-      "extractionState" : "manual",
+    "Shutter Speed: 1/%is" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Belichtungszeit:"
+            "value" : "Belichtungszeit: 1/%is"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Velocidad de obturación:"
+            "value" : "Velocidad de obturación: 1/%is"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Velocidad de obturación:"
+            "value" : "Velocidad de obturación: 1/%is"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vitesse d'obturation :"
+            "value" : "Vitesse d'obturation: 1/%is"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "シャッタースピード:"
+            "value" : "シャッタースピード: 1/%is"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Velocidade do Obturador:"
+            "value" : "Velocidade do Obturador: 1/%is"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Velocidade do Obturador:"
+            "value" : "Velocidade do Obturador: 1/%is"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Выдержка:"
+            "value" : "Выдержка: 1/%is"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Час експозиції:"
+            "value" : "Час експозиції: 1/%is"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "曝光时间:"
+            "value" : "曝光时间: 1/%is"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "曝光時間:"
+            "value" : "曝光時間: 1/%is"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "曝光時間:"
+            "value" : "曝光時間: 1/%is"
           }
         }
       }
     },
     "Specifications" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4699,7 +4116,6 @@
       }
     },
     "Support @AppJun" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4776,7 +4192,6 @@
       }
     },
     "Tap to Request Store Information" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4853,7 +4268,6 @@
       }
     },
     "Thanks for your support." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -4930,7 +4344,6 @@
       }
     },
     "The App Icon watermark is only for Pro User." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5007,7 +4420,6 @@
       }
     },
     "Third Party Framework" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5087,7 +4499,6 @@
 
     },
     "This option is only for Pro user." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5165,7 +4576,6 @@
     },
     "Tutorials" : {
       "comment" : "Tutorials",
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5242,7 +4652,6 @@
       }
     },
     "Version" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5319,7 +4728,6 @@
       }
     },
     "WaningMoon1" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5402,7 +4810,6 @@
       }
     },
     "WaningMoon2" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5485,7 +4892,6 @@
       }
     },
     "WaningMoon3" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5567,85 +4973,7 @@
         }
       }
     },
-    "Watermark" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wasserzeichen"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marca de agua"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marca de agua"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filigrane"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ウォーターマーク"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marca d'água"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marca d'água"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Водяной знак"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Водяний знак"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "水印"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "水印"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "水印"
-          }
-        }
-      }
-    },
     "WaxingMoon1" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5728,7 +5056,6 @@
       }
     },
     "WaxingMoon2" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5811,7 +5138,6 @@
       }
     },
     "WaxingMoon3" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5894,7 +5220,6 @@
       }
     },
     "We extend our heartfelt appreciation to all developers of open-source projects." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5974,7 +5299,6 @@
 
     },
     "White Balance Temperature" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6051,7 +5375,6 @@
       }
     },
     "Wishing you a great moon." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6128,7 +5451,6 @@
       }
     },
     "Write Review" : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6205,7 +5527,6 @@
       }
     },
     "Your support is the biggest motivation for @AppJun to keep creating." : {
-      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

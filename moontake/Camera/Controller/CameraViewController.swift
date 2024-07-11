@@ -627,16 +627,13 @@ class CameraViewController: UIViewController {
     
     func updateInformationLabel() {
         DispatchQueue.main.async {
-            let iso = String(localized: "ISO:")
-            let aperture = String(localized: "Aperture:")
-            self.informationLabel.text = String(format: "%@%.0f, %@F/%.1f, %@", iso ,self.iso, aperture, self.apertureFactor, self.shutterTimeString(self.shutterScale))
+            self.informationLabel.text = String(format: String(localized: "ISO: %.0f, Aperture: F/%.1f, %@") ,self.iso, self.apertureFactor, self.shutterTimeString(self.shutterScale))
         }
     }
     
     func updateSliderLabel() {
         DispatchQueue.main.async {
-            let position = String(localized: "Position:")
-            self.sliderLabel.text = String(localized: "Focus Slider") + String(format: " [%@%.4f]", position, self.lensPosition)
+            self.sliderLabel.text = String(format: String(localized: "Focus Slider [Position: %.4f]"), self.lensPosition)
         }
     }
     
@@ -776,7 +773,7 @@ class CameraViewController: UIViewController {
     }
     
     func shutterTimeString(_ time: Int32) -> String {
-        return String(localized: "Shutter Speed:") + " 1/\(time)" + String(localized: "s")
+        return String(format: String(localized: "Shutter Speed: 1/%is"), time)
     }
     
     @objc
