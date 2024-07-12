@@ -764,12 +764,13 @@ class CameraViewController: UIViewController {
     }
     
     func showToast(text: String) {
+        view.hideAllToasts()
         var style = ToastStyle()
         style.backgroundColor = .black.withAlphaComponent(0.8)
         style.messageAlignment = .center
         style.messageFont = UIFont.systemFont(ofSize: 12)
         style.messageColor = .moonColor
-        view.makeToast(text, duration: 0.25, point: CGPoint(x: captureButton.frame.midX, y: captureButton.frame.minY - 20), title: nil, image: nil, style: style, completion: nil)
+        view.makeToast(text, duration: 0.5, point: CGPoint(x: captureButton.frame.midX, y: captureButton.frame.minY - 100), title: nil, image: nil, style: style, completion: nil)
     }
     
     func shutterTimeString(_ time: Int32) -> String {
