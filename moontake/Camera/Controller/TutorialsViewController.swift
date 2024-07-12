@@ -29,6 +29,8 @@ class TutorialsViewController: UIViewController {
         style.alignment = .justified
         navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8), .paragraphStyle: style]
         navigationController?.navigationBar.tintColor = .systemRed
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localized: "tutorials.close"), style: .plain, target: self, action: #selector(dismissAction))
+
         view.backgroundColor = .backgroundColor
         
         view.addSubview(textView)
@@ -69,5 +71,9 @@ class TutorialsViewController: UIViewController {
         attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
         
         textView.attributedText = attributedString
+    }
+    
+    @objc func dismissAction() {
+        dismiss(animated: true)
     }
 }
