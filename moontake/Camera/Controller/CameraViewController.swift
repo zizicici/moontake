@@ -92,7 +92,7 @@ class CameraViewController: UIViewController {
     }()
     private let lensPositionSlider: UISlider = {
         var slider = UISlider()
-        slider.minimumTrackTintColor = .moonColor
+        slider.minimumTrackTintColor = .moonColor.withAlphaComponent(0.83)
         slider.accessibilityLabel = String(localized: "Focus Slider")
 
         return slider
@@ -293,6 +293,7 @@ class CameraViewController: UIViewController {
             }
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
+        lensPositionSlider.setThumbImage(UIImage(systemName: "rectangle.portrait.fill")?.withTintColor(.moonColor, renderingMode: .alwaysOriginal), for: .normal)
         
         view.addSubview(sliderLabel)
         if view.frame.width == 320 {
