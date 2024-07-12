@@ -210,7 +210,7 @@ class CameraViewController: UIViewController {
         }
     }
     
-    var orientationLast = UIInterfaceOrientation.unknown
+    var orientationLast = UIInterfaceOrientation.portrait
     var motionManager: CMMotionManager?
     
     override var prefersStatusBarHidden: Bool {
