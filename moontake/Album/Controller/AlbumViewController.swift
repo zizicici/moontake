@@ -47,7 +47,6 @@ class AlbumViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
         style.alignment = .justified
-        style.firstLineHeadIndent = 10
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
@@ -63,6 +62,7 @@ class AlbumViewController: UIViewController {
     func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .clear
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -127,7 +127,7 @@ extension AlbumViewController {
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(100),
-                                                  heightDimension: .absolute(220))
+                                                  heightDimension: .absolute(216))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
             let section = NSCollectionLayoutSection(group: group)
@@ -151,5 +151,11 @@ extension AlbumViewController {
         let layout = UICollectionViewCompositionalLayout(
             sectionProvider: sectionProvider, configuration: config)
         return layout
+    }
+}
+
+extension AlbumViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }

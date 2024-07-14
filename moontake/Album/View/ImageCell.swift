@@ -47,7 +47,6 @@ class ImageCell: ImageBaseCell {
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .systemRed.withAlphaComponent(0.5)
         
         return imageView
     }()
@@ -64,7 +63,7 @@ class ImageCell: ImageBaseCell {
             make.width.equalTo(100.0).priority(.high)
             make.height.equalTo(210.0).priority(.high)
             make.center.equalTo(contentView)
-            make.width.equalTo(contentView).offset(-20)
+            make.width.equalTo(contentView).offset(-6)
         }
         
         paperView.snp.makeConstraints { make in
@@ -78,7 +77,7 @@ class ImageCell: ImageBaseCell {
         
         if let imageInfo = state.imageInfo {
             if let thumbnailURL = imageInfo.thumbnailURL {
-                imageView.kf.setImage(with: thumbnailURL)
+                imageView.kf.setImage(with: thumbnailURL, options: [.loadDiskFileSynchronously])
             }
             let factor = Double(imageInfo.height) / 210.0
             let imageWidth = floor(Double(imageInfo.width) / factor)
@@ -87,6 +86,11 @@ class ImageCell: ImageBaseCell {
                 make.width.equalTo(imageWidth).priority(.high)
                 make.height.equalTo(imageHeight).priority(.high)
             }
+        }
+        if state.isHighlighted {
+            paperView.backgroundColor = .moonColor
+        } else {
+            paperView.backgroundColor = .moonColor.withAlphaComponent(0.83)
         }
     }
 }
