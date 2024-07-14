@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ZCCalendar
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = Store.shared
         
         DispatchQueue.global(qos: .background).async {
-            let today = CalendarManager.shared.today
+            let today = ZCCalendar.manager.today
             switch today.month {
             case .jan:
                 if today.day == 1 {
