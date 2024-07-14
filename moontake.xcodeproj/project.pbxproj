@@ -10,7 +10,18 @@
 		14898FEB2BFB46D100FBEAC6 /* AppInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 14898FEA2BFB46D100FBEAC6 /* AppInfo */; };
 		14898FEE2BFB47A600FBEAC6 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FED2BFB47A600FBEAC6 /* InfoPlist.xcstrings */; };
 		14898FF02BFB47A600FBEAC6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FEF2BFB47A600FBEAC6 /* Localizable.xcstrings */; };
+		1498CF142C3FE91A005562AA /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498CF132C3FE91A005562AA /* AlbumViewController.swift */; };
+		1498CF182C3FEA7B005562AA /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498CF172C3FEA7B005562AA /* AlbumManager.swift */; };
+		14D3C5772C4266FF004BAB85 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D3C5762C4266FF004BAB85 /* ImageCell.swift */; };
+		14D3C57A2C426805004BAB85 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */; };
+		14D3C57D2C4277BA004BAB85 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57C2C4277BA004BAB85 /* Kingfisher */; };
 		14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57F2C43A63F004BAB85 /* ZCCalendar */; };
+		14F122872C410F54000A0B08 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 14F122862C410F54000A0B08 /* GRDB */; };
+		14F122892C41118D000A0B08 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F122882C41118D000A0B08 /* AppDatabase.swift */; };
+		14F1228C2C4111D6000A0B08 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1228B2C4111D5000A0B08 /* Persistence.swift */; };
+		14F1228E2C4111DE000A0B08 /* TimestampedRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1228D2C4111DE000A0B08 /* TimestampedRecord.swift */; };
+		14F122912C411206000A0B08 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1228F2C411206000A0B08 /* Date+Extension.swift */; };
+		14F122932C411439000A0B08 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F122922C411439000A0B08 /* ImageInfo.swift */; };
 		6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */; };
 		6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304F6EF2A5AC2410068C1C4 /* PhotoCaptureProcessor.swift */; };
 		6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */; };
@@ -74,6 +85,15 @@
 		14898FEC2BFB47A600FBEAC6 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/LaunchScreen.xcstrings; sourceTree = "<group>"; };
 		14898FED2BFB47A600FBEAC6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		14898FEF2BFB47A600FBEAC6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		1498CF132C3FE91A005562AA /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		1498CF172C3FEA7B005562AA /* AlbumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
+		14D3C5762C4266FF004BAB85 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
+		14F122882C41118D000A0B08 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		14F1228B2C4111D5000A0B08 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		14F1228D2C4111DE000A0B08 /* TimestampedRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampedRecord.swift; sourceTree = "<group>"; };
+		14F1228F2C411206000A0B08 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		14F122922C411439000A0B08 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
 		6304F6ED2A5AB0070068C1C4 /* AVCapturePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCapturePreviewView.swift; sourceTree = "<group>"; };
 		6304F6EF2A5AC2410068C1C4 /* PhotoCaptureProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureProcessor.swift; sourceTree = "<group>"; };
 		6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificationsViewController.swift; sourceTree = "<group>"; };
@@ -123,8 +143,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D3C57D2C4277BA004BAB85 /* Kingfisher in Frameworks */,
 				14898FEB2BFB46D100FBEAC6 /* AppInfo in Frameworks */,
 				14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */,
+				14F122872C410F54000A0B08 /* GRDB in Frameworks */,
 				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
 				63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
@@ -148,6 +170,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1498CF152C3FE925005562AA /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				1498CF172C3FEA7B005562AA /* AlbumManager.swift */,
+				1498CF162C3FE991005562AA /* Controller */,
+				14D3C5782C426705004BAB85 /* View */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		1498CF162C3FE991005562AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1498CF132C3FE91A005562AA /* AlbumViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14D3C5782C426705004BAB85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14D3C5762C4266FF004BAB85 /* ImageCell.swift */,
+				14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14F1228A2C411193000A0B08 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				14F122882C41118D000A0B08 /* AppDatabase.swift */,
+				14F1228B2C4111D5000A0B08 /* Persistence.swift */,
+				14F1228D2C4111DE000A0B08 /* TimestampedRecord.swift */,
+				14F122942C411494000A0B08 /* Model */,
+				14F122902C411206000A0B08 /* Extension */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		14F122902C411206000A0B08 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				14F1228F2C411206000A0B08 /* Date+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		14F122942C411494000A0B08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14F122922C411439000A0B08 /* ImageInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6305CD1F2A7BAEC2001CF9C6 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +340,9 @@
 				63F806A22A59ACCC00135630 /* SceneDelegate.swift */,
 				63FDEA332A7D01D2002E02C2 /* Moon */,
 				63F5E3352A72ADD6008CAA07 /* Camera */,
+				1498CF152C3FE925005562AA /* Album */,
 				63F5E33A2A72B108008CAA07 /* More */,
+				14F1228A2C411193000A0B08 /* Database */,
 				63FF461A2A9E583E00C9FDCA /* Astronomy */,
 				63F5E3342A72ADC0008CAA07 /* Extension */,
 				63F806A92A59ACCD00135630 /* Assets.xcassets */,
@@ -330,6 +409,8 @@
 				63F806D32A59BA8E00135630 /* SnapKit */,
 				6306D0572AA0913A003B3A23 /* Toast */,
 				14898FEA2BFB46D100FBEAC6 /* AppInfo */,
+				14F122862C410F54000A0B08 /* GRDB */,
+				14D3C57C2C4277BA004BAB85 /* Kingfisher */,
 				14D3C57F2C43A63F004BAB85 /* ZCCalendar */,
 			);
 			productName = moontake;
@@ -420,6 +501,8 @@
 				63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				14898FE92BFB46D100FBEAC6 /* XCRemoteSwiftPackageReference "AppInfo" */,
+				14F122852C410F54000A0B08 /* XCRemoteSwiftPackageReference "GRDB" */,
+				14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
@@ -471,6 +554,7 @@
 				6305CD182A7BAA49001CF9C6 /* SpecificationsViewController.swift in Sources */,
 				630EC5482AE2CC21001E8D65 /* Location.swift in Sources */,
 				631122272AA71481005C7106 /* ISOOptionsViewController.swift in Sources */,
+				1498CF182C3FEA7B005562AA /* AlbumManager.swift in Sources */,
 				6304F6F02A5AC2410068C1C4 /* PhotoCaptureProcessor.swift in Sources */,
 				63FF46152A9E581700C9FDCA /* Load.swift in Sources */,
 				6306429F2A83947500A918DE /* MembershipCell.swift in Sources */,
@@ -481,22 +565,30 @@
 				631122292AA7200F005C7106 /* Camera.swift in Sources */,
 				63E1750A2AC467F40062D7F7 /* WhiteBalanceOptionsViewController.swift in Sources */,
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
+				14F1228C2C4111D6000A0B08 /* Persistence.swift in Sources */,
 				63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */,
 				63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */,
 				63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */,
 				6305CD1E2A7BAEAA001CF9C6 /* Language.swift in Sources */,
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
+				14F122892C41118D000A0B08 /* AppDatabase.swift in Sources */,
+				14F122932C411439000A0B08 /* ImageInfo.swift in Sources */,
 				630642952A836E8400A918DE /* PermissionView.swift in Sources */,
 				6306429D2A83926000A918DE /* UserDefaults+Extension.swift in Sources */,
+				14F1228E2C4111DE000A0B08 /* TimestampedRecord.swift in Sources */,
 				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				630642992A838CD700A918DE /* Store.swift in Sources */,
 				630642A22A83CFBA00A918DE /* WatermarkViewController.swift in Sources */,
+				14D3C5772C4266FF004BAB85 /* ImageCell.swift in Sources */,
+				14F122912C411206000A0B08 /* Date+Extension.swift in Sources */,
 				630642A42A83D8DC00A918DE /* Settings.swift in Sources */,
 				630642982A838CD700A918DE /* User.swift in Sources */,
 				63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */,
 				6306D05A2AA0A4AC003B3A23 /* TutorialsViewController.swift in Sources */,
 				63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */,
+				1498CF142C3FE91A005562AA /* AlbumViewController.swift in Sources */,
 				6306429B2A83923800A918DE /* Notification+Extension.swift in Sources */,
+				14D3C57A2C426805004BAB85 /* TitleSupplementaryView.swift in Sources */,
 				63F5E3392A72B0F8008CAA07 /* MoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,7 +782,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -726,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -864,12 +956,28 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 		14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zizicici/ZCCalendar";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.0;
+			};
+		};
+		14F122852C410F54000A0B08 /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.28.0;
 			};
 		};
 		6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
@@ -896,10 +1004,20 @@
 			package = 14898FE92BFB46D100FBEAC6 /* XCRemoteSwiftPackageReference "AppInfo" */;
 			productName = AppInfo;
 		};
+		14D3C57C2C4277BA004BAB85 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		14D3C57F2C43A63F004BAB85 /* ZCCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */;
 			productName = ZCCalendar;
+		};
+		14F122862C410F54000A0B08 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14F122852C410F54000A0B08 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
 		};
 		6306D0572AA0913A003B3A23 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

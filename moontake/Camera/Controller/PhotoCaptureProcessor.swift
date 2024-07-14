@@ -7,6 +7,7 @@
 
 import AVFoundation
 import Photos
+import UIKit
 
 class PhotoCaptureProcessor: NSObject {
     private(set) var requestedPhotoSettings: AVCapturePhotoSettings
@@ -88,6 +89,11 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             return
         }
         
+        guard let image = UIImage(data: photoData) else {
+            didFinish()
+            return
+        }
+        
         let currentSettings = Settings.shared.getSaveToAlbumSettings()
 
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
@@ -109,6 +115,8 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
                         creationRequest.location = self.location
                         creationRequest.addResource(with: .photo, data: photoData, options: options)
                     }
+                    
+                    AlbumManager.shared.addImage(data: photoData, width: Int(image.size.width), height: Int(image.size.height), latitude: self.location?.coordinate.latitude, longitude: self.location?.coordinate.latitude)
                 }, completionHandler: { _, error in
                     if let error = error {
                         print("Error occurred while saving photo to photo library: \(error)")

@@ -106,19 +106,19 @@ class CameraViewController: UIViewController {
         
         return label
     }()
+    private let albumButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "photo.on.rectangle")
+
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityLabel = String(localized: "camera.button.album.a11y")
+        
+        return button
+    }()
     private let moreButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(systemName: "ellipsis")
-        configuration.imagePlacement = .top
-        configuration.imagePadding = 10.0
-        configuration.title = String(localized: "More")
-        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
-            var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 12)
-
-            return outgoing
-        })
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0)
+        configuration.image = UIImage(systemName: "gearshape")
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
@@ -134,7 +134,7 @@ class CameraViewController: UIViewController {
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "Tutorials")
-        button.alpha = 0.83
+        button.alpha = 0.75
         
         return button
     }()
@@ -331,22 +331,22 @@ class CameraViewController: UIViewController {
         }
         moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         
-        view.addSubview(tutorialsButton)
+        view.addSubview(albumButton)
         if view.frame.width == 320 {
-            tutorialsButton.snp.makeConstraints { make in
+            albumButton.snp.makeConstraints { make in
                 make.leading.equalTo(view)
                 make.trailing.equalTo(minusButton.snp.leading)
                 make.height.equalTo(minusButton)
                 make.top.equalTo(minusButton)
             }
         } else {
-            tutorialsButton.snp.makeConstraints { make in
+            albumButton.snp.makeConstraints { make in
                 make.leading.equalTo(view).inset(8)
                 make.height.width.equalTo(minusButton)
                 make.top.equalTo(minusButton)
             }
         }
-        tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
+        albumButton.addTarget(self, action: #selector(albumButtonTapped), for: .touchUpInside)
         
         view.addSubview(permissionView)
         permissionView.snp.makeConstraints { make in
@@ -359,6 +359,14 @@ class CameraViewController: UIViewController {
         permissionView.albumClosure = { [weak self] in
             self?.jumpToSettings()
         }
+        
+        view.addSubview(tutorialsButton)
+        tutorialsButton.snp.makeConstraints { make in
+            make.trailing.equalTo(previewView).inset(6)
+            make.height.width.equalTo(44.0)
+            make.bottom.equalTo(previewView).inset(6)
+        }
+        tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
@@ -977,6 +985,13 @@ class CameraViewController: UIViewController {
     func moreButtonTapped() {
         let settingsVC = MoreViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
+        present(nav, animated: true)
+    }
+    
+    @objc
+    func albumButtonTapped() {
+        let albumVC = AlbumViewController()
+        let nav = UINavigationController(rootViewController: albumVC)
         present(nav, animated: true)
     }
     
