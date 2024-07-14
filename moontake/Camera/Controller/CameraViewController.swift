@@ -213,12 +213,18 @@ class CameraViewController: UIViewController {
     var orientationLast = UIInterfaceOrientation.portrait
     var motionManager: CMMotionManager?
     
+    var observation: NSKeyValueObservation?
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     var isRegularHorizontalSizeClass: Bool {
         return traitCollection.horizontalSizeClass == .regular
+    }
+    
+    deinit {
+        observation?.invalidate()
     }
     
     override func viewDidLoad() {
@@ -370,6 +376,17 @@ class CameraViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(whiteBalanceUpdated), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
+        
+        observation = observe(\.presentationController, options: [.old, .new]) { [weak self] _, change in
+            print("presentationController changed")
+            if let vc = change.newValue as? UIPresentationController {
+                if vc.presentedViewController.presentedViewController != nil {
+                    self?.stopCaptureSession()
+                } else {
+                    self?.resumeCaptureSession()
+                }
+            }
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -503,6 +520,26 @@ class CameraViewController: UIViewController {
             //commit configuration
             self.session.commitConfiguration()
             //start running it
+            self.session.startRunning()
+        }
+    }
+    
+    func stopCaptureSession() {
+        guard cameraPermissionAuthorized == .authorized else {
+            return
+        }
+        
+        sessionQueue.async {
+            self.session.stopRunning()
+        }
+    }
+    
+    func resumeCaptureSession() {
+        guard cameraPermissionAuthorized == .authorized else {
+            return
+        }
+        
+        sessionQueue.async {
             self.session.startRunning()
         }
     }
