@@ -38,10 +38,6 @@ class AlbumViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     func updateNavigationBarStyle() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
@@ -63,6 +59,7 @@ class AlbumViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -132,7 +129,7 @@ extension AlbumViewController {
 
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = 10
+            section.interGroupSpacing = 20
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
 
             let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),

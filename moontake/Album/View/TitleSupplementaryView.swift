@@ -32,7 +32,7 @@ extension TitleSupplementaryView {
         addSubview(label)
         label.snp.makeConstraints { make in
             make.top.equalTo(self).inset(16.0)
-            make.bottom.equalTo(self).inset(12.0)
+            make.bottom.equalTo(self).inset(16.0)
             make.leading.equalTo(self).inset(0.0)
             make.trailing.equalTo(self).inset(0.0)
         }
