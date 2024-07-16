@@ -9,6 +9,33 @@ import Foundation
 import GRDB
 import UIKit
 import ZCCalendar
+import AVFoundation
+import CoreLocation
+
+enum FileType: Int, Codable {
+    case jpeg = 0
+    case heif
+    
+    var system: AVFileType {
+        switch self {
+        case .jpeg:
+            return .jpg
+        case .heif:
+            return .heic
+        }
+    }
+    
+    static func generate(by fileType: AVFileType) -> Self? {
+        switch fileType {
+        case .jpg:
+            return Self.jpeg
+        case .heic:
+            return Self.heif
+        default:
+            return Self.jpeg
+        }
+    }
+}
 
 struct ImageInfo: Identifiable, Hashable {
     var id: Int64?
@@ -17,6 +44,7 @@ struct ImageInfo: Identifiable, Hashable {
     var modificationTime: Int64?
     
     var dataId: String
+    var fileType: FileType
     var width: Int
     var height: Int
     var latitude: Double?
@@ -31,7 +59,7 @@ extension ImageInfo: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case id, creationTime = "creation_time", modificationTime = "modification_time", dataId = "data_id", width, height, latitude, longitude
+        case id, creationTime = "creation_time", modificationTime = "modification_time", dataId = "data_id", fileType = "file_type", width, height, latitude, longitude
     }
 }
 
@@ -92,5 +120,10 @@ extension ImageInfo {
         let creationDate = Date(nanoSecondSince1970: creationTime)
         
         return creationDate
+    }
+    
+    var location: CLLocation? {
+        guard let latitude = latitude, let longitude = longitude else { return nil }
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
 }

@@ -12,10 +12,10 @@ import UIKit
 class AlbumManager: NSObject {
     static let shared = AlbumManager()
     
-    func addImage(data: Data, width: Int, height: Int, latitude: Double?, longitude: Double?) {
+    func addImage(data: Data, fileType: FileType, width: Int, height: Int, latitude: Double?, longitude: Double?) {
         let dataId = UUID().uuidString
         if saveDataToDocumentsDirectory(data: data, fileName: dataId) {
-            let result = AppDatabase.shared.add(imageInfo: ImageInfo(dataId: dataId, width: width, height: height, latitude: latitude, longitude: longitude))
+            let result = AppDatabase.shared.add(imageInfo: ImageInfo(dataId: dataId, fileType: fileType, width: width, height: height, latitude: latitude, longitude: longitude))
             print(result)
         }
     }

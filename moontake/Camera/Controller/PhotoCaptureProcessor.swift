@@ -94,38 +94,23 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        let currentSettings = Settings.shared.getSaveToAlbumSettings()
-
-        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
-            if status == .authorized {
-                PHPhotoLibrary.shared().performChanges({
-                    let options = PHAssetResourceCreationOptions()
-                    options.uniformTypeIdentifier = self.requestedPhotoSettings.processedFileType.map { $0.rawValue }
-                    
-                    if currentSettings == .both || currentSettings == .photoWithWatermark {
-                        if let newData = self.addWaterMark(for: photoData) {
-                            let creationRequest = PHAssetCreationRequest.forAsset()
-                            creationRequest.location = self.location
-                            creationRequest.addResource(with: .photo, data: newData, options: options)
-                        }
-                    }
-
-                    if currentSettings == .both || currentSettings == .photoWithoutWatermark {
-                        let creationRequest = PHAssetCreationRequest.forAsset()
-                        creationRequest.location = self.location
-                        creationRequest.addResource(with: .photo, data: photoData, options: options)
-                    }
-                    
-                    AlbumManager.shared.addImage(data: photoData, width: Int(image.size.width), height: Int(image.size.height), latitude: self.location?.coordinate.latitude, longitude: self.location?.coordinate.latitude)
-                }, completionHandler: { _, error in
-                    if let error = error {
-                        print("Error occurred while saving photo to photo library: \(error)")
-                    }
-                    self.didFinish()
-                })
-            } else {
-                self.didFinish()
-            }
+        guard let fileType = self.requestedPhotoSettings.processedFileType, let saveFileType = FileType.generate(by: fileType) else {
+            didFinish()
+            return
+        }
+        
+        let targets: [ImageSaver.TargetType]
+        switch Settings.shared.getSaveToAlbumSettings() {
+        case .photoWithWatermark:
+            targets = [.watermark]
+        case .photoWithoutWatermark:
+            targets = [.origin]
+        case .both:
+            targets = [.origin, .watermark]
+        }
+        
+        ImageSaver.saveImage(photoData, targets: targets, fileType: saveFileType, location: self.location, width: Int(image.size.width), height: Int(image.size.height), toDatabase: true) { [weak self] in
+            self?.didFinish()
         }
     }
 }

@@ -35,6 +35,8 @@ class AlbumViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadImages), name: NSNotification.Name.DatabaseUpdated, object: nil)
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.loadImages()
         }
@@ -94,6 +96,7 @@ class AlbumViewController: UIViewController {
         }
     }
     
+    @objc
     func loadImages() {
         AlbumManager.shared.fetchAllImages { [weak self] imageInfos in
             self?.updateImages(imageInfos)

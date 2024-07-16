@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import ZCCalendar
 import ImageIO
+import Toast
 
 struct EXIF: Hashable {
     var fNumber: Double?
@@ -27,19 +28,46 @@ class ImageDetailViewController: UIViewController {
     enum Section: Hashable {
         case image
         case data
-        case action
     }
     
     enum Item: Hashable {
         case image
         case title(String)
-        case exif(EXIF)
+        case exif
     }
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
     private var collectionView: UICollectionView! = nil
     private var moonTitle: String?
     private var exif: EXIF?
+    
+    private let deleteButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "trash")
+
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .systemRed
+        button.accessibilityLabel = String(localized: "detail.delete.title")
+        button.showsMenuAsPrimaryAction = true
+        
+        return button
+    }()
+    
+    private let saveButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        if #available(iOS 17.0, *) {
+            configuration.image = UIImage(systemName: "photo.badge.arrow.down")
+        } else {
+            configuration.image = UIImage(systemName: "photo")
+        }
+
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityLabel = String(localized: "detail.save.title")
+        button.showsMenuAsPrimaryAction = true
+
+        return button
+    }()
     
     deinit {
         print("ImageDetailViewController is deinited.")
@@ -65,6 +93,7 @@ class ImageDetailViewController: UIViewController {
             self.getImageEXIF()
             DispatchQueue.main.async {
                 self.loadImage()
+                self.addButtons()
             }
         }
     }
@@ -94,19 +123,47 @@ class ImageDetailViewController: UIViewController {
             }
             cell.update(with: self.imageInfo)
         }
+        let exifCellRegistration = UICollectionView.CellRegistration<EXIFCell, Item> { [weak self] (cell, indexPath, item) in
+            guard let self = self , let exif = self.exif else { return }
+            cell.update(with: exif)
+        }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { [weak self] (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
-            guard let self = self else { return nil }
-            guard let section = self.dataSource.sectionIdentifier(for: indexPath.section) else { return nil }
-            switch section {
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
+            switch itemIdentifier {
             case .image:
                 return collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: itemIdentifier)
-            case .data:
+            case .title:
                 return collectionView.dequeueConfiguredReusableCell(using: dataCellRegistration, for: indexPath, item: itemIdentifier)
-            case .action:
-                return collectionView.dequeueConfiguredReusableCell(using: imageCellRegistration, for: indexPath, item: itemIdentifier)
+            case .exif:
+                return collectionView.dequeueConfiguredReusableCell(using: exifCellRegistration, for: indexPath, item: itemIdentifier)
             }
         }
+    }
+    
+    func addButtons() {
+        view.addSubview(saveButton)
+        saveButton.snp.makeConstraints { make in
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        let orginAction = UIAction(title: String(localized: "detail.origin.title"), image: UIImage(systemName: "photo")) { [weak self] _ in
+            guard let self = self else { return }
+            self.saveOriginPhoto()
+        }
+        let watermarkAction = UIAction(title: String(localized: "detail.watermark.title"), image: UIImage(systemName: "photo.artframe")) { [weak self] _ in
+            guard let self = self else { return }
+            self.saveWatermarkPhoto()
+        }
+        saveButton.menu = UIMenu(title: "", children: [watermarkAction, orginAction])
+        
+        view.addSubview(deleteButton)
+        deleteButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        let deleteAction = UIAction(title: String(localized: "detail.delete.title"), image: UIImage(systemName: "trash"), attributes: [.destructive]) { [weak self] _ in
+            guard let self = self else { return }
+            self.deleteButtonAction()
+        }
+        deleteButton.menu = UIMenu(title: "", children: [deleteAction])
     }
     
     func loadImage() {
@@ -116,6 +173,9 @@ class ImageDetailViewController: UIViewController {
         if let moonTitle = moonTitle {
             snapshot.appendSections([.data])
             snapshot.appendItems([.title(moonTitle)], toSection: .data)
+            if exif != nil {
+                snapshot.appendItems([.exif], toSection: .data)
+            }
         }
         
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -149,6 +209,77 @@ class ImageDetailViewController: UIViewController {
         }
         return nil
     }
+    
+    func saveOriginPhoto() {
+        savePhoto(for: [.origin])
+    }
+    
+    func saveWatermarkPhoto() {
+        savePhoto(for: [.watermark])
+    }
+    
+    func savePhoto(for targets: [ImageSaver.TargetType]) {
+        guard let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL) else {
+            return
+        }
+        ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, toDatabase: false) { [weak self] in
+            DispatchQueue.main.async {
+                self?.showToast(text: String(localized: "detail.save.toast"))
+            }
+        }
+    }
+    
+    func deleteButtonAction() {
+        let alertController = UIAlertController(title: String(localized: "detail.alert.delete.title"), message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: String(localized: "detail.alert.delete.cancel"), style: .cancel) { _ in
+            //
+        }
+        let deleteAction = UIAlertAction(title: String(localized: "detail.alert.delete.confirm"), style: .destructive) { [weak self] _ in
+            self?.deleteAction()
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteAction() {
+        let fileURL = imageInfo.originURL
+        let thumbnailURL = imageInfo.thumbnailURL
+        let result = AppDatabase.shared.delete(imageInfo: imageInfo)
+        if result {
+            // Delete Data File and Thumbnail
+            if let fileURL = fileURL {
+                deleteFile(at: fileURL)
+            }
+            if let thumbnailURL = thumbnailURL {
+                deleteFile(at: thumbnailURL)
+            }
+            // Exit
+            dismiss(animated: true)
+        }
+    }
+    
+    func deleteFile(at url: URL) {
+        let fileManager = FileManager.default
+        
+        do {
+            try fileManager.removeItem(at: url)
+            print("File deleted successfully.")
+        } catch {
+            print("Error deleting file: \(error.localizedDescription)")
+        }
+    }
+    
+    func showToast(text: String) {
+        view.hideAllToasts()
+        var style = ToastStyle()
+        style.backgroundColor = .black.withAlphaComponent(0.8)
+        style.messageAlignment = .center
+        style.messageFont = UIFont.systemFont(ofSize: 14)
+        style.messageColor = .moonColor
+        view.makeToast(text, duration: 0.5, position: .center, title: nil, image: nil, style: style, completion: nil)
+    }
 }
 
 extension ImageDetailViewController {
@@ -162,8 +293,6 @@ extension ImageDetailViewController {
                 return self.getImageSection(layoutEnvironment)
             case .data:
                 return self.getDataSection(layoutEnvironment)
-            case .action:
-                return self.getImageSection(layoutEnvironment)
             }
         }
 

@@ -7,19 +7,99 @@
 
 import Foundation
 import UIKit
+import Photos
 
-extension PhotoCaptureProcessor {
-    func addWaterMark(for photoData: Data) -> Data? {
+struct ImageSaver {
+    enum TargetType {
+        case origin
+        case watermark
+    }
+    
+    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, toDatabase: Bool, completion: (() -> ())?) {
+        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
+            if status == .authorized {
+                PHPhotoLibrary.shared().performChanges({
+                    let options = PHAssetResourceCreationOptions()
+                    options.uniformTypeIdentifier = fileType.system.rawValue
+                    
+                    if targets.contains(.origin) {
+                        let creationRequest = PHAssetCreationRequest.forAsset()
+                        creationRequest.location = location
+                        creationRequest.addResource(with: .photo, data: photoData, options: options)
+                    }
+                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData) {
+                        let creationRequest = PHAssetCreationRequest.forAsset()
+                        creationRequest.location = location
+                        creationRequest.addResource(with: .photo, data: newData, options: options)
+                    }
+                    if toDatabase {
+                        AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.latitude)
+                    }
+                }, completionHandler: { _, error in
+                    if let error = error {
+                        print("Error occurred while saving photo to photo library: \(error)")
+                    }
+                    completion?()
+                })
+            } else {
+                completion?()
+            }
+        }
+    }
+}
+
+extension ImageSaver {
+    static func addWaterMark(for photoData: Data) -> Data? {
         var newData: Data?
         if let image = UIImage(data: photoData), let newImage = addWaterMarkToBottomOfImage(image: image) {
-            if let data = newImage.jpegData(compressionQuality: 1.0) {
-                newData = data
+            let exifData = getExifData(from: photoData)
+            
+            if #available(iOS 17.0, *) {
+                if let data = newImage.heicData() {
+                    newData = data
+                }
+                if let data = newData, let exifData = exifData {
+                    newData = addExifData(to: data, exifData: exifData)
+                }
+            } else {
+                if let data = newImage.jpegData(compressionQuality: 0.8) {
+                    newData = data
+                }
+                if let data = newData, let exifData = exifData {
+                    newData = addExifData(to: data, exifData: exifData)
+                }
             }
         }
         return newData
     }
     
-    func addWaterMarkToBottomOfImage(image: UIImage) -> UIImage? {
+    static func getExifData(from imageData: Data) -> [AnyHashable : Any]? {
+        let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil)
+        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil) as! [AnyHashable : Any]
+        return imageProperties[kCGImagePropertyExifDictionary as String] as? [AnyHashable : Any]
+    }
+
+    static func addExifData(to imageData: Data, exifData: [AnyHashable : Any]) -> Data? {
+        let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil)!
+        var imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as! [AnyHashable : Any]
+        var metadata = (imageProperties[(kCGImagePropertyExifDictionary as String)] as? [AnyHashable : Any]) ?? [:]
+        
+        for (key, value) in exifData {
+            if metadata[key] == nil {
+                metadata[key] = value
+            }
+        }
+        imageProperties[(kCGImagePropertyExifDictionary as String)] = metadata
+        
+        let destinationData = NSMutableData()
+        let destination = CGImageDestinationCreateWithData(destinationData as CFMutableData, CGImageSourceGetType(imageSource)!, 1, nil)
+        CGImageDestinationAddImageFromSource(destination!, imageSource, 0, (imageProperties as CFDictionary?))
+        CGImageDestinationFinalize(destination!)
+        
+        return destinationData as Data
+    }
+    
+    static func addWaterMarkToBottomOfImage(image: UIImage) -> UIImage? {
         let imageSize = image.size
         let scale = image.scale
         

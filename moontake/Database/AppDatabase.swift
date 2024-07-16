@@ -33,6 +33,7 @@ final class AppDatabase {
                 table.column("modification_time", .integer).notNull()
                 
                 table.column("data_id", .text).notNull()
+                table.column("file_type", .integer).notNull()
                 table.column("width", .integer).notNull()
                 table.column("height", .integer).notNull()
                 table.column("latitude", .double)

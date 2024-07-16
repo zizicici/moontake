@@ -686,7 +686,7 @@ class CameraViewController: UIViewController {
     
     func updateInformationLabel() {
         DispatchQueue.main.async {
-            self.informationLabel.text = String(format: String(localized: "ISO: %.0f, Aperture: F/%.1f, %@") ,self.iso, self.apertureFactor, self.shutterTimeString(self.shutterScale))
+            self.informationLabel.text = String(format: String(localized: "ISO: %.0f, Aperture: f/%.1f, %@") ,self.iso, self.apertureFactor, self.shutterTimeString(self.shutterScale))
         }
     }
     
@@ -711,8 +711,9 @@ class CameraViewController: UIViewController {
             }
             var photoSettings = AVCapturePhotoSettings()
             
-            // Capture HEIF photos when supported. Enable auto-flash and high-resolution photos.
-            if  self.photoOutput.availablePhotoCodecTypes.contains(.jpeg) {
+            if self.photoOutput.availablePhotoCodecTypes.contains(.hevc) {
+                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            } else if self.photoOutput.availablePhotoCodecTypes.contains(.jpeg) {
                 photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             }
             
