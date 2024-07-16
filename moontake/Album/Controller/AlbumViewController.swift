@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import ZCCalendar
+import Kingfisher
 
 class AlbumViewController: UIViewController {
     private var imageInfoDict: [GregorianDay: [ImageInfo]] = [:]
@@ -19,6 +20,7 @@ class AlbumViewController: UIViewController {
     static let imageElementKind = "imageElementKind"
     
     deinit {
+        KingfisherManager.shared.cache.clearMemoryCache()
         print("AlbumViewController is deinited.")
     }
     
@@ -154,5 +156,9 @@ extension AlbumViewController {
 extension AlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        if let item = dataSource.itemIdentifier(for: indexPath) {
+//            navigationController?.present(ImageViewController(imageInfo: item), animated: true)
+            navigationController?.present(ImageDetailViewController(imageInfo: item), animated: true)
+        }
     }
 }

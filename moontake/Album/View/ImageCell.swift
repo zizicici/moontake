@@ -13,14 +13,14 @@ fileprivate extension UIConfigurationStateCustomKey {
     static let imageInfo = UIConfigurationStateCustomKey("com.zizicici.moontake.cell.imageInfo")
 }
 
-private extension UICellConfigurationState {
+extension UICellConfigurationState {
     var imageInfo: ImageInfo? {
         set { self[.imageInfo] = newValue }
         get { return self[.imageInfo] as? ImageInfo }
     }
 }
 
-class ImageBaseCell: UICollectionViewCell {
+class ImageInfoBaseCell: UICollectionViewCell {
     private var imageInfo: ImageInfo? = nil
     
     func update(with newImageInfo: ImageInfo) {
@@ -36,7 +36,7 @@ class ImageBaseCell: UICollectionViewCell {
     }
 }
 
-class ImageCell: ImageBaseCell {
+class ImageCell: ImageInfoBaseCell {
     var paperView: UIView = {
         let paperView = UIView()
         paperView.backgroundColor = .moonColor.withAlphaComponent(0.83)

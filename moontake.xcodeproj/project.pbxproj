@@ -16,6 +16,11 @@
 		14D3C57A2C426805004BAB85 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */; };
 		14D3C57D2C4277BA004BAB85 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57C2C4277BA004BAB85 /* Kingfisher */; };
 		14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57F2C43A63F004BAB85 /* ZCCalendar */; };
+		14D3C5832C43CF08004BAB85 /* HXPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C5822C43CF08004BAB85 /* HXPhotoPicker */; };
+		14D3C5852C441EF1004BAB85 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D3C5842C441EF1004BAB85 /* ImageViewController.swift */; };
+		14EDC7022C451FFB006E7B6F /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDC7012C451FFB006E7B6F /* ImageDetailViewController.swift */; };
+		14EDC7042C452217006E7B6F /* ImageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDC7032C452217006E7B6F /* ImageDetailCell.swift */; };
+		14EDC7062C46424C006E7B6F /* TitleAndDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EDC7052C46424C006E7B6F /* TitleAndDateCell.swift */; };
 		14F122872C410F54000A0B08 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 14F122862C410F54000A0B08 /* GRDB */; };
 		14F122892C41118D000A0B08 /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F122882C41118D000A0B08 /* AppDatabase.swift */; };
 		14F1228C2C4111D6000A0B08 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F1228B2C4111D5000A0B08 /* Persistence.swift */; };
@@ -89,6 +94,10 @@
 		1498CF172C3FEA7B005562AA /* AlbumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
 		14D3C5762C4266FF004BAB85 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
+		14D3C5842C441EF1004BAB85 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		14EDC7012C451FFB006E7B6F /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		14EDC7032C452217006E7B6F /* ImageDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailCell.swift; sourceTree = "<group>"; };
+		14EDC7052C46424C006E7B6F /* TitleAndDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndDateCell.swift; sourceTree = "<group>"; };
 		14F122882C41118D000A0B08 /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		14F1228B2C4111D5000A0B08 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		14F1228D2C4111DE000A0B08 /* TimestampedRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampedRecord.swift; sourceTree = "<group>"; };
@@ -148,6 +157,7 @@
 				14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */,
 				14F122872C410F54000A0B08 /* GRDB in Frameworks */,
 				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
+				14D3C5832C43CF08004BAB85 /* HXPhotoPicker in Frameworks */,
 				63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
 			);
@@ -184,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				1498CF132C3FE91A005562AA /* AlbumViewController.swift */,
+				14EDC7012C451FFB006E7B6F /* ImageDetailViewController.swift */,
+				14D3C5842C441EF1004BAB85 /* ImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,6 +205,8 @@
 			children = (
 				14D3C5762C4266FF004BAB85 /* ImageCell.swift */,
 				14D3C5792C426805004BAB85 /* TitleSupplementaryView.swift */,
+				14EDC7032C452217006E7B6F /* ImageDetailCell.swift */,
+				14EDC7052C46424C006E7B6F /* TitleAndDateCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -412,6 +426,7 @@
 				14F122862C410F54000A0B08 /* GRDB */,
 				14D3C57C2C4277BA004BAB85 /* Kingfisher */,
 				14D3C57F2C43A63F004BAB85 /* ZCCalendar */,
+				14D3C5822C43CF08004BAB85 /* HXPhotoPicker */,
 			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
@@ -504,6 +519,7 @@
 				14F122852C410F54000A0B08 /* XCRemoteSwiftPackageReference "GRDB" */,
 				14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */,
+				14D3C5812C43CF08004BAB85 /* XCRemoteSwiftPackageReference "HXPhotoPicker" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
@@ -561,13 +577,16 @@
 				6304F6EE2A5AB0070068C1C4 /* AVCapturePreviewView.swift in Sources */,
 				63FF461C2A9E583E00C9FDCA /* AstronomyManager.swift in Sources */,
 				63ED89502A81480600EA1545 /* AttributedString+Extension.swift in Sources */,
+				14D3C5852C441EF1004BAB85 /* ImageViewController.swift in Sources */,
 				63F806A52A59ACCC00135630 /* CameraViewController.swift in Sources */,
 				631122292AA7200F005C7106 /* Camera.swift in Sources */,
 				63E1750A2AC467F40062D7F7 /* WhiteBalanceOptionsViewController.swift in Sources */,
+				14EDC7042C452217006E7B6F /* ImageDetailCell.swift in Sources */,
 				63F806A12A59ACCC00135630 /* AppDelegate.swift in Sources */,
 				14F1228C2C4111D6000A0B08 /* Persistence.swift in Sources */,
 				63E112602A821FBD00F03A1E /* PhotoCaptureProcessor+WaterMark.swift in Sources */,
 				63F806A32A59ACCC00135630 /* SceneDelegate.swift in Sources */,
+				14EDC7062C46424C006E7B6F /* TitleAndDateCell.swift in Sources */,
 				63F5E3332A72ACD8008CAA07 /* FocusView.swift in Sources */,
 				6305CD1E2A7BAEAA001CF9C6 /* Language.swift in Sources */,
 				63F806D12A59ADC700135630 /* UIColor+Extension.swift in Sources */,
@@ -586,6 +605,7 @@
 				63FE1DF22A75579500D31B04 /* String+Extension.swift in Sources */,
 				6306D05A2AA0A4AC003B3A23 /* TutorialsViewController.swift in Sources */,
 				63FDEA322A7D01CD002E02C2 /* MoonManager.swift in Sources */,
+				14EDC7022C451FFB006E7B6F /* ImageDetailViewController.swift in Sources */,
 				1498CF142C3FE91A005562AA /* AlbumViewController.swift in Sources */,
 				6306429B2A83923800A918DE /* Notification+Extension.swift in Sources */,
 				14D3C57A2C426805004BAB85 /* TitleSupplementaryView.swift in Sources */,
@@ -972,6 +992,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		14D3C5812C43CF08004BAB85 /* XCRemoteSwiftPackageReference "HXPhotoPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SilenceLove/HXPhotoPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 		14F122852C410F54000A0B08 /* XCRemoteSwiftPackageReference "GRDB" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift";
@@ -1013,6 +1041,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */;
 			productName = ZCCalendar;
+		};
+		14D3C5822C43CF08004BAB85 /* HXPhotoPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14D3C5812C43CF08004BAB85 /* XCRemoteSwiftPackageReference "HXPhotoPicker" */;
+			productName = HXPhotoPicker;
 		};
 		14F122862C410F54000A0B08 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;

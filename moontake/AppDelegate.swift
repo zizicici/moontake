@@ -7,6 +7,7 @@
 
 import UIKit
 import ZCCalendar
+import Kingfisher
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = AppDatabase.shared
         _ = User.shared
         _ = Store.shared
+        KingfisherManager.shared.cache.memoryStorage.config.totalCostLimit = 150 * 1024 * 1024
+        KingfisherManager.shared.cache.diskStorage.config.sizeLimit = 50 * 1024 * 1024
         
         DispatchQueue.global(qos: .background).async {
             let today = ZCCalendar.manager.today

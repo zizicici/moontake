@@ -50,6 +50,21 @@ extension ImageInfo: TimestampedRecord {
 }
 
 extension ImageInfo {
+    var originURL: URL? {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("无法获取 Documents 目录")
+            return nil
+        }
+        
+        // 构建 imageData 子目录路径
+        let imageDataDirectory = documentsDirectory.appendingPathComponent("imageData")
+        
+        // 构建文件路径
+        let thumbnailURL = imageDataDirectory.appendingPathComponent(dataId)
+        
+        return thumbnailURL
+    }
+    
     var thumbnailURL: URL? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("无法获取 Documents 目录")
@@ -70,5 +85,12 @@ extension ImageInfo {
         let day = GregorianDay(nanoSeconds: creationTime)
         
         return day
+    }
+    
+    var creationDate: Date? {
+        guard let creationTime = creationTime else { return nil }
+        let creationDate = Date(nanoSecondSince1970: creationTime)
+        
+        return creationDate
     }
 }

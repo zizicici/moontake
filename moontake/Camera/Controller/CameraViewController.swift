@@ -22,6 +22,12 @@ class CameraViewController: UIViewController {
     
     private var inProgressPhotoCaptureDelegates = [Int64: PhotoCaptureProcessor]()
     
+    private var isProcessing: Bool = false {
+        didSet {
+            albumButton.setNeedsUpdateConfiguration()
+        }
+    }
+    
     private var spinner: UIActivityIndicatorView!
     private let previewView: AVCaptureVideoPreviewView = AVCaptureVideoPreviewView()
     private let captureButton : UIButton = {
@@ -347,6 +353,13 @@ class CameraViewController: UIViewController {
             }
         }
         albumButton.addTarget(self, action: #selector(albumButtonTapped), for: .touchUpInside)
+        albumButton.configurationUpdateHandler = { [weak self] button in
+            guard let self = self else { return }
+            var config = button.configuration
+            config?.showsActivityIndicator = self.isProcessing
+            
+            button.configuration = config
+        }
         
         view.addSubview(permissionView)
         permissionView.snp.makeConstraints { make in
@@ -717,6 +730,7 @@ class CameraViewController: UIViewController {
             let photoCaptureProcessor = PhotoCaptureProcessor(with: photoSettings, willCapturePhotoAnimation: {
                 // Flash the screen to signal that AVCam took a photo.
                 DispatchQueue.main.async {
+                    self.isProcessing = true
                     self.previewView.videoPreviewLayer.opacity = 0
                     UIView.animate(withDuration: 0.25) {
                         self.previewView.videoPreviewLayer.opacity = 1
@@ -726,6 +740,9 @@ class CameraViewController: UIViewController {
                 // When the capture is complete, remove a reference to the photo capture delegate so it can be deallocated.
                 self.sessionQueue.async {
                     self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = nil
+                }
+                DispatchQueue.main.async {
+                    self.isProcessing = false
                 }
             }, photoProcessingHandler: { animate in
                 // Animates a spinner while photo is processing
@@ -990,6 +1007,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func albumButtonTapped() {
+        guard isProcessing == false else { return }
         let albumVC = AlbumViewController()
         let nav = UINavigationController(rootViewController: albumVC)
         present(nav, animated: true)
