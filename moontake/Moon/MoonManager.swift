@@ -24,12 +24,35 @@ class MoonManager {
         case waningMoon
     }
     
-    func getPhasePercent() -> Double {
-        return MooninfoAt(Int64(Date().timeIntervalSince1970))
+    func getPhasePercent(_ date: Date) -> Double {
+        var phasePercent = MooninfoAt(Int64(date.timeIntervalSince1970))
+        let currentDate = date.timeIntervalSince1970
+        if phasePercent > 0.975 {
+            if let result = MoonManager.shared.findClosestFullMoon(target: currentDate) {
+                if abs(currentDate - result) < 60 * 60 * 2 {
+                    phasePercent = 1.0
+                }
+            } else {
+                if phasePercent > 0.9975 {
+                    phasePercent = 1.0
+                }
+            }
+        } else if phasePercent < 0.025 {
+            if let result = MoonManager.shared.findClosestNewMoon(target: currentDate) {
+                if abs(currentDate - result) < 60 * 60 * 2 {
+                    phasePercent = 0.0
+                }
+            } else {
+                if phasePercent < 0.005 {
+                    phasePercent = 0.0
+                }
+            }
+        }
+        return phasePercent
     }
     
-    func getPhase() -> Phase {
-        let timestamp = Int64(Date().timeIntervalSince1970)
+    func getPhase(_ date: Date) -> Phase {
+        let timestamp = Int64(date.timeIntervalSince1970)
         let nextNewMoon = MooninfoNextNewMoon(timestamp)
         let nextWaxingMoon = MooninfoNextWaxingMoon(timestamp)
         let nextFullMoon = MooninfoNextFullMoon(timestamp)
@@ -42,19 +65,19 @@ class MoonManager {
         case nextNewMoon:
             currentPhase = .waningMoon
         case nextWaxingMoon:
-            if getPhasePercent() < 0.025 {
+            if getPhasePercent(date) < 0.025 {
                 currentPhase = .newMoon
             } else {
                 currentPhase = .waxingMoon
             }
         case nextFullMoon:
-            if getPhasePercent() > 0.9975 {
+            if getPhasePercent(date) > 0.9975 {
                 currentPhase = .fullMoon
             } else {
                 currentPhase = .waxingMoon
             }
         case nextWaningMoon:
-            if getPhasePercent() > 0.975 {
+            if getPhasePercent(date) > 0.975 {
                 currentPhase = .fullMoon
             } else {
                 currentPhase = .waningMoon
@@ -66,12 +89,12 @@ class MoonManager {
         return currentPhase
     }
     
-    func getPhaseName() -> String {
-        switch getPhase() {
+    func getPhaseName(_ date: Date) -> String {
+        switch getPhase(date) {
         case .newMoon:
             return String(localized: "New Moon")
         case .waxingMoon:
-            let percent = getPhasePercent()
+            let percent = getPhasePercent(date)
             if percent < 0.49 {
                 // 娥眉月
                 return String(localized: "WaxingMoon1")
@@ -85,7 +108,7 @@ class MoonManager {
         case .fullMoon:
             return String(localized: "Full Moon")
         case .waningMoon:
-            let percent = getPhasePercent()
+            let percent = getPhasePercent(date)
             if percent < 0.49 {
                 // 残月
                 return String(localized: "WaningMoon1")
