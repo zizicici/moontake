@@ -91,17 +91,26 @@ class SpecificationsViewController: UIViewController {
                     name: "astro",
                     version: "master"
                 )
+                let GRDB = ThirdParty(
+                    urlString: "https://github.com/groue/GRDB.swift",
+                    name: "GRDB.swift",
+                    version: "6.28.0"
+                )
+                let Kingfisher = ThirdParty(
+                    urlString: "https://github.com/onevcat/Kingfisher",
+                    name: "Kingfisher",
+                    version: "7.12.0")
                 let SnapKit = ThirdParty(
                     urlString: "https://github.com/SnapKit/SnapKit",
                     name: "SnapKit",
-                    version: "5.6.0"
+                    version: "5.7.1"
                 )
                 let Toast = ThirdParty(
                     urlString: "https://github.com/scalessec/Toast-Swift",
                     name: "Toast",
                     version: "5.0.1"
                 )
-                return [astro, SnapKit, Toast]
+                return [astro, GRDB, Kingfisher, SnapKit, Toast]
             }()
         }
         
