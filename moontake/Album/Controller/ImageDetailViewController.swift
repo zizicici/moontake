@@ -219,10 +219,10 @@ class ImageDetailViewController: UIViewController {
     }
     
     func savePhoto(for targets: [ImageSaver.TargetType]) {
-        guard let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL) else {
+        guard let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL), let creationDate = imageInfo.creationDate else {
             return
         }
-        ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, toDatabase: false) { [weak self] in
+        ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, date: creationDate, toDatabase: false) { [weak self] in
             DispatchQueue.main.async {
                 self?.showToast(text: String(localized: "detail.save.toast"))
             }

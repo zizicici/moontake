@@ -15,7 +15,7 @@ struct ImageSaver {
         case watermark
     }
     
-    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, toDatabase: Bool, completion: (() -> ())?) {
+    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, toDatabase: Bool, completion: (() -> ())?) {
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             if status == .authorized {
                 PHPhotoLibrary.shared().performChanges({
@@ -27,7 +27,7 @@ struct ImageSaver {
                         creationRequest.location = location
                         creationRequest.addResource(with: .photo, data: photoData, options: options)
                     }
-                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData) {
+                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date) {
                         let creationRequest = PHAssetCreationRequest.forAsset()
                         creationRequest.location = location
                         creationRequest.addResource(with: .photo, data: newData, options: options)
@@ -49,9 +49,9 @@ struct ImageSaver {
 }
 
 extension ImageSaver {
-    static func addWaterMark(for photoData: Data) -> Data? {
+    static func addWaterMark(for photoData: Data, date: Date) -> Data? {
         var newData: Data?
-        if let image = UIImage(data: photoData), let newImage = addWaterMarkToBottomOfImage(image: image) {
+        if let image = UIImage(data: photoData), let newImage = addWaterMarkToBottomOfImage(image: image, date: date) {
             let exifData = getExifData(from: photoData)
             
             if #available(iOS 17.0, *) {
@@ -99,7 +99,7 @@ extension ImageSaver {
         return destinationData as Data
     }
     
-    static func addWaterMarkToBottomOfImage(image: UIImage) -> UIImage? {
+    static func addWaterMarkToBottomOfImage(image: UIImage, date: Date) -> UIImage? {
         let imageSize = image.size
         let scale = image.scale
         
@@ -118,7 +118,6 @@ extension ImageSaver {
             .font: UIFont.systemFont(ofSize: 80, weight: .medium),
             .foregroundColor: UIColor.black
         ]
-        let date = Date()
         let phasePercent = MoonManager.shared.getPhasePercent(date)
         let firstText: String = String(format: "%@ %.1f%%", MoonManager.shared.getPhaseName(date), phasePercent * 100)
         let firstAttributedString = NSAttributedString(string: firstText, attributes: firstAttributes)
@@ -133,7 +132,7 @@ extension ImageSaver {
             .font: UIFont.systemFont(ofSize: 64, weight: .light),
             .foregroundColor: UIColor.black.withAlphaComponent(0.6)
         ]
-        let secondText: String = Date().formatted(date: .numeric, time: .standard)
+        let secondText: String = date.formatted(date: .numeric, time: .standard)
         let secondAttributedString = NSAttributedString(string: secondText, attributes: secondAttributes)
         
         let secondHeight = secondAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude).height
