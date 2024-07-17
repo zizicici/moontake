@@ -403,7 +403,7 @@ extension MoreViewController {
     }
     
     func enterWatermarkSettings() {
-        let watermarkViewController = WatermarkViewController()
+        let watermarkViewController = SaveOptionsViewController()
         
         navigationController?.pushViewController(watermarkViewController, animated: true)
     }

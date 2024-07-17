@@ -40,7 +40,7 @@
 		6306429B2A83923800A918DE /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306429A2A83923700A918DE /* Notification+Extension.swift */; };
 		6306429D2A83926000A918DE /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306429C2A83926000A918DE /* UserDefaults+Extension.swift */; };
 		6306429F2A83947500A918DE /* MembershipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306429E2A83947500A918DE /* MembershipCell.swift */; };
-		630642A22A83CFBA00A918DE /* WatermarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642A12A83CFBA00A918DE /* WatermarkViewController.swift */; };
+		630642A22A83CFBA00A918DE /* SaveOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642A12A83CFBA00A918DE /* SaveOptionsViewController.swift */; };
 		630642A42A83D8DC00A918DE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630642A32A83D8DC00A918DE /* Settings.swift */; };
 		6306D0582AA0913A003B3A23 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6306D0572AA0913A003B3A23 /* Toast */; };
 		6306D05A2AA0A4AC003B3A23 /* TutorialsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6306D0592AA0A4AC003B3A23 /* TutorialsViewController.swift */; };
@@ -119,7 +119,7 @@
 		6306429A2A83923700A918DE /* Notification+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		6306429C2A83926000A918DE /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		6306429E2A83947500A918DE /* MembershipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCell.swift; sourceTree = "<group>"; };
-		630642A12A83CFBA00A918DE /* WatermarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatermarkViewController.swift; sourceTree = "<group>"; };
+		630642A12A83CFBA00A918DE /* SaveOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveOptionsViewController.swift; sourceTree = "<group>"; };
 		630642A32A83D8DC00A918DE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6306D0592AA0A4AC003B3A23 /* TutorialsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialsViewController.swift; sourceTree = "<group>"; };
 		630EC5472AE2CC21001E8D65 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 				63F5E3382A72B0F8008CAA07 /* MoreViewController.swift */,
 				631122262AA71481005C7106 /* ISOOptionsViewController.swift */,
 				63E175092AC467F40062D7F7 /* WhiteBalanceOptionsViewController.swift */,
-				630642A12A83CFBA00A918DE /* WatermarkViewController.swift */,
+				630642A12A83CFBA00A918DE /* SaveOptionsViewController.swift */,
 				6305CD172A7BAA49001CF9C6 /* SpecificationsViewController.swift */,
 				14DB1DC22C479B48006E59F1 /* OverlayViewController.swift */,
 			);
@@ -612,7 +612,7 @@
 				14F1228E2C4111DE000A0B08 /* TimestampedRecord.swift in Sources */,
 				63102E4A2A716C39006C2FE9 /* AVCaptureVideoOrientation+Extension.swift in Sources */,
 				630642992A838CD700A918DE /* Store.swift in Sources */,
-				630642A22A83CFBA00A918DE /* WatermarkViewController.swift in Sources */,
+				630642A22A83CFBA00A918DE /* SaveOptionsViewController.swift in Sources */,
 				14D3C5772C4266FF004BAB85 /* ImageCell.swift in Sources */,
 				14F122912C411206000A0B08 /* Date+Extension.swift in Sources */,
 				630642A42A83D8DC00A918DE /* Settings.swift in Sources */,

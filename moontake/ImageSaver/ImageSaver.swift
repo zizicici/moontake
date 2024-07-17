@@ -139,67 +139,33 @@ extension ImageSaver {
         let secondTextRect = CGRect(x: 80.0, y: firstTextRect.maxY + 48.0, width: imageSize.width - 80.0, height: secondHeight)
         
         secondAttributedString.draw(in: secondTextRect)
+        // Promotion
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.right
+        paragraphStyle.lineSpacing = 30.0
+        let promotionAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 60, weight: .light),
+            .foregroundColor: UIColor.black.withAlphaComponent(0.6),
+            .paragraphStyle: paragraphStyle
+        ]
+        let promotionText: String = String(localized: "moontake\nA Moon Camera")
+        let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
+        let range = (promotionText as NSString).range(of: "moontake")
+        promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .medium), .foregroundColor: UIColor.black], range: range)
         
-        switch Settings.shared.getWatermarkTypeSettings() {
-        case .icon:
-            // Promotion
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = NSTextAlignment.right
-            paragraphStyle.lineSpacing = 30.0
-            let promotionAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 60, weight: .light),
-                .foregroundColor: UIColor.black.withAlphaComponent(0.6),
-                .paragraphStyle: paragraphStyle
-            ]
-            let promotionText: String = String(localized: "moontake\nA Moon Camera")
-            let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
-            let range = (promotionText as NSString).range(of: "moontake")
-            promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .medium), .foregroundColor: UIColor.black], range: range)
+        let promotionSize = promotionAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude)
+        let promotionTextRect = CGRect(x: imageSize.width - 340.0 - promotionSize.width, y: imageSize.height + (360 - promotionSize.height) / 2.0, width: promotionSize.width, height: promotionSize.height)
+        
+        promotionAttributedString.draw(in: promotionTextRect)
+        
+        // Icon
+        if let logoImage = UIImage(named: "AppIcon") {
+            // 创建圆角路径
+            let cornerRadius: CGFloat = 50.0
+            let path = UIBezierPath(roundedRect: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200), cornerRadius: cornerRadius)
+            path.addClip()
             
-            let promotionSize = promotionAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude)
-            let promotionTextRect = CGRect(x: imageSize.width - 340.0 - promotionSize.width, y: imageSize.height + (360 - promotionSize.height) / 2.0, width: promotionSize.width, height: promotionSize.height)
-            
-            promotionAttributedString.draw(in: promotionTextRect)
-            
-            // Icon
-            if let logoImage = UIImage(named: "AppIcon") {
-                // 创建圆角路径
-                let cornerRadius: CGFloat = 50.0
-                let path = UIBezierPath(roundedRect: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200), cornerRadius: cornerRadius)
-                path.addClip()
-                
-                logoImage.draw(in: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200))
-            }
-        case .qrCode:
-            // Promotion
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = NSTextAlignment.right
-            paragraphStyle.lineSpacing = 24.0
-            let promotionAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 60, weight: .light),
-                .foregroundColor: UIColor.black.withAlphaComponent(0.8),
-                .paragraphStyle: paragraphStyle
-            ]
-            let promotionText: String = String(localized: "Scan QR Code to Get\nmoontake")
-            let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
-            let range = (promotionText as NSString).range(of: "moontake")
-            promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .light), .foregroundColor: UIColor.black.withAlphaComponent(0.8)], range: range)
-            
-            let promotionSize = promotionAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude)
-            let promotionTextRect = CGRect(x: imageSize.width - 340.0 - promotionSize.width, y: imageSize.height + (360 - promotionSize.height) / 2.0, width: promotionSize.width, height: promotionSize.height)
-            
-            promotionAttributedString.draw(in: promotionTextRect)
-            
-            // QR Code
-            if let codeImage = UIImage(named: "qrcode") {
-                codeImage.draw(in: CGRect(x: imageSize.width - 280, y: imageSize.height + 60, width: 240, height: 240), blendMode: .normal, alpha: 0.8)
-            }
-        case .location:
-            // TODO
-            break
-        case .blank:
-            // Do nothing
-            break
+            logoImage.draw(in: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200))
         }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()

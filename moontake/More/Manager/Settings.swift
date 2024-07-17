@@ -27,43 +27,6 @@ struct Settings {
         }
     }
     
-    enum WatermarkTypeOption: Int, Hashable {
-        case qrCode = 0
-        case icon = 1
-        case location = 2
-        case blank = 10
-        
-        var title: String {
-            switch self {
-            case .qrCode:
-                return String(localized: "QR Code")
-            case .icon:
-                return String(localized: "App Icon")
-            case .location:
-                return String(localized: "Location")
-            case .blank:
-                return String(localized: "None")
-            }
-        }
-    }
-    
-    enum LocationDisplayTypeOption: Int, Hashable {
-        case longitudeAndLatitude = 0
-        case address = 1
-        case custom = 100
-        
-        var title: String {
-            switch self {
-            case .longitudeAndLatitude:
-                return String(localized: "Longitude And Latitude")
-            case .address:
-                return String(localized: "City")
-            case .custom:
-                return String(localized: "Custom")
-            }
-        }
-    }
-    
     enum ISOOption: Hashable {
         case `default`
         case value(Float)
@@ -129,33 +92,6 @@ struct Settings {
         }
         if allowSave {
             UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
-        }
-        return allowSave
-    }
-    
-    func getWatermarkTypeSettings() -> WatermarkTypeOption {
-        let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.WatermarkType.rawValue)
-        return WatermarkTypeOption(rawValue: rawValue ?? 0) ?? .qrCode
-    }
-    
-    func save(option: WatermarkTypeOption) -> Bool {
-        var allowSave: Bool = false
-        if User.shared.proTier() == .none {
-            switch option {
-            case .qrCode:
-                allowSave = true
-            case .blank:
-                allowSave = true
-            case .location:
-                allowSave = false
-            case .icon:
-                allowSave = false
-            }
-        } else {
-            allowSave = true
-        }
-        if allowSave {
-            UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.WatermarkType.rawValue)
         }
         return allowSave
     }
