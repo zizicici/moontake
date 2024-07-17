@@ -153,7 +153,7 @@ class ImageDetailViewController: UIViewController {
             guard let self = self else { return }
             self.saveWatermarkPhoto()
         }
-        saveButton.menu = UIMenu(title: "", children: [watermarkAction, orginAction])
+        saveButton.menu = UIMenu(title: String(localized: "detail.save.title"), children: [watermarkAction, orginAction])
         
         view.addSubview(deleteButton)
         deleteButton.snp.makeConstraints { make in
@@ -230,7 +230,7 @@ class ImageDetailViewController: UIViewController {
     }
     
     func deleteButtonAction() {
-        let alertController = UIAlertController(title: String(localized: "detail.alert.delete.title"), message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: String(localized: "detail.alert.delete.title"), message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: String(localized: "detail.alert.delete.cancel"), style: .cancel) { _ in
             //
         }
