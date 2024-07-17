@@ -12,21 +12,21 @@ enum HintInfo: Hashable {
     case empty(ProTier)
     case normal(ProTier)
     
-    var title: String {
+    var title: String? {
         switch self {
         case .empty:
             return String(localized: "hint.empty")
         case .normal:
-            return ""
+            return nil
         }
     }
     
-    var subtitle: String {
+    var subtitle: String? {
         switch self {
         case .empty(let proTier):
             switch proTier {
             case .lifetime:
-                return String(localized: "hint.wish")
+                return nil
             case .none:
                 return String(localized: "hint.promotion")
             }
@@ -101,7 +101,7 @@ class HintCell: HintBaseCell {
     private let membershipButton: UIButton = {
         var configuration = UIButton.Configuration.gray()
         
-        configuration.image = UIImage(systemName: "crown", withConfiguration: UIImage.SymbolConfiguration(textStyle: .footnote))
+        configuration.image = UIImage(systemName: "arrowshape.up.circle", withConfiguration: UIImage.SymbolConfiguration(textStyle: .footnote))
         configuration.title = String(localized: "membership.learnMore")
         configuration.imagePadding = 9.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in

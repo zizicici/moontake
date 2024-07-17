@@ -32,9 +32,10 @@ class OverlayViewController: UIViewController {
         super.viewDidLoad()
         
         // 设置背景颜色和透明度
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
         // 添加指示器到视图并居中
+        activityIndicator.color = .white
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([

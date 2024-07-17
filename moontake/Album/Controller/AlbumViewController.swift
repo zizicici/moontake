@@ -45,6 +45,7 @@ class AlbumViewController: UIViewController {
         configureDataSource()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.DatabaseUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.LifetimeMemberShip, object: nil)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.reloadData()
@@ -87,7 +88,7 @@ class AlbumViewController: UIViewController {
             guard let self = self else { return }
             cell.update(with: item)
             cell.buttonClosure = { [weak self] in
-                self?.enterMembershipPurchase()
+                self?.jumpToMore()
             }
         }
         
@@ -166,8 +167,10 @@ class AlbumViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func enterMembershipPurchase() {
-        lifetimeAction()
+    func jumpToMore() {
+        let settingsVC = MoreViewController()
+        let nav = UINavigationController(rootViewController: settingsVC)
+        present(nav, animated: true)
     }
 }
 
@@ -242,53 +245,6 @@ extension AlbumViewController: UICollectionViewDelegate {
             case .hint:
                 break
             }
-        }
-    }
-}
-
-extension AlbumViewController {
-    func lifetimeAction() {
-        showOverlayViewController()
-        Task {
-            do {
-                if let _ = try await Store.shared.purchaseLifetimeMembership() {
-                    reloadData()
-                }
-            }
-            catch {
-                showAlert(title: String(localized: "membership.failure"), message: error.localizedDescription)
-            }
-            
-            hideOverlayViewController()
-        }
-    }
-    
-    func showAlert(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func manageAction() {
-        if Store.shared.networkIssueOccurs {
-            Store.shared.retryRequestProducts()
-        } else {
-            switch User.shared.proTier() {
-            case .lifetime:
-                restorePurchases()
-            case .none:
-                restorePurchases()
-            }
-        }
-    }
-    
-    func restorePurchases() {
-        Task {
-            showOverlayViewController()
-            await Store.shared.sync()
-            hideOverlayViewController()
         }
     }
 }

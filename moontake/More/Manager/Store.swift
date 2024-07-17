@@ -8,6 +8,11 @@
 import Foundation
 import StoreKit
 
+extension Notification.Name {
+    static let LifetimeMemberShip = Notification.Name(rawValue: "com.zizicici.moontake.store.purchase.lifetime")
+    static let StoreInfoLoaded = Notification.Name(rawValue: "com.zizicici.moontake.store.info.loaded")
+}
+
 public enum StoreError: Error {
     case failedVerification
 }

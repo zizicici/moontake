@@ -221,7 +221,7 @@ class ImageDetailViewController: UIViewController {
                 //
             }
             let learnMoreAction = UIAlertAction(title: String(localized: "membership.learnMore"), style: .default) { [weak self] _ in
-                self?.lifetimeAction()
+                self?.jumpToMore()
             }
 
             alertController.addAction(cancelAction)
@@ -298,6 +298,12 @@ class ImageDetailViewController: UIViewController {
         style.messageColor = .moonColor
         view.makeToast(text, duration: 0.5, position: .center, title: nil, image: nil, style: style, completion: nil)
     }
+    
+    func jumpToMore() {
+        let settingsVC = MoreViewController()
+        let nav = UINavigationController(rootViewController: settingsVC)
+        present(nav, animated: true)
+    }
 }
 
 extension ImageDetailViewController {
@@ -357,52 +363,5 @@ extension ImageDetailViewController {
 extension ImageDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-}
-
-extension ImageDetailViewController {
-    func lifetimeAction() {
-        showOverlayViewController()
-        Task {
-            do {
-                if let _ = try await Store.shared.purchaseLifetimeMembership() {
-                    //
-                }
-            }
-            catch {
-                showAlert(title: String(localized: "membership.failure"), message: error.localizedDescription)
-            }
-            
-            hideOverlayViewController()
-        }
-    }
-    
-    func showAlert(title: String?, message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
-        alertController.addAction(cancelAction)
-
-        present(alertController, animated: true, completion: nil)
-    }
-    
-    func manageAction() {
-        if Store.shared.networkIssueOccurs {
-            Store.shared.retryRequestProducts()
-        } else {
-            switch User.shared.proTier() {
-            case .lifetime:
-                restorePurchases()
-            case .none:
-                restorePurchases()
-            }
-        }
-    }
-    
-    func restorePurchases() {
-        Task {
-            showOverlayViewController()
-            await Store.shared.sync()
-            hideOverlayViewController()
-        }
     }
 }

@@ -9,15 +9,13 @@ import UIKit
 import SnapKit
 import SafariServices
 import AppInfo
+import StoreKit
 
 class MoreViewController: UIViewController {
     static let supportEmail = "moon@zi.ci"
 
     private var tableView: UITableView!
     private var dataSource: DataSource!
-    
-    private weak var membershipCell: MembershipCell?
-    private var timer: Timer?
     
     enum Section: Hashable {
         case membership
@@ -141,7 +139,8 @@ class MoreViewController: UIViewController {
             }
         }
         
-        case membership(MembershipCell.DisplayItem)
+        case promotion
+        case thanks
         case settings(GeneralItem)
         case tutorials
         case appjun(AppJunItem)
@@ -149,7 +148,7 @@ class MoreViewController: UIViewController {
         
         var title: String {
             switch self {
-            case .membership:
+            case .promotion, .thanks:
                 return ""
             case .settings(let item):
                 return item.title
@@ -176,7 +175,6 @@ class MoreViewController: UIViewController {
     }
     
     deinit {
-        stopTimer()
         print("MoreViewController is deinited")
     }
     
@@ -186,10 +184,7 @@ class MoreViewController: UIViewController {
         self.title = String(localized: "More")
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
-        let style = NSMutableParagraphStyle()
-        style.alignment = .justified
-        style.firstLineHeadIndent = 10
-        navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8), .paragraphStyle: style]
+        navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8)]
         navigationController?.navigationBar.tintColor = .systemRed
         view.backgroundColor = .backgroundColor
         
@@ -197,30 +192,21 @@ class MoreViewController: UIViewController {
         configureDataSource()
         reloadData()
         
+        if Store.shared.membershipDisplayPrice() == nil {
+            retryStoreInfo()
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
-        
-        startTimer()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        stopTimer()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        startTimer()
     }
     
     func configureHierarchy() {
         tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.backgroundColor = .backgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
-        tableView.register(MembershipCell.self, forCellReuseIdentifier: NSStringFromClass(MembershipCell.self))
+        tableView.register(PromotionCell.self, forCellReuseIdentifier: NSStringFromClass(PromotionCell.self))
+        tableView.register(GratefulCell.self, forCellReuseIdentifier: NSStringFromClass(GratefulCell.self))
         tableView.register(AppCell.self, forCellReuseIdentifier: NSStringFromClass(AppCell.self))
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
@@ -239,21 +225,20 @@ class MoreViewController: UIViewController {
             guard let self = self else { return nil }
             guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return nil }
             switch identifier {
-            case .membership:
-                let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(MembershipCell.self), for: indexPath)
-                if let cell = cell as? MembershipCell {
-                    if case let Item.membership(displayItem) = identifier {
-                        cell.update(item: displayItem)
-                    }
-                    
-                    cell.lifetimeClosure = { [weak self] in
+            case .promotion:
+                let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(PromotionCell.self), for: indexPath)
+                if let cell = cell as? PromotionCell {
+                    cell.update(price: Store.shared.membershipDisplayPrice() ?? "?.??")
+                    cell.purchaseClosure = { [weak self] in
                         self?.lifetimeAction()
                     }
-                    cell.manageClosure = { [weak self] in
-                        self?.manageAction()
+                    cell.restoreClosure = { [weak self] in
+                        self?.restorePurchases()
                     }
-                    self.membershipCell = cell
                 }
+                return cell
+            case .thanks:
+                let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(GratefulCell.self), for: indexPath)
                 return cell
             case .settings(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -310,10 +295,11 @@ class MoreViewController: UIViewController {
     func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.membership])
-        if Store.shared.networkIssueOccurs {
-            snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .issue))], toSection: .membership)
-        } else {
-            snapshot.appendItems([.membership(MembershipCell.DisplayItem(type: .tier(User.shared.proTier()), membership: Store.shared.membershipDisplayPrice()))], toSection: .membership)
+        switch User.shared.proTier() {
+        case .lifetime:
+            snapshot.appendItems([.thanks], toSection: .membership)
+        case .none:
+            snapshot.appendItems([.promotion], toSection: .membership)
         }
         snapshot.appendSections([.settings])
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
@@ -335,19 +321,8 @@ class MoreViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    @objc
-    func updateMembershipCell() {
-        membershipCell?.togglePromotionText()
-    }
-    
-    func startTimer() {
-        guard timer == nil else { return }
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(updateMembershipCell), userInfo: nil, repeats: true)
-    }
-    
-    func stopTimer() {
-        timer?.invalidate()
-        timer = nil
+    func scrollToTop() {
+        tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
     }
 }
 
@@ -356,8 +331,12 @@ extension MoreViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if let item = dataSource.itemIdentifier(for: indexPath) {
             switch item {
-            case .membership:
+            case .promotion:
                 break
+            case .thanks:
+                if let currentWindowScene = view.window?.windowScene {
+                    SKStoreReviewController.requestReview(in: currentWindowScene)
+                }
             case .settings(let item):
                 switch item {
                 case .language:
@@ -540,16 +519,9 @@ extension MoreViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func manageAction() {
+    func retryStoreInfo() {
         if Store.shared.networkIssueOccurs {
             Store.shared.retryRequestProducts()
-        } else {
-            switch User.shared.proTier() {
-            case .lifetime:
-                restorePurchases()
-            case .none:
-                restorePurchases()
-            }
         }
     }
     

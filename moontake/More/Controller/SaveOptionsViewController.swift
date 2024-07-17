@@ -108,6 +108,13 @@ class SaveOptionsViewController: UIViewController {
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
+    
+    func jumpToMore() {
+        navigationController?.popToRootViewController(animated: true)
+        if let vc = navigationController?.viewControllers.first as? MoreViewController {
+            vc.scrollToTop()
+        }
+    }
 }
 
 extension SaveOptionsViewController: UITableViewDelegate {
@@ -127,13 +134,17 @@ extension SaveOptionsViewController: UITableViewDelegate {
 
 extension SaveOptionsViewController {
     func showUserTierAlert() {
-        showAlert(title: String(localized: "This option is only for Pro user."), message: nil)
+        showAlert(title: nil, message: String(localized: "This option is only for Pro user."))
     }
     
     func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
+        let learnMoreAction = UIAlertAction(title: String(localized: "membership.learnMore"), style: .default) { [weak self] _ in
+            self?.jumpToMore()
+        }
         alertController.addAction(cancelAction)
+        alertController.addAction(learnMoreAction)
 
         present(alertController, animated: true, completion: nil)
     }
