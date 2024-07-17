@@ -58,7 +58,7 @@ class TitleAndDateCell: ImageInfoBaseCell {
         
         if let imageInfo = state.imageInfo, let creationDate = imageInfo.creationDate {
             titleLabel.text = moonTitle
-            dateLabel.text = imageInfo.creationDate?.formatted(date: .abbreviated, time: .standard)
+            dateLabel.text = creationDate.formatted(date: .abbreviated, time: .standard)
         }
     }
 }

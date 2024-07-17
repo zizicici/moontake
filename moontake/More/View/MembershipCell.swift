@@ -59,7 +59,7 @@ class MembershipCell: UITableViewCell {
     
     private let restoreButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
-        configuration.title = String(localized: "Restore Purchases")
+        configuration.title = String(localized: "membership.restore")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -75,7 +75,7 @@ class MembershipCell: UITableViewCell {
     
     private let lifetimeButton: UIButton = {
         var configuration = UIButton.Configuration.tinted()
-        configuration.title = String(localized: "Become a Pro User")
+        configuration.title = String(localized: "membership.purchase")
         configuration.titleAlignment = .center
         configuration.cornerStyle = .medium
         configuration.titlePadding = 10.0
@@ -109,7 +109,7 @@ class MembershipCell: UITableViewCell {
         didSet {
             if shouldUpdateContent {
                 if isPurchased {
-                    contentToUpdate = String(localized: "Wishing you a great moon.")
+                    contentToUpdate = String(localized: "hint.wish")
                 } else {
                     contentToUpdate = String(localized: "Pro users can unlock all watermarks and have the ability to save the original images.")
                 }
@@ -128,7 +128,7 @@ class MembershipCell: UITableViewCell {
             secondLabel.text = contentToUpdate
             if shouldUpdateContent {
                 var config = lifetimeButton.configuration
-                config?.title = String(localized: "Become a Pro User")
+                config?.title = String(localized: "membership.purchase")
                 lifetimeButton.configuration = config
             } else {
                 var config = lifetimeButton.configuration
@@ -253,7 +253,7 @@ class MembershipCell: UITableViewCell {
     
     private func updateRestoreButtonToRestoreButton() {
         var config = restoreButton.configuration
-        config?.title = String(localized: "Restore Purchases")
+        config?.title = String(localized: "membership.restore")
         restoreButton.configuration = config
     }
     

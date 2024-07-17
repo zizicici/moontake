@@ -143,7 +143,8 @@ class ImageDetailViewController: UIViewController {
     func addButtons() {
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
+            make.width.height.equalTo(44)
         }
         let orginAction = UIAction(title: String(localized: "detail.origin.title"), image: UIImage(systemName: "photo")) { [weak self] _ in
             guard let self = self else { return }
@@ -157,7 +158,8 @@ class ImageDetailViewController: UIViewController {
         
         view.addSubview(deleteButton)
         deleteButton.snp.makeConstraints { make in
-            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
+            make.width.height.equalTo(44)
         }
         let deleteAction = UIAction(title: String(localized: "detail.delete.title"), image: UIImage(systemName: "trash"), attributes: [.destructive]) { [weak self] _ in
             guard let self = self else { return }
@@ -211,7 +213,22 @@ class ImageDetailViewController: UIViewController {
     }
     
     func saveOriginPhoto() {
-        savePhoto(for: [.origin])
+        if User.shared.proTier() == .lifetime {
+            savePhoto(for: [.origin])
+        } else {
+            let alertController = UIAlertController(title: String(localized: "detail.alert.membership.title"), message: nil, preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+                //
+            }
+            let learnMoreAction = UIAlertAction(title: String(localized: "membership.learnMore"), style: .default) { [weak self] _ in
+                self?.lifetimeAction()
+            }
+
+            alertController.addAction(cancelAction)
+            alertController.addAction(learnMoreAction)
+            alertController.popoverPresentationController?.sourceView = saveButton
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     func saveWatermarkPhoto() {
@@ -231,7 +248,7 @@ class ImageDetailViewController: UIViewController {
     
     func deleteButtonAction() {
         let alertController = UIAlertController(title: String(localized: "detail.alert.delete.title"), message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: String(localized: "detail.alert.delete.cancel"), style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
             //
         }
         let deleteAction = UIAlertAction(title: String(localized: "detail.alert.delete.confirm"), style: .destructive) { [weak self] _ in
@@ -240,6 +257,7 @@ class ImageDetailViewController: UIViewController {
 
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)
+        alertController.popoverPresentationController?.sourceView = deleteButton
         present(alertController, animated: true, completion: nil)
     }
     
@@ -339,5 +357,52 @@ extension ImageDetailViewController {
 extension ImageDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+extension ImageDetailViewController {
+    func lifetimeAction() {
+        showOverlayViewController()
+        Task {
+            do {
+                if let _ = try await Store.shared.purchaseLifetimeMembership() {
+                    //
+                }
+            }
+            catch {
+                showAlert(title: String(localized: "membership.failure"), message: error.localizedDescription)
+            }
+            
+            hideOverlayViewController()
+        }
+    }
+    
+    func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
+        alertController.addAction(cancelAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func manageAction() {
+        if Store.shared.networkIssueOccurs {
+            Store.shared.retryRequestProducts()
+        } else {
+            switch User.shared.proTier() {
+            case .lifetime:
+                restorePurchases()
+            case .none:
+                restorePurchases()
+            }
+        }
+    }
+    
+    func restorePurchases() {
+        Task {
+            showOverlayViewController()
+            await Store.shared.sync()
+            hideOverlayViewController()
+        }
     }
 }

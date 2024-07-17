@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ProTier {
+public enum ProTier: Hashable {
     case lifetime
     case none
 }
