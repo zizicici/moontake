@@ -22,6 +22,7 @@ class MoreViewController: UIViewController {
     enum Section: Hashable {
         case membership
         case settings
+        case tutorials
         case appjun
         case about
         
@@ -31,6 +32,8 @@ class MoreViewController: UIViewController {
                 return " "
             case .settings:
                 return String(localized: "Settings")
+            case .tutorials:
+                return String(localized: "tutorials.title")
             case .appjun:
                 return String(localized: "App from AppJun")
             case .about:
@@ -140,6 +143,7 @@ class MoreViewController: UIViewController {
         
         case membership(MembershipCell.DisplayItem)
         case settings(GeneralItem)
+        case tutorials
         case appjun(AppJunItem)
         case about(AboutItem)
         
@@ -149,6 +153,8 @@ class MoreViewController: UIViewController {
                 return ""
             case .settings(let item):
                 return item.title
+            case .tutorials:
+                return String(localized: "tutorials.title")
             case .appjun(let item):
                 return item.title
             case .about(let item):
@@ -258,6 +264,15 @@ class MoreViewController: UIViewController {
                 content.secondaryText = item.value
                 cell.contentConfiguration = content
                 return cell
+            case .tutorials:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                var content = UIListContentConfiguration.valueCell()
+                content.text = identifier.title
+                content.textProperties.color = .label
+                content.secondaryText = nil
+                cell.contentConfiguration = content
+                return cell
             case .appjun(let item):
                 switch item {
                 case .otherApps(let app):
@@ -302,6 +317,9 @@ class MoreViewController: UIViewController {
         }
         snapshot.appendSections([.settings])
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
+        
+        snapshot.appendSections([.tutorials])
+        snapshot.appendItems([.tutorials], toSection: .tutorials)
         
         snapshot.appendSections([.appjun])
         var appItems: [Item] = [.appjun(.otherApps(.lemon)), .appjun(.otherApps(.offDay)), .appjun(.otherApps(.coconut)), .appjun(.otherApps(.pigeon)), .appjun(.otherApps(.one))]
@@ -351,6 +369,8 @@ extension MoreViewController: UITableViewDelegate {
                 case .saveOptions:
                     enterWatermarkSettings()
                 }
+            case .tutorials:
+                jumpToTutorials()
             case .appjun(let item):
                 switch item {
                 case .otherApps(let app):
@@ -388,6 +408,13 @@ extension MoreViewController {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:])
         }
+    }
+    
+    func jumpToTutorials() {
+        let tutorialsVC = TutorialsViewController()
+        let nav = UINavigationController(rootViewController: tutorialsVC)
+        
+        navigationController?.present(nav, animated: true)
     }
     
     func enterISOSettings() {

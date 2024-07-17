@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "__moontake__tutorials__" : {
+    "tutorials.content" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5600,13 +5600,18 @@
         }
       }
     },
-    "Tutorials" : {
-      "comment" : "Tutorials",
+    "tutorials.title" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anleitungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorials"
           }
         },
         "es" : {

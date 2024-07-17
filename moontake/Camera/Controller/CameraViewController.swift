@@ -139,7 +139,7 @@ class CameraViewController: UIViewController {
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "Tutorials")
+        button.accessibilityLabel = String(localized: "tutorials.title")
         button.alpha = 0.75
         
         return button
