@@ -146,11 +146,11 @@ class ImageDetailViewController: UIViewController {
             make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
             make.width.height.equalTo(44)
         }
-        let orginAction = UIAction(title: String(localized: "detail.origin.title"), image: UIImage(systemName: "photo")) { [weak self] _ in
+        let orginAction = UIAction(title: String(localized: "photo.original.title"), image: UIImage(systemName: "photo")) { [weak self] _ in
             guard let self = self else { return }
             self.saveOriginPhoto()
         }
-        let watermarkAction = UIAction(title: String(localized: "detail.watermark.title"), image: UIImage(systemName: "photo.artframe")) { [weak self] _ in
+        let watermarkAction = UIAction(title: String(localized: "photo.watermarked.title"), image: UIImage(systemName: "photo.artframe")) { [weak self] _ in
             guard let self = self else { return }
             self.saveWatermarkPhoto()
         }

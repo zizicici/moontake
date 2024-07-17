@@ -18,11 +18,11 @@ struct Settings {
         var title: String {
             switch self {
             case .photoWithWatermark:
-                return String(localized: "Photo with Watermark")
+                return String(localized: "photo.watermarked.title")
             case .photoWithoutWatermark:
-                return String(localized: "Photo without Watermark")
+                return String(localized: "photo.original.title")
             case .both:
-                return String(localized: "Both above")
+                return String(localized: "photo.original.title") + " + " + String(localized: "photo.watermarked.title")
             }
         }
     }

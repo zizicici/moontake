@@ -104,7 +104,7 @@ class SaveOptionsViewController: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.save])
         let saveToAlbumSettings = Settings.shared.getSaveToAlbumSettings()
-        snapshot.appendItems([.save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
+        snapshot.appendItems([.save(.photoWithoutWatermark, saveToAlbumSettings == .photoWithoutWatermark), .save(.photoWithWatermark, saveToAlbumSettings == .photoWithWatermark), .save(.both, saveToAlbumSettings == .both)], toSection: .save)
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
