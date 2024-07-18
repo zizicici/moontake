@@ -805,9 +805,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location information to add to photo.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need add-only authrization to save photo to album.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to photo library to save photos to your photo library directly when using moontake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -841,9 +841,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
-				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location information to add to photo.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We need add-only authrization to save photo to album.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to photo library to save photos to your photo library directly when using moontake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

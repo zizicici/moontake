@@ -86,85 +86,85 @@
       }
     },
     "NSCameraUsageDescription" : {
-      "comment" : "InfoPlist.strings\n  moontake\n\n  Created by Ci Zi on 2023/8/10.",
+      "comment" : "Privacy - Camera Usage Description",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir benötigen Zugriff auf Ihre Kamera, um Fotos aufnehmen zu können."
+            "value" : "Erlaube den Zugriff auf die Kamera, um Fotos mit moontake aufzunehmen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "We need access to your camera to take photos."
+            "value" : "Allow access to the camera to take photos with moontake"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos acceso a tu cámara para tomar fotos."
+            "value" : "Permitir acceso a la cámara para tomar fotos con moontake"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos acceso a tu cámara para tomar fotos."
+            "value" : "Permitir acceso a la cámara para tomar fotos con moontake"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous avons besoin d'accéder à votre appareil photo pour prendre des photos."
+            "value" : "Autoriser l'accès à l'appareil photo pour prendre des photos avec moontake"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真を撮るためにカメラへのアクセスが必要です。"
+            "value" : "moontake で写真を撮るためにカメラへのアクセスを許可する"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos de acesso à sua câmera para tirar fotos."
+            "value" : "Permitir acesso à câmera para tirar fotos com moontake"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos de acesso à sua câmera para tirar fotos."
+            "value" : "Permitir acesso à câmera para tirar fotos com moontake"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мы нуждаемся в доступе к вашей камере для съемки фотографий."
+            "value" : "Разрешить доступ к камере для съемки фотографий с moontake"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нам потрібен доступ до вашої камери для зйомки фотографій."
+            "value" : "Дозволити доступ до камери для зйомки фотографій з moontake"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们需要访问您的相机以拍摄照片。"
+            "value" : "允许访问相机以使用 moontake 拍照"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要訪問您的相機以拍攝照片。"
+            "value" : "允許訪問相機以使用 moontake 拍照"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要訪問您的相機以拍攝照片。"
+            "value" : "允許訪問相機以使用 moontake 拍照"
           }
         }
       }
@@ -176,79 +176,79 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir müssen auf Ihren Standort zugreifen, um Geotags zu den Fotos hinzuzufügen."
+            "value" : "Erlaube den Zugriff auf den Standort, um GPS-Koordinaten in die Metadaten des Fotos einzubetten, damit du sie später auf einer Karte sehen kannst"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "We need location information to add to photo."
+            "value" : "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos acceder a su ubicación para agregar etiquetas geográficas a las fotos."
+            "value" : "Permitir acceso a la ubicación para incrustar coordenadas GPS en los metadatos de la foto, para que puedas verlas en un mapa más tarde"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos acceder a su ubicación para agregar etiquetas geográficas a las fotos."
+            "value" : "Permitir acceso a la ubicación para incrustar coordenadas GPS en los metadatos de la foto, para que puedas verlas en un mapa más tarde"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous devons accéder à votre emplacement pour ajouter des balises géographiques aux photos."
+            "value" : "Autoriser l'accès à l'emplacement pour intégrer les coordonnées GPS dans les métadonnées de la photo, afin de les voir sur une carte plus tard"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真にジオタグを追加するために、あなたの位置情報にアクセスする必要があります。"
+            "value" : "後で地図上で確認できるように、写真のメタデータにGPS座標を埋め込むために位置情報へのアクセスを許可する"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos acessar sua localização para adicionar geotags às fotos."
+            "value" : "Permitir acesso à localização para incorporar coordenadas GPS nos metadados da foto, para que possa vê-las num mapa mais tarde"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos acessar sua localização para adicionar geotags às fotos."
+            "value" : "Permitir acesso à localização para incorporar coordenadas GPS nos metadados da foto, para que possa vê-las num mapa mais tarde"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нам нужен доступ к вашему местоположению, чтобы добавить геометки к фотографиям."
+            "value" : "Разрешить доступ к местоположению для встраивания GPS-координат в метаданные фотографии, чтобы вы могли увидеть их на карте позже"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нам потрібен доступ до вашого місцезнаходження, щоб додати геомітки до фотографій."
+            "value" : "Дозволити доступ до місця розташування для вбудовування GPS-координат в метадані фотографії, щоб ви могли побачити їх на мапі пізніше"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们需要访问您的地理位置，才能向照片添加地理信息。"
+            "value" : "允许访问位置信息，将 GPS 坐标嵌入照片元数据，以便稍后在地图上查看"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要訪問您的地理位置，才能向照片添加地理信息。"
+            "value" : "允許訪問位置信息，將 GPS 座標嵌入照片元數據，以便稍後在地圖上查看"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要訪問您的地理位置，才能向照片添加地理信息。"
+            "value" : "允許訪問位置信息，將 GPS 座標嵌入照片元數據，以便稍後在地圖上查看"
           }
         }
       }
@@ -259,79 +259,79 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wir benötigen die ausschließliche Autorisierung, um Fotos zum Album hinzuzufügen."
+            "value" : "Erlaube den Zugriff auf die Fotobibliothek, um Fotos direkt in deiner Fotobibliothek zu speichern, wenn du moontake verwendest"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We need add-only authorization to save photos to the album."
+            "value" : "Allow access to photo library to save photos to your photo library directly when using moontake"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos autorización exclusiva para guardar fotos en el álbum."
+            "value" : "Permitir acceso a la biblioteca de fotos para guardar fotos directamente en tu biblioteca de fotos al usar moontake"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesitamos autorización exclusiva para guardar fotos en el álbum."
+            "value" : "Permitir acceso a la biblioteca de fotos para guardar fotos directamente en tu biblioteca de fotos al usar moontake"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nous avons besoin d'une autorisation exclusive pour ajouter des photos à l'album."
+            "value" : "Autoriser l'accès à la photothèque pour enregistrer directement les photos dans votre photothèque lors de l'utilisation de moontake"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "アルバムに写真を保存するための追加専用権限が必要です。"
+            "value" : "moontake を使用する際に写真ライブラリへのアクセスを許可して、写真を直接写真ライブラリに保存する"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos de autorização exclusiva para salvar fotos no álbum."
+            "value" : "Permitir acesso à biblioteca de fotos para salvar fotos diretamente na sua biblioteca de fotos ao usar moontake"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precisamos de autorização exclusiva para salvar fotos no álbum."
+            "value" : "Permitir acesso à biblioteca de fotos para salvar fotos diretamente na sua biblioteca de fotos ao usar moontake"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нам нужно разрешение только на добавление для сохранения фотографий в альбом."
+            "value" : "Разрешить доступ к фотобиблиотеке для прямого сохранения фотографий в вашу фотобиблиотеку при использовании moontake"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Нам потрібне виключне дозвіл на додавання для збереження фотографій у альбомі."
+            "value" : "Дозволити доступ до фотобібліотеки для прямого збереження фотографій у вашу фотобібліотеку під час використання moontake"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们需要“仅添加照片”权限以保存您拍摄的照片到相册。"
+            "value" : "允许访问照片库，在使用 moontake 时直接保存照片到您的照片库"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要「僅添加照片」權限以保存您拍攝的照片到相簿。"
+            "value" : "允許訪問照片庫，在使用 moontake 時直接保存照片到您的照片庫"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我們需要「僅添加照片」權限以保存您拍攝的照片到相簿。"
+            "value" : "允許訪問照片庫，在使用 moontake 時直接保存照片到您的照片庫"
           }
         }
       }
