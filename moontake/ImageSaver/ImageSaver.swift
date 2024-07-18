@@ -33,7 +33,7 @@ struct ImageSaver {
                         creationRequest.addResource(with: .photo, data: newData, options: options)
                     }
                     if toDatabase {
-                        AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.latitude)
+                        AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude)
                     }
                 }, completionHandler: { _, error in
                     if let error = error {

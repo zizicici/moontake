@@ -122,6 +122,19 @@ class CameraViewController: UIViewController {
         
         return button
     }()
+    private let locationButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "mappin.slash")
+        configuration.contentInsets = .zero
+        
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityLabel = String(localized: "location.title")
+        button.alpha = 0.75
+        button.showsMenuAsPrimaryAction = true
+        
+        return button
+    }()
     private let moreButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "gearshape")
@@ -361,6 +374,14 @@ class CameraViewController: UIViewController {
             button.configuration = config
         }
         
+        view.addSubview(locationButton)
+        locationButton.snp.makeConstraints { make in
+            make.leading.equalTo(previewView).inset(6)
+            make.height.width.equalTo(44.0)
+            make.bottom.equalTo(previewView).inset(6)
+        }
+        setupLocationButton()
+        
         view.addSubview(permissionView)
         permissionView.snp.makeConstraints { make in
             make.edges.equalTo(previewView)
@@ -397,14 +418,18 @@ class CameraViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(whiteBalanceUpdated), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationAuthorizationDidChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationInformationDidChanged, object: nil)
+
         observation = observe(\.presentationController, options: [.old, .new]) { [weak self] _, change in
             print("presentationController changed")
             if let vc = change.newValue as? UIPresentationController {
                 if vc.presentedViewController.presentedViewController != nil {
                     self?.stopCaptureSession()
+                    self?.stopLocationUpdateIfNeeded()
                 } else {
                     self?.resumeCaptureSession()
+                    self?.resumeLocationUpdateIfNeeded()
                 }
             }
         }
@@ -1040,5 +1065,73 @@ class CameraViewController: UIViewController {
                 block()
             }
         }
+    }
+}
+
+extension CameraViewController {
+    func setupLocationButton() {
+        locationButton.configurationUpdateHandler = { button in
+            var config = button.configuration
+            switch Location.shared.authorizationStatus() {
+            case .notDetermined:
+                config?.image = UIImage(systemName: "mappin.slash")
+            case .restricted, .denied:
+                config?.image = UIImage(systemName: "mappin.slash", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemRed, .moonColor]))
+            case .authorizedAlways, .authorizedWhenInUse:
+                if Location.shared.manualDisable {
+                    config?.image = UIImage(systemName: "mappin.slash")
+                } else {
+                    config?.image = UIImage(systemName: "mappin.and.ellipse", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.moonColor, .systemGreen]))
+                }
+            @unknown default:
+                config?.image = UIImage(systemName: "mappin.slash")
+            }
+            
+            button.configuration = config
+        }
+    }
+    
+    @objc
+    func reloadLocationMenu() {
+        locationButton.setNeedsUpdateConfiguration()
+        
+        var menuChildren: [UIMenuElement] = []
+        
+        switch Location.shared.authorizationStatus() {
+        case .notDetermined:
+            let requestPermissionAction = UIAction(title: String(localized: "location.permission.notDetermined"), image: UIImage(systemName: "mappin.circle")) { _ in
+                Location.shared.requestAuthorization()
+            }
+            menuChildren.append(requestPermissionAction)
+        case .restricted, .denied:
+            let settingsAction = UIAction(title: String(localized: "location.permission.denied"), image: UIImage(systemName: "gearshape.circle")) { [weak self] _ in
+                self?.jumpToSettings()
+            }
+            menuChildren.append(settingsAction)
+        case .authorizedAlways, .authorizedWhenInUse:
+            if Location.shared.manualDisable {
+                let enableAction = UIAction(title: String(localized: "location.permission.manualEnable"), image: UIImage(systemName: "mappin.circle")) { _ in
+                    Location.shared.manual(disable: false)
+                }
+                menuChildren.append(enableAction)
+            } else {
+                let disableAction = UIAction(title: String(localized: "location.permission.manualDisable"), image: UIImage(systemName: "mappin.slash.circle")) { _ in
+                    Location.shared.manual(disable: true)
+                }
+                menuChildren.append(disableAction)
+            }
+        @unknown default:
+            break
+        }
+        
+        locationButton.menu = UIMenu(children: menuChildren)
+    }
+    
+    func stopLocationUpdateIfNeeded() {
+        Location.shared.stopLocationUpdate()
+    }
+    
+    func resumeLocationUpdateIfNeeded() {
+        Location.shared.resumeLocationUpdate()
     }
 }
