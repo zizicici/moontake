@@ -15,7 +15,7 @@ struct ImageSaver {
         case watermark
     }
     
-    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, toDatabase: Bool, completion: (() -> ())?) {
+    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, customLocationName: String?, toDatabase: Bool, completion: (() -> ())?) {
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             if status == .authorized {
                 PHPhotoLibrary.shared().performChanges({
@@ -27,7 +27,7 @@ struct ImageSaver {
                         creationRequest.location = location
                         creationRequest.addResource(with: .photo, data: photoData, options: options)
                     }
-                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date) {
+                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date, customLocationName: customLocationName) {
                         let creationRequest = PHAssetCreationRequest.forAsset()
                         creationRequest.location = location
                         creationRequest.addResource(with: .photo, data: newData, options: options)
@@ -49,9 +49,9 @@ struct ImageSaver {
 }
 
 extension ImageSaver {
-    static func addWaterMark(for photoData: Data, date: Date) -> Data? {
+    static func addWaterMark(for photoData: Data, date: Date, customLocationName: String?) -> Data? {
         var newData: Data?
-        if let image = UIImage(data: photoData), let newImage = addWaterMarkToBottomOfImage(image: image, date: date) {
+        if let image = UIImage(data: photoData), let newImage = addWaterMarkToBottomOfImage(image: image, date: date, customLocationName: customLocationName) {
             let exifData = getExifData(from: photoData)
             
             if #available(iOS 17.0, *) {
@@ -99,7 +99,7 @@ extension ImageSaver {
         return destinationData as Data
     }
     
-    static func addWaterMarkToBottomOfImage(image: UIImage, date: Date) -> UIImage? {
+    static func addWaterMarkToBottomOfImage(image: UIImage, date: Date, customLocationName: String?) -> UIImage? {
         let imageSize = image.size
         let scale = image.scale
         
@@ -132,8 +132,20 @@ extension ImageSaver {
             .font: UIFont.systemFont(ofSize: 64, weight: .light),
             .foregroundColor: UIColor.black.withAlphaComponent(0.6)
         ]
-        let secondText: String = date.formatted(date: .numeric, time: .standard)
-        let secondAttributedString = NSAttributedString(string: secondText, attributes: secondAttributes)
+        let secondText: String = date.formatted(date: .numeric, time: .standard) + "    "
+        let secondAttributedString = NSMutableAttributedString(string: secondText, attributes: secondAttributes)
+        if let customLocationName = customLocationName, !customLocationName.isBlank {
+            let symbolImage = UIImage.sfSymbolImage(systemName: "mappin.and.ellipse", pointSize: 54)
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = symbolImage
+            let imageAttributedString = NSAttributedString(attachment: imageAttachment)
+            
+            secondAttributedString.append(imageAttributedString)
+            
+            let customAttributedString = NSAttributedString(string: " " + customLocationName, attributes: secondAttributes)
+            
+            secondAttributedString.append(customAttributedString)
+        }
         
         let secondHeight = secondAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude).height
         let secondTextRect = CGRect(x: 80.0, y: firstTextRect.maxY + 48.0, width: imageSize.width - 80.0, height: secondHeight)
@@ -172,5 +184,12 @@ extension ImageSaver {
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+}
+
+extension UIImage {
+    static func sfSymbolImage(systemName: String, pointSize: CGFloat) -> UIImage? {
+        let configuration = UIImage.SymbolConfiguration(pointSize: pointSize)
+        return UIImage(systemName: systemName, withConfiguration: configuration)?.withTintColor(UIColor.black.withAlphaComponent(0.6), renderingMode: .alwaysOriginal)
     }
 }

@@ -139,7 +139,7 @@ extension SaveOptionsViewController {
     
     func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
+        let cancelAction = UIAlertAction(title: String(localized: "ok"), style: .cancel)
         let learnMoreAction = UIAlertAction(title: String(localized: "membership.learnMore"), style: .default) { [weak self] _ in
             self?.jumpToMore()
         }

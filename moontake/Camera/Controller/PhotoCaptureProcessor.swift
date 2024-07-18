@@ -109,7 +109,7 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             targets = [.origin, .watermark]
         }
         
-        ImageSaver.saveImage(photoData, targets: targets, fileType: saveFileType, location: self.location, width: Int(image.size.width), height: Int(image.size.height), date: Date(), toDatabase: true) { [weak self] in
+        ImageSaver.saveImage(photoData, targets: targets, fileType: saveFileType, location: self.location, width: Int(image.size.width), height: Int(image.size.height), date: Date(), customLocationName: CustomSettings.shared.locationName, toDatabase: true) { [weak self] in
             self?.didFinish()
         }
     }

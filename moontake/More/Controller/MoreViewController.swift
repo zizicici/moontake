@@ -513,7 +513,7 @@ extension MoreViewController {
     
     func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: String(localized: "OK"), style: .cancel)
+        let cancelAction = UIAlertAction(title: String(localized: "ok"), style: .cancel)
         alertController.addAction(cancelAction)
 
         present(alertController, animated: true, completion: nil)

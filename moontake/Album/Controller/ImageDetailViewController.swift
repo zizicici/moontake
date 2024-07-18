@@ -232,14 +232,37 @@ class ImageDetailViewController: UIViewController {
     }
     
     func saveWatermarkPhoto() {
-        savePhoto(for: [.watermark])
+        let alertController = UIAlertController(title: String(localized: "detail.location.input.title"), message: String(localized: "detail.location.input.message"), preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            textField.text = ""
+            textField.addTarget(alertController, action: #selector(alertController.textDidChangeInContentAlert), for: .editingChanged)
+        }
+        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+        }
+        let notSetAction = UIAlertAction(title: String(localized: "detail.location.notSet"), style: .default) { [weak self] _ in
+            self?.savePhoto(for: [.watermark])
+        }
+        let setAction = UIAlertAction(title: String(localized: "detail.location.set"), style: .default) { [weak self] _ in
+            if let text = alertController.textFields?.first?.text {
+                self?.savePhoto(for: [.watermark], customLocationName: text)
+            } else {
+                //
+            }
+        }
+        setAction.isEnabled = false
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(notSetAction)
+        alertController.addAction(setAction)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func savePhoto(for targets: [ImageSaver.TargetType]) {
+    func savePhoto(for targets: [ImageSaver.TargetType], customLocationName: String? = nil) {
         guard let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL), let creationDate = imageInfo.creationDate else {
             return
         }
-        ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, date: creationDate, toDatabase: false) { [weak self] in
+        ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, date: creationDate, customLocationName: customLocationName, toDatabase: false) { [weak self] in
             DispatchQueue.main.async {
                 self?.showToast(text: String(localized: "detail.save.toast"))
             }

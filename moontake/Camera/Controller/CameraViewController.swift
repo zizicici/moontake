@@ -12,6 +12,12 @@ import UIKit
 import CoreMotion
 import Toast
 
+struct CustomSettings {
+    static var shared: CustomSettings = CustomSettings()
+    
+    var locationName: String?
+}
+
 class CameraViewController: UIViewController {
     private var session: AVCaptureSession!
     private let sessionQueue = DispatchQueue(label: "capture")
@@ -125,7 +131,7 @@ class CameraViewController: UIViewController {
     private let locationButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "mappin.slash")
-        configuration.contentInsets = .zero
+        configuration.imagePadding = 10.0
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
@@ -377,7 +383,8 @@ class CameraViewController: UIViewController {
         view.addSubview(locationButton)
         locationButton.snp.makeConstraints { make in
             make.leading.equalTo(previewView).inset(6)
-            make.height.width.equalTo(44.0)
+            make.height.equalTo(44.0)
+            make.width.greaterThanOrEqualTo(44.0)
             make.bottom.equalTo(previewView).inset(6)
         }
         setupLocationButton()
@@ -1086,6 +1093,7 @@ extension CameraViewController {
             @unknown default:
                 config?.image = UIImage(systemName: "mappin.slash")
             }
+            config?.title = CustomSettings.shared.locationName
             
             button.configuration = config
         }
@@ -1124,6 +1132,15 @@ extension CameraViewController {
             break
         }
         
+        let customNameAction = UIAction(title: CustomSettings.shared.locationName ?? "", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { [weak self] action in
+            self?.setupCustomLocationName()
+        }
+        customNameAction.subtitle = String(localized: "customSettings.location.intro")
+        
+        let divider = UIMenu(title: String(localized: "customSettings.location.title"), options: . displayInline, children: [customNameAction])
+        
+        menuChildren.append(divider)
+        
         locationButton.menu = UIMenu(children: menuChildren)
     }
     
@@ -1134,4 +1151,43 @@ extension CameraViewController {
     func resumeLocationUpdateIfNeeded() {
         Location.shared.resumeLocationUpdate()
     }
+    
+    func setupCustomLocationName() {
+        let alertController = UIAlertController(title: String(localized: "customSettings.location.input.title"), message: String(localized: "customSettings.location.input.message"), preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = ""
+            textField.text = CustomSettings.shared.locationName
+        }
+        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+            //
+        }
+        let okAction = UIAlertAction(title: String(localized: "ok"), style: .default) { [weak self] _ in
+            if let text = alertController.textFields?.first?.text {
+                CustomSettings.shared.locationName = text
+                self?.reloadLocationMenu()
+            } else {
+                //
+            }
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
+
+extension UIAlertController {
+    @objc
+    func textDidChangeInContentAlert() {
+        if let keyword = textFields?[0].text, let action = actions.last {
+            action.isEnabled = keyword.isValidLocationName()
+        }
+    }
+}
+
+extension String {
+    func isValidLocationName() -> Bool{
+        return count > 0 && count < 150
+    }
+}
+
