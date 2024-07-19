@@ -50,6 +50,9 @@ class Location: NSObject {
     }
     
     var location: CLLocation? {
+        if manualDisable {
+            return nil
+        }
         return locationManager.location
     }
     
