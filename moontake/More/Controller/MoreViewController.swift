@@ -139,7 +139,7 @@ class MoreViewController: UIViewController {
             }
         }
         
-        case promotion
+        case promotion(String?)
         case thanks
         case settings(GeneralItem)
         case tutorials
@@ -225,10 +225,10 @@ class MoreViewController: UIViewController {
             guard let self = self else { return nil }
             guard let identifier = dataSource.itemIdentifier(for: indexPath) else { return nil }
             switch identifier {
-            case .promotion:
+            case .promotion(let price):
                 let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(PromotionCell.self), for: indexPath)
                 if let cell = cell as? PromotionCell {
-                    cell.update(price: Store.shared.membershipDisplayPrice() ?? "?.??")
+                    cell.update(price: price ?? "?.??")
                     cell.purchaseClosure = { [weak self] in
                         self?.lifetimeAction()
                     }
@@ -299,7 +299,7 @@ class MoreViewController: UIViewController {
         case .lifetime:
             snapshot.appendItems([.thanks], toSection: .membership)
         case .none:
-            snapshot.appendItems([.promotion], toSection: .membership)
+            snapshot.appendItems([.promotion(Store.shared.membershipDisplayPrice())], toSection: .membership)
         }
         snapshot.appendSections([.settings])
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
