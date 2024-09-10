@@ -192,13 +192,14 @@ class MoreViewController: UIViewController {
         configureDataSource()
         reloadData()
         
-        if Store.shared.membershipDisplayPrice() == nil {
-            retryStoreInfo()
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        retryStoreInfo()
     }
     
     func configureHierarchy() {
@@ -520,7 +521,7 @@ extension MoreViewController {
     }
     
     func retryStoreInfo() {
-        if Store.shared.networkIssueOccurs {
+        if !Store.shared.fetchSuccess {
             Store.shared.retryRequestProducts()
         }
     }

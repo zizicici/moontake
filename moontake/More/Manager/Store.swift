@@ -31,7 +31,9 @@ class Store: ObservableObject {
     }
 
     var updateListenerTask: Task<Void, Error>? = nil
-    var networkIssueOccurs = false
+    var fetchSuccess: Bool {
+        return memberships.count > 0
+    }
 
     init() {
         memberships = []
@@ -98,6 +100,7 @@ class Store: ObservableObject {
                 ]
             )
             
+            memberships = []
             for product in products {
                 switch product.type {
                 case .nonConsumable:
@@ -106,15 +109,12 @@ class Store: ObservableObject {
                     break
                 }
             }
-            
-            print(memberships)
-            networkIssueOccurs = false
         }
         catch {
             if let error = error as? StoreKit.StoreKitError {
                 switch error {
                 case .networkError:
-                    networkIssueOccurs = true
+                    break
                 default:
                     break
                 }
