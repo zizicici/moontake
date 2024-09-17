@@ -108,7 +108,7 @@ class SpecificationsViewController: UIViewController {
                 let Toast = ThirdParty(
                     urlString: "https://github.com/scalessec/Toast-Swift",
                     name: "Toast",
-                    version: "5.0.1"
+                    version: "5.1.1"
                 )
                 return [astro, GRDB, Kingfisher, SnapKit, Toast]
             }()
