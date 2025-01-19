@@ -19,11 +19,11 @@ struct CustomSettings {
 }
 
 class CameraViewController: UIViewController {
-    private var session: AVCaptureSession!
+    private var session: AVCaptureSession?
     private let sessionQueue = DispatchQueue(label: "capture")
     
     private var captureDevice: AVCaptureDevice?
-    private var captureDeviceInput: AVCaptureDeviceInput!
+    private var captureDeviceInput: AVCaptureDeviceInput?
     private let photoOutput = AVCapturePhotoOutput()
     
     private var inProgressPhotoCaptureDelegates = [Int64: PhotoCaptureProcessor]()
@@ -551,13 +551,13 @@ class CameraViewController: UIViewController {
             //init session
             self.session = AVCaptureSession()
             //start configuration
-            self.session.beginConfiguration()
+            self.session?.beginConfiguration()
             
             //session specific configuration
-            if self.session.canSetSessionPreset(.photo) {
-                self.session.sessionPreset = .photo
+            if self.session?.canSetSessionPreset(.photo) == true {
+                self.session?.sessionPreset = .photo
             }
-            self.session.automaticallyConfiguresCaptureDeviceForWideColor = true
+            self.session?.automaticallyConfiguresCaptureDeviceForWideColor = true
             
             //setup inputs
             self.setupInputs()
@@ -571,9 +571,9 @@ class CameraViewController: UIViewController {
             self.setupOutput()
             
             //commit configuration
-            self.session.commitConfiguration()
+            self.session?.commitConfiguration()
             //start running it
-            self.session.startRunning()
+            self.session?.startRunning()
         }
     }
     
@@ -583,7 +583,7 @@ class CameraViewController: UIViewController {
         }
         
         sessionQueue.async {
-            self.session.stopRunning()
+            self.session?.stopRunning()
         }
     }
     
@@ -593,7 +593,7 @@ class CameraViewController: UIViewController {
         }
         
         sessionQueue.async {
-            self.session.startRunning()
+            self.session?.startRunning()
         }
     }
     
@@ -682,20 +682,20 @@ class CameraViewController: UIViewController {
             fatalError("could not create input device from back camera")
         }
         captureDeviceInput = bInput
-        if !session.canAddInput(captureDeviceInput) {
+        if session?.canAddInput(bInput) == false {
             fatalError("could not add back camera input to capture session")
         }
         
         //connect back camera input to session
-        session.addInput(captureDeviceInput)
+        session?.addInput(bInput)
     }
     
     func setupOutput(){
         guard let captureDevice = captureDevice else {
             return
         }
-        if session.canAddOutput(photoOutput) {
-            session.addOutput(photoOutput)
+        if session?.canAddOutput(photoOutput) == true {
+            session?.addOutput(photoOutput)
             
             if #available(iOS 16.0, *) {
                 if let first = captureDevice.activeFormat.supportedMaxPhotoDimensions.first {
@@ -749,7 +749,7 @@ class CameraViewController: UIViewController {
                 photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             }
             
-            if self.captureDeviceInput.device.isFlashAvailable {
+            if self.captureDeviceInput?.device.isFlashAvailable == true {
                 photoSettings.flashMode = .off
             }
             
@@ -926,17 +926,18 @@ class CameraViewController: UIViewController {
         let devicePoint = previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: location)
         addFocusViewAt(location)
         sessionQueue.async {
-            let device = self.captureDeviceInput.device
-            do {
-                try device.lockForConfiguration()
-                if device.isFocusPointOfInterestSupported {
-                    device.focusPointOfInterest = devicePoint
-                    device.focusMode = .autoFocus
+            if let device = self.captureDeviceInput?.device {
+                do {
+                    try device.lockForConfiguration()
+                    if device.isFocusPointOfInterestSupported {
+                        device.focusPointOfInterest = devicePoint
+                        device.focusMode = .autoFocus
+                    }
+                    device.unlockForConfiguration()
                 }
-                device.unlockForConfiguration()
-            }
-            catch {
-                print(error)
+                catch {
+                    print(error)
+                }
             }
         }
     }
