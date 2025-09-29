@@ -63,7 +63,7 @@ class CameraViewController: UIViewController {
         return label
     }()
     private let plusButton: UIButton = {
-        var configuration = UIButton.Configuration.bordered()
+        var configuration = UIButton.Configuration.tinted()
         configuration.image = UIImage(systemName: "plus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
@@ -83,7 +83,7 @@ class CameraViewController: UIViewController {
         return button
     }()
     private let minusButton: UIButton = {
-        var configuration = UIButton.Configuration.bordered()
+        var configuration = UIButton.Configuration.tinted()
         configuration.image = UIImage(systemName: "minus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0

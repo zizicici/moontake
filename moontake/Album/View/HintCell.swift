@@ -99,7 +99,7 @@ class HintCell: HintBaseCell {
     }()
     
     private let membershipButton: UIButton = {
-        var configuration = UIButton.Configuration.gray()
+        var configuration = UIButton.Configuration.tinted()
         
         configuration.image = UIImage(systemName: "arrowshape.up.circle", withConfiguration: UIImage.SymbolConfiguration(textStyle: .footnote))
         configuration.title = String(localized: "membership.learnMore")
