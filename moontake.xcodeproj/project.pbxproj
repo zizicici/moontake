@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		141F38D82C9968DF00347225 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 141F38D72C9968DF00347225 /* GRDB */; };
+		148982D82E8A4195008BF518 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 148982D72E8A4195008BF518 /* AppIcon.icon */; };
 		14898FEB2BFB46D100FBEAC6 /* AppInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 14898FEA2BFB46D100FBEAC6 /* AppInfo */; };
 		14898FEE2BFB47A600FBEAC6 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FED2BFB47A600FBEAC6 /* InfoPlist.xcstrings */; };
 		14898FF02BFB47A600FBEAC6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FEF2BFB47A600FBEAC6 /* Localizable.xcstrings */; };
@@ -89,6 +90,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		148982D72E8A4195008BF518 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		14898FEC2BFB47A600FBEAC6 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/LaunchScreen.xcstrings; sourceTree = "<group>"; };
 		14898FED2BFB47A600FBEAC6 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		14898FEF2BFB47A600FBEAC6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				14F1228A2C411193000A0B08 /* Database */,
 				63FF461A2A9E583E00C9FDCA /* Astronomy */,
 				63F5E3342A72ADC0008CAA07 /* Extension */,
+				148982D72E8A4195008BF518 /* AppIcon.icon */,
 				63F806A92A59ACCD00135630 /* Assets.xcassets */,
 				63FDEA2F2A7CF97E002E02C2 /* Mooninfo.xcframework */,
 				63FF46162A9E582D00C9FDCA /* moon_phases.json */,
@@ -555,6 +558,7 @@
 				63F806AA2A59ACCD00135630 /* Assets.xcassets in Resources */,
 				14898FF02BFB47A600FBEAC6 /* Localizable.xcstrings in Resources */,
 				63FF46182A9E582D00C9FDCA /* moon_phases.json in Resources */,
+				148982D82E8A4195008BF518 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

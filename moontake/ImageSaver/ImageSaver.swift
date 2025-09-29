@@ -172,11 +172,6 @@ extension ImageSaver {
         
         // Icon
         if let logoImage = UIImage(named: "Logo") {
-            // 创建圆角路径
-            let cornerRadius: CGFloat = 50.0
-            let path = UIBezierPath(roundedRect: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200), cornerRadius: cornerRadius)
-            path.addClip()
-            
             logoImage.draw(in: CGRect(x: imageSize.width - 280, y: imageSize.height + 80, width: 200, height: 200))
         }
         
