@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		141F38D82C9968DF00347225 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 141F38D72C9968DF00347225 /* GRDB */; };
+		1447C23D2E8B992800CCE53B /* AppInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 1447C23C2E8B992800CCE53B /* AppInfo */; };
 		148982D82E8A4195008BF518 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 148982D72E8A4195008BF518 /* AppIcon.icon */; };
-		14898FEB2BFB46D100FBEAC6 /* AppInfo in Frameworks */ = {isa = PBXBuildFile; productRef = 14898FEA2BFB46D100FBEAC6 /* AppInfo */; };
 		14898FEE2BFB47A600FBEAC6 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FED2BFB47A600FBEAC6 /* InfoPlist.xcstrings */; };
 		14898FF02BFB47A600FBEAC6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 14898FEF2BFB47A600FBEAC6 /* Localizable.xcstrings */; };
 		1498CF142C3FE91A005562AA /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1498CF132C3FE91A005562AA /* AlbumViewController.swift */; };
@@ -160,8 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D3C57D2C4277BA004BAB85 /* Kingfisher in Frameworks */,
-				14898FEB2BFB46D100FBEAC6 /* AppInfo in Frameworks */,
 				14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */,
+				1447C23D2E8B992800CCE53B /* AppInfo in Frameworks */,
 				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
 				63FDEA302A7CF97E002E02C2 /* Mooninfo.xcframework in Frameworks */,
 				141F38D82C9968DF00347225 /* GRDB in Frameworks */,
@@ -440,10 +440,10 @@
 			packageProductDependencies = (
 				63F806D32A59BA8E00135630 /* SnapKit */,
 				6306D0572AA0913A003B3A23 /* Toast */,
-				14898FEA2BFB46D100FBEAC6 /* AppInfo */,
 				14D3C57C2C4277BA004BAB85 /* Kingfisher */,
 				14D3C57F2C43A63F004BAB85 /* ZCCalendar */,
 				141F38D72C9968DF00347225 /* GRDB */,
+				1447C23C2E8B992800CCE53B /* AppInfo */,
 			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
@@ -532,10 +532,10 @@
 			packageReferences = (
 				63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
-				14898FE92BFB46D100FBEAC6 /* XCRemoteSwiftPackageReference "AppInfo" */,
 				14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				14D3C57E2C43A63F004BAB85 /* XCRemoteSwiftPackageReference "ZCCalendar" */,
 				141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */,
+				1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
@@ -996,12 +996,12 @@
 				minimumVersion = 6.29.0;
 			};
 		};
-		14898FE92BFB46D100FBEAC6 /* XCRemoteSwiftPackageReference "AppInfo" */ = {
+		1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zizicici/AppInfo";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
+				minimumVersion = 1.2.0;
 			};
 		};
 		14D3C57B2C4277BA004BAB85 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1044,9 +1044,9 @@
 			package = 141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */;
 			productName = GRDB;
 		};
-		14898FEA2BFB46D100FBEAC6 /* AppInfo */ = {
+		1447C23C2E8B992800CCE53B /* AppInfo */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 14898FE92BFB46D100FBEAC6 /* XCRemoteSwiftPackageReference "AppInfo" */;
+			package = 1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */;
 			productName = AppInfo;
 		};
 		14D3C57C2C4277BA004BAB85 /* Kingfisher */ = {

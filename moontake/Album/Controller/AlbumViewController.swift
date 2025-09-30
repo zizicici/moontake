@@ -36,7 +36,11 @@ class AlbumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateNavigationBarStyle()
+        if #available(iOS 26.0, *) {
+        } else {
+            updateNavigationBarStyle()
+        }
+        
         self.title = String(localized: "album.title")
         
         view.backgroundColor = .skyColor
@@ -53,7 +57,7 @@ class AlbumViewController: UIViewController {
     }
     
     func updateNavigationBarStyle() {
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
         style.alignment = .justified

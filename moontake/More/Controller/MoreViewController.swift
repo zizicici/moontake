@@ -20,20 +20,20 @@ class MoreViewController: UIViewController {
     enum Section: Hashable {
         case membership
         case settings
-        case tutorials
-        case appjun
+        case apps
+        case contact
         case about
         
         var header: String? {
             switch self {
             case .membership:
-                return " "
+                return nil
             case .settings:
                 return String(localized: "Settings")
-            case .tutorials:
-                return String(localized: "tutorials.title")
-            case .appjun:
-                return String(localized: "App from AppJun")
+            case .apps:
+                return String(localized: "more.appjun")
+            case .contact:
+                return String(localized: "more.contact")
             case .about:
                 return String(localized: "About")
             }
@@ -84,57 +84,45 @@ class MoreViewController: UIViewController {
             case review
             case eula
             case privacyPolicy
-            case email
             
             var title: String {
                 switch self {
                 case .specifications:
                     return String(localized: "Specifications")
                 case .share:
-                    return String(localized: "Share App")
+                    return String(localized: "more.share")
                 case .review:
                     return String(localized: "Write Review")
                 case .eula:
                     return String(localized: "EULA")
                 case .privacyPolicy:
                     return String(localized: "Policy of Privacy")
-                case .email:
-                    return String(localized: "Email")
-                }
-            }
-            
-            var value: String? {
-                switch self {
-                case .email:
-                    return MoreViewController.supportEmail
-                default:
-                    return nil
                 }
             }
         }
         
-        enum AppJunItem: Hashable {
-            case otherApps(App)
+        enum ContactItem: Hashable {
             case bilibili
             case xiaohongshu
+            case email
             
             var title: String {
                 switch self {
-                case .otherApps:
-                    return ""
                 case .bilibili:
-                    return String(localized: "Follow us on Bilibili")
+                    return String(localized: "more.bilibili")
                 case .xiaohongshu:
-                    return String(localized: "Follow us on Xiaohongshu")
+                    return String(localized: "more.xiaohongshu")
+                case .email:
+                    return String(localized: "more.email")
                 }
             }
             
             var value: String? {
                 switch self {
-                case .otherApps:
-                    return nil
                 case .bilibili, .xiaohongshu:
                     return "@App君"
+                case .email:
+                    return MoreViewController.supportEmail
                 }
             }
         }
@@ -143,7 +131,8 @@ class MoreViewController: UIViewController {
         case thanks
         case settings(GeneralItem)
         case tutorials
-        case appjun(AppJunItem)
+        case apps(App)
+        case contact(ContactItem)
         case about(AboutItem)
         
         var title: String {
@@ -154,7 +143,9 @@ class MoreViewController: UIViewController {
                 return item.title
             case .tutorials:
                 return String(localized: "tutorials.title")
-            case .appjun(let item):
+            case .apps:
+                return ""
+            case .contact(let item):
                 return item.title
             case .about(let item):
                 return item.title
@@ -181,12 +172,23 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = String(localized: "More")
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8)]
-        navigationController?.navigationBar.tintColor = .systemRed
         view.backgroundColor = .backgroundColor
+        
+        let tutorialsItem = UIBarButtonItem(title: String(localized: "tutorials.title"), style: .plain, target: self, action: #selector(jumpToTutorials))
+        if #available(iOS 26.0, *) {
+            tutorialsItem.hidesSharedBackground = true
+        } else {
+            tutorialsItem.tintColor = UIColor.label
+        }
+        navigationItem.leftBarButtonItem = tutorialsItem
+        
+        let shareItem = UIBarButtonItem(title: String(localized: "more.share"), style: .plain, target: self, action: #selector(shareApp))
+        if #available(iOS 26.0, *) {
+            shareItem.hidesSharedBackground = false
+        } else {
+            shareItem.tintColor = UIColor.label
+        }
+        navigationItem.rightBarButtonItem = shareItem
         
         configureHierarchy()
         configureDataSource()
@@ -259,33 +261,29 @@ class MoreViewController: UIViewController {
                 content.secondaryText = nil
                 cell.contentConfiguration = content
                 return cell
-            case .appjun(let item):
-                switch item {
-                case .otherApps(let app):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(AppCell.self), for: indexPath)
-                    if let cell = cell as? AppCell {
-                        cell.update(app)
-                    }
-                    cell.accessoryType = .disclosureIndicator
-                    return cell
-                default:
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-                    cell.accessoryType = .disclosureIndicator
-                    var content = UIListContentConfiguration.valueCell()
-                    content.text = identifier.title
-                    content.textProperties.color = .label
-                    content.secondaryText = item.value
-                    cell.contentConfiguration = content
-                    return cell
+            case .apps(let app):
+                let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(AppCell.self), for: indexPath)
+                if let cell = cell as? AppCell {
+                    cell.update(app)
                 }
-
-            case .about(let item):
+                cell.accessoryType = .disclosureIndicator
+                return cell
+            case .contact(let item):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
                 cell.accessoryType = .disclosureIndicator
                 var content = UIListContentConfiguration.valueCell()
                 content.text = identifier.title
                 content.textProperties.color = .label
                 content.secondaryText = item.value
+                cell.contentConfiguration = content
+                return cell
+            case .about:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+                cell.accessoryType = .disclosureIndicator
+                var content = UIListContentConfiguration.valueCell()
+                content.text = identifier.title
+                content.textProperties.color = .label
+                content.secondaryText = nil
                 cell.contentConfiguration = content
                 return cell
             }
@@ -305,19 +303,18 @@ class MoreViewController: UIViewController {
         snapshot.appendSections([.settings])
         snapshot.appendItems([.settings(.language), .settings(.iso), .settings(.whiteBalance), .settings(.saveOptions)], toSection: .settings)
         
-        snapshot.appendSections([.tutorials])
-        snapshot.appendItems([.tutorials], toSection: .tutorials)
-        
-        snapshot.appendSections([.appjun])
-        var appItems: [Item] = [.appjun(.otherApps(.lemon)), .appjun(.otherApps(.offDay)), .appjun(.otherApps(.coconut)), .appjun(.otherApps(.pigeon)), .appjun(.otherApps(.one))]
+        snapshot.appendSections([.apps])
+        var appItems: [Item] = [.apps(.tagDay), .apps(.lemon), .apps(.offDay), .apps(.coconut), .apps(.pigeon), .apps(.one)]
         if Language.type() == .zh {
-            appItems.append(.appjun(.otherApps(.festivals)))
+            appItems.append(.apps(.festivals))
         }
-        appItems.append(contentsOf: [.appjun(.bilibili), .appjun(.xiaohongshu)])
-        snapshot.appendItems(appItems, toSection: .appjun)
+        snapshot.appendItems(appItems, toSection: .apps)
+        
+        snapshot.appendSections([.contact])
+        snapshot.appendItems([.contact(.email), .contact(.xiaohongshu), .contact(.bilibili)], toSection: .contact)
         
         snapshot.appendSections([.about])
-        snapshot.appendItems([.about(.specifications), .about(.share), .about(.review), .about(.eula), .about(.privacyPolicy), .about(.email)], toSection: .about)
+        snapshot.appendItems([.about(.share), .about(.review), .about(.eula), .about(.privacyPolicy), .about(.specifications)], toSection: .about)
         
         dataSource.apply(snapshot, animatingDifferences: false)
     }
@@ -351,14 +348,16 @@ extension MoreViewController: UITableViewDelegate {
                 }
             case .tutorials:
                 jumpToTutorials()
-            case .appjun(let item):
+            case .apps(let app):
+                openStorePage(for: app)
+            case .contact(let item):
                 switch item {
-                case .otherApps(let app):
-                    openStorePage(for: app)
                 case .bilibili:
                     openBilibiliWebpage()
                 case .xiaohongshu:
                     openXiaohongshuWebpage()
+                case .email:
+                    sendEmailToCustomerSupport()
                 }
             case .about(let item):
                 switch item {
@@ -372,8 +371,6 @@ extension MoreViewController: UITableViewDelegate {
                     openEULA()
                 case .privacyPolicy:
                     openPrivacyPolicy()
-                case .email:
-                    sendEmailToCustomerSupport()
                 }
             }
         }
@@ -390,6 +387,7 @@ extension MoreViewController {
         }
     }
     
+    @objc
     func jumpToTutorials() {
         let tutorialsVC = TutorialsViewController()
         let nav = UINavigationController(rootViewController: tutorialsVC)
@@ -504,6 +502,7 @@ extension MoreViewController {
         }
     }
     
+    @objc
     func shareApp() {
         if let url = URL(string: "https://apps.apple.com/app/id6451189717") {
             let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
