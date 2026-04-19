@@ -1034,7 +1034,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func moreButtonTapped() {
-        let settingsVC = MoreViewController()
+        let settingsVC = makeMorePageViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
     }
@@ -1191,4 +1191,3 @@ extension String {
         return count > 0 && count < 150
     }
 }
-

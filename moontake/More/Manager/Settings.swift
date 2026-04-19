@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MoreKit
 
 struct Settings {
     static let shared = Settings()
@@ -135,5 +136,103 @@ struct Settings {
         NotificationCenter.default.post(name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
         return true
     }
-    
+
+}
+
+private enum SettingsSelectionError: LocalizedError {
+    case proRequired
+
+    var errorDescription: String? {
+        switch self {
+        case .proRequired:
+            return String(localized: "This option is only for Pro user.")
+        }
+    }
+}
+
+extension Settings.SaveToAlbumOption: SettingsOption {
+    func getName() -> String {
+        title
+    }
+
+    static func getTitle() -> String {
+        String(localized: "Photo Save Options")
+    }
+
+    static func getHeader() -> String? {
+        String(localized: "settings.save.photoLibrary")
+    }
+
+    static func getFooter() -> String? {
+        if User.shared.proTier() == .lifetime {
+            return nil
+        } else {
+            return String(localized: "For free users, the default option is automatically selected and not customizable.")
+        }
+    }
+
+    static func getOptions() -> [Self] {
+        [.photoWithoutWatermark, .photoWithWatermark, .both]
+    }
+
+    static var current: Self {
+        Settings.shared.getSaveToAlbumSettings()
+    }
+
+    static func setCurrent(_ value: Self) throws {
+        guard Settings.shared.save(option: value) else {
+            throw SettingsSelectionError.proRequired
+        }
+        NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+    }
+}
+
+extension Settings.ISOOption: SettingsOption {
+    func getName() -> String {
+        title
+    }
+
+    static func getTitle() -> String {
+        String(localized: "ISO Options")
+    }
+
+    static func getFooter() -> String? {
+        String(localized: "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image.")
+    }
+
+    static func getOptions() -> [Self] {
+        [.default] + Camera.shared.getISOCandidates().map { .value($0) }
+    }
+
+    static var current: Self {
+        Settings.shared.getISOSettings()
+    }
+
+    static func setCurrent(_ value: Self) throws {
+        Settings.shared.save(option: value)
+        NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+    }
+}
+
+extension Settings.WhiteBalanceOption: SettingsOption {
+    func getName() -> String {
+        title
+    }
+
+    static func getTitle() -> String {
+        String(localized: "White Balance Temperature")
+    }
+
+    static func getOptions() -> [Self] {
+        [.default] + Camera.shared.getWhiteBalanceCandidates().map { .value($0) }
+    }
+
+    static var current: Self {
+        Settings.shared.getWhiteBalanceSettings()
+    }
+
+    static func setCurrent(_ value: Self) throws {
+        Settings.shared.save(option: value)
+        NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+    }
 }

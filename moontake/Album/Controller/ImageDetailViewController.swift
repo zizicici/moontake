@@ -10,6 +10,7 @@ import SnapKit
 import ZCCalendar
 import ImageIO
 import Toast
+import MoreKit
 
 struct EXIF: Hashable {
     var fNumber: Double?
@@ -323,7 +324,7 @@ class ImageDetailViewController: UIViewController {
     }
     
     func jumpToMore() {
-        let settingsVC = MoreViewController()
+        let settingsVC = makeMorePageViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
     }

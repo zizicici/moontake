@@ -8,6 +8,7 @@
 import UIKit
 import ZCCalendar
 import Kingfisher
+import MoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         _ = AppDatabase.shared
         _ = User.shared
-        _ = Store.shared
+        MoreKitAppearance.shared = MoreKitAppearance(
+            backgroundColor: .backgroundColor,
+            tintColor: .label
+        )
+        MoreKit.configure(
+            productID: "com.zizicici.moontake.iap.lifetime",
+            membershipKey: UserDefaults.Custom.LifetimeMemberShip.rawValue
+        )
         KingfisherManager.shared.cache.memoryStorage.config.totalCostLimit = 150 * 1024 * 1024
         KingfisherManager.shared.cache.diskStorage.config.sizeLimit = 50 * 1024 * 1024
         
@@ -58,4 +66,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import ZCCalendar
 import Kingfisher
+import MoreKit
 
 class AlbumViewController: UIViewController {
     enum Section: Hashable {
@@ -49,7 +50,7 @@ class AlbumViewController: UIViewController {
         configureDataSource()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.DatabaseUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.LifetimeMemberShip, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.LifetimeMembership, object: nil)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.reloadData()
@@ -172,7 +173,7 @@ class AlbumViewController: UIViewController {
     }
     
     func jumpToMore() {
-        let settingsVC = MoreViewController()
+        let settingsVC = makeMorePageViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
     }

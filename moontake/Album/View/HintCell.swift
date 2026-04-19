@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import MoreKit
 
 enum HintInfo: Hashable {
     case empty(ProTier)
