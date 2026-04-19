@@ -1,0 +1,15 @@
+{
+  "name": "moontake",
+  "short_name": "moontake",
+  "description": "Moon photography for iPhone.",
+  "icons": [
+    {
+      "src": "https://i.v2ex.co/W394oSz6.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#05070b",
+  "theme_color": "#05070b",
+  "display": "standalone"
+}

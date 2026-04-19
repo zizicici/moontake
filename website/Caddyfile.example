@@ -1,0 +1,29 @@
+www.moontake.com {
+  redir https://moontake.com{uri} permanent
+}
+
+moontake.com {
+  root * /var/www/moontake
+  encode zstd gzip
+
+  header {
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "interest-cohort=()"
+  }
+
+  @static {
+    path /assets/*
+    path /site.webmanifest
+    path /robots.txt
+    path /sitemap.xml
+  }
+  header @static Cache-Control "public, max-age=604800"
+
+  file_server
+
+  handle_errors {
+    rewrite * /404.html
+    file_server
+  }
+}
