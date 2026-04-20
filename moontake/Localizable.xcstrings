@@ -177,6 +177,182 @@
         }
       }
     },
+    "album.clear.message" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيؤدي هذا إلى حذف جميع الصور من ألبوم التطبيق، لكن الصور المحفوظة في مكتبة النظام لن يتم حذفها."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dadurch werden alle Fotos aus dem App-Album gelöscht, aber Fotos, die in der Systemmediathek gespeichert wurden, werden nicht gelöscht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will delete all photos from the app album, but photos saved to the system library will not be deleted."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto eliminará todas las fotos del álbum de la app, pero las fotos guardadas en la biblioteca del sistema no se eliminarán."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto eliminará todas las fotos del álbum de la app, pero las fotos guardadas en la biblioteca del sistema no se eliminarán."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cela supprimera toutes les photos de l’album de l’app, mais les photos enregistrées dans la photothèque du système ne seront pas supprimées."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "これによりアプリ内アルバムの写真はすべて削除されますが、システムライブラリに保存された写真は削除されません。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso excluirá todas as fotos do álbum do app, mas as fotos salvas na biblioteca do sistema não serão excluídas."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isto eliminará todas as fotos do álbum da app, mas as fotos guardadas na biblioteca do sistema não serão eliminadas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Это удалит все фотографии из альбома приложения, но фотографии, сохраненные в системной библиотеке, удалены не будут."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це видалить усі фотографії з альбому застосунку, але фотографії, збережені в системній бібліотеці, не буде видалено."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这会清空 App 内相册中的所有照片，但已经保存到系统图库的照片不会被删除。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這會清空 App 內相簿中的所有照片，但已經儲存到系統圖庫的照片不會被刪除。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這會清空 App 內相簿中的所有照片，但已經儲存到系統圖庫的照片不會被刪除。"
+          }
+        }
+      }
+    },
+    "album.clear.title" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح الألبوم"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Album leeren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Album"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaciar álbum"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaciar álbum"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vider l’album"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アルバムを空にする"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar álbum"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar álbum"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить альбом"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистити альбом"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清空相册"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清空相簿"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清空相簿"
+          }
+        }
+      }
+    },
     "album.title" : {
       "localizations" : {
         "ar" : {
@@ -5195,6 +5371,446 @@
         }
       }
     },
+    "settings.app_album.disable" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إيقاف"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desactivar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Désactiver"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無効"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вимкнути"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
+          }
+        }
+      }
+    },
+    "settings.app_album.enable" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تشغيل"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activer"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有効"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнути"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開啟"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開啟"
+          }
+        }
+      }
+    },
+    "settings.app_album.footer" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يتحكم هذا الخيار فقط في الصور الجديدة التي تلتقطها بعد الآن.\nإيقافه لن يحذف الصور الموجودة بالفعل في ألبوم التطبيق، كما أنه لا يؤثر على إعدادات الحفظ في مكتبة الصور بالنظام."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung gilt nur für neue Fotos, die Sie ab jetzt aufnehmen.\nWenn Sie sie deaktivieren, werden bereits vorhandene Fotos im App-Album nicht gelöscht, und die Einstellungen zum Speichern in der System-Fotomediathek bleiben unverändert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This only affects new photos you take from now on.\nTurning it off won't remove photos already in the app album, and it doesn't change Photo Library save settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto solo afecta a las fotos nuevas que tomes a partir de ahora.\nDesactivarlo no eliminará las fotos que ya están en el álbum de la app y tampoco cambiará la configuración de guardado en la biblioteca del sistema."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto solo afecta a las fotos nuevas que tomes a partir de ahora.\nDesactivarlo no eliminará las fotos que ya están en el álbum de la app y tampoco cambiará la configuración de guardado en la biblioteca del sistema."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cela ne concerne que les nouvelles photos que vous prendrez à partir de maintenant.\nLe désactiver ne supprimera pas les photos déjà présentes dans l’album de l’app et ne modifiera pas les réglages d’enregistrement dans la photothèque système."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この設定は、これ以降に新しく撮影する写真にのみ適用されます。\nオフにしても、すでにアプリ内アルバムにある写真は削除されず、システムの写真ライブラリへの保存設定にも影響しません。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso afeta apenas as novas fotos que você tirar a partir de agora.\nDesativar não removerá as fotos que já estão no álbum do app e também não mudará as configurações de salvamento na biblioteca do sistema."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isto afeta apenas as novas fotografias que tirar a partir de agora.\nDesativar não irá remover as fotografias já existentes no álbum da app e também não altera as definições de gravação na fototeca do sistema."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот параметр влияет только на новые фотографии, которые вы сделаете с этого момента.\nОтключение не удалит фотографии, уже сохраненные в альбоме приложения, и не изменит настройки сохранения в системную фотобиблиотеку."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Це впливає лише на нові фотографії, які ви зробите відтепер.\nВимкнення не видалить фотографії, що вже є в альбомі застосунку, і не змінить налаштування збереження до системної фотобібліотеки."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个选项只影响你之后新拍的照片。\n关闭后不会删除 App 内相册中已有的照片，也不会改变保存到系统相册的设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這個選項只會影響你之後新拍的照片。\n關閉後不會刪除 App 內相簿中已有的照片，也不會改變保存到系統相簿的設定。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這個選項只會影響你之後新拍的照片。\n關閉後不會刪除 App 內相簿中已有的照片，也不會改變保存到系統相簿的設定。"
+          }
+        }
+      }
+    },
+    "settings.app_album.pro_footer" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن لمستخدمي Pro اختيار ما إذا كانت الصور الجديدة ستبقى في ألبوم التطبيق."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro-Nutzer können wählen, ob neue Fotos im App-Album behalten werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro users can choose whether new photos stay in the app album."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los usuarios Pro pueden elegir si las fotos nuevas permanecen en el álbum de la app."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los usuarios Pro pueden elegir si las fotos nuevas permanecen en el álbum de la app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les utilisateurs Pro peuvent choisir si les nouvelles photos restent dans l’album de l’app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proユーザーは、新しい写真をアプリ内アルバムに残すかどうかを選べます。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuários Pro podem escolher se as novas fotos permanecem no álbum do app."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os utilizadores Pro podem escolher se as novas fotografias permanecem no álbum da app."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользователи Pro могут выбирать, будут ли новые фото оставаться в альбоме приложения."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Користувачі Pro можуть вибирати, чи залишатимуться нові фото в альбомі застосунку."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用户可以选择新拍照片是否保留在 App 内相册。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用戶可以選擇新拍照片是否保留在 App 內相簿。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用戶可以選擇新拍照片是否保留在 App 內相簿。"
+          }
+        }
+      }
+    },
+    "settings.app_album.title" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ في ألبوم التطبيق"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im App-Album speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Album Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado en álbum de la app"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado en álbum de la app"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrement dans l’album de l’app"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリ内アルバム保存"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar no álbum do app"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar no álbum da app"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранение в альбоме приложения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Збереження в альбомі застосунку"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App内相册保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 內相簿保存"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App 內相簿保存"
+          }
+        }
+      }
+    },
     "settings.default" : {
       "localizations" : {
         "ar" : {
@@ -5723,6 +6339,94 @@
         }
       }
     },
+    "settings.photo_saving.title" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ الصور"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotospeicherung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo Saving"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado de fotos"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardado de fotos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrement des photos"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真の保存"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvamento de fotos"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar fotografias"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранение фото"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Збереження фото"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "照片保存"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "照片保存"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "照片保存"
+          }
+        }
+      }
+    },
     "settings.pro_required.error" : {
       "localizations" : {
         "ar" : {
@@ -5807,94 +6511,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "只有Pro用戶可以選擇此選項。"
-          }
-        }
-      }
-    },
-    "settings.pro_required.footer" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "بالنسبة إلى المستخدمين المجانيين، يتم اختيار %1$@ تلقائيًا ولا يمكن تغييره."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Für kostenlose Nutzer ist %1$@ automatisch ausgewählt und kann nicht geändert werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For free users, %1$@ is selected automatically and can't be changed."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para los usuarios gratuitos, %1$@ se selecciona automáticamente y no se puede cambiar."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para los usuarios gratuitos, %1$@ se selecciona automáticamente y no se puede cambiar."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pour les utilisateurs gratuits, %1$@ est sélectionnée automatiquement et ne peut pas être modifiée."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無料ユーザーでは「%1$@」が自動的に選択され、変更できません。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para usuários gratuitos, %1$@ é selecionada automaticamente e não pode ser alterada."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para utilizadores gratuitos, %1$@ é selecionada automaticamente e não pode ser alterada."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Для бесплатных пользователей автоматически выбирается «%1$@», и изменить этот выбор нельзя."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Для безкоштовних користувачів автоматично вибирається «%1$@», і змінити цей вибір не можна."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "免费用户会自动选择“%1$@”，且无法更改。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "免費用戶會自動選擇「%1$@」，且無法更改。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "免費用戶會自動選擇「%1$@」，且無法更改。"
           }
         }
       }
@@ -5987,12 +6603,188 @@
         }
       }
     },
-    "settings.save.photo_library" : {
+    "settings.save.footer" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "الحفظ في مكتبة الصور"
+            "value" : "يحدد هذا الخيار أي نسخة من الصورة سيتم حفظها في مكتبة الصور بالنظام."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung legt fest, welche Version des Fotos in der System-Fotomediathek gespeichert wird."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This controls which version of the photo is saved to the system Photo Library."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opción controla qué versión de la foto se guarda en la biblioteca de fotos del sistema."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opción controla qué versión de la foto se guarda en la biblioteca de fotos del sistema."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cette option détermine quelle version de la photo est enregistrée dans la photothèque système."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この設定では、写真ライブラリに保存する写真のバージョンを選択します。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opção define qual versão da foto será salva na biblioteca de fotos do sistema."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta opção define que versão da fotografia será guardada na fototeca do sistema."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Этот параметр определяет, какая версия фотографии будет сохранена в системной фотобиблиотеке."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цей параметр визначає, яку версію фотографії буде збережено в системній фотобібліотеці."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这个选项决定保存到系统相册的是哪一个照片版本。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這個選項決定保存到系統相簿的是哪一個照片版本。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這個選項決定保存到系統相簿的是哪一個照片版本。"
+          }
+        }
+      }
+    },
+    "settings.save.pro_footer" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن لمستخدمي Pro اختيار حفظ الصورة الأصلية أو الصورة ذات العلامة المائية أو كلتيهما في مكتبة الصور بالنظام."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro-Nutzer können für die System-Fotomediathek Original, Wasserzeichen oder beides wählen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro users can choose Original, Watermarked, or Both for the system Photo Library."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los usuarios Pro pueden elegir Original, con marca de agua o ambos para la biblioteca de fotos del sistema."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los usuarios Pro pueden elegir Original, con marca de agua o ambos para la biblioteca de fotos del sistema."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les utilisateurs Pro peuvent choisir Originale, avec filigrane ou les deux pour la photothèque système."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proユーザーは、写真ライブラリに保存する写真をオリジナル・透かし入り・両方から選べます。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuários Pro podem escolher Original, com marca d’água ou ambos para a biblioteca de fotos do sistema."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os utilizadores Pro podem escolher Original, com marca de água ou ambas para a fototeca do sistema."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользователи Pro могут выбрать для системной фотобиблиотеки оригинал, версию с водяным знаком или обе."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Користувачі Pro можуть вибрати для системної фотобібліотеки оригінал, версію з водяним знаком або обидві."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用户可以选择保存到系统相册的是原图、水印图，或同时保存两者。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用戶可以選擇保存到系統相簿的是原圖、浮水印圖，或同時保存兩者。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pro 用戶可以選擇保存到系統相簿的是原圖、浮水印圖，或同時保存兩者。"
+          }
+        }
+      }
+    },
+    "settings.save.title" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ في مكتبة الصور"
           }
         },
         "de" : {
@@ -6004,161 +6796,73 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Save to Photo Library"
+            "value" : "Photo Library Save"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar en la biblioteca de fotos"
+            "value" : "Guardado en biblioteca de fotos"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar en la biblioteca de fotos"
+            "value" : "Guardado en biblioteca de fotos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enregistrer dans la photothèque"
+            "value" : "Enregistrement dans la photothèque"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "写真ライブラリに保存"
+            "value" : "写真ライブラリ保存"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salvar na Biblioteca de Fotos"
+            "value" : "Salvar na biblioteca de fotos"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar na Fototeca"
+            "value" : "Guardar na fototeca"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сохранить в фотобиблиотеку"
+            "value" : "Сохранение в фотобиблиотеку"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зберегти у фотобібліотеку"
+            "value" : "Збереження у фотобібліотеку"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存到系统相册"
+            "value" : "系统相册保存"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存到系統相簿"
+            "value" : "系統相簿保存"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "保存到系統相簿"
-          }
-        }
-      }
-    },
-    "settings.save.title" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "خيارات حفظ الصور"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Optionen zum Speichern von Fotos"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Photo Save Options"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones de guardado de fotos"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opciones de guardado de fotos"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Options d'enregistrement des photos"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "写真の保存オプション"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opções de salvamento de fotos"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opções de guardar fotografias"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Параметры сохранения фото"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Параметри збереження фото"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "照片保存选项"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "照片保存選項"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "照片保存選項"
+            "value" : "系統相簿保存"
           }
         }
       }

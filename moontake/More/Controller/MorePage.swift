@@ -102,7 +102,7 @@ private enum MorePageFactory {
                 .init(name: "astro", version: "master", urlString: "https://github.com/Starainrt/astro"),
                 .init(name: "GRDB.swift", version: "6.29.3", urlString: "https://github.com/groue/GRDB.swift"),
                 .init(name: "Kingfisher", version: "7.12.0", urlString: "https://github.com/onevcat/Kingfisher"),
-                .init(name: "MoreKit", version: "1.6.1", urlString: "https://github.com/zizicici/MoreKit"),
+                .init(name: "MoreKit", version: "1.6.4", urlString: "https://github.com/zizicici/MoreKit"),
                 .init(name: "SnapKit", version: "5.7.1", urlString: "https://github.com/SnapKit/SnapKit"),
                 .init(name: "Toast", version: "5.1.1", urlString: "https://github.com/scalessec/Toast-Swift"),
             ],
@@ -114,12 +114,14 @@ private enum MorePageFactory {
 private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
     private enum SectionID: String {
         case settings
+        case photoSaving
     }
 
     private enum ItemID: String {
         case language
         case iso
         case whiteBalance
+        case appAlbum
         case saveOptions
     }
 
@@ -129,6 +131,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         [
             .membership,
             .custom(settingsSection()),
+            .custom(photoSavingSection()),
             .contact,
             .appjun,
             .about,
@@ -147,13 +150,15 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
             controller.enterSettings(Settings.ISOOption.self)
         case .whiteBalance:
             controller.enterSettings(Settings.WhiteBalanceOption.self)
+        case .appAlbum:
+            controller.enterSettings(Settings.AppAlbumOption.self)
         case .saveOptions:
             controller.enterSettings(Settings.SaveToAlbumOption.self)
         }
     }
 
     func additionalReloadNotifications() -> [Notification.Name] {
-        [.ISOUpdated, .WhiteBalanceUpdated]
+        [.ISOUpdated, .WhiteBalanceUpdated, .SettingsUpdate, .LifetimeMembership]
     }
 
     @objc
@@ -178,6 +183,18 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         controller.present(activityController, animated: true)
     }
 
+    private func proBadgeStyle() -> MoreBadgeStyle? {
+        guard User.shared.proTier() != .lifetime else {
+            return nil
+        }
+
+        return MoreBadgeStyle(
+            text: "Pro",
+            textColor: .skyColor,
+            backgroundColor: .systemYellow
+        )
+    }
+
     private func settingsSection() -> MoreCustomSection {
         MoreCustomSection(
             id: SectionID.settings.rawValue,
@@ -198,10 +215,26 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
                     title: String(localized: "settings.white_balance.title"),
                     value: Settings.shared.getWhiteBalanceSettings().title
                 ),
+            ]
+        )
+    }
+
+    private func photoSavingSection() -> MoreCustomSection {
+        MoreCustomSection(
+            id: SectionID.photoSaving.rawValue,
+            header: String(localized: "settings.photo_saving.title"),
+            items: [
                 MoreCustomItem(
                     id: ItemID.saveOptions.rawValue,
                     title: String(localized: "settings.save.title"),
-                    value: Settings.shared.getSaveToAlbumSettings().title
+                    value: Settings.shared.getSaveToAlbumSettings().title,
+                    badge: proBadgeStyle()
+                ),
+                MoreCustomItem(
+                    id: ItemID.appAlbum.rawValue,
+                    title: String(localized: "settings.app_album.title"),
+                    value: Settings.shared.getAppAlbumSettings().title,
+                    badge: proBadgeStyle()
                 ),
             ]
         )

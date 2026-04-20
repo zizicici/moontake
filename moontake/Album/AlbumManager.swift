@@ -19,6 +19,16 @@ class AlbumManager: NSObject {
             print(result)
         }
     }
+
+    func clearImages() -> Bool {
+        let result = AppDatabase.shared.deleteAllImages()
+        guard result else {
+            return false
+        }
+
+        deleteImageDataDirectory()
+        return true
+    }
     
     func fetchAllImages(completion: (([ImageInfo]) -> ())? ) {
         AppDatabase.shared.reader?.asyncRead{ dbResult in
@@ -55,24 +65,8 @@ class AlbumManager: NSObject {
     }
     
     func saveDataToDocumentsDirectory(data: Data, fileName: String) -> Bool {
-        // 获取应用沙盒的 Documents 目录路径
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("Failed to locate Documents directory.")
+        guard let imageDataDirectory = imageDataDirectory(createIfNeeded: true) else {
             return false
-        }
-        
-        // 创建 imageData 文件夹路径
-        let imageDataDirectory = documentsDirectory.appendingPathComponent("imageData")
-        
-        // 检查 imageData 文件夹是否存在，如果不存在则创建它
-        if !FileManager.default.fileExists(atPath: imageDataDirectory.path) {
-            do {
-                try FileManager.default.createDirectory(at: imageDataDirectory, withIntermediateDirectories: true, attributes: nil)
-                print("Created imageData directory at \(imageDataDirectory.path)")
-            } catch {
-                print("Failed to create imageData directory: \(error.localizedDescription)")
-                return false
-            }
         }
         
         guard let thumbnail = downsampleImage(for: data, maxSize: 560), let thumbnailData = thumbnail.jpegData(compressionQuality: 0.8) else {
@@ -92,6 +86,41 @@ class AlbumManager: NSObject {
         } catch {
             print("Failed to save file: \(error.localizedDescription)")
             return false
+        }
+    }
+
+    private func imageDataDirectory(createIfNeeded: Bool) -> URL? {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Failed to locate Documents directory.")
+            return nil
+        }
+
+        let imageDataDirectory = documentsDirectory.appendingPathComponent("imageData")
+        guard createIfNeeded, !FileManager.default.fileExists(atPath: imageDataDirectory.path) else {
+            return imageDataDirectory
+        }
+
+        do {
+            try FileManager.default.createDirectory(at: imageDataDirectory, withIntermediateDirectories: true, attributes: nil)
+            print("Created imageData directory at \(imageDataDirectory.path)")
+            return imageDataDirectory
+        } catch {
+            print("Failed to create imageData directory: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    private func deleteImageDataDirectory() {
+        guard let imageDataDirectory = imageDataDirectory(createIfNeeded: false),
+              FileManager.default.fileExists(atPath: imageDataDirectory.path) else {
+            return
+        }
+
+        do {
+            try FileManager.default.removeItem(at: imageDataDirectory)
+            print("Deleted imageData directory at \(imageDataDirectory.path)")
+        } catch {
+            print("Failed to delete imageData directory: \(error.localizedDescription)")
         }
     }
 }

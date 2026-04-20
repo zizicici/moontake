@@ -651,7 +651,7 @@
 			repositoryURL = "https://github.com/zizicici/MoreKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.3;
+				minimumVersion = 1.6.4;
 			};
 		};
 		6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {

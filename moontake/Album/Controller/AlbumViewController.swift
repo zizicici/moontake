@@ -23,6 +23,7 @@ class AlbumViewController: UIViewController {
     }
     
     private var imageInfoDict: [GregorianDay: [ImageInfo]] = [:]
+    private var hasImages = false
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, Item>! = nil
     private var collectionView: UICollectionView! = nil
@@ -43,6 +44,7 @@ class AlbumViewController: UIViewController {
         }
         
         self.title = String(localized: "album.title")
+        configureNavigationItems()
         
         view.backgroundColor = .skyColor
         
@@ -72,6 +74,33 @@ class AlbumViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor.moonColor
+    }
+
+    func configureNavigationItems() {
+        let buttonImage = UIImage(systemName: "ellipsis")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: buttonImage,
+            primaryAction: nil,
+            menu: makeAlbumMenu()
+        )
+        navigationItem.rightBarButtonItem?.accessibilityLabel = String(localized: "album.clear.title")
+    }
+
+    func makeAlbumMenu() -> UIMenu {
+        let attributes: UIMenuElement.Attributes = hasImages ? [.destructive] : [.disabled]
+        let clearAction = UIAction(
+            title: String(localized: "album.clear.title"),
+            image: UIImage(systemName: "trash"),
+            attributes: attributes
+        ) { [weak self] _ in
+            self?.confirmClearAlbum()
+        }
+
+        return UIMenu(children: [clearAction])
+    }
+
+    func updateAlbumMenu() {
+        navigationItem.rightBarButtonItem?.menu = makeAlbumMenu()
     }
     
     func configureHierarchy() {
@@ -142,6 +171,7 @@ class AlbumViewController: UIViewController {
     
     func updateImages(_ rawImages: [ImageInfo]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        hasImages = !rawImages.isEmpty
         
         var targetImages: [ImageInfo]
         let targetCount = 12
@@ -170,12 +200,29 @@ class AlbumViewController: UIViewController {
         }
         
         dataSource.apply(snapshot, animatingDifferences: true)
+        updateAlbumMenu()
     }
     
     func jumpToMore() {
         let settingsVC = makeMorePageViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
+    }
+
+    func confirmClearAlbum() {
+        let alertController = UIAlertController(
+            title: String(localized: "album.clear.title"),
+            message: String(localized: "album.clear.message"),
+            preferredStyle: .alert
+        )
+        let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel)
+        let deleteAction = UIAlertAction(title: String(localized: "detail.delete.title"), style: .destructive) { _ in
+            _ = AlbumManager.shared.clearImages()
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true)
     }
 }
 

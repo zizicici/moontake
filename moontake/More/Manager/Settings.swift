@@ -10,6 +10,20 @@ import MoreKit
 
 struct Settings {
     static let shared = Settings()
+
+    enum AppAlbumOption: Int, Hashable {
+        case enable = 0
+        case disable = 1
+
+        var title: String {
+            switch self {
+            case .enable:
+                return String(localized: "settings.app_album.enable")
+            case .disable:
+                return String(localized: "settings.app_album.disable")
+            }
+        }
+    }
     
     enum SaveToAlbumOption: Int, Hashable {
         case photoWithWatermark = 0
@@ -86,6 +100,31 @@ struct Settings {
         }
     }
     
+    func getAppAlbumSettings() -> AppAlbumOption {
+        let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.AppAlbum.rawValue)
+        return AppAlbumOption(rawValue: rawValue ?? 0) ?? .enable
+    }
+
+    @discardableResult
+    func save(option: AppAlbumOption) -> Bool {
+        let allowSave: Bool
+        if User.shared.proTier() == .none {
+            switch option {
+            case .enable:
+                allowSave = true
+            case .disable:
+                allowSave = false
+            }
+        } else {
+            allowSave = true
+        }
+
+        if allowSave {
+            UserDefaults.standard.setValue(option.rawValue, forKey: UserDefaults.Custom.AppAlbum.rawValue)
+        }
+        return allowSave
+    }
+
     func getSaveToAlbumSettings() -> SaveToAlbumOption {
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
         return SaveToAlbumOption(rawValue: rawValue ?? 0) ?? .photoWithWatermark
@@ -162,6 +201,41 @@ private enum SettingsSelectionError: LocalizedError {
     }
 }
 
+extension Settings.AppAlbumOption: SettingsOption {
+    func getName() -> String {
+        title
+    }
+
+    static func getTitle() -> String {
+        String(localized: "settings.app_album.title")
+    }
+
+    static func getFooter() -> String? {
+        let baseFooter = String(localized: "settings.app_album.footer")
+        guard User.shared.proTier() != .lifetime else {
+            return baseFooter
+        }
+
+        let proFooter = String(localized: "settings.app_album.pro_footer")
+        return baseFooter + "\n\n" + proFooter
+    }
+
+    static func getOptions() -> [Self] {
+        [.enable, .disable]
+    }
+
+    static var current: Self {
+        Settings.shared.getAppAlbumSettings()
+    }
+
+    static func setCurrent(_ value: Self) throws {
+        guard Settings.shared.save(option: value) else {
+            throw SettingsSelectionError.proRequired
+        }
+        NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+    }
+}
+
 extension Settings.SaveToAlbumOption: SettingsOption {
     func getName() -> String {
         title
@@ -171,19 +245,14 @@ extension Settings.SaveToAlbumOption: SettingsOption {
         String(localized: "settings.save.title")
     }
 
-    static func getHeader() -> String? {
-        String(localized: "settings.save.photo_library")
-    }
-
     static func getFooter() -> String? {
-        if User.shared.proTier() == .lifetime {
-            return nil
-        } else {
-            return String.localizedStringWithFormat(
-                String(localized: "settings.pro_required.footer"),
-                String(localized: "photo.watermarked.title")
-            )
+        let baseFooter = String(localized: "settings.save.footer")
+        guard User.shared.proTier() != .lifetime else {
+            return baseFooter
         }
+
+        let proFooter = String(localized: "settings.save.pro_footer")
+        return baseFooter + "\n\n" + proFooter
     }
 
     static func getOptions() -> [Self] {

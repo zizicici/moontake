@@ -109,7 +109,9 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             targets = [.origin, .watermark]
         }
         
-        ImageSaver.saveImage(photoData, targets: targets, fileType: saveFileType, location: self.location, width: Int(image.size.width), height: Int(image.size.height), date: Date(), customLocationName: CustomSettings.shared.locationName, toDatabase: true) { [weak self] in
+        let saveToAppAlbum = Settings.shared.getAppAlbumSettings() == .enable
+
+        ImageSaver.saveImage(photoData, targets: targets, fileType: saveFileType, location: self.location, width: Int(image.size.width), height: Int(image.size.height), date: Date(), customLocationName: CustomSettings.shared.locationName, toDatabase: saveToAppAlbum) { [weak self] in
             self?.didFinish()
         }
     }

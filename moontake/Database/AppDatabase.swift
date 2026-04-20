@@ -112,6 +112,20 @@ extension AppDatabase {
         NotificationCenter.default.post(name: NSNotification.Name.DatabaseUpdated, object: nil)
         return true
     }
+
+    func deleteAllImages() -> Bool {
+        do {
+            _ = try dbWriter?.write { db in
+                try ImageInfo.deleteAll(db)
+            }
+        }
+        catch {
+            print(error)
+            return false
+        }
+        NotificationCenter.default.post(name: NSNotification.Name.DatabaseUpdated, object: nil)
+        return true
+    }
 }
 
 extension AppDatabase {
