@@ -13,9 +13,15 @@ Static marketing site for `moontake`, with:
 
 - `/index.html`: English default page
 - `/zh/index.html`: Simplified Chinese page
+- `/zh-hant/index.html`: Traditional Chinese page
 - `/ja/index.html`: Japanese page
+- `/de/index.html`, `/es/index.html`, `/fr/index.html`, `/it/index.html`: European language pages
+- `/ko/index.html`, `/pt/index.html`, `/ru/index.html`, `/tr/index.html`, `/uk/index.html`: additional localized pages
+- `/ar/index.html`: Arabic page
 - `/assets/css/styles.css`: shared styles
 - `/assets/js/site.js`: iPhone Safari banner logic
+
+The site is currently maintained as separate locale-specific HTML files rather than a generated template.
 
 ## Deploy with Caddy on Ubuntu
 
@@ -43,6 +49,7 @@ Static marketing site for `moontake`, with:
    curl -I https://moontake.com/zh/
    curl -I https://moontake.com/ja/
    curl -I https://moontake.com/zh-hant/
+   curl -I https://moontake.com/de/
    ```
 
 ## Notes

@@ -42,7 +42,7 @@ private enum MorePageFactory {
 
     static func makeConfiguration() -> MoreViewControllerConfiguration {
         MoreViewControllerConfiguration(
-            title: String(localized: "More"),
+            title: String(localized: "more.title"),
             promotionConfig: PromotionCellConfiguration(
                 title: String(localized: "promotion.title"),
                 titleHighlight: "Pro",
@@ -97,7 +97,7 @@ private enum MorePageFactory {
                 .init(name: "SnapKit", version: "5.7.1", urlString: "https://github.com/SnapKit/SnapKit"),
                 .init(name: "Toast", version: "5.1.1", urlString: "https://github.com/scalessec/Toast-Swift"),
             ],
-            title: String(localized: "Specifications")
+            title: String(localized: "specifications.title")
         )
     }
 }
@@ -172,26 +172,26 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
     private func settingsSection() -> MoreCustomSection {
         MoreCustomSection(
             id: SectionID.settings.rawValue,
-            header: String(localized: "Settings"),
+            header: String(localized: "settings.title"),
             items: [
                 MoreCustomItem(
                     id: ItemID.language.rawValue,
-                    title: String(localized: "Language"),
-                    value: String(localized: "🍋Language")
+                    title: String(localized: "settings.language.title"),
+                    value: Language.current().displayName
                 ),
                 MoreCustomItem(
                     id: ItemID.iso.rawValue,
-                    title: String(localized: "ISO"),
+                    title: String(localized: "settings.iso.label"),
                     value: Settings.shared.getISOSettings().title
                 ),
                 MoreCustomItem(
                     id: ItemID.whiteBalance.rawValue,
-                    title: String(localized: "White Balance Temperature"),
+                    title: String(localized: "settings.white_balance.title"),
                     value: Settings.shared.getWhiteBalanceSettings().title
                 ),
                 MoreCustomItem(
                     id: ItemID.saveOptions.rawValue,
-                    title: String(localized: "Photo Save Options"),
+                    title: String(localized: "settings.save.title"),
                     value: Settings.shared.getSaveToAlbumSettings().title
                 ),
             ]

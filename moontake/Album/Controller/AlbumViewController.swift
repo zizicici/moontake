@@ -112,7 +112,7 @@ class AlbumViewController: UIViewController {
             switch section {
             case .day(let gregorianDay):
                 if gregorianDay == ZCCalendar.manager.today {
-                    supplementaryView.label.text = String(localized: "today")
+                    supplementaryView.label.text = String(localized: "date.today")
                 } else {
                     supplementaryView.label.text = gregorianDay.formatString()
                 }

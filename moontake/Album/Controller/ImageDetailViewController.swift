@@ -89,7 +89,11 @@ class ImageDetailViewController: UIViewController {
             if let creationDate = self.imageInfo.creationDate {
                 let phaseName = MoonManager.shared.getPhaseName(creationDate)
                 let phasePercent = MoonManager.shared.getPhasePercent(creationDate)
-                self.moonTitle = String(format: "%@ %.1f%%", phaseName, phasePercent * 100)
+                self.moonTitle = String.localizedStringWithFormat(
+                    String(localized: "detail.phase.summary"),
+                    phaseName,
+                    phasePercent * 100
+                )
             }
             self.getImageEXIF()
             DispatchQueue.main.async {
@@ -218,10 +222,10 @@ class ImageDetailViewController: UIViewController {
             savePhoto(for: [.origin])
         } else {
             let alertController = UIAlertController(title: String(localized: "detail.alert.membership.title"), message: nil, preferredStyle: .actionSheet)
-            let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+            let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel) { _ in
                 //
             }
-            let learnMoreAction = UIAlertAction(title: String(localized: "membership.learnMore"), style: .default) { [weak self] _ in
+            let learnMoreAction = UIAlertAction(title: String(localized: "membership.learn_more"), style: .default) { [weak self] _ in
                 self?.jumpToMore()
             }
 
@@ -233,18 +237,18 @@ class ImageDetailViewController: UIViewController {
     }
     
     func saveWatermarkPhoto() {
-        let alertController = UIAlertController(title: String(localized: "detail.location.input.title"), message: String(localized: "detail.location.input.message"), preferredStyle: .alert)
+        let alertController = UIAlertController(title: String(localized: "location.custom.title"), message: String(localized: "location.custom.input.message"), preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = ""
             textField.text = ""
             textField.addTarget(alertController, action: #selector(alertController.textDidChangeInContentAlert), for: .editingChanged)
         }
-        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel) { _ in
         }
-        let notSetAction = UIAlertAction(title: String(localized: "detail.location.notSet"), style: .default) { [weak self] _ in
+        let notSetAction = UIAlertAction(title: String(localized: "detail.location.skip"), style: .default) { [weak self] _ in
             self?.savePhoto(for: [.watermark])
         }
-        let setAction = UIAlertAction(title: String(localized: "detail.location.set"), style: .default) { [weak self] _ in
+        let setAction = UIAlertAction(title: String(localized: "detail.location.apply"), style: .default) { [weak self] _ in
             if let text = alertController.textFields?.first?.text {
                 self?.savePhoto(for: [.watermark], customLocationName: text)
             } else {
@@ -272,10 +276,10 @@ class ImageDetailViewController: UIViewController {
     
     func deleteButtonAction() {
         let alertController = UIAlertController(title: String(localized: "detail.alert.delete.title"), message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel) { _ in
             //
         }
-        let deleteAction = UIAlertAction(title: String(localized: "detail.alert.delete.confirm"), style: .destructive) { [weak self] _ in
+        let deleteAction = UIAlertAction(title: String(localized: "detail.delete.title"), style: .destructive) { [weak self] _ in
             self?.deleteAction()
         }
 

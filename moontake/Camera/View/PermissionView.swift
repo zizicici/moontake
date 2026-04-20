@@ -13,7 +13,7 @@ class PermissionView: UIView {
         var configuration = UIButton.Configuration.filled()
         configuration.image = UIImage(systemName: "camera")?.withTintColor(.moonColor, renderingMode: .alwaysOriginal)
         configuration.imagePadding = 12.0
-        configuration.title = String(localized: "Enable Camera Permission")
+        configuration.title = String(localized: "permission.camera.enable.title")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 16)
@@ -43,7 +43,7 @@ class PermissionView: UIView {
         var configuration = UIButton.Configuration.filled()
         configuration.image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.moonColor, renderingMode: .alwaysOriginal)
         configuration.imagePadding = 12.0
-        configuration.title = String(localized: "Enable Add Photo Permission")
+        configuration.title = String(localized: "permission.photo_library.enable.title")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 16)
@@ -51,7 +51,7 @@ class PermissionView: UIView {
 
             return outgoing
         })
-        configuration.subtitle = String(localized: "permission.addPhoto.subtitle")
+        configuration.subtitle = String(localized: "permission.photo_library.subtitle")
         configuration.subtitleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)

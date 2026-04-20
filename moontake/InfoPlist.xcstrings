@@ -3,7 +3,6 @@
   "strings" : {
     "CFBundleName" : {
       "comment" : "Bundle name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13,7 +12,7 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "moontake"
           }
         },
@@ -87,7 +86,6 @@
     },
     "NSCameraUsageDescription" : {
       "comment" : "Privacy - Camera Usage Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -97,7 +95,7 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Allow access to the camera to take photos with moontake"
           }
         },
@@ -158,20 +156,19 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問相機以使用 moontake 拍照"
+            "value" : "允許存取相機，以便使用 moontake 拍照"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問相機以使用 moontake 拍照"
+            "value" : "允許存取相機，以便使用 moontake 拍照"
           }
         }
       }
     },
     "NSLocationWhenInUseUsageDescription" : {
       "comment" : "Privacy - Location When In Use Usage Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -181,7 +178,7 @@
         },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later"
           }
         },
@@ -242,13 +239,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問位置信息，將 GPS 座標嵌入照片元數據，以便稍後在地圖上查看"
+            "value" : "允許存取位置資訊，將 GPS 座標嵌入照片的元資料，以便稍後在地圖上查看"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問位置信息，將 GPS 座標嵌入照片元數據，以便稍後在地圖上查看"
+            "value" : "允許存取位置資訊，將 GPS 座標嵌入照片的元資料，以便稍後在地圖上查看"
           }
         }
       }
@@ -325,13 +322,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問照片庫，在使用 moontake 時直接保存照片到您的照片庫"
+            "value" : "允許存取照片庫，以便在使用 moontake 時將照片直接儲存到您的照片庫"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許訪問照片庫，在使用 moontake 時直接保存照片到您的照片庫"
+            "value" : "允許存取照片庫，以便在使用 moontake 時將照片直接儲存到您的照片庫"
           }
         }
       }

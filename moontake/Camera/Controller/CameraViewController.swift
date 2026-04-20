@@ -47,7 +47,7 @@ class CameraViewController: UIViewController {
         button.layer.shadowRadius = 10.0
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.accessibilityLabel = String(localized: "Capture")
+        button.accessibilityLabel = String(localized: "camera.capture.a11y")
 
         return button
     }()
@@ -67,7 +67,7 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "plus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = String(localized: "Lighten")
+        configuration.title = String(localized: "camera.exposure.increase.title")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)
@@ -78,7 +78,7 @@ class CameraViewController: UIViewController {
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "Lighten Image")
+        button.accessibilityLabel = String(localized: "camera.exposure.increase.a11y")
         
         return button
     }()
@@ -87,7 +87,7 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "minus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = String(localized: "Darken")
+        configuration.title = String(localized: "camera.exposure.decrease.title")
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
             outgoing.font = UIFont.systemFont(ofSize: 12)
@@ -98,20 +98,20 @@ class CameraViewController: UIViewController {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "Darken Image")
+        button.accessibilityLabel = String(localized: "camera.exposure.decrease.a11y")
         
         return button
     }()
     private let lensPositionSlider: UISlider = {
         var slider = UISlider()
         slider.minimumTrackTintColor = .moonColor.withAlphaComponent(0.83)
-        slider.accessibilityLabel = String(localized: "Focus Slider")
+        slider.accessibilityLabel = String(localized: "camera.focus.title")
 
         return slider
     }()
     private let sliderLabel: UILabel = {
         var label = UILabel()
-        label.text = String(localized: "Focus Slider")
+        label.text = String(localized: "camera.focus.title")
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .moonColor.withAlphaComponent(0.75)
         label.isUserInteractionEnabled = false
@@ -124,7 +124,7 @@ class CameraViewController: UIViewController {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "camera.button.album.a11y")
+        button.accessibilityLabel = String(localized: "album.title")
         
         return button
     }()
@@ -147,7 +147,7 @@ class CameraViewController: UIViewController {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "More")
+        button.accessibilityLabel = String(localized: "more.title")
         
         return button
     }()
@@ -718,13 +718,21 @@ class CameraViewController: UIViewController {
     
     func updateInformationLabel() {
         DispatchQueue.main.async {
-            self.informationLabel.text = String(format: String(localized: "ISO: %.0f, Aperture: f/%.1f, %@") ,self.iso, self.apertureFactor, self.shutterTimeString(self.shutterScale))
+            self.informationLabel.text = String.localizedStringWithFormat(
+                String(localized: "camera.status.summary"),
+                self.iso,
+                self.apertureFactor,
+                self.shutterTimeString(self.shutterScale)
+            )
         }
     }
     
     func updateSliderLabel() {
         DispatchQueue.main.async {
-            self.sliderLabel.text = String(format: String(localized: "Focus Slider [Position: %.4f]"), self.lensPosition)
+            self.sliderLabel.text = String.localizedStringWithFormat(
+                String(localized: "camera.focus.position"),
+                self.lensPosition
+            )
         }
     }
     
@@ -870,7 +878,10 @@ class CameraViewController: UIViewController {
     }
     
     func shutterTimeString(_ time: Int32) -> String {
-        return String(format: String(localized: "Shutter Speed: 1/%is"), time)
+        return String.localizedStringWithFormat(
+            String(localized: "camera.shutter_speed.value"),
+            time
+        )
     }
     
     @objc
@@ -879,7 +890,7 @@ class CameraViewController: UIViewController {
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : first
             if currentIndex == 0 {
-                showToast(text: String(localized: "Maximum Shutter Speed Value Reached"))
+                showToast(text: String(localized: "camera.shutter_speed.maximum_reached"))
             } else {
                 showToast(text: shutterTimeString(nextStop))
             }
@@ -895,7 +906,7 @@ class CameraViewController: UIViewController {
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : last
             if currentIndex + 1 == exposureStops.count {
-                showToast(text: String(localized: "Minimum Shutter Speed Value Reached"))
+                showToast(text: String(localized: "camera.shutter_speed.minimum_reached"))
             } else {
                 showToast(text: shutterTimeString(nextStop))
             }
@@ -1108,7 +1119,7 @@ extension CameraViewController {
         
         switch Location.shared.authorizationStatus() {
         case .notDetermined:
-            let requestPermissionAction = UIAction(title: String(localized: "location.permission.notDetermined"), image: UIImage(systemName: "mappin.circle")) { _ in
+            let requestPermissionAction = UIAction(title: String(localized: "location.permission.request_access"), image: UIImage(systemName: "mappin.circle")) { _ in
                 Location.shared.requestAuthorization()
             }
             menuChildren.append(requestPermissionAction)
@@ -1119,12 +1130,12 @@ extension CameraViewController {
             menuChildren.append(settingsAction)
         case .authorizedAlways, .authorizedWhenInUse:
             if Location.shared.manualDisable {
-                let enableAction = UIAction(title: String(localized: "location.permission.manualEnable"), image: UIImage(systemName: "mappin.circle")) { _ in
+                let enableAction = UIAction(title: String(localized: "location.metadata.enable"), image: UIImage(systemName: "mappin.circle")) { _ in
                     Location.shared.manual(disable: false)
                 }
                 menuChildren.append(enableAction)
             } else {
-                let disableAction = UIAction(title: String(localized: "location.permission.manualDisable"), image: UIImage(systemName: "mappin.slash.circle")) { _ in
+                let disableAction = UIAction(title: String(localized: "location.metadata.disable"), image: UIImage(systemName: "mappin.slash.circle")) { _ in
                     Location.shared.manual(disable: true)
                 }
                 menuChildren.append(disableAction)
@@ -1136,9 +1147,9 @@ extension CameraViewController {
         let customNameAction = UIAction(title: CustomSettings.shared.locationName ?? "", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { [weak self] action in
             self?.setupCustomLocationName()
         }
-        customNameAction.subtitle = String(localized: "customSettings.location.intro")
+        customNameAction.subtitle = String(localized: "location.custom.intro")
         
-        let divider = UIMenu(title: String(localized: "customSettings.location.title"), options: . displayInline, children: [customNameAction])
+        let divider = UIMenu(title: String(localized: "location.custom.title"), options: . displayInline, children: [customNameAction])
         
         menuChildren.append(divider)
         
@@ -1154,15 +1165,15 @@ extension CameraViewController {
     }
     
     func setupCustomLocationName() {
-        let alertController = UIAlertController(title: String(localized: "customSettings.location.input.title"), message: String(localized: "customSettings.location.input.message"), preferredStyle: .alert)
+        let alertController = UIAlertController(title: String(localized: "location.custom.title"), message: String(localized: "location.custom.input.message"), preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = ""
             textField.text = CustomSettings.shared.locationName
         }
-        let cancelAction = UIAlertAction(title: String(localized: "cancel"), style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel) { _ in
             //
         }
-        let okAction = UIAlertAction(title: String(localized: "ok"), style: .default) { [weak self] _ in
+        let okAction = UIAlertAction(title: String(localized: "action.ok"), style: .default) { [weak self] _ in
             if let text = alertController.textFields?.first?.text {
                 CustomSettings.shared.locationName = text
                 self?.reloadLocationMenu()

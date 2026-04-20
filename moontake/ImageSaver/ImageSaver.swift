@@ -119,7 +119,11 @@ extension ImageSaver {
             .foregroundColor: UIColor.black
         ]
         let phasePercent = MoonManager.shared.getPhasePercent(date)
-        let firstText: String = String(format: "%@ %.1f%%", MoonManager.shared.getPhaseName(date), phasePercent * 100)
+        let firstText = String.localizedStringWithFormat(
+            String(localized: "detail.phase.summary"),
+            MoonManager.shared.getPhaseName(date),
+            phasePercent * 100
+        )
         let firstAttributedString = NSAttributedString(string: firstText, attributes: firstAttributes)
         
         let firstHeight = firstAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude).height
@@ -160,7 +164,7 @@ extension ImageSaver {
             .foregroundColor: UIColor.black.withAlphaComponent(0.6),
             .paragraphStyle: paragraphStyle
         ]
-        let promotionText: String = String(localized: "moontake\nA Moon Camera")
+        let promotionText: String = String(localized: "watermark.promotion.tagline")
         let promotionAttributedString = NSMutableAttributedString(string: promotionText, attributes: promotionAttributes)
         let range = (promotionText as NSString).range(of: "moontake")
         promotionAttributedString.addAttributes([.font: UIFont.systemFont(ofSize: 72, weight: .medium), .foregroundColor: UIColor.black], range: range)

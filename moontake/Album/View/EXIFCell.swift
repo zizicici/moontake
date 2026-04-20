@@ -68,7 +68,12 @@ class EXIFCell: EXIFBaseCell {
         
         if let exifInfo = state.exif, let iso = exifInfo.iso, let fNumber = exifInfo.fNumber, let exposureTime = exifInfo.exposureTime {
             let denominator = Int(1.0 / exposureTime)
-            titleLabel.text = String(format: "ISO %d          f/%.1f          1/%ds", iso, fNumber, denominator)
+            titleLabel.text = String.localizedStringWithFormat(
+                String(localized: "detail.exif.summary"),
+                iso,
+                fNumber,
+                denominator
+            )
         }
     }
 }

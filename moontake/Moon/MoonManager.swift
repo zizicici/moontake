@@ -92,32 +92,32 @@ class MoonManager {
     func getPhaseName(_ date: Date) -> String {
         switch getPhase(date) {
         case .newMoon:
-            return String(localized: "New Moon")
+            return String(localized: "moon.phase.new")
         case .waxingMoon:
             let percent = getPhasePercent(date)
             if percent < 0.49 {
                 // 娥眉月
-                return String(localized: "WaxingMoon1")
+                return String(localized: "moon.phase.waxing.crescent")
             } else if percent < 0.51 {
                 // 上弦月
-                return String(localized: "WaxingMoon2")
+                return String(localized: "moon.phase.waxing.first_quarter")
             } else {
                 // 上凸月
-                return String(localized: "WaxingMoon3")
+                return String(localized: "moon.phase.waxing.gibbous")
             }
         case .fullMoon:
-            return String(localized: "Full Moon")
+            return String(localized: "moon.phase.full")
         case .waningMoon:
             let percent = getPhasePercent(date)
             if percent < 0.49 {
                 // 残月
-                return String(localized: "WaningMoon1")
+                return String(localized: "moon.phase.waning.crescent")
             } else if percent < 0.51 {
                 // 下弦月
-                return String(localized: "WaningMoon2")
+                return String(localized: "moon.phase.waning.last_quarter")
             } else {
                 // 下凸月
-                return String(localized: "WaningMoon3")
+                return String(localized: "moon.phase.waning.gibbous")
             }
         }
     }

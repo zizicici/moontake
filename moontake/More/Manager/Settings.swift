@@ -23,7 +23,11 @@ struct Settings {
             case .photoWithoutWatermark:
                 return String(localized: "photo.original.title")
             case .both:
-                return String(localized: "photo.original.title") + " + " + String(localized: "photo.watermarked.title")
+                return String.localizedStringWithFormat(
+                    String(localized: "settings.save.both"),
+                    String(localized: "photo.original.title"),
+                    String(localized: "photo.watermarked.title")
+                )
             }
         }
     }
@@ -35,7 +39,11 @@ struct Settings {
         var title: String {
             switch self {
             case .default:
-                return String(localized: "Default") + String(format: " [%.0f]", Camera.shared.preferredValue())
+                return String.localizedStringWithFormat(
+                    String(localized: "settings.iso.default"),
+                    String(localized: "settings.default"),
+                    Camera.shared.preferredValue()
+                )
             case .value(let isoValue):
                 return String(format: "%.0f", isoValue)
             }
@@ -58,7 +66,11 @@ struct Settings {
         var title: String {
             switch self {
             case .default:
-                return String(localized: "Default") + String(format: " [%.0fK]", Camera.shared.preferredWhiteBalanceValue())
+                return String.localizedStringWithFormat(
+                    String(localized: "settings.white_balance.default"),
+                    String(localized: "settings.default"),
+                    Camera.shared.preferredWhiteBalanceValue()
+                )
             case .value(let tempValue):
                 return String(format: "%.0fK", tempValue)
             }
@@ -145,7 +157,7 @@ private enum SettingsSelectionError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .proRequired:
-            return String(localized: "This option is only for Pro user.")
+            return String(localized: "settings.pro_required.error")
         }
     }
 }
@@ -156,18 +168,21 @@ extension Settings.SaveToAlbumOption: SettingsOption {
     }
 
     static func getTitle() -> String {
-        String(localized: "Photo Save Options")
+        String(localized: "settings.save.title")
     }
 
     static func getHeader() -> String? {
-        String(localized: "settings.save.photoLibrary")
+        String(localized: "settings.save.photo_library")
     }
 
     static func getFooter() -> String? {
         if User.shared.proTier() == .lifetime {
             return nil
         } else {
-            return String(localized: "For free users, the default option is automatically selected and not customizable.")
+            return String.localizedStringWithFormat(
+                String(localized: "settings.pro_required.footer"),
+                String(localized: "photo.watermarked.title")
+            )
         }
     }
 
@@ -193,11 +208,11 @@ extension Settings.ISOOption: SettingsOption {
     }
 
     static func getTitle() -> String {
-        String(localized: "ISO Options")
+        String(localized: "settings.iso.options.title")
     }
 
     static func getFooter() -> String? {
-        String(localized: "In theory, under the same exposure time, a lower ISO value tends to reduce image noise.\nHowever, a lower ISO value may result in longer exposure time, which often requires a more stable camera support to avoid potential blurriness in the image.")
+        String(localized: "settings.iso.footer")
     }
 
     static func getOptions() -> [Self] {
@@ -220,7 +235,7 @@ extension Settings.WhiteBalanceOption: SettingsOption {
     }
 
     static func getTitle() -> String {
-        String(localized: "White Balance Temperature")
+        String(localized: "settings.white_balance.title")
     }
 
     static func getOptions() -> [Self] {

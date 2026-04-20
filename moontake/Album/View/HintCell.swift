@@ -103,7 +103,7 @@ class HintCell: HintBaseCell {
         var configuration = UIButton.Configuration.tinted()
         
         configuration.image = UIImage(systemName: "arrowshape.up.circle", withConfiguration: UIImage.SymbolConfiguration(textStyle: .footnote))
-        configuration.title = String(localized: "membership.learnMore")
+        configuration.title = String(localized: "membership.learn_more")
         configuration.imagePadding = 9.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
@@ -115,7 +115,7 @@ class HintCell: HintBaseCell {
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "membership.learnMore")
+        button.accessibilityLabel = String(localized: "membership.learn_more")
 
         return button
     }()

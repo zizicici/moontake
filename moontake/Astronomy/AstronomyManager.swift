@@ -20,13 +20,13 @@ struct MoonPhase {
 //        var title: String {
 //            switch self {
 //            case .newMoon:
-//                return String(localized: "New Moon")
+//                return String(localized: "moon.phase.new")
 //            case .firstQuarter:
-//                return String(localized: "First Quarter")
+//                return String(localized: "moon.phase.waxing.first_quarter")
 //            case .fullMoon:
-//                return String(localized: "Full Moon")
+//                return String(localized: "moon.phase.full")
 //            case .thirdQuarter:
-//                return String(localized: "Third Quarter")
+//                return String(localized: "moon.phase.waning.last_quarter")
 //            case .error:
 //                return "Error"
 //            }
