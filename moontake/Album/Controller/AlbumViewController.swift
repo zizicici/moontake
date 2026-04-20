@@ -61,7 +61,7 @@ class AlbumViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
-        style.alignment = .justified
+        style.alignment = .natural
         
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()

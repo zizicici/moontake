@@ -26,10 +26,15 @@ class TutorialsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         let style = NSMutableParagraphStyle()
-        style.alignment = .justified
+        style.alignment = .natural
         navigationController?.navigationBar.standardAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label.withAlphaComponent(0.8), .paragraphStyle: style]
         navigationController?.navigationBar.tintColor = .systemRed
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: String(localized: "tutorials.close"), style: .plain, target: self, action: #selector(dismissAction))
+        let closeItem = UIBarButtonItem(title: String(localized: "tutorials.close"), style: .plain, target: self, action: #selector(dismissAction))
+        if Language.current().isRightToLeft {
+            navigationItem.leftBarButtonItem = closeItem
+        } else {
+            navigationItem.rightBarButtonItem = closeItem
+        }
 
         view.backgroundColor = .backgroundColor
         

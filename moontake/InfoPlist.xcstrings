@@ -81,6 +81,12 @@
             "state" : "translated",
             "value" : "moontake"
           }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moontake"
+          }
         }
       }
     },
@@ -163,6 +169,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "允許存取相機，以便使用 moontake 拍照"
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسمح بالوصول إلى الكاميرا لالتقاط الصور باستخدام moontake"
           }
         }
       }
@@ -247,6 +259,12 @@
             "state" : "translated",
             "value" : "允許存取位置資訊，將 GPS 座標嵌入照片的元資料，以便稍後在地圖上查看"
           }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسمح بالوصول إلى الموقع لتضمين إحداثيات GPS في البيانات الوصفية للصورة حتى تتمكن من رؤيتها على الخريطة لاحقًا"
+          }
         }
       }
     },
@@ -329,6 +347,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "允許存取照片庫，以便在使用 moontake 時將照片直接儲存到您的照片庫"
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسمح بالوصول إلى مكتبة الصور لحفظ الصور مباشرةً في مكتبة الصور عند استخدام moontake"
           }
         }
       }

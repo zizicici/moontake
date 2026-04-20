@@ -9,6 +9,7 @@ import Foundation
 
 struct Language {
     enum LanguageType {
+        case ar
         case de
         case en
         case es
@@ -25,6 +26,8 @@ struct Language {
 
         var displayName: String {
             switch self {
+            case .ar:
+                "العربية"
             case .de:
                 "Deutsch"
             case .en:
@@ -53,6 +56,15 @@ struct Language {
                 "繁體中文（香港）"
             }
         }
+
+        var isRightToLeft: Bool {
+            switch self {
+            case .ar:
+                return true
+            default:
+                return false
+            }
+        }
     }
 
     static func current() -> LanguageType {
@@ -70,6 +82,8 @@ struct Language {
         let normalized = identifier.replacingOccurrences(of: "_", with: "-")
 
         switch normalized {
+        case "ar":
+            return .ar
         case "de":
             return .de
         case "en":
@@ -101,6 +115,8 @@ struct Language {
         }
 
         switch normalized.split(separator: "-").first {
+        case "ar":
+            return .ar
         case "de":
             return .de
         case "en":

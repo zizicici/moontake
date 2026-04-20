@@ -16,21 +16,29 @@ func makeMorePageViewController() -> MoreViewController {
     )
 
     dataSource.controller = controller
-    controller.navigationItem.leftBarButtonItem = UIBarButtonItem(
+    let tutorialsItem = UIBarButtonItem(
         title: String(localized: "tutorials.title"),
         style: .plain,
         target: dataSource,
         action: #selector(MorePageDataSource.showTutorials)
     )
-    controller.navigationItem.leftBarButtonItem?.tintColor = .label
+    tutorialsItem.tintColor = .label
 
-    controller.navigationItem.rightBarButtonItem = UIBarButtonItem(
+    let shareItem = UIBarButtonItem(
         title: String(localized: "more.share"),
         style: .plain,
         target: dataSource,
         action: #selector(MorePageDataSource.shareApp)
     )
-    controller.navigationItem.rightBarButtonItem?.tintColor = .label
+    shareItem.tintColor = .label
+
+    if Language.current().isRightToLeft {
+        controller.navigationItem.rightBarButtonItem = tutorialsItem
+        controller.navigationItem.leftBarButtonItem = shareItem
+    } else {
+        controller.navigationItem.leftBarButtonItem = tutorialsItem
+        controller.navigationItem.rightBarButtonItem = shareItem
+    }
 
     return controller
 }
