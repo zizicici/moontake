@@ -1379,19 +1379,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用户可以保存原始照片"
+            "value" : "只有Pro用户可以保存原始照片。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用戶可以保存原始照片"
+            "value" : "只有Pro用戶可以保存原始照片。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用戶可以保存原始照片"
+            "value" : "只有Pro用戶可以保存原始照片。"
           }
         }
       }
@@ -2035,19 +2035,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "谢谢你的支持，希望你能喜欢moontake"
+            "value" : "谢谢你的支持，希望你能喜欢moontake。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "謝謝你的支持，希望你能喜歡moontake"
+            "value" : "謝謝你的支持，希望你能喜歡moontake。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "謝謝你的支持，希望你能喜歡moontake"
+            "value" : "謝謝你的支持，希望你能喜歡moontake。"
           }
         }
       }
@@ -2117,19 +2117,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尊敬的Pro用户，所有功能已解锁"
+            "value" : "尊敬的Pro用户，所有功能已解锁。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尊敬的Pro用戶，所有功能已解鎖"
+            "value" : "尊敬的Pro用戶，所有功能已解鎖。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尊敬的Pro用戶，所有功能已解鎖"
+            "value" : "尊敬的Pro用戶，所有功能已解鎖。"
           }
         }
       }
@@ -2145,7 +2145,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The photos taken with moontake will appear here. There is currently no photos."
+            "value" : "The photos taken with moontake will appear here. There are currently no photos."
           }
         },
         "es" : {
@@ -2199,19 +2199,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用moontake拍摄的照片将会出现在这里，目前没有照片"
+            "value" : "使用moontake拍摄的照片将会出现在这里，目前没有照片。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用moontake拍攝的照片將會出現在這裏，目前沒有照片"
+            "value" : "使用moontake拍攝的照片將會出現在這裏，目前沒有照片。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "使用moontake拍攝的照片將會出現在這裏，目前沒有照片"
+            "value" : "使用moontake拍攝的照片將會出現在這裏，目前沒有照片。"
           }
         }
       }
@@ -2281,19 +2281,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "免费用户可以显示最近12张照片，Pro用户可以显示所有照片"
+            "value" : "免费用户可以显示最近12张照片，Pro用户可以显示所有照片。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "免費用戶可以顯示最近12張照片，Pro用戶可以顯示所有照片"
+            "value" : "免費用戶可以顯示最近12張照片，Pro用戶可以顯示所有照片。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "免費用戶可以顯示最近12張照片，Pro用戶可以顯示所有照片"
+            "value" : "免費用戶可以顯示最近12張照片，Pro用戶可以顯示所有照片。"
           }
         }
       }
@@ -2363,19 +2363,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "愿你拍到好月亮"
+            "value" : "愿你拍到好月亮。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "願你拍到好月亮"
+            "value" : "願你拍到好月亮。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "願你拍到好月亮"
+            "value" : "願你拍到好月亮。"
           }
         }
       }
@@ -3593,19 +3593,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "娥眉月"
+            "value" : "峨眉月"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "娥眉月"
+            "value" : "峨眉月"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "娥眉月"
+            "value" : "峨眉月"
           }
         }
       }
@@ -4420,13 +4420,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帶水印照片"
+            "value" : "帶浮水印照片"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "帶水印照片"
+            "value" : "帶浮水印照片"
           }
         }
       }
@@ -4502,13 +4502,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 原始照片/水印照片隨意保存"
+            "value" : "- 原始照片/浮水印照片隨意保存"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 原始照片/水印照片隨意保存"
+            "value" : "- 原始照片/浮水印照片隨意保存"
           }
         }
       }
@@ -4524,7 +4524,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- More features coming soon..."
+            "value" : "- More features coming soon…"
           }
         },
         "es" : {
@@ -4666,13 +4666,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 相冊瀏覽無限制"
+            "value" : "- 相簿瀏覽無限制"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "- 相冊瀏覽無限制"
+            "value" : "- 相簿瀏覽無限制"
           }
         }
       }
@@ -4748,13 +4748,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "升級爲Pro用戶，可解鎖："
+            "value" : "升級為Pro用戶，可解鎖："
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "升級爲Pro用戶，可解鎖："
+            "value" : "升級為Pro用戶，可解鎖："
           }
         }
       }
@@ -5316,19 +5316,19 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用户可以选择此选项"
+            "value" : "只有Pro用户可以选择此选项。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用戶可以選擇此選項"
+            "value" : "只有Pro用戶可以選擇此選項。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "只有Pro用戶可以選擇此選項"
+            "value" : "只有Pro用戶可以選擇此選項。"
           }
         }
       }
@@ -6142,13 +6142,13 @@
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. 請將相機對準月亮\n2. 雙指縮放調整月亮的大小（注意，月亮的大小不是越大越好，放大倍數過大會造成畫質下降）\n3. 可以點擊月亮所在的位置進行自動對焦，如果自動對焦不夠清晰，可以拖動對焦滑杆進行手動對焦\n4. 點擊 \"-\" 和 \"+\" 按鈕調整明暗度，降低亮度可以保證更多的月亮細節\n5. 點擊圓形的拍攝按鈕"
+            "value" : "1. 請將相機對準月亮\n2. 雙指縮放調整月亮的大小（注意，月亮的大小不是越大越好，放大倍數過大會造成畫質下降）\n3. 可以點擊月亮所在的位置進行自動對焦，如果自動對焦不夠清晰，可以拖動對焦滑杆進行手動對焦\n4. 點擊 “-” 和 “+” 按鈕調整明暗度，降低亮度可以保證更多的月亮細節\n5. 點擊圓形的拍攝按鈕"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1. 請將相機對準月亮\n2. 雙指縮放調整月亮的大小（注意，月亮的大小不是越大越好，放大倍數過大會造成畫質下降）\n3. 可以點擊月亮所在的位置進行自動對焦，如果自動對焦不夠清晰，可以拖動對焦滑杆進行手動對焦\n4. 點擊 \"-\" 和 \"+\" 按鈕調整明暗度，降低亮度可以保證更多的月亮細節\n5. 點擊圓形的拍攝按鈕"
+            "value" : "1. 請將相機對準月亮\n2. 雙指縮放調整月亮的大小（注意，月亮的大小不是越大越好，放大倍數過大會造成畫質下降）\n3. 可以點擊月亮所在的位置進行自動對焦，如果自動對焦不夠清晰，可以拖動對焦滑杆進行手動對焦\n4. 點擊 “-” 和 “+” 按鈕調整明暗度，降低亮度可以保證更多的月亮細節\n5. 點擊圓形的拍攝按鈕"
           }
         }
       }
