@@ -64,7 +64,8 @@ private enum MorePageFactory {
                 titleHighlightColor: .systemYellow,
                 featureColor: .white.withAlphaComponent(0.8),
                 buttonTintColor: .systemYellow,
-                buttonTextColor: .skyColor.withAlphaComponent(0.9)
+                buttonTextColor: .skyColor.withAlphaComponent(0.9),
+                buttonTitle: String(localized: "membership.purchase"),
             ),
             gratefulConfig: GratefulCellConfiguration(
                 title: String(localized: "grateful.title"),

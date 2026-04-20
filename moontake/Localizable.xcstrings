@@ -3,6 +3,12 @@
   "strings" : {
     "action.cancel" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلغاء"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -80,17 +86,17 @@
             "state" : "translated",
             "value" : "取消"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "إلغاء"
-          }
         }
       }
     },
     "action.ok" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موافق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -168,17 +174,17 @@
             "state" : "translated",
             "value" : "好的"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "موافق"
-          }
         }
       }
     },
     "album.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الألبوم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -256,18 +262,18 @@
             "state" : "translated",
             "value" : "相簿"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الألبوم"
-          }
         }
       }
     },
     "camera.capture.a11y" : {
       "comment" : "a11y",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التقاط"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -345,17 +351,17 @@
             "state" : "translated",
             "value" : "拍攝"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "التقاط"
-          }
         }
       }
     },
     "camera.exposure.decrease.a11y" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعتيم الصورة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -433,17 +439,17 @@
             "state" : "translated",
             "value" : "調暗畫面"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعتيم الصورة"
-          }
         }
       }
     },
     "camera.exposure.decrease.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعتيم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -521,17 +527,17 @@
             "state" : "translated",
             "value" : "調暗"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعتيم"
-          }
         }
       }
     },
     "camera.exposure.increase.a11y" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفتيح الصورة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -609,17 +615,17 @@
             "state" : "translated",
             "value" : "調亮畫面"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تفتيح الصورة"
-          }
         }
       }
     },
     "camera.exposure.increase.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفتيح"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -697,17 +703,17 @@
             "state" : "translated",
             "value" : "調亮"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تفتيح"
-          }
         }
       }
     },
     "camera.focus.position" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شريط التركيز [الموضع: %1$.4f]"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -785,17 +791,17 @@
             "state" : "translated",
             "value" : "對焦滑桿 [對焦值: %1$.4f]"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "شريط التركيز [الموضع: %1$.4f]"
-          }
         }
       }
     },
     "camera.focus.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شريط التركيز"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -873,17 +879,17 @@
             "state" : "translated",
             "value" : "對焦滑桿"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "شريط التركيز"
-          }
         }
       }
     },
     "camera.shutter_speed.maximum_reached" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الوصول إلى أقصى قيمة لسرعة الغالق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -961,17 +967,17 @@
             "state" : "translated",
             "value" : "已達最大曝光時間值"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تم الوصول إلى أقصى قيمة لسرعة الغالق"
-          }
         }
       }
     },
     "camera.shutter_speed.minimum_reached" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الوصول إلى أدنى قيمة لسرعة الغالق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1049,17 +1055,17 @@
             "state" : "translated",
             "value" : "已達最小曝光時間值"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تم الوصول إلى أدنى قيمة لسرعة الغالق"
-          }
         }
       }
     },
     "camera.shutter_speed.value" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سرعة الغالق: 1/%is"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1137,17 +1143,17 @@
             "state" : "translated",
             "value" : "曝光時間: 1/%is"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سرعة الغالق: 1/%is"
-          }
         }
       }
     },
     "camera.status.summary" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ISO: %1$.0f، فتحة العدسة: f/%2$.1f، %3$@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1225,17 +1231,17 @@
             "state" : "translated",
             "value" : "ISO: %1$.0f, 光圈: f/%2$.1f, %3$@"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ISO: %1$.0f، فتحة العدسة: f/%2$.1f، %3$@"
-          }
         }
       }
     },
     "date.today" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اليوم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1313,17 +1319,17 @@
             "state" : "translated",
             "value" : "今日"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اليوم"
-          }
         }
       }
     },
     "detail.alert.delete.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ستُحذف هذه الصورة من التطبيق، لكن الصور المحفوظة في مكتبة النظام لن تُحذف."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1401,17 +1407,17 @@
             "state" : "translated",
             "value" : "這張照片將會從App中刪除，但是已經保存到系統圖庫的照片不會被刪除。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ستُحذف هذه الصورة من التطبيق، لكن الصور المحفوظة في مكتبة النظام لن تُحذف."
-          }
         }
       }
     },
     "detail.alert.membership.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ الصورة الأصلية متاح لمستخدمي Pro فقط."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1489,17 +1495,17 @@
             "state" : "translated",
             "value" : "只有Pro用戶可以保存原始照片。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "حفظ الصورة الأصلية متاح لمستخدمي Pro فقط."
-          }
         }
       }
     },
     "detail.delete.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف الصورة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1577,17 +1583,17 @@
             "state" : "translated",
             "value" : "刪除照片"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "حذف الصورة"
-          }
         }
       }
     },
     "detail.exif.summary" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ISO %1$d          f/%2$.1f          1/%3$ds"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1665,17 +1671,17 @@
             "state" : "translated",
             "value" : "ISO %1$d          f/%2$.1f          1/%3$ds"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ISO %1$d          f/%2$.1f          1/%3$ds"
-          }
         }
       }
     },
     "detail.location.apply" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1753,17 +1759,17 @@
             "state" : "translated",
             "value" : "套用"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تطبيق"
-          }
         }
       }
     },
     "detail.location.skip" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1841,17 +1847,17 @@
             "state" : "translated",
             "value" : "跳過"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تخطي"
-          }
         }
       }
     },
     "detail.phase.summary" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$.1f%%"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1929,17 +1935,17 @@
             "state" : "translated",
             "value" : "%1$@ %2$.1f%%"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$.1f%%"
-          }
         }
       }
     },
     "detail.save.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حفظ"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2017,17 +2023,17 @@
             "state" : "translated",
             "value" : "保存"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "حفظ"
-          }
         }
       }
     },
     "detail.save.toast" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم حفظ الصورة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2105,17 +2111,17 @@
             "state" : "translated",
             "value" : "保存成功"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تم حفظ الصورة"
-          }
         }
       }
     },
     "grateful.content" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شكرًا لدعمك، ونأمل أن تستمتع بـ moontake."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2193,17 +2199,17 @@
             "state" : "translated",
             "value" : "謝謝你的支持，希望你能喜歡moontake。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "شكرًا لدعمك، ونأمل أن تستمتع بـ moontake."
-          }
         }
       }
     },
     "grateful.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عزيزي مستخدم Pro، تم فتح جميع الميزات."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2281,17 +2287,17 @@
             "state" : "translated",
             "value" : "尊敬的Pro用戶，所有功能已解鎖。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "عزيزي مستخدم Pro، تم فتح جميع الميزات."
-          }
         }
       }
     },
     "hint.empty" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ستظهر هنا الصور الملتقطة باستخدام moontake. لا توجد صور حاليًا."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2369,17 +2375,17 @@
             "state" : "translated",
             "value" : "使用moontake拍攝的照片將會出現在這裏，目前沒有照片。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ستظهر هنا الصور الملتقطة باستخدام moontake. لا توجد صور حاليًا."
-          }
         }
       }
     },
     "hint.promotion" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يمكن للمستخدمين المجانيين عرض أحدث 12 صورة، بينما يمكن لمستخدمي Pro عرض جميع الصور."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2457,17 +2463,17 @@
             "state" : "translated",
             "value" : "免費用戶可以顯示最近12張照片，Pro用戶可以顯示所有照片。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "يمكن للمستخدمين المجانيين عرض أحدث 12 صورة، بينما يمكن لمستخدمي Pro عرض جميع الصور."
-          }
         }
       }
     },
     "hint.wish" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نتمنى لك قمرًا جميلًا."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2545,17 +2551,17 @@
             "state" : "translated",
             "value" : "願你拍到好月亮。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "نتمنى لك قمرًا جميلًا."
-          }
         }
       }
     },
     "location.custom.input.message" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قد يؤثر النص الطويل في تخطيط العلامة المائية."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2633,17 +2639,17 @@
             "state" : "translated",
             "value" : "文字過長可能會影響浮水印排版。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "قد يؤثر النص الطويل في تخطيط العلامة المائية."
-          }
         }
       }
     },
     "location.custom.intro" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضغط للتحرير"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2721,17 +2727,17 @@
             "state" : "translated",
             "value" : "點按以編輯"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اضغط للتحرير"
-          }
         }
       }
     },
     "location.custom.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسم موقع مخصص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2809,17 +2815,17 @@
             "state" : "translated",
             "value" : "自定義地名"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اسم موقع مخصص"
-          }
         }
       }
     },
     "location.metadata.disable" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استبعاد معلومات الموقع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2897,17 +2903,17 @@
             "state" : "translated",
             "value" : "不記錄位置資訊"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "استبعاد معلومات الموقع"
-          }
         }
       }
     },
     "location.metadata.enable" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تضمين معلومات الموقع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2985,17 +2991,17 @@
             "state" : "translated",
             "value" : "記錄位置資訊"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تضمين معلومات الموقع"
-          }
         }
       }
     },
     "location.permission.denied" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتقل إلى الإعدادات للتمكين"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3073,17 +3079,17 @@
             "state" : "translated",
             "value" : "前往系統設定開啟"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "انتقل إلى الإعدادات للتمكين"
-          }
         }
       }
     },
     "location.permission.request_access" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السماح بالوصول إلى الموقع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3161,17 +3167,17 @@
             "state" : "translated",
             "value" : "允許取用位置資訊"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "السماح بالوصول إلى الموقع"
-          }
         }
       }
     },
     "location.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات الموقع"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3249,17 +3255,17 @@
             "state" : "translated",
             "value" : "位置資訊"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "معلومات الموقع"
-          }
         }
       }
     },
     "membership.learn_more" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معرفة المزيد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3337,17 +3343,105 @@
             "state" : "translated",
             "value" : "了解更多"
           }
-        },
+        }
+      }
+    },
+    "membership.purchase" : {
+      "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "معرفة المزيد"
+            "value" : "شراء"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaufen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acheter"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Купить"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Купити"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "购买"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購買"
           }
         }
       }
     },
     "moon.phase.full" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "البدر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3425,17 +3519,17 @@
             "state" : "translated",
             "value" : "滿月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "البدر"
-          }
         }
       }
     },
     "moon.phase.new" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "القمر الجديد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3513,17 +3607,17 @@
             "state" : "translated",
             "value" : "新月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "القمر الجديد"
-          }
         }
       }
     },
     "moon.phase.waning.crescent" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الهلال المتناقص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3601,17 +3695,17 @@
             "state" : "translated",
             "value" : "殘月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الهلال المتناقص"
-          }
         }
       }
     },
     "moon.phase.waning.gibbous" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأحدب المتناقص"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3689,17 +3783,17 @@
             "state" : "translated",
             "value" : "虧凸月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الأحدب المتناقص"
-          }
         }
       }
     },
     "moon.phase.waning.last_quarter" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التربيع الأخير"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3777,17 +3871,17 @@
             "state" : "translated",
             "value" : "下弦月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "التربيع الأخير"
-          }
         }
       }
     },
     "moon.phase.waxing.crescent" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الهلال المتزايد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3865,17 +3959,17 @@
             "state" : "translated",
             "value" : "峨眉月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الهلال المتزايد"
-          }
         }
       }
     },
     "moon.phase.waxing.first_quarter" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التربيع الأول"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3953,17 +4047,17 @@
             "state" : "translated",
             "value" : "上弦月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "التربيع الأول"
-          }
         }
       }
     },
     "moon.phase.waxing.gibbous" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأحدب المتزايد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4041,17 +4135,17 @@
             "state" : "translated",
             "value" : "盈凸月"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الأحدب المتزايد"
-          }
         }
       }
     },
     "more.share" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مشاركة التطبيق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4129,18 +4223,18 @@
             "state" : "translated",
             "value" : "分享 App"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "مشاركة التطبيق"
-          }
         }
       }
     },
     "more.title" : {
       "comment" : "More",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المزيد"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4218,17 +4312,17 @@
             "state" : "translated",
             "value" : "更多"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "المزيد"
-          }
         }
       }
     },
     "permission.camera.enable.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمكين الوصول إلى الكاميرا"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4306,17 +4400,17 @@
             "state" : "translated",
             "value" : "開啟相機存取權限"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تمكين الوصول إلى الكاميرا"
-          }
         }
       }
     },
     "permission.camera.subtitle" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لالتقاط الصور"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4394,17 +4488,17 @@
             "state" : "translated",
             "value" : "用於拍照"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "لالتقاط الصور"
-          }
         }
       }
     },
     "permission.photo_library.enable.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمكين الوصول إلى مكتبة الصور"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4482,17 +4576,17 @@
             "state" : "translated",
             "value" : "開啟系統相簿存取權限"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تمكين الوصول إلى مكتبة الصور"
-          }
         }
       }
     },
     "permission.photo_library.subtitle" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لحفظ الصور في مكتبة الصور"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4570,17 +4664,17 @@
             "state" : "translated",
             "value" : "用於將照片保存到系統相簿"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "لحفظ الصور في مكتبة الصور"
-          }
         }
       }
     },
     "photo.original.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الصورة الأصلية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4658,17 +4752,17 @@
             "state" : "translated",
             "value" : "原始照片"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الصورة الأصلية"
-          }
         }
       }
     },
     "photo.watermarked.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الصورة بعلامة مائية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4746,17 +4840,17 @@
             "state" : "translated",
             "value" : "帶浮水印照片"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الصورة بعلامة مائية"
-          }
         }
       }
     },
     "promotion.first" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- احفظ الصور الأصلية أو المعلَّمة بحرية"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4834,17 +4928,17 @@
             "state" : "translated",
             "value" : "- 原始照片/浮水印照片隨意保存"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- احفظ الصور الأصلية أو المعلَّمة بحرية"
-          }
         }
       }
     },
     "promotion.future" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- المزيد من الميزات قريبًا…"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4922,17 +5016,17 @@
             "state" : "translated",
             "value" : "- 更多功能持續更新中…"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- المزيد من الميزات قريبًا…"
-          }
         }
       }
     },
     "promotion.second" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- تصفح غير محدود للألبوم"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5010,17 +5104,17 @@
             "state" : "translated",
             "value" : "- 相簿瀏覽無限制"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "- تصفح غير محدود للألبوم"
-          }
         }
       }
     },
     "promotion.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قم بالترقية إلى Pro لفتح:"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5098,17 +5192,17 @@
             "state" : "translated",
             "value" : "升級為Pro用戶，可解鎖："
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "قم بالترقية إلى Pro لفتح:"
-          }
         }
       }
     },
     "settings.default" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتراضي"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5186,17 +5280,17 @@
             "state" : "translated",
             "value" : "預設"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "افتراضي"
-          }
         }
       }
     },
     "settings.iso.default" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ [%2$.0f]"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5274,17 +5368,17 @@
             "state" : "translated",
             "value" : "%1$@ [%2$.0f]"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ [%2$.0f]"
-          }
         }
       }
     },
     "settings.iso.footer" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "من الناحية النظرية، عند نفس زمن التعريض، تميل قيمة ISO الأقل إلى تقليل التشويش في الصورة.\nلكن قيمة ISO الأقل قد تؤدي إلى زمن تعريض أطول، ما يتطلب عادةً تثبيتًا أكبر للكاميرا لتجنب ضبابية الصورة المحتملة."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5362,17 +5456,17 @@
             "state" : "translated",
             "value" : "理論上，在相同曝光時間下，ISO 值越低，畫面噪點通常越少。\n但是，較低的 ISO 值也可能導致曝光時間更長，因此往往需要更穩定的相機支撐，否則畫面可能模糊。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "من الناحية النظرية، عند نفس زمن التعريض، تميل قيمة ISO الأقل إلى تقليل التشويش في الصورة.\nلكن قيمة ISO الأقل قد تؤدي إلى زمن تعريض أطول، ما يتطلب عادةً تثبيتًا أكبر للكاميرا لتجنب ضبابية الصورة المحتملة."
-          }
         }
       }
     },
     "settings.iso.label" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ISO"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5450,17 +5544,17 @@
             "state" : "translated",
             "value" : "ISO"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ISO"
-          }
         }
       }
     },
     "settings.iso.options.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خيارات ISO"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5538,17 +5632,17 @@
             "state" : "translated",
             "value" : "ISO選項"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "خيارات ISO"
-          }
         }
       }
     },
     "settings.language.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اللغة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5626,17 +5720,17 @@
             "state" : "translated",
             "value" : "語言"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اللغة"
-          }
         }
       }
     },
     "settings.pro_required.error" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذا الخيار متاح لمستخدمي Pro فقط."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5714,17 +5808,17 @@
             "state" : "translated",
             "value" : "只有Pro用戶可以選擇此選項。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "هذا الخيار متاح لمستخدمي Pro فقط."
-          }
         }
       }
     },
     "settings.pro_required.footer" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بالنسبة إلى المستخدمين المجانيين، يتم اختيار %1$@ تلقائيًا ولا يمكن تغييره."
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5802,17 +5896,17 @@
             "state" : "translated",
             "value" : "免費用戶會自動選擇「%1$@」，且無法更改。"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "بالنسبة إلى المستخدمين المجانيين، يتم اختيار %1$@ تلقائيًا ولا يمكن تغييره."
-          }
         }
       }
     },
     "settings.save.both" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ + %2$@"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5890,17 +5984,17 @@
             "state" : "translated",
             "value" : "%1$@ + %2$@"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ + %2$@"
-          }
         }
       }
     },
     "settings.save.photo_library" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الحفظ في مكتبة الصور"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5978,17 +6072,17 @@
             "state" : "translated",
             "value" : "保存到系統相簿"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الحفظ في مكتبة الصور"
-          }
         }
       }
     },
     "settings.save.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خيارات حفظ الصور"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6066,17 +6160,17 @@
             "state" : "translated",
             "value" : "照片保存選項"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "خيارات حفظ الصور"
-          }
         }
       }
     },
     "settings.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإعدادات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6154,17 +6248,17 @@
             "state" : "translated",
             "value" : "設定"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الإعدادات"
-          }
         }
       }
     },
     "settings.white_balance.default" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ [%2$.0fK]"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6242,17 +6336,17 @@
             "state" : "translated",
             "value" : "%1$@ [%2$.0fK]"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ [%2$.0fK]"
-          }
         }
       }
     },
     "settings.white_balance.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "درجة حرارة توازن اللون الأبيض"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6330,17 +6424,17 @@
             "state" : "translated",
             "value" : "白平衡溫度"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "درجة حرارة توازن اللون الأبيض"
-          }
         }
       }
     },
     "specifications.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المواصفات"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6418,17 +6512,17 @@
             "state" : "translated",
             "value" : "版本資訊"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "المواصفات"
-          }
         }
       }
     },
     "tutorials.close" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إغلاق"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6506,17 +6600,17 @@
             "state" : "translated",
             "value" : "關閉"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "إغلاق"
-          }
         }
       }
     },
     "tutorials.content" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. وجّه الكاميرا نحو القمر\n2. استخدم إصبعين لضبط حجم القمر (ملاحظة: الأكبر ليس دائمًا أفضل، فقد يؤدي التكبير المفرط إلى انخفاض جودة الصورة)\n3. يمكنك الضغط على موضع القمر لاستخدام التركيز التلقائي. إذا لم يكن التركيز التلقائي واضحًا بما يكفي، يمكنك سحب شريط التركيز للتركيز اليدوي\n4. اضغط على الزرين \"-\" و\"+\" لضبط السطوع. يساعد خفض السطوع على إظهار مزيد من تفاصيل القمر\n5. اضغط على زر الالتقاط الدائري لالتقاط صورة"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6594,17 +6688,17 @@
             "state" : "translated",
             "value" : "1. 請將相機對準月亮\n2. 雙指縮放調整月亮的大小（注意，月亮的大小不是越大越好，放大倍數過大會造成畫質下降）\n3. 可以點擊月亮所在的位置進行自動對焦，如果自動對焦不夠清晰，可以拖動對焦滑杆進行手動對焦\n4. 點擊 “-” 和 “+” 按鈕調整明暗度，降低亮度可以保證更多的月亮細節\n5. 點擊圓形的拍攝按鈕"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. وجّه الكاميرا نحو القمر\n2. استخدم إصبعين لضبط حجم القمر (ملاحظة: الأكبر ليس دائمًا أفضل، فقد يؤدي التكبير المفرط إلى انخفاض جودة الصورة)\n3. يمكنك الضغط على موضع القمر لاستخدام التركيز التلقائي. إذا لم يكن التركيز التلقائي واضحًا بما يكفي، يمكنك سحب شريط التركيز للتركيز اليدوي\n4. اضغط على الزرين \"-\" و\"+\" لضبط السطوع. يساعد خفض السطوع على إظهار مزيد من تفاصيل القمر\n5. اضغط على زر الالتقاط الدائري لالتقاط صورة"
-          }
         }
       }
     },
     "tutorials.title" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الدليل"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6682,17 +6776,17 @@
             "state" : "translated",
             "value" : "教程"
           }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الدليل"
-          }
         }
       }
     },
     "watermark.promotion.tagline" : {
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moontake\nكاميرا القمر"
+          }
+        },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6769,12 +6863,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "moontake\n一個只拍月亮的App"
-          }
-        },
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "moontake\nكاميرا القمر"
           }
         }
       }
