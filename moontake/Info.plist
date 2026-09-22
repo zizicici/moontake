@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
+	<key>BAAppGroupID</key>
+	<string>group.com.zizicici.moontake</string>
+	<key>BAHasManagedAssetPacks</key>
+	<true/>
+	<key>BAUsesAppleHosting</key>
+	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -22,12 +26,6 @@
 		</dict>
 	</dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
-	<key>BAAppGroupID</key>
-	<string>group.com.zizicici.moontake</string>
-	<key>BAHasManagedAssetPacks</key>
-	<true/>
-	<key>BAUsesAppleHosting</key>
 	<true/>
 </dict>
 </plist>

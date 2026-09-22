@@ -60,7 +60,7 @@
 		63F8069D2A59ACCC00135630 /* moontake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moontake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F806B32A59ACCD00135630 /* moontakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moontakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F806BD2A59ACCD00135630 /* moontakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moontakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA0922000000000000000004 /* AssetDownloader.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AssetDownloader.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0922000000000000000004 /* AssetDownloader.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = AssetDownloader.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -522,6 +522,7 @@
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access to find the Moon and, when enabled, add GPS coordinates to your photos.";
@@ -537,7 +538,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -560,6 +561,7 @@
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = moontake/Info.plist;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access to find the Moon and, when enabled, add GPS coordinates to your photos.";
@@ -575,7 +577,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -675,7 +677,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake.AssetDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -703,7 +705,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.2.1;
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake.AssetDownloader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
