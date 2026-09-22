@@ -1147,7 +1147,9 @@ extension CameraViewController {
         let customNameAction = UIAction(title: CustomSettings.shared.locationName ?? "", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { [weak self] action in
             self?.setupCustomLocationName()
         }
-        customNameAction.subtitle = String(localized: "location.custom.intro")
+        if #available(iOS 16.0, *) {
+            customNameAction.subtitle = String(localized: "location.custom.intro")
+        }
         
         let divider = UIMenu(title: String(localized: "location.custom.title"), options: . displayInline, children: [customNameAction])
         

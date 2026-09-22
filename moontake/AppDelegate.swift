@@ -15,14 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         _ = AppDatabase.shared
-        _ = User.shared
-        MoreKitAppearance.shared = MoreKitAppearance(
-            backgroundColor: .backgroundColor,
-            tintColor: .label
-        )
         MoreKit.configure(
             productID: "com.zizicici.moontake.iap.lifetime",
             membershipKey: UserDefaults.Custom.LifetimeMemberShip.rawValue
+        )
+        MoreKitAppearance.shared = MoreKitAppearance(
+            backgroundColor: .backgroundColor,
+            tintColor: .label
         )
         KingfisherManager.shared.cache.memoryStorage.config.totalCostLimit = 150 * 1024 * 1024
         KingfisherManager.shared.cache.diskStorage.config.sizeLimit = 50 * 1024 * 1024

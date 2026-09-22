@@ -452,7 +452,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -488,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.0;
+				MARKETING_VERSION = 2.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -651,7 +651,7 @@
 			repositoryURL = "https://github.com/zizicici/MoreKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.6.4;
+				minimumVersion = 2.0.1;
 			};
 		};
 		6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {

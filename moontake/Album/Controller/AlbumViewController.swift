@@ -52,7 +52,7 @@ class AlbumViewController: UIViewController {
         configureDataSource()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.DatabaseUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.LifetimeMembership, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name.StoreInfoLoaded, object: nil)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.reloadData()
