@@ -185,85 +185,174 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erlaube den Zugriff auf den Standort, um GPS-Koordinaten in die Metadaten des Fotos einzubetten, damit du sie später auf einer Karte sehen kannst"
+            "value" : "Erlaube den Standortzugriff, um den Mond zu finden und bei aktivierter Option GPS-Koordinaten zu Fotos hinzuzufügen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later"
+            "value" : "Allow location access to find the Moon and, when enabled, add GPS coordinates to your photos."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir acceso a la ubicación para incrustar coordenadas GPS en los metadatos de la foto, para que puedas verlas en un mapa más tarde"
+            "value" : "Permite la ubicación para encontrar la Luna y, si activas la opción, añadir coordenadas GPS a tus fotos."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir acceso a la ubicación para incrustar coordenadas GPS en los metadatos de la foto, para que puedas verlas en un mapa más tarde"
+            "value" : "Permite la ubicación para encontrar la Luna y, si activas la opción, añadir coordenadas GPS a tus fotos."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Autoriser l'accès à l'emplacement pour intégrer les coordonnées GPS dans les métadonnées de la photo, afin de les voir sur une carte plus tard"
+            "value" : "Autorisez la localisation pour trouver la Lune et, si l’option est activée, ajouter les coordonnées GPS aux photos."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "後で地図上で確認できるように、写真のメタデータにGPS座標を埋め込むために位置情報へのアクセスを許可する"
+            "value" : "月を探すために位置情報を使用します。写真の位置記録を有効にした場合は、GPS座標も写真に保存します。"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir acesso à localização para incorporar coordenadas GPS nos metadados da foto, para que possa vê-las num mapa mais tarde"
+            "value" : "Permita a localização para encontrar a Lua e, quando ativado, adicionar coordenadas GPS às fotos."
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permitir acesso à localização para incorporar coordenadas GPS nos metadados da foto, para que possa vê-las num mapa mais tarde"
+            "value" : "Permita a localização para encontrar a Lua e, quando ativado, adicionar coordenadas GPS às fotografias."
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Разрешить доступ к местоположению для встраивания GPS-координат в метаданные фотографии, чтобы вы могли увидеть их на карте позже"
+            "value" : "Разрешите геолокацию для поиска Луны и, если включена эта функция, сохранения GPS-координат в фотографиях."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дозволити доступ до місця розташування для вбудовування GPS-координат в метадані фотографії, щоб ви могли побачити їх на мапі пізніше"
+            "value" : "Дозвольте геолокацію для пошуку Місяця та, якщо ввімкнено цю функцію, збереження GPS-координат у фотографіях."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允许访问位置信息，将 GPS 坐标嵌入照片元数据，以便稍后在地图上查看"
+            "value" : "允许访问位置以寻找月亮，并在开启照片位置记录时将 GPS 坐标保存到照片中。"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許存取位置資訊，將 GPS 座標嵌入照片的元資料，以便稍後在地圖上查看"
+            "value" : "允許存取位置以尋找月亮，並在開啟照片位置記錄時將 GPS 座標儲存至照片。"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "允許存取位置資訊，將 GPS 座標嵌入照片的元資料，以便稍後在地圖上查看"
+            "value" : "允許存取位置以尋找月亮，並在開啟照片位置記錄時將 GPS 座標儲存至照片。"
           }
         },
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اسمح بالوصول إلى الموقع لتضمين إحداثيات GPS في البيانات الوصفية للصورة حتى تتمكن من رؤيتها على الخريطة لاحقًا"
+            "value" : "اسمح بالوصول إلى الموقع للعثور على القمر وإضافة إحداثيات GPS إلى الصور عند تفعيل الخيار."
+          }
+        }
+      }
+    },
+    "NSMotionUsageDescription" : {
+      "comment" : "Privacy - Motion Usage Description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use device motion and the compass to guide your camera toward the Moon."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用设备姿态和指南针信息，引导相机朝向月亮。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用裝置姿態和指南針資訊，引導相機朝向月亮。"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze Gerätebewegung und Kompass, um die Kamera zum Mond auszurichten."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisez les mouvements de l’appareil et la boussole pour orienter la caméra vers la Lune."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa el movimiento del dispositivo y la brújula para orientar la cámara hacia la Luna."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "端末の姿勢とコンパスを使用して、カメラを月の方向へ案内します。"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use o movimento do dispositivo e a bússola para orientar a câmara para a Lua."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use o movimento do dispositivo e a bússola para orientar a câmera para a Lua."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Используйте движение устройства и компас для наведения камеры на Луну."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Використовуйте рух пристрою й компас для наведення камери на Місяць."
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استخدم حركة الجهاز والبوصلة لتوجيه الكاميرا نحو القمر."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用裝置姿態和指南針資訊，引導相機朝向月亮。"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa el movimiento del dispositivo y la brújula para orientar la cámara hacia la Luna."
           }
         }
       }

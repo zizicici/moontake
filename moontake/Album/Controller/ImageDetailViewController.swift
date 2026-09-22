@@ -12,7 +12,7 @@ import ImageIO
 import Toast
 import MoreKit
 
-struct EXIF: Hashable {
+struct EXIF: Hashable, Sendable {
     var fNumber: Double?
     var exposureTime: Double?
     var iso: Int?
@@ -85,21 +85,29 @@ class ImageDetailViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
             self.loadImage()
         }
-        DispatchQueue.global(qos: .utility).async {
-            if let creationDate = self.imageInfo.creationDate {
-                let phaseName = MoonManager.shared.getPhaseName(creationDate)
-                let phasePercent = MoonManager.shared.getPhasePercent(creationDate)
-                self.moonTitle = String.localizedStringWithFormat(
-                    String(localized: "detail.phase.summary"),
-                    phaseName,
-                    phasePercent * 100
-                )
-            }
-            self.getImageEXIF()
-            DispatchQueue.main.async {
-                self.loadImage()
-                self.addButtons()
-            }
+        Task {
+            let url = self.imageInfo.originURL
+            self.exif = await Task.detached(priority: .utility) {
+                guard let url, let data = try? Data(contentsOf: url) else { return nil as EXIF? }
+                return Self.getEXIFData(from: data)
+            }.value
+            self.loadImage()
+            self.addButtons()
+        }
+        moonTitle = String(localized: "moon.phase.loading")
+        Task {
+            let date = self.imageInfo.creationDate
+            let title = await Task.detached(priority: .utility) {
+                guard let date else { return String(localized: "moon.phase.unavailable") }
+                await MoonManager.shared.prepare(at: date)
+                guard let phase = MoonManager.shared.info(at: date) else {
+                    return String(localized: "moon.phase.unavailable")
+                }
+                return String.localizedStringWithFormat(String(localized: "detail.phase.summary"),
+                    phase.name, phase.displayIllumination * 100)
+            }.value
+            self.moonTitle = title
+            self.loadImage()
         }
     }
     
@@ -188,13 +196,7 @@ class ImageDetailViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    func getImageEXIF() {
-        if let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL) {
-            self.exif = getEXIFData(from: data)
-        }
-    }
-    
-    func getEXIFData(from imageData: Data) -> EXIF? {
+    nonisolated static func getEXIFData(from imageData: Data) -> EXIF? {
         if let imageSource = CGImageSourceCreateWithData(imageData as CFData, nil) {
             if let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as? [CFString: Any] {
                 if let exifData = imageProperties[kCGImagePropertyExifDictionary] as? [CFString: Any] {

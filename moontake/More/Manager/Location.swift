@@ -32,13 +32,23 @@ class Location: NSObject {
     
     override init() {
         super.init()
-        
+        let key = UserDefaults.Custom.LocationMetadataDisabled.rawValue
+        if let saved = UserDefaults.standard.object(forKey: key) as? Bool {
+            manualDisable = saved
+        } else {
+            // Preserve geotagging for existing authorized users. New users opt in
+            // from the photo-location menu, independently of finder permission.
+            let status = locationManager.authorizationStatus
+            manualDisable = status != .authorizedAlways && status != .authorizedWhenInUse
+            UserDefaults.standard.set(manualDisable, forKey: key)
+        }
         locationManager.delegate = self
     }
     
     func requestAuthorization() {
         switch authorizationStatus() {
         case .notDetermined:
+            manual(disable: false)
             locationManager.requestWhenInUseAuthorization()
         default:
             break
@@ -58,6 +68,7 @@ class Location: NSObject {
     
     func manual(disable: Bool) {
         manualDisable = disable
+        UserDefaults.standard.set(disable, forKey: UserDefaults.Custom.LocationMetadataDisabled.rawValue)
         postNotification()
     }
     

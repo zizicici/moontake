@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ZCCalendar
 import Kingfisher
 import MoreKit
 
@@ -25,26 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         KingfisherManager.shared.cache.memoryStorage.config.totalCostLimit = 150 * 1024 * 1024
         KingfisherManager.shared.cache.diskStorage.config.sizeLimit = 50 * 1024 * 1024
-        
-        DispatchQueue.global(qos: .background).async {
-            let today = ZCCalendar.manager.today
-            switch today.month {
-            case .jan:
-                if today.day == 1 {
-                    MoonManager.shared.loadData(year: today.year - 1, to: today.year)
-                } else {
-                    MoonManager.shared.loadData(year: today.year, to: today.year)
-                }
-            case .dec:
-                if today.day == 31 {
-                    MoonManager.shared.loadData(year: today.year, to: today.year + 1)
-                } else {
-                    MoonManager.shared.loadData(year: today.year, to: today.year)
-                }
-            default:
-                MoonManager.shared.loadData(year: today.year, to: today.year)
-            }
-        }
         
         return true
     }

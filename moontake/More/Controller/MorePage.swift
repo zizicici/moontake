@@ -99,10 +99,12 @@ private enum MorePageFactory {
                 .init(type: .license, value: "闽ICP备2023015823号-1A"),
             ],
             thirdPartyLibraries: [
-                .init(name: "astro", version: "master", urlString: "https://github.com/Starainrt/astro"),
+                .init(name: "ERFA", version: "2.0.1", urlString: "https://github.com/liberfa/erfa"),
+                .init(name: "JPL Lunar Ephemeris", version: "DE440", urlString: "https://ssd.jpl.nasa.gov/planets/eph_export.html"),
                 .init(name: "GRDB.swift", version: "6.29.3", urlString: "https://github.com/groue/GRDB.swift"),
                 .init(name: "Kingfisher", version: "7.12.0", urlString: "https://github.com/onevcat/Kingfisher"),
                 .init(name: "MoreKit", version: "2.0.1", urlString: "https://github.com/zizicici/MoreKit"),
+                .init(name: "SkyKit", version: "1.0.0", urlString: "https://github.com/zizicici/SkyKit"),
                 .init(name: "SnapKit", version: "5.7.1", urlString: "https://github.com/SnapKit/SnapKit"),
                 .init(name: "Toast", version: "5.1.1", urlString: "https://github.com/scalessec/Toast-Swift"),
             ],

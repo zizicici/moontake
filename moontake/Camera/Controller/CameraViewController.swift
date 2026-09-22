@@ -36,6 +36,19 @@ class CameraViewController: UIViewController {
     
     private var spinner: UIActivityIndicatorView!
     private let previewView: AVCaptureVideoPreviewView = AVCaptureVideoPreviewView()
+    private let moonFinder = MoonFinderManager()
+    private let moonFinderView = MoonFinderView()
+    private let moonFinderButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "moon.stars")
+        configuration.contentInsets = .zero
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.alpha = 0.75
+        button.accessibilityLabel = String(localized: "moon_finder.open")
+        button.accessibilityIdentifier = "moonFinder.toggle"
+        return button
+    }()
     private let captureButton : UIButton = {
         let button = ColorHighlightButton()
         button.normalColor = .moonColor
@@ -250,6 +263,7 @@ class CameraViewController: UIViewController {
     
     deinit {
         observation?.invalidate()
+        moonFinder.stop()
     }
     
     override func viewDidLoad() {
@@ -408,6 +422,36 @@ class CameraViewController: UIViewController {
             make.bottom.equalTo(previewView).inset(6)
         }
         tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
+
+        view.addSubview(moonFinderButton)
+        moonFinderButton.snp.makeConstraints { make in
+            make.left.equalTo(previewView).inset(6)
+            make.top.equalTo(previewView).inset(6)
+            make.height.width.equalTo(44)
+        }
+        moonFinderButton.addTarget(self, action: #selector(toggleMoonFinder), for: .touchUpInside)
+        view.addSubview(moonFinderView)
+        moonFinderView.snp.makeConstraints { make in
+            make.edges.equalTo(previewView)
+        }
+        view.bringSubviewToFront(moonFinderButton)
+        moonFinderView.isHidden = true
+        moonFinderView.cameraGeometry = { [weak self] in
+            guard let self, let device = self.captureDevice,
+                  self.previewView.videoPreviewLayer.connection != nil else { return nil }
+            let imageRect = self.previewView.videoPreviewLayer.layerRectConverted(
+                fromMetadataOutputRect: CGRect(x: 0, y: 0, width: 1, height: 1))
+            return (imageRect, Double(device.activeFormat.videoFieldOfView), Double(device.videoZoomFactor))
+        }
+        moonFinder.onUpdate = { [weak self] state in
+            self?.moonFinderView.update(state)
+        }
+        moonFinderView.settingsAction = { [weak self] in
+            self?.closeMoonFinder()
+            self?.jumpToSettings()
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(closeMoonFinder),
+                                               name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
@@ -466,6 +510,33 @@ class CameraViewController: UIViewController {
         checkCameraPermissions()
         checkPhotoPremissions()
         setupAndStartCaptureSession()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        closeMoonFinder()
+    }
+
+    @objc private func toggleMoonFinder() {
+        if moonFinder.isActive {
+            closeMoonFinder()
+        } else {
+            moonFinderView.isHidden = false
+            moonFinderButton.accessibilityLabel = String(localized: "moon_finder.close")
+            moonFinderButton.configuration?.image = UIImage(systemName: "xmark")
+            moonFinderButton.accessibilityValue = String(localized: "moon_finder.active")
+            moonFinder.start()
+            showPermissionViewIfNeeded()
+        }
+    }
+
+    @objc private func closeMoonFinder() {
+        moonFinder.stop()
+        moonFinderView.isHidden = true
+        moonFinderButton.accessibilityLabel = String(localized: "moon_finder.open")
+        moonFinderButton.configuration?.image = UIImage(systemName: "moon.stars")
+        moonFinderButton.accessibilityValue = nil
+        showPermissionViewIfNeeded()
     }
     
     func initializeMotionManager() {
@@ -532,7 +603,7 @@ class CameraViewController: UIViewController {
     
     func showPermissionViewIfNeeded() {
         if cameraPermissionAuthorized == .denied || addPhotoPermissionAuthorized == .denied {
-            permissionView.isHidden = false
+            permissionView.isHidden = moonFinder.isActive
             permissionView.update(showCameraButton: cameraPermissionAuthorized == .denied, showAlbumButton: addPhotoPermissionAuthorized == .denied)
             captureButton.isEnabled = false
         } else {
@@ -714,6 +785,11 @@ class CameraViewController: UIViewController {
     
     func setupPreviewView(){
         previewView.session = session
+        // The UI and sensor projection share portrait device coordinates.
+        if let connection = previewView.videoPreviewLayer.connection,
+           connection.isVideoOrientationSupported {
+            connection.videoOrientation = .portrait
+        }
     }
     
     func updateInformationLabel() {
@@ -1008,6 +1084,7 @@ class CameraViewController: UIViewController {
                 factor = max(1, min(factor, captureDevice.activeFormat.videoMaxZoomFactor))
                 captureDevice.videoZoomFactor = factor
                 captureDevice.unlockForConfiguration()
+                moonFinderView.setNeedsLayout()
             } catch {
                 NSLog("error: \(error)")
             }
@@ -1045,6 +1122,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func moreButtonTapped() {
+        closeMoonFinder()
         let settingsVC = makeMorePageViewController()
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
@@ -1053,6 +1131,7 @@ class CameraViewController: UIViewController {
     @objc
     func albumButtonTapped() {
         guard isProcessing == false else { return }
+        closeMoonFinder()
         let albumVC = AlbumViewController()
         let nav = UINavigationController(rootViewController: albumVC)
         present(nav, animated: true)
@@ -1060,6 +1139,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func tutorialsButtonTapped() {
+        closeMoonFinder()
         let tutorialsVC = TutorialsViewController()
         let nav = UINavigationController(rootViewController: tutorialsVC)
         present(nav, animated: true)

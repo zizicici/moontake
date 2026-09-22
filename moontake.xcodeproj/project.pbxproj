@@ -14,6 +14,8 @@
 		14F0A0012F0A000100AA0001 /* MoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 14F0A0022F0A000100AA0001 /* MoreKit */; };
 		6306D0582AA0913A003B3A23 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6306D0572AA0913A003B3A23 /* Toast */; };
 		63F806D42A59BA8E00135630 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63F806D32A59BA8E00135630 /* SnapKit */; };
+		AF0922020000000000000001 /* SkyKit in Frameworks */ = {isa = PBXBuildFile; productRef = AF0922020000000000000002 /* SkyKit */; };
+		BA0922000000000000000003 /* AssetDownloader.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = BA0922000000000000000004 /* AssetDownloader.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,15 +33,44 @@
 			remoteGlobalIDString = 63F8069C2A59ACCC00135630;
 			remoteInfo = moontake;
 		};
+		BA092200000000000000000C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63F806952A59ACCC00135630 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA092200000000000000000E;
+			remoteInfo = AssetDownloader;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BA092200000000000000000B /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Extensions";
+			dstSubfolderSpec = 16;
+			files = (
+				BA0922000000000000000003 /* AssetDownloader.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		63F8069D2A59ACCC00135630 /* moontake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moontake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F806B32A59ACCD00135630 /* moontakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moontakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F806BD2A59ACCD00135630 /* moontakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moontakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0922000000000000000004 /* AssetDownloader.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AssetDownloader.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		14235A293062C88B007C169A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				DownloaderExtension.swift,
+			);
+			target = BA092200000000000000000E /* AssetDownloader */;
+		};
 		147DFD912F9525B000A76C3D /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -50,6 +81,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		14235A273062C88A007C169A /* AssetDownloader */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (14235A293062C88B007C169A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AssetDownloader; sourceTree = "<group>"; };
 		147DFD612F9525B000A76C3D /* moontake */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (147DFD912F9525B000A76C3D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = moontake; sourceTree = "<group>"; };
 		147DFD932F9525BC00A76C3D /* moontakeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = moontakeTests; sourceTree = "<group>"; };
 		147DFD972F9525C000A76C3D /* moontakeUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = moontakeUITests; sourceTree = "<group>"; };
@@ -64,6 +96,7 @@
 				14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */,
 				1447C23D2E8B992800CCE53B /* AppInfo in Frameworks */,
 				14F0A0012F0A000100AA0001 /* MoreKit in Frameworks */,
+				AF0922020000000000000001 /* SkyKit in Frameworks */,
 				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
 				141F38D82C9968DF00347225 /* GRDB in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
@@ -84,6 +117,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA0922000000000000000009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				147DFD612F9525B000A76C3D /* moontake */,
+				14235A273062C88A007C169A /* AssetDownloader */,
 				147DFD932F9525BC00A76C3D /* moontakeTests */,
 				147DFD972F9525C000A76C3D /* moontakeUITests */,
 				63F8069E2A59ACCC00135630 /* Products */,
@@ -101,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				63F8069D2A59ACCC00135630 /* moontake.app */,
+				BA0922000000000000000004 /* AssetDownloader.appex */,
 				63F806B32A59ACCD00135630 /* moontakeTests.xctest */,
 				63F806BD2A59ACCD00135630 /* moontakeUITests.xctest */,
 			);
@@ -117,10 +159,12 @@
 				63F806992A59ACCC00135630 /* Sources */,
 				63F8069A2A59ACCC00135630 /* Frameworks */,
 				63F8069B2A59ACCC00135630 /* Resources */,
+				BA092200000000000000000B /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BA092200000000000000000D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				147DFD612F9525B000A76C3D /* moontake */,
@@ -134,6 +178,7 @@
 				141F38D72C9968DF00347225 /* GRDB */,
 				1447C23C2E8B992800CCE53B /* AppInfo */,
 				14F0A0022F0A000100AA0001 /* MoreKit */,
+				AF0922020000000000000002 /* SkyKit */,
 			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
@@ -180,6 +225,23 @@
 			productName = moontakeUITests;
 			productReference = 63F806BD2A59ACCD00135630 /* moontakeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		BA092200000000000000000E /* AssetDownloader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA092200000000000000000F /* Build configuration list for PBXNativeTarget "AssetDownloader" */;
+			buildPhases = (
+				BA0922000000000000000008 /* Sources */,
+				BA0922000000000000000009 /* Frameworks */,
+				BA092200000000000000000A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AssetDownloader;
+			productName = AssetDownloader;
+			productReference = BA0922000000000000000004 /* AssetDownloader.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -234,11 +296,13 @@
 				141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */,
 				1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */,
 				14F0A0032F0A000100AA0001 /* XCRemoteSwiftPackageReference "MoreKit" */,
+				AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				BA092200000000000000000E /* AssetDownloader */,
 				63F8069C2A59ACCC00135630 /* moontake */,
 				63F806B22A59ACCD00135630 /* moontakeTests */,
 				63F806BC2A59ACCD00135630 /* moontakeUITests */,
@@ -262,6 +326,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		63F806BB2A59ACCD00135630 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA092200000000000000000A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -292,6 +363,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BA0922000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -304,6 +382,11 @@
 			isa = PBXTargetDependency;
 			target = 63F8069C2A59ACCC00135630 /* moontake */;
 			targetProxy = 63F806BE2A59ACCD00135630 /* PBXContainerItemProxy */;
+		};
+		BA092200000000000000000D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA092200000000000000000E /* AssetDownloader */;
+			targetProxy = BA092200000000000000000C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,6 +516,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = moontake/moontake.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
@@ -440,7 +524,8 @@
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access to find the Moon and, when enabled, add GPS coordinates to your photos.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Use device motion and the compass to guide your camera toward the Moon.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to photo library to save photos to your photo library directly when using moontake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -469,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = moontake/moontake.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KKQQQNKMM6;
@@ -476,7 +562,8 @@
 				INFOPLIST_FILE = moontake/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos with moontake";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to the location to embed GPS coordinates into the photo's metadata, so you can see it on a map later";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow location access to find the Moon and, when enabled, add GPS coordinates to your photos.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Use device motion and the compass to guide your camera toward the Moon.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to photo library to save photos to your photo library directly when using moontake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -572,6 +659,62 @@
 			};
 			name = Release;
 		};
+		BA0922000000000000000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = AssetDownloader/AssetDownloader.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KKQQQNKMM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssetDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake.AssetDownloader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA0922000000000000000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = AssetDownloader/AssetDownloader.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KKQQQNKMM6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AssetDownloader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zizicici.moontake.AssetDownloader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -607,6 +750,15 @@
 			buildConfigurations = (
 				63F806CE2A59ACCD00135630 /* Debug */,
 				63F806CF2A59ACCD00135630 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA092200000000000000000F /* Build configuration list for PBXNativeTarget "AssetDownloader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA0922000000000000000010 /* Debug */,
+				BA0922000000000000000011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -670,6 +822,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zizicici/SkyKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -707,6 +867,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		AF0922020000000000000002 /* SkyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */;
+			productName = SkyKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

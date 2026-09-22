@@ -1,174 +1,74 @@
-//
-//  MoonManager.swift
-//  moontake
-//
-//  Created by Ci Zi on 2023/8/4.
-//
-
 import Foundation
-import Mooninfo
+import SkyKit
 
-class MoonManager {
+final class MoonManager {
     static let shared = MoonManager()
-    
-    var fullMoonDates: [TimeInterval] = []
-    
-    var newMoonDates: [TimeInterval] = []
-    
-    var isLoading: Bool = false
-    
+
     enum Phase {
-        case newMoon
-        case waxingMoon
-        case fullMoon
-        case waningMoon
+        case newMoon, waxingMoon, fullMoon, waningMoon
     }
-    
-    func getPhasePercent(_ date: Date) -> Double {
-        var phasePercent = MooninfoAt(Int64(date.timeIntervalSince1970))
-        let currentDate = date.timeIntervalSince1970
-        if phasePercent > 0.975 {
-            if let result = MoonManager.shared.findClosestFullMoon(target: currentDate) {
-                if abs(currentDate - result) < 60 * 60 * 2 {
-                    phasePercent = 1.0
-                }
-            } else {
-                if phasePercent > 0.9975 {
-                    phasePercent = 1.0
-                }
-            }
-        } else if phasePercent < 0.025 {
-            if let result = MoonManager.shared.findClosestNewMoon(target: currentDate) {
-                if abs(currentDate - result) < 60 * 60 * 2 {
-                    phasePercent = 0.0
-                }
-            } else {
-                if phasePercent < 0.005 {
-                    phasePercent = 0.0
-                }
+
+    enum Quarter: Double {
+        case newMoon = 0, firstQuarter = 90, fullMoon = 180, lastQuarter = 270
+    }
+
+    struct Info {
+        /// Sun–Moon ecliptic longitude difference: 0=new, 180=full.
+        let angle: Double
+        /// Physical illuminated fraction, before the app's presentation rounding.
+        let illumination: Double
+        /// Preserve the existing 0%/100% display within two hours of new/full Moon.
+        let displayIllumination: Double
+
+        var phase: Phase {
+            // Preserve the app's existing phase-name windows. The phase angle
+            // replaces four searches for the next quarter to determine waxing/waning.
+            switch angle {
+            case ..<90: return displayIllumination < 0.025 ? .newMoon : .waxingMoon
+            case ..<180: return displayIllumination > 0.9975 ? .fullMoon : .waxingMoon
+            case ..<270: return displayIllumination > 0.975 ? .fullMoon : .waningMoon
+            default: return .waningMoon
             }
         }
-        return phasePercent
-    }
-    
-    func getPhase(_ date: Date) -> Phase {
-        let timestamp = Int64(date.timeIntervalSince1970)
-        let nextNewMoon = MooninfoNextNewMoon(timestamp)
-        let nextWaxingMoon = MooninfoNextWaxingMoon(timestamp)
-        let nextFullMoon = MooninfoNextFullMoon(timestamp)
-        let nextWaningMoon = MooninfoNextWaningMoon(timestamp)
-        
-        let minValue = min(min(nextNewMoon, nextWaxingMoon), min(nextFullMoon, nextWaningMoon))
-        
-        let currentPhase: Phase!
-        switch minValue {
-        case nextNewMoon:
-            currentPhase = .waningMoon
-        case nextWaxingMoon:
-            if getPhasePercent(date) < 0.025 {
-                currentPhase = .newMoon
-            } else {
-                currentPhase = .waxingMoon
-            }
-        case nextFullMoon:
-            if getPhasePercent(date) > 0.9975 {
-                currentPhase = .fullMoon
-            } else {
-                currentPhase = .waxingMoon
-            }
-        case nextWaningMoon:
-            if getPhasePercent(date) > 0.975 {
-                currentPhase = .fullMoon
-            } else {
-                currentPhase = .waningMoon
-            }
-        default:
-            currentPhase = .newMoon
-        }
-        
-        return currentPhase
-    }
-    
-    func getPhaseName(_ date: Date) -> String {
-        switch getPhase(date) {
-        case .newMoon:
-            return String(localized: "moon.phase.new")
-        case .waxingMoon:
-            let percent = getPhasePercent(date)
-            if percent < 0.49 {
-                // 娥眉月
-                return String(localized: "moon.phase.waxing.crescent")
-            } else if percent < 0.51 {
-                // 上弦月
-                return String(localized: "moon.phase.waxing.first_quarter")
-            } else {
-                // 上凸月
+
+        var name: String {
+            switch phase {
+            case .newMoon: return String(localized: "moon.phase.new")
+            case .fullMoon: return String(localized: "moon.phase.full")
+            case .waxingMoon:
+                if displayIllumination < 0.49 { return String(localized: "moon.phase.waxing.crescent") }
+                if displayIllumination < 0.51 { return String(localized: "moon.phase.waxing.first_quarter") }
                 return String(localized: "moon.phase.waxing.gibbous")
-            }
-        case .fullMoon:
-            return String(localized: "moon.phase.full")
-        case .waningMoon:
-            let percent = getPhasePercent(date)
-            if percent < 0.49 {
-                // 残月
-                return String(localized: "moon.phase.waning.crescent")
-            } else if percent < 0.51 {
-                // 下弦月
-                return String(localized: "moon.phase.waning.last_quarter")
-            } else {
-                // 下凸月
+            case .waningMoon:
+                if displayIllumination < 0.49 { return String(localized: "moon.phase.waning.crescent") }
+                if displayIllumination < 0.51 { return String(localized: "moon.phase.waning.last_quarter") }
                 return String(localized: "moon.phase.waning.gibbous")
             }
         }
     }
-    
-    func loadData(year from: Int, to: Int) {
-        isLoading = true
-        fullMoonDates = []
-        newMoonDates = []
-        for year in Array(from...to) {
-            let result = AstronomyManager.shared.calculate(year: year)
-            for element in result {
-                switch element.state {
-                case .fullMoon:
-                    fullMoonDates.append(element.date.timeIntervalSince1970)
-                case .newMoon:
-                    newMoonDates.append(element.date.timeIntervalSince1970)
-                default:
-                    break
-                }
+
+    /// Computes one immutable result for both the label and percentage. No yearly
+    /// table, initialization task or shared mutable phase cache is required.
+    func info(at date: Date) -> Info? {
+        guard let result = Moon.phase(at: date) else { return nil }
+        let illumination = result.illumination
+        var display = illumination
+        if illumination < 0.025 || illumination > 0.975 {
+            let target = illumination < 0.025 ? 0.0 : 180.0
+            let start = date.addingTimeInterval(-2 * 3600)
+            if let event = Moon.nextQuarter(target, onOrAfter: start, limitDays: 4.0 / 24),
+               abs(event.timeIntervalSince(date)) < 2 * 3600 {
+                display = target == 0 ? 0 : 1
             }
         }
-        isLoading = false
+        return Info(angle: result.angle, illumination: illumination, displayIllumination: display)
     }
-    
-    func findClosestFullMoon(target: TimeInterval) -> TimeInterval? {
-        guard !isLoading else {
-            return nil
-        }
-        return findClosestValue(target, in: fullMoonDates)
+
+    func prepare(at date: Date) async {
+        _ = try? await Ephemeris.ensureAvailable(at: date)
     }
-    
-    func findClosestNewMoon(target: TimeInterval) -> TimeInterval? {
-        guard !isLoading else {
-            return nil
-        }
-        return findClosestValue(target, in: newMoonDates)
-    }
-    
-    func findClosestValue(_ target: TimeInterval, in array: [TimeInterval]) -> TimeInterval? {
-        guard !array.isEmpty else {
-            return nil // 如果数组为空，则返回nil
-        }
-        
-        var closestValue = array[0] // 假设第一个元素为初始最接近的值
-        
-        for value in array {
-            if abs(target - value) < abs(target - closestValue) {
-                closestValue = value // 更新最接近的值
-            }
-        }
-        
-        return closestValue
+
+    func nextOccurrence(of quarter: Quarter, after date: Date) -> Date? {
+        Moon.nextQuarter(quarter.rawValue, onOrAfter: date)
     }
 }

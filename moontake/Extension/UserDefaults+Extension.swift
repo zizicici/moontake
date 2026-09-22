@@ -15,6 +15,7 @@ extension UserDefaults {
         case WatermarkType = "com.zizicici.moontake.settings.watermarkType"
         case ISO = "com.zizicici.moontake.settings.iso"
         case WhiteBalance = "com.zizicici.moontake.settings.whiteBalance"
+        case LocationMetadataDisabled = "com.zizicici.moontake.settings.locationMetadataDisabled"
     }
 }
 

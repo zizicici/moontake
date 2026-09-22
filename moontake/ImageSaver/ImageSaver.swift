@@ -18,29 +18,32 @@ struct ImageSaver {
     static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, customLocationName: String?, toDatabase: Bool, completion: (() -> ())?) {
         PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
             if status == .authorized {
-                PHPhotoLibrary.shared().performChanges({
-                    let options = PHAssetResourceCreationOptions()
-                    options.uniformTypeIdentifier = fileType.system.rawValue
-                    
-                    if targets.contains(.origin) {
-                        let creationRequest = PHAssetCreationRequest.forAsset()
-                        creationRequest.location = location
-                        creationRequest.addResource(with: .photo, data: photoData, options: options)
-                    }
-                    if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date, customLocationName: customLocationName) {
-                        let creationRequest = PHAssetCreationRequest.forAsset()
-                        creationRequest.location = location
-                        creationRequest.addResource(with: .photo, data: newData, options: options)
-                    }
-                    if toDatabase {
-                        AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude)
-                    }
-                }, completionHandler: { _, error in
-                    if let error = error {
-                        print("Error occurred while saving photo to photo library: \(error)")
-                    }
-                    completion?()
-                })
+                Task {
+                    if targets.contains(.watermark) { await MoonManager.shared.prepare(at: date) }
+                    PHPhotoLibrary.shared().performChanges({
+                        let options = PHAssetResourceCreationOptions()
+                        options.uniformTypeIdentifier = fileType.system.rawValue
+
+                        if targets.contains(.origin) {
+                            let creationRequest = PHAssetCreationRequest.forAsset()
+                            creationRequest.location = location
+                            creationRequest.addResource(with: .photo, data: photoData, options: options)
+                        }
+                        if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date, customLocationName: customLocationName) {
+                            let creationRequest = PHAssetCreationRequest.forAsset()
+                            creationRequest.location = location
+                            creationRequest.addResource(with: .photo, data: newData, options: options)
+                        }
+                        if toDatabase {
+                            AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude)
+                        }
+                    }, completionHandler: { _, error in
+                        if let error = error {
+                            print("Error occurred while saving photo to photo library: \(error)")
+                        }
+                        completion?()
+                    })
+                }
             } else {
                 completion?()
             }
@@ -118,12 +121,12 @@ extension ImageSaver {
             .font: UIFont.systemFont(ofSize: 80, weight: .medium),
             .foregroundColor: UIColor.black
         ]
-        let phasePercent = MoonManager.shared.getPhasePercent(date)
-        let firstText = String.localizedStringWithFormat(
+        let phase = MoonManager.shared.info(at: date)
+        let firstText = phase.map { phase in String.localizedStringWithFormat(
             String(localized: "detail.phase.summary"),
-            MoonManager.shared.getPhaseName(date),
-            phasePercent * 100
-        )
+            phase.name,
+            phase.displayIllumination * 100
+        ) } ?? String(localized: "moon.phase.unavailable")
         let firstAttributedString = NSAttributedString(string: firstText, attributes: firstAttributes)
         
         let firstHeight = firstAttributedString.calculateBoundingSize(maxWidth: .greatestFiniteMagnitude).height
