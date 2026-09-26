@@ -12,9 +12,9 @@
 		14D3C57D2C4277BA004BAB85 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57C2C4277BA004BAB85 /* Kingfisher */; };
 		14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 14D3C57F2C43A63F004BAB85 /* ZCCalendar */; };
 		14F0A0012F0A000100AA0001 /* MoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 14F0A0022F0A000100AA0001 /* MoreKit */; };
+		452FF7A530681DF800B9B85F /* SkyKit in Frameworks */ = {isa = PBXBuildFile; productRef = 452FF7A430681DF800B9B85F /* SkyKit */; };
 		6306D0582AA0913A003B3A23 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6306D0572AA0913A003B3A23 /* Toast */; };
 		63F806D42A59BA8E00135630 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 63F806D32A59BA8E00135630 /* SnapKit */; };
-		AF0922020000000000000001 /* SkyKit in Frameworks */ = {isa = PBXBuildFile; productRef = AF0922020000000000000002 /* SkyKit */; };
 		BA0922000000000000000003 /* AssetDownloader.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = BA0922000000000000000004 /* AssetDownloader.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -96,8 +96,8 @@
 				14D3C5802C43A63F004BAB85 /* ZCCalendar in Frameworks */,
 				1447C23D2E8B992800CCE53B /* AppInfo in Frameworks */,
 				14F0A0012F0A000100AA0001 /* MoreKit in Frameworks */,
-				AF0922020000000000000001 /* SkyKit in Frameworks */,
 				6306D0582AA0913A003B3A23 /* Toast in Frameworks */,
+				452FF7A530681DF800B9B85F /* SkyKit in Frameworks */,
 				141F38D82C9968DF00347225 /* GRDB in Frameworks */,
 				63F806D42A59BA8E00135630 /* SnapKit in Frameworks */,
 			);
@@ -178,7 +178,7 @@
 				141F38D72C9968DF00347225 /* GRDB */,
 				1447C23C2E8B992800CCE53B /* AppInfo */,
 				14F0A0022F0A000100AA0001 /* MoreKit */,
-				AF0922020000000000000002 /* SkyKit */,
+				452FF7A430681DF800B9B85F /* SkyKit */,
 			);
 			productName = moontake;
 			productReference = 63F8069D2A59ACCC00135630 /* moontake.app */;
@@ -296,7 +296,7 @@
 				141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */,
 				1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */,
 				14F0A0032F0A000100AA0001 /* XCRemoteSwiftPackageReference "MoreKit" */,
-				AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */,
+				452FF7A330681DF800B9B85F /* XCRemoteSwiftPackageReference "SkyKit" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
@@ -767,13 +767,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../SkyKit;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -813,6 +806,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.1;
+			};
+		};
+		452FF7A330681DF800B9B85F /* XCRemoteSwiftPackageReference "SkyKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zizicici/SkyKit";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
@@ -859,6 +860,11 @@
 			package = 14F0A0032F0A000100AA0001 /* XCRemoteSwiftPackageReference "MoreKit" */;
 			productName = MoreKit;
 		};
+		452FF7A430681DF800B9B85F /* SkyKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 452FF7A330681DF800B9B85F /* XCRemoteSwiftPackageReference "SkyKit" */;
+			productName = SkyKit;
+		};
 		6306D0572AA0913A003B3A23 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6306D0562AA0913A003B3A23 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
@@ -868,11 +874,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 63F806D22A59BA8E00135630 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		AF0922020000000000000002 /* SkyKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */;
-			productName = SkyKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
