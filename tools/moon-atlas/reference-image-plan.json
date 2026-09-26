@@ -1,0 +1,133 @@
+{
+  "sources": {
+    "svs8k": {
+      "file": "lroc_color_poles_8k.tif",
+      "projection": "equirectangular",
+      "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_8k.tif",
+      "page": "https://svs.gsfc.nasa.gov/4720/",
+      "credit": "NASA’s Scientific Visualization Studio",
+      "license": "Public domain",
+      "terms": "https://svs.gsfc.nasa.gov/help/#faq",
+      "bytes": 50641970,
+      "sha256": "4af8b0cd4d50c30851359d98e7e72040240dd8d03256b58b345b5b76e9edb4ef"
+    },
+    "wac64": {
+      "file": "WAC_GLOBAL_O000N0000_064P.TIF",
+      "projection": "orthographic",
+      "scaleMeters": 473.80235037733996,
+      "centerX": 3666.5,
+      "centerY": 3666.5,
+      "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/WAC_GLOBAL/WAC_GLOBAL_O000N0000_064P.TIF",
+      "page": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P",
+      "credit": "NASA / GSFC / ASU",
+      "license": "Public domain",
+      "terms": "https://lroc.im-ldi.com/about/terms",
+      "bytes": 53847036,
+      "sha256": "9c35b0d2f5f69002195910c7ba9e41104148faf1a0cb0ff038d44f9988822adc"
+    },
+    "kepler": {
+      "file": "NAC_ROI_KEPLER__LOE_E081N3220_20M.TIF",
+      "projection": "native",
+      "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/KEPLER__LOE/NAC_ROI_KEPLER__LOE_E081N3220_20M.TIF",
+      "page": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_ROI_KEPLER__LOE_E081N3220_20M",
+      "credit": "NASA / GSFC / ASU",
+      "license": "Public domain",
+      "terms": "https://lroc.im-ldi.com/about/terms",
+      "cropPixels": [
+        21,
+        448,
+        1600,
+        1600
+      ],
+      "bytes": 4379123,
+      "sha256": "bca24829f6188624d2b5e97d57ad201179b0ddf835ed9810b22db7349be9e500"
+    },
+    "aristarchus": {
+      "file": "NAC_ROI_ARISTARCLOA_E238N3125_20M.TIF",
+      "projection": "native",
+      "url": "https://pds.lroc.im-ldi.com/data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/BROWSE/NAC_ROI/ARISTARCLOA/NAC_ROI_ARISTARCLOA_E238N3125_20M.TIF",
+      "page": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_ROI_ARISTARCLOA_E238N3125_20M",
+      "credit": "NASA / GSFC / ASU",
+      "license": "Public domain",
+      "terms": "https://lroc.im-ldi.com/about/terms",
+      "insetPixels": 60,
+      "bytes": 5984125,
+      "sha256": "08de69cc9c1b66da5934254ba151757614e0d5ae29d9be8c034820a93abcb4c2"
+    }
+  },
+  "features": {
+    "3678": {
+      "source": "svs8k"
+    },
+    "3686": {
+      "source": "svs8k"
+    },
+    "3691": {
+      "source": "svs8k"
+    },
+    "3671": {
+      "source": "svs8k"
+    },
+    "3673": {
+      "source": "svs8k"
+    },
+    "3683": {
+      "source": "svs8k"
+    },
+    "3684": {
+      "source": "svs8k"
+    },
+    "3677": {
+      "source": "svs8k"
+    },
+    "3674": {
+      "source": "svs8k",
+      "heightKm": 1000
+    },
+    "3694": {
+      "source": "svs8k"
+    },
+    "4395": {
+      "source": "svs8k"
+    },
+    "5565": {
+      "source": "svs8k"
+    },
+    "3680": {
+      "source": "svs8k"
+    },
+    "3670": {
+      "source": "svs8k"
+    },
+    "3665": {
+      "source": "svs8k"
+    },
+    "6163": {
+      "source": "wac64",
+      "heightKm": 179.116917
+    },
+    "1296": {
+      "source": "wac64",
+      "heightKm": 201.74682360000003
+    },
+    "2990": {
+      "source": "kepler"
+    },
+    "380": {
+      "source": "aristarchus"
+    },
+    "4757": {
+      "source": "wac64",
+      "heightKm": 211.435413
+    },
+    "4004": {
+      "source": "wac64",
+      "heightKm": 800
+    },
+    "4003": {
+      "source": "wac64",
+      "heightKm": 450
+    }
+  },
+  "processing": "Bilinear resampling of spacecraft image data. Regional views use an azimuthal equidistant projection centered on each IAU feature coordinate, local north up. Native NAC images retain their north-up map projection with recorded edge cropping. JPEG quality 0.60. No synthetic detail."
+}

@@ -41,6 +41,20 @@ class ImageDetailViewController: UIViewController {
     private var collectionView: UICollectionView! = nil
     private var moonTitle: String?
     private var exif: EXIF?
+    private var atlasTransition: MoonAtlasTransition?
+
+    private lazy var atlasButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = String(localized: "atlas.title")
+        configuration.image = UIImage(systemName: "moon.stars")
+        configuration.imagePadding = 6
+        configuration.cornerStyle = .capsule
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityIdentifier = "photo.moonAtlas"
+        button.addTarget(self, action: #selector(openMoonAtlas), for: .touchUpInside)
+        return button
+    }()
     
     private let deleteButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
@@ -154,6 +168,14 @@ class ImageDetailViewController: UIViewController {
     }
     
     func addButtons() {
+        view.addSubview(atlasButton)
+        atlasButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
+            make.height.equalTo(44)
+            make.leading.greaterThanOrEqualTo(view.safeAreaLayoutGuide).offset(68)
+            make.trailing.lessThanOrEqualTo(view.safeAreaLayoutGuide).offset(-68)
+        }
         view.addSubview(saveButton)
         saveButton.snp.makeConstraints { make in
             make.leading.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
@@ -179,6 +201,18 @@ class ImageDetailViewController: UIViewController {
             self.deleteButtonAction()
         }
         deleteButton.menu = UIMenu(title: "", children: [deleteAction])
+    }
+
+    @objc private func openMoonAtlas() {
+        guard presentedViewController == nil else { return }
+        let source = collectionView.visibleCells.compactMap { $0 as? ImageDetailCell }.first?.imageView
+        let atlas = MoonAtlasViewController(imageInfo: imageInfo, previewImage: source?.image)
+        let navigation = UINavigationController(rootViewController: atlas)
+        atlasTransition = MoonAtlasTransition(source: source)
+        navigation.transitioningDelegate = atlasTransition
+        navigation.overrideUserInterfaceStyle = .dark
+        navigation.modalPresentationStyle = .fullScreen
+        present(navigation, animated: true)
     }
     
     func loadImage() {

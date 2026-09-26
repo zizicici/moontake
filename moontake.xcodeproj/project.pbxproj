@@ -82,7 +82,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		14235A273062C88A007C169A /* AssetDownloader */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (14235A293062C88B007C169A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = AssetDownloader; sourceTree = "<group>"; };
-		147DFD612F9525B000A76C3D /* moontake */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (147DFD912F9525B000A76C3D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = moontake; sourceTree = "<group>"; };
+		147DFD612F9525B000A76C3D /* moontake */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (147DFD912F9525B000A76C3D /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (Moon/MoonAtlasResources, ); path = moontake; sourceTree = "<group>"; };
 		147DFD932F9525BC00A76C3D /* moontakeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = moontakeTests; sourceTree = "<group>"; };
 		147DFD972F9525C000A76C3D /* moontakeUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = moontakeUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -296,7 +296,7 @@
 				141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */,
 				1447C23B2E8B992800CCE53B /* XCRemoteSwiftPackageReference "AppInfo" */,
 				14F0A0032F0A000100AA0001 /* XCRemoteSwiftPackageReference "MoreKit" */,
-				AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */,
+				AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */,
 			);
 			productRefGroup = 63F8069E2A59ACCC00135630 /* Products */;
 			projectDirPath = "";
@@ -767,6 +767,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../SkyKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		141F38D62C9968DF00347225 /* XCRemoteSwiftPackageReference "GRDB" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -824,14 +831,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/zizicici/SkyKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,7 +871,7 @@
 		};
 		AF0922020000000000000002 /* SkyKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AF0922020000000000000003 /* XCRemoteSwiftPackageReference "SkyKit" */;
+			package = AF0922020000000000000003 /* XCLocalSwiftPackageReference "../SkyKit" */;
 			productName = SkyKit;
 		};
 /* End XCSwiftPackageProductDependency section */

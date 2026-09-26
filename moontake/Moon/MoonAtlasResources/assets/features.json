@@ -1,0 +1,528 @@
+[
+  {
+    "id": "3678",
+    "name": "Mare Imbrium",
+    "latitude": 34.7244,
+    "longitude": -14.908599999999979,
+    "diameterKm": 1145.5275,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3678",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/resource/on-and-around-mons-piton/",
+        "titleKey": "atlas.reading.2"
+      }
+    ]
+  },
+  {
+    "id": "3686",
+    "name": "Mare Serenitatis",
+    "latitude": 27.2879,
+    "longitude": 18.3596,
+    "diameterKm": 674.27814,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3686",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/resource/colorful-moon/",
+        "titleKey": "atlas.reading.3"
+      }
+    ]
+  },
+  {
+    "id": "3691",
+    "name": "Mare Tranquillitatis",
+    "latitude": 8.3487,
+    "longitude": 30.834599999999995,
+    "diameterKm": 875.74884,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3691",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://svs.gsfc.nasa.gov/4185/",
+        "titleKey": "atlas.reading.4"
+      }
+    ]
+  },
+  {
+    "id": "3671",
+    "name": "Mare Crisium",
+    "latitude": 16.1774,
+    "longitude": 59.1037,
+    "diameterKm": 555.92145,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3671",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/resource/wrinkle-ridge-in-mare-crisium/",
+        "titleKey": "atlas.reading.5"
+      }
+    ]
+  },
+  {
+    "id": "3673",
+    "name": "Mare Fecunditatis",
+    "latitude": -7.835,
+    "longitude": 53.669100000000014,
+    "diameterKm": 840.35413,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3673",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/photojournal/luna-16/",
+        "titleKey": "atlas.reading.6"
+      }
+    ]
+  },
+  {
+    "id": "3683",
+    "name": "Mare Nectaris",
+    "latitude": -15.1852,
+    "longitude": 34.60210000000001,
+    "diameterKm": 339.3869,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3683",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://www.usgs.gov/maps/geologic-map-rupes-altai-quadrangle-moon",
+        "titleKey": "atlas.reading.7"
+      }
+    ]
+  },
+  {
+    "id": "3684",
+    "name": "Mare Nubium",
+    "latitude": -20.5894,
+    "longitude": -17.287199999999984,
+    "diameterKm": 714.49921,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3684",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://apod.nasa.gov/apod/ap070209.html",
+        "titleKey": "atlas.reading.8"
+      }
+    ]
+  },
+  {
+    "id": "3677",
+    "name": "Mare Humorum",
+    "latitude": -24.4785,
+    "longitude": -38.57159999999999,
+    "diameterKm": 419.66855,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3677",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17",
+        "titleKey": "atlas.reading.9"
+      },
+      {
+        "url": "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_17/landing_site/",
+        "titleKey": "atlas.reading.10"
+      }
+    ]
+  },
+  {
+    "id": "3674",
+    "name": "Mare Frigoris",
+    "latitude": 57.5923,
+    "longitude": -0.006399999999985084,
+    "diameterKm": 1446.4064,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3674",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+        "titleKey": "atlas.reading.11"
+      },
+      {
+        "url": "https://ntrs.nasa.gov/citations/20205003746",
+        "titleKey": "atlas.reading.12"
+      }
+    ]
+  },
+  {
+    "id": "3694",
+    "name": "Mare Vaporum",
+    "latitude": 13.2,
+    "longitude": 4.090000000000003,
+    "diameterKm": 242.45752,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3694",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+        "titleKey": "atlas.reading.11"
+      },
+      {
+        "url": "https://lroc.im-ldi.com/images/893",
+        "titleKey": "atlas.reading.13"
+      }
+    ]
+  },
+  {
+    "id": "4395",
+    "name": "Oceanus Procellarum",
+    "latitude": 20.6714,
+    "longitude": -56.67739999999998,
+    "diameterKm": 2592.2378,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/4395",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6812695/content.html",
+        "titleKey": "atlas.reading.14"
+      },
+      {
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810919/content.html",
+        "titleKey": "atlas.reading.15"
+      }
+    ]
+  },
+  {
+    "id": "5565",
+    "name": "Sinus Iridum",
+    "latitude": 45.0101,
+    "longitude": -31.665300000000002,
+    "diameterKm": 249.28998,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/5565",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+        "titleKey": "atlas.reading.11"
+      },
+      {
+        "url": "https://apod.nasa.gov/apod/ap260212.html",
+        "titleKey": "atlas.reading.16"
+      }
+    ]
+  },
+  {
+    "id": "3680",
+    "name": "Mare Insularum",
+    "latitude": 7.792,
+    "longitude": -30.640199999999993,
+    "diameterKm": 511.93335,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3680",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lpi.usra.edu/publications/books/rockyMoon/21Notes.pdf",
+        "titleKey": "atlas.reading.17"
+      },
+      {
+        "url": "https://lroc.im-ldi.com/atlases/pits/13",
+        "titleKey": "atlas.reading.18"
+      }
+    ]
+  },
+  {
+    "id": "3670",
+    "name": "Mare Cognitum",
+    "latitude": -10.5308,
+    "longitude": -22.314399999999978,
+    "diameterKm": 350.00912,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3670",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lpl.arizona.edu/sites/default/files/history/LPL_Founding_Whitaker_OCR.pdf#page=55",
+        "titleKey": "atlas.reading.19"
+      },
+      {
+        "url": "https://www.lpi.usra.edu/resources/ranger/book/3/",
+        "titleKey": "atlas.reading.20"
+      }
+    ]
+  },
+  {
+    "id": "3665",
+    "name": "Mare Australe",
+    "latitude": -47.7705,
+    "longitude": 91.98540000000003,
+    "diameterKm": 996.83978,
+    "type": "mare",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/3665",
+    "reference": {
+      "credit": "NASA’s Scientific Visualization Studio",
+      "source": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.e-rara.ch/zut/content/zoom/7346728",
+        "titleKey": "atlas.reading.21"
+      },
+      {
+        "url": "https://ntrs.nasa.gov/citations/20170001957",
+        "titleKey": "atlas.reading.22"
+      }
+    ]
+  },
+  {
+    "id": "6163",
+    "name": "Tycho",
+    "latitude": -43.2958,
+    "longitude": -11.21530000000007,
+    "diameterKm": 85.29377,
+    "type": "crater",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/6163",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/",
+        "titleKey": "atlas.reading.23"
+      },
+      {
+        "url": "https://science.nasa.gov/resource/tycho-crater-on-the-moon-labeled/",
+        "titleKey": "atlas.reading.24"
+      }
+    ]
+  },
+  {
+    "id": "1296",
+    "name": "Copernicus",
+    "latitude": 9.6209,
+    "longitude": -20.07860000000005,
+    "diameterKm": 96.069916,
+    "type": "crater",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/1296",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/mission/lunar-orbiter-2/",
+        "titleKey": "atlas.reading.25"
+      }
+    ]
+  },
+  {
+    "id": "2990",
+    "name": "Kepler",
+    "latitude": 8.121,
+    "longitude": -38.008699999999976,
+    "diameterKm": 29.489515,
+    "type": "crater",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/2990",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_ROI_KEPLER__LOE_E081N3220_20M"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/",
+        "titleKey": "atlas.reading.23"
+      },
+      {
+        "url": "https://www.lroc.im-ldi.com/images/263",
+        "titleKey": "atlas.reading.26"
+      }
+    ]
+  },
+  {
+    "id": "380",
+    "name": "Aristarchus",
+    "latitude": 23.7299,
+    "longitude": -47.490099999999984,
+    "diameterKm": 39.994484,
+    "type": "crater",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/380",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/NAC_ROI_ARISTARCLOA_E238N3125_20M"
+    },
+    "readingSources": [
+      {
+        "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+        "titleKey": "atlas.reading.1"
+      },
+      {
+        "url": "https://cdaweb.gsfc.nasa.gov/pub/documents/archived_websites/pwg.gsfc.nasa.gov/stargaze/Sarist.htm",
+        "titleKey": "atlas.reading.27"
+      },
+      {
+        "url": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/",
+        "titleKey": "atlas.reading.28"
+      }
+    ]
+  },
+  {
+    "id": "4757",
+    "name": "Plato",
+    "latitude": 51.6192,
+    "longitude": -9.382499999999936,
+    "diameterKm": 100.68353,
+    "type": "crater",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/4757",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P"
+    },
+    "readingSources": [
+      {
+        "url": "https://bibnum.obspm.fr/princes-philosophers-astronomers-and-virtues-short-history-on-the-lunar-toponymy",
+        "titleKey": "atlas.reading.29"
+      },
+      {
+        "url": "https://plato.stanford.edu/entries/plato/",
+        "titleKey": "atlas.reading.30"
+      },
+      {
+        "url": "https://assets.science.nasa.gov/content/dam/science/psd/earths-moon/observe-the-moon/Moon_Map_2026_Northern.pdf",
+        "titleKey": "atlas.reading.31"
+      }
+    ]
+  },
+  {
+    "id": "4004",
+    "name": "Montes Apenninus",
+    "latitude": 19.8714,
+    "longitude": 0.0253,
+    "diameterKm": 599.67462,
+    "type": "mountain",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/4004",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P"
+    },
+    "readingSources": [
+      {
+        "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw",
+        "titleKey": "atlas.reading.32"
+      },
+      {
+        "url": "https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/",
+        "titleKey": "atlas.reading.33"
+      }
+    ]
+  },
+  {
+    "id": "4003",
+    "name": "Montes Alpes",
+    "latitude": 48.36,
+    "longitude": -0.58,
+    "diameterKm": 334.47925,
+    "type": "mountain",
+    "source": "https://planetarynames.wr.usgs.gov/Feature/4003",
+    "reference": {
+      "credit": "NASA / GSFC / ASU",
+      "source": "https://data.lroc.im-ldi.com/lroc/view_rdr_product/WAC_GLOBAL_O000N0000_064P"
+    },
+    "readingSources": [
+      {
+        "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw",
+        "titleKey": "atlas.reading.32"
+      },
+      {
+        "url": "https://science.nasa.gov/photojournal/vallis-alpes/",
+        "titleKey": "atlas.reading.34"
+      }
+    ]
+  }
+]

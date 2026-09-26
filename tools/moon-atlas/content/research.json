@@ -1,0 +1,1165 @@
+{
+  "sourceLanguage": "en",
+  "features": [
+    {
+      "id": "3678",
+      "claims": [
+        {
+          "claim": "Mare Imbrium is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Imbrium is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Imbrium means Sea of Showers; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Showers” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3678"
+        },
+        {
+          "claim": "Some isolated peaks within Imbrium are remnants of a buried mountain ring. Mons Piton still rises about 2,300 meters above the plain. It once belonged to the basin’s inner ring; later eruptions submerged most of that ring. The surviving summit reveals a landscape older than the surrounding lava.",
+          "evidence": "NASA / LROC states that Mons Piton rises 2300 meters above Imbrium, was a peak in the inner mountain ring, and that eruptions from about 3.7 to 2.5 billion years ago submerged most of that ring.",
+          "url": "https://science.nasa.gov/resource/on-and-around-mons-piton/"
+        },
+        {
+          "claim": "The weather terminology reflects historical beliefs that the Moon influenced terrestrial meteorology.",
+          "evidence": "Pineda de Ávila, printed p.639 (PDF p.17), discusses the medico-astrological context, explicitly names Mare Imbrium, and cites Riccioli’s original p.204 explanation in note70. This is historical belief, not a statement of modern weather science.",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/",
+          "title": "NASA: History of Lunar Exploration"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/earths-moon/observe-the-moon/Moon_Map_2026_Northern.pdf",
+          "title": "NASA: Moon Map 2026, Apennine Mountains"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3678",
+          "title": "IAU / USGS: Mare Imbrium"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://science.nasa.gov/resource/on-and-around-mons-piton/",
+          "title": "NASA: the mountain ring beneath Imbrium"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "3686",
+      "claims": [
+        {
+          "claim": "Mare Serenitatis is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Serenitatis is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Serenitatis means Sea of Serenity; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Serenity” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3686"
+        },
+        {
+          "claim": "Serenitatis and neighboring Tranquillitatis differ in more than outline. Galileo spacecraft images show that Tranquillitatis contains more titanium. When colors are enhanced to reveal composition, it looks bluer. These colors help map differences in lunar soil; they do not represent blue water.",
+          "evidence": "NASA describes a Galileo spacecraft false-color composite and explicitly contrasts titanium-rich Tranquillitatis with Serenitatis.",
+          "url": "https://science.nasa.gov/resource/colorful-moon/"
+        },
+        {
+          "claim": "Serenity and tranquility are examples of the emotional terms used in the mare names.",
+          "evidence": "The library’s Grimaldi article explicitly describes the maria as named after moods, giving tranquility and serenity as examples. The image directly confirms they label separate regions.",
+          "url": "https://www.lindahall.org/about/news/scientist-of-the-day/francesco-maria-grimaldi/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/resource/colorful-moon/",
+          "title": "NASA: Colorful Moon"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3686",
+          "title": "IAU / USGS: Mare Serenitatis"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3686",
+          "title": "IAU / USGS: Mare Serenitatis"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://science.nasa.gov/resource/colorful-moon/",
+          "title": "NASA: what lunar colors reveal"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "3691",
+      "claims": [
+        {
+          "claim": "Mare Tranquillitatis is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Tranquillitatis is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Tranquillitatis means Sea of Tranquility; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Tranquility” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3691"
+        },
+        {
+          "claim": "On July 20, 1969, Armstrong and Aldrin landed here in Eagle. The final descent required Armstrong to steer past a crater and its scattered boulders toward safer ground. Humanity’s first lunar landing took place within the dark patch you can recognize from Earth, but its small hazards needed a much closer view.",
+          "evidence": "NASA SVS identifies the crew, date and southern Mare Tranquillitatis location, describes the West crater ejecta boulders Armstrong avoided, and visualizes the landing-site terrain. Manual piloting is separately documented in NASA’s mission overview.",
+          "url": "https://svs.gsfc.nasa.gov/4185/"
+        },
+        {
+          "claim": "Armstrong partially manually piloted Eagle and maneuvered to avoid a crater.",
+          "evidence": "NASA Apollo11 Mission Overview describes the manually piloted landing and the extra descent time caused by crater-avoidance maneuvers.",
+          "url": "https://www.nasa.gov/history/apollo-11-mission-overview/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/resource/apollo-11-landing-site-from-dawn-to-dusk/",
+          "title": "NASA: Apollo 11 Landing Site From Dawn to Dusk"
+        },
+        {
+          "url": "https://science.gsfc.nasa.gov/attic/eclipse2017.gsfc.nasa.gov/naked-eye-lunar-observing-challenge.html",
+          "title": "NASA: Naked Eye Lunar Observing Challenge"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3691",
+          "title": "IAU / USGS: Mare Tranquillitatis"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://svs.gsfc.nasa.gov/4185/",
+          "title": "NASA: Apollo 11’s landing landscape"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "3671",
+      "claims": [
+        {
+          "claim": "Mare Crisium is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Crisium is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Crisium means Sea of Crises; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Crises” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3671"
+        },
+        {
+          "claim": "Luna 24 returned samples from Crisium in 1976, allowing laboratory measurements of the rocks’ ages. The plain also has wrinkle ridges: when the ground is compressed, it bends and fractures. Their ridged outlines preserve evidence of deformation within an apparently smooth lunar sea.",
+          "evidence": "NASA explains Luna24 sample radiometric ages and wrinkle ridges as deformation caused by contraction. The mission year and landing region are corroborated in the NTRS paper below.",
+          "url": "https://science.nasa.gov/resource/wrinkle-ridge-in-mare-crisium/"
+        },
+        {
+          "claim": "Luna24 landed in Mare Crisium on August18,1976.",
+          "evidence": "The abstract of Geology of the Luna24 landing site specifies the southeast edge of Mare Crisium and the 1976 landing date.",
+          "url": "https://ntrs.nasa.gov/citations/19780057829"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/resource/wrinkle-ridge-in-mare-crisium/",
+          "title": "NASA: Wrinkle Ridge in Mare Crisium"
+        },
+        {
+          "url": "https://science.gsfc.nasa.gov/attic/eclipse2017.gsfc.nasa.gov/naked-eye-lunar-observing-challenge.html",
+          "title": "NASA: Naked Eye Lunar Observing Challenge"
+        },
+        {
+          "url": "https://science.nasa.gov/image-detail/20100702lg/",
+          "title": "NASA: Mare Crisium, Luna 24 sample return in 1976"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3671",
+          "title": "IAU / USGS: Mare Crisium"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://science.nasa.gov/resource/wrinkle-ridge-in-mare-crisium/",
+          "title": "NASA: the ridges and samples of Crisium"
+        }
+      ],
+      "uncertainties": [
+        "No reliable evidence located for a particular crisis or disaster motivating this individual name. Do not invent an impact-danger, political-event, or landing-hazard etymology."
+      ]
+    },
+    {
+      "id": "3673",
+      "claims": [
+        {
+          "claim": "Mare Fecunditatis is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Fecunditatis is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Fecunditatis means Sea of Fecundity; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Fecundity” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3673"
+        },
+        {
+          "claim": "In September 1970, Luna 16 landed here, sampled the surface and brought about 101 grams back to Earth. It was the first robotic lunar sample return. The sampling took place after sunset, entirely in darkness: this small load of soil arrived without an astronaut collecting it.",
+          "evidence": "NASA gives September20 landing/September24 return, MareFecunditatis,101grams,first robotic Moon sample return,and explicitly states sampling took place wholly in the dark after sunset.",
+          "url": "https://science.nasa.gov/photojournal/luna-16/"
+        },
+        {
+          "claim": "Fecundity was part of the historical vocabulary tying lunar names to human states.",
+          "evidence": "Pineda de Ávila, p.639, discusses the classical/medieval medico-astrological naming context and specifically lists fecundity among the positive eastern-disc terms. The original map independently confirms the individual name.",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        },
+        {
+          "claim": "The name refers to fertility and belongs to the eastern group of auspicious mare names, alongside serenity and tranquility. This describes the group, rather than claiming a specific personal motive for Riccioli.",
+          "evidence": "The 1651 map places these names in the east. Historical interpretation of positive and negative naming groups is recorded on printed page 639 of Universal enough?",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/photojournal/luna-16/",
+          "title": "NASA: Luna 16"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3673",
+          "title": "IAU / USGS: Mare Fecunditatis"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3673",
+          "title": "IAU / USGS: Mare Fecunditatis"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://science.nasa.gov/photojournal/luna-16/",
+          "title": "NASA: Luna 16’s nighttime sampling"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "3683",
+      "claims": [
+        {
+          "claim": "Mare Nectaris is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Nectaris is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Nectaris means Sea of Nectar; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Nectar” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3683"
+        },
+        {
+          "claim": "The visible dark patch occupies only the deep center of the Nectaris basin. Farther southwest, the curved Altai scarp traces part of its much larger ring structure. The dark plain and the distant cliff belong to the same basin, so the mare’s outline understates the scale of the impact.",
+          "evidence": "USGS identifies Mare Nectaris as occupying the deep central part of the multi-ring Nectaris structure and the Altai scarp as its western limit.",
+          "url": "https://www.usgs.gov/maps/geologic-map-rupes-altai-quadrangle-moon"
+        },
+        {
+          "claim": "Latin nectar refers to the drink of the gods.",
+          "evidence": "Lewis and Short Latin Dictionary, nectar entry, hosted by Tufts University Perseus, gives the classical meaning and the genitive nectaris.",
+          "url": "https://atlas.perseus.tufts.edu/dictionaries/entry/urn%3Acite2%3Ascaife-viewer%3Adictionary-entries.atlas_v1%3Alat.ls.perseus-eng2-n30635/"
+        },
+        {
+          "claim": "Nectaris belongs to the eastern group of positive names including serenity and tranquility.",
+          "evidence": "Pineda de Ávila, p.639, explicitly names Serenitatis,Tranquilitatis,Nectaris as eastern positive signifiers. This describes a scheme, not an invented specific private motive.",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://www.usgs.gov/maps/geologic-map-rupes-altai-quadrangle-moon",
+          "title": "USGS: Geologic map of the Rupes Altai Quadrangle of the Moon"
+        },
+        {
+          "url": "https://lroc.im-ldi.com/images/31",
+          "title": "LROC: Montes Pyrenaeus meets Mare Nectaris"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3683",
+          "title": "IAU / USGS: Mare Nectaris"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://www.usgs.gov/maps/geologic-map-rupes-altai-quadrangle-moon",
+          "title": "USGS: the larger Nectaris basin"
+        }
+      ],
+      "uncertainties": []
+    },
+    {
+      "id": "3684",
+      "claims": [
+        {
+          "claim": "Mare Nubium is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Nubium is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Nubium means Sea of Clouds; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Clouds” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3684"
+        },
+        {
+          "claim": "Near Nubium’s eastern side, the Straight Wall is a fault about 110 kilometers long with a height difference of roughly 200–300 meters. Its striking line marks displaced ground. Low sunlight emphasizes the relief, making this a useful reminder that shadows can reveal structure better than surface color.",
+          "evidence": "NASA APOD identifies the Straight Wall as a110-kilometer fault200–300meters high and discusses shadows revealing relief in this telescopic scene. The eastward location also follows the USGS Nubium mapping/coordinates.",
+          "url": "https://apod.nasa.gov/apod/ap070209.html"
+        },
+        {
+          "claim": "Weather-themed lunar names reflected early beliefs about lunar influence on terrestrial meteorology.",
+          "evidence": "Pineda de Ávila p.639 quotes Riccioli’s original general rationale in note70. The original1651 map independently shows Nubium,Imbrium,andProcellarum. No specific personal reason for selecting Nubium over another weather term is known here.",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://apod.nasa.gov/apod/ap070209.html",
+          "title": "NASA APOD: Ptolemaeus, Alphonsus and Arzachel"
+        },
+        {
+          "url": "https://pubs.usgs.gov/imap/i2769/i2769_sheet1.pdf",
+          "title": "USGS: Geologic Investigations Series I-2769, sheet 1"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3684",
+          "title": "IAU / USGS: Mare Nubium"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: the 1651 lunar map"
+        },
+        {
+          "url": "https://apod.nasa.gov/apod/ap070209.html",
+          "title": "NASA: the Straight Wall in Nubium"
+        }
+      ],
+      "uncertainties": [
+        "Do not claim Riccioli actually saw lunar clouds or that the name proves the presence of an atmosphere."
+      ]
+    },
+    {
+      "id": "3677",
+      "claims": [
+        {
+          "claim": "Mare Humorum is present on the Riccioli/Grimaldi nomenclature map published in 1651. Riccioli supplied the names and Grimaldi the map.",
+          "evidence": "Inspected the original Figure VI image. Its label for Mare Humorum is legible. The library identifies the original as Almagestum novum, volume 1, 1651, pp. 204–205, and distinguishes Riccioli’s naming from Grimaldi’s drawing.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Mare Humorum means Sea of Moisture; IAU adoption is 1935, distinct from the 1651 historical naming.",
+          "evidence": "Gazetteer Status and Origin gives “Sea of Moisture” and Approval Date 1935.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3677"
+        },
+        {
+          "claim": "Gassendi crater on the northern edge was a finalist for Apollo 17. Scientists hoped to sample ancient rocks in its central peaks and learn the ages of the crater and Humorum basin. Rough terrain threatened access to those peaks, helping rule the site out. A scientifically promising place still had to be reachable.",
+          "evidence": "LPI describes Gassendi north of Humorum as one of three final candidates, the goals of sampling old highlands and dating the basin/crater, and uncertainty that astronauts could reach the central peaks if landed in rough nearby terrain.",
+          "url": "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_17/landing_site/"
+        },
+        {
+          "claim": "Modern Sea of Moisture and historical Sea of Humours are distinct readings of Humorum.",
+          "evidence": "IAU/USGS gives Sea of Moisture. Pineda de Ávila p.639 uses Sea of Humours while explaining the naming scheme’s medico-astrological context. Copy attributes this reading to scholarship, not a demonstrated single personal motive of Riccioli.",
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/photojournal/gassendi-a/",
+          "title": "NASA: Gassendi A"
+        },
+        {
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/SMART-1/Gassendi_crater_-_clue_on_the_thermal_history_of_Mare_Humorum",
+          "title": "ESA: Gassendi crater, clue on the thermal history of Mare Humorum"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3677",
+          "title": "IAU / USGS: Mare Humorum"
+        },
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/29BF8AC056D80A1ECDDB052D2A2DF100/S0007087424001377a.pdf/universal-enough-the-politics-of-nomenclature-in-seventeenth-century-selenography.pdf#page=17",
+          "title": "A history of lunar naming"
+        },
+        {
+          "url": "https://www.lpi.usra.edu/lunar/missions/apollo/apollo_17/landing_site/",
+          "title": "LPI: choosing Apollo 17’s landing site"
+        }
+      ],
+      "uncertainties": [
+        "Do not present the modern English gloss and the historical humoral interpretation as interchangeable meanings without attribution."
+      ]
+    },
+    {
+      "id": "3674",
+      "claims": [
+        {
+          "claim": "Riccioli 1651 name; van Langren earlier Mare Astronomicum; Terra Caloris also on naming table.",
+          "evidence": "Primary scanned book printed p.205 (PDF page30), visually inspected locally. Table shows Mare Frigoris 2 / L. Mare Astronomicu and Terra Caloris 7. L means Langrenus, as explained on preceding printed p.204.",
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf"
+        },
+        {
+          "claim": "Latin meaning Sea of Cold.",
+          "evidence": "IAU/USGS Origin: Sea of Cold. Approval Date1935 is separate from origin.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3674"
+        },
+        {
+          "claim": "Some Frigoris ridges possibly active within past40Ma.",
+          "evidence": "Williams et al.(2019), Icarus326, abstract: young wrinkle ridges likely active within last1Ga, some within40Ma. Age is inferred, not directly measured movement.",
+          "url": "https://ntrs.nasa.gov/citations/20205003746"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://ntrs.nasa.gov/citations/20205003746",
+          "title": "NASA NTRS: Evidence for recent and ancient faulting at Mare Frigoris"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3674",
+          "title": "IAU / USGS: Mare Frigoris"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+          "title": "Riccioli’s naming table (1651)"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3674",
+          "title": "IAU / USGS: Mare Frigoris"
+        },
+        {
+          "url": "https://ntrs.nasa.gov/citations/20205003746",
+          "title": "Williams et al.: Faulting at Mare Frigoris"
+        }
+      ],
+      "uncertainties": [
+        "Do not claim the name records an actual temperature measurement or a specific naming motivation such as high latitude; the original table establishes words and predecessors, not Riccioli’s psychology."
+      ]
+    },
+    {
+      "id": "3694",
+      "claims": [
+        {
+          "claim": "Mare Vaporum appears in1651 naming table alongside Imbrium and Nubium.",
+          "evidence": "Riccioli primary printed p.205 explicitly lists Mare Vaporum3; table also Mare Imbrium and Mare Nubium.",
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf"
+        },
+        {
+          "claim": "Grimaldi drew map and Riccioli invented names.",
+          "evidence": "Library exhibition describes their separate contributions and publication in1651.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Meaning Sea of Vapors.",
+          "evidence": "IAU/USGS Origin.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3694"
+        },
+        {
+          "claim": "Northern volcanic dome and stereo photographs.",
+          "evidence": "LROC Dome in Mare Vaporum identifies volcanic dome at16.64N,3.22E and NAC stereo anaglyph with imagesM181159284L/R andM181144987L/R. Apparent visibility sentence is explanatory interpretation of stereo, not a quantified detection claim.",
+          "url": "https://lroc.im-ldi.com/images/893"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://lroc.im-ldi.com/images/893",
+          "title": "LROC: Dome in Mare Vaporum"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3694",
+          "title": "IAU / USGS: Mare Vaporum"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+          "title": "Riccioli’s naming table (1651)"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3694",
+          "title": "IAU / USGS: Mare Vaporum"
+        },
+        {
+          "url": "https://lroc.im-ldi.com/images/893",
+          "title": "LROC: Dome in Mare Vaporum"
+        }
+      ],
+      "uncertainties": [
+        "No primary evidence found for a specific personal reason Riccioli selected Vaporum for this patch. Do not invent a report of observed steam or mist.",
+        "Earlier Hevelius name Propontis appears in secondary references but is omitted pending primary-map verification."
+      ]
+    },
+    {
+      "id": "4395",
+      "claims": [
+        {
+          "claim": "Riccioli1651 map; Ocean of Storms; Copernican crater naming anecdote.",
+          "evidence": "Linda Hall Library exhibition by science historian explains Riccioli’s own statement about throwing heliocentrists into Oceanus Procellarum. Do not infer this was the sole reason for choosing the ocean name, or claim secret sympathy with heliocentrism.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Meaning Ocean of Storms.",
+          "evidence": "IAU/USGS Origin.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4395"
+        },
+        {
+          "claim": "CE5sample dating around2Ga and prior youngest returned volcanism about2.9Ga.",
+          "evidence": "CNSA2021-10-08 reports measured1.96Ga basalt and previous returned samples no younger than2.9Ga.",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6812695/content.html"
+        },
+        {
+          "claim": "2020CE5 landing/sample area northernProcellarum.",
+          "evidence": "CNSA mission feature explicitly identifies northeasternOceanusProcellarum and2020mission.",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810919/content.html"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/image-article/apod-2022-december-8-orion-and-the-ocean-of-storms/",
+          "title": "NASA APOD: Orion and the Ocean of Storms"
+        },
+        {
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6812695/content.html",
+          "title": "CNSA: 嫦娥五号月球样品首篇研究成果发表在《Science》"
+        },
+        {
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810919/content.html",
+          "title": "CNSA: 嫦娥五号任务专题报道，风暴洋东北角采样区域"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: Riccioli’s 1651 Moon map"
+        },
+        {
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6812695/content.html",
+          "title": "CNSA: Dating the Chang’e 5 samples"
+        },
+        {
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810919/content.html",
+          "title": "CNSA: Chang’e 5’s sampling region"
+        }
+      ],
+      "uncertainties": [
+        "The Copernican anecdote is well sourced to the library’s curatorial account; do not present it as proof of why Riccioli originally chose the word Procellarum."
+      ]
+    },
+    {
+      "id": "5565",
+      "claims": [
+        {
+          "claim": "Riccioli1651 currentname, LangrenusSinusGeometricus, HeveliusSinusApollinis.",
+          "evidence": "Primary book p.205 nomenclature table visually verified (PDFpage30). L/H abbreviations explained p.204.",
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf"
+        },
+        {
+          "claim": "Bay of Rainbows officialmeaning.",
+          "evidence": "IAU/USGS Origin.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/5565"
+        },
+        {
+          "claim": "Jura arc is impactcraterwall; Cassini1679 woman-profile atCapeHeraclides.",
+          "evidence": "NASAAPOD2026-02-12 description explicitly provides craterwall and Cassini1679 portrait detail.",
+          "url": "https://apod.nasa.gov/apod/ap260212.html"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://lroc.im-ldi.com/images/412",
+          "title": "LROC: On the Shore of the Bay of Rainbows"
+        },
+        {
+          "url": "https://science.nasa.gov/photojournal/sinus-iridum/",
+          "title": "NASA: Sinus Iridum"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.e-rara.ch/download/pdf/194705.pdf",
+          "title": "Riccioli’s naming table (1651)"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/5565",
+          "title": "IAU / USGS: Sinus Iridum"
+        },
+        {
+          "url": "https://apod.nasa.gov/apod/ap260212.html",
+          "title": "NASA: The Bay of Rainbows"
+        }
+      ],
+      "uncertainties": [
+        "Do not claim Riccioli named it because he saw an actual rainbow or because an exact rainbow-like shape inspired him; evidence establishes names, not that motivation.",
+        "Cassini portrait is historical cartography, not a claim that a woman is actually visible on the Moon."
+      ]
+    },
+    {
+      "id": "3680",
+      "claims": [
+        {
+          "claim": "DonE.Wilhelms personallyproposedOceanusInsularum; IAU1976changedOceanustoMare; islands meanterraremnants.",
+          "evidence": "Wilhelms, ToaRockyMoon, printedp.399, note18 (chapter8notes): author narrates his own proposal andchange. Search-indexed officialLPIauthorizedcopy was retrieved; directPDF requests403.",
+          "url": "https://www.lpi.usra.edu/publications/books/rockyMoon/21Notes.pdf"
+        },
+        {
+          "claim": "Officialapproval1976; nameSeaofIslands.",
+          "evidence": "IAU/USGSGazetteer corroboratesyearandmeaning.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3680"
+        },
+        {
+          "claim": "Insularumpitdiamondshape; funnel255–315m; bowl-floor1–3mboulders; highlandkipukaseastnearest600m.",
+          "evidence": "LROCpitatlas providesdescriptionanddimensions. Do not describe confirmedlava-tubecave, which this entry doesnotestablish.",
+          "url": "https://lroc.im-ldi.com/atlases/pits/13"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3680",
+          "title": "IAU / USGS: Mare Insularum"
+        },
+        {
+          "url": "https://lroc.im-ldi.com/atlases/pits/13",
+          "title": "LROC: Mare Insularum Pit and nearby highland kipukas"
+        },
+        {
+          "url": "https://science.nasa.gov/photojournal/remnants-of-the-imbrium-impact/",
+          "title": "NASA: Remnants of the Imbrium Impact, how kipukas form"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lpi.usra.edu/publications/books/rockyMoon/21Notes.pdf",
+          "title": "Wilhelms: To a Rocky Moon, note 18"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3680",
+          "title": "IAU / USGS: Mare Insularum"
+        },
+        {
+          "url": "https://lroc.im-ldi.com/atlases/pits/13",
+          "title": "LROC: Mare Insularum Pit"
+        }
+      ],
+      "uncertainties": [
+        "Wilhelms’s note incorrectly identifies the1976IAUmeetingcity asSydney;1976GeneralAssemblywasGrenoble. Omitcityandkeep independentlycorroborated1976year.",
+        "Exact year of Wilhelms’s originalsuggestion isnotestablished;1976isadoptionyear, notclaimedproposalyear.",
+        "Chinese transliteration唐威廉姆斯 is provisional editorial transliteration, EnglishDonWilhelms is primarybase."
+      ],
+      "verification": "Primary PDF note 18, printed page 399, independently verified through the indexed LPI text on 2026-09-26; direct PDF fetch was blocked or exceeded tool size. It explicitly distinguishes Oceanus Insularum from the adopted Mare Insularum. The incorrectly named meeting city is omitted."
+    },
+    {
+      "id": "3670",
+      "claims": [
+        {
+          "claim": "GerardKuiperproposedMareExploratumandMareCognitum at1964HamburgIAUcongress, latterchosen.",
+          "evidence": "EwenWhitaker firsthand institutionalhistory, TheUniversityofArizona’sLunarandPlanetaryLaboratory:ItsFoundingandEarlyYears, printedp.51/PDFpage55, expresslydescribesKuiper’sproposal.",
+          "url": "https://www.lpl.arizona.edu/sites/default/files/history/LPL_Founding_Whitaker_OCR.pdf"
+        },
+        {
+          "claim": "1964adoption; Sea that has become known; RangerVIIimpactsite.",
+          "evidence": "IAU/USGSOriginandApprovalDate.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3670"
+        },
+        {
+          "claim": "Ranger 7 returned 4,308 images during its final 17 minutes; the images helped prepare for later soft landings.",
+          "evidence": "NASA Deep Space Chronicle (SP-4524), Ranger 7 entry and image caption, documents the image count and duration. These claims are separate from the corrected timing of the last exposure.",
+          "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4524.pdf"
+        },
+        {
+          "claim": "The last narrow-angle image was taken 0.18 seconds before impact and the read-out area had a surface resolution of about 0.5 meters. The App rounds this to about 0.2 seconds and roughly half-meter detail.",
+          "evidence": "Ranger VII Photographs of the Moon, Part III: Camera P Series (NASA SP-63), section II, Ranger VII Mission Description and Trajectory, explicitly reports the final-image timing and surface resolution. The same figures occur in the Part I mission description cited by the reviewer. Verified from the indexed primary-report text; direct PDF requests were blocked or timed out.",
+          "url": "https://www.lpi.usra.edu/resources/ranger/book/3/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://www.nasa.gov/history/60-years-ago-ranger-7-photographs-the-moon/",
+          "title": "NASA: 60 Years Ago, Ranger 7 Photographs the Moon"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3670",
+          "title": "IAU / USGS: Mare Cognitum"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lpl.arizona.edu/sites/default/files/history/LPL_Founding_Whitaker_OCR.pdf#page=55",
+          "title": "Whitaker: Kuiper’s naming proposal"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3670",
+          "title": "IAU / USGS: Mare Cognitum"
+        },
+        {
+          "url": "https://www.lpi.usra.edu/resources/ranger/book/3/",
+          "title": "NASA/JPL: Ranger VII photographic report"
+        }
+      ],
+      "uncertainties": [
+        "The NASA 2024 anniversary article used previously disagrees with the contemporary photographic report on final-image timing and detail scale. The final-image sentence now follows the contemporary report; no longer treat that anniversary article as evidence for these quantities.",
+        "The final narrow-angle exposure must not be described as a fully transmitted frame. The revised prose describes imaging continuing close to impact without making a completeness claim."
+      ],
+      "verification": "Corrected after reviewer feedback on 2026-09-26. Use the primary report for 0.18 s and approximately 0.5 m; all 14 locales now describe approximately 0.2 s and half-meter detail."
+    },
+    {
+      "id": "3665",
+      "claims": [
+        {
+          "claim": "Beer and Mädler introduced Mare Australe themselves in Der Mond (1837).",
+          "evidence": "Primary book §445, printed pp.390–391. p391 states names of individual features and mare itself were all newly introduced by the authors. Parent retrieved OCR and visually verified page scan. I read exact OCR in /tmp/moontake-australe-evidence.txt.",
+          "url": "https://www.e-rara.ch/zut/content/zoom/7346728"
+        },
+        {
+          "claim": "Earlier mapmakers did not class the region among maria; authors considered it deserved inclusion; apparent coverage changes with libration.",
+          "evidence": "§445 p390 says it belongs among maria by size and other character; p391 describes brighter interruptions and scattered spots in ordinary libration. This is presented as the authors’ argument, not a modern rigid basin classification.",
+          "url": "https://www.e-rara.ch/zut/content/zoom/7346727"
+        },
+        {
+          "claim": "Official meaning Southern Sea; IAU adoption1935.",
+          "evidence": "IAU/USGS Gazetteer Origin and ApprovalDate, explicitly separated from1837 introduction.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3665"
+        },
+        {
+          "claim": "Australe is a collection of separate basalt patches.",
+          "evidence": "Lawrence et al.2017 abstract describes loosely circular collection of mare basalts.",
+          "url": "https://ntrs.nasa.gov/citations/20170001957"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://ntrs.nasa.gov/citations/20170001957",
+          "title": "NASA NTRS: Remote Sensing and Geologic Studies of Mare Australe"
+        },
+        {
+          "url": "https://science.nasa.gov/photojournal/brisbane-zs-australean-wrinkle-ridge/",
+          "title": "NASA: Brisbane Z’s Australean Wrinkle Ridge"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3665",
+          "title": "IAU / USGS: Mare Australe"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.e-rara.ch/zut/content/zoom/7346728",
+          "title": "Beer and Mädler: Der Mond (1837), pp. 390–391"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/3665",
+          "title": "IAU / USGS: Mare Australe"
+        },
+        {
+          "url": "https://ntrs.nasa.gov/citations/20170001957",
+          "title": "Lawrence et al.: North Mare Australe"
+        }
+      ],
+      "uncertainties": [
+        "Do not confuse older telescope-defined Australe boundaries or east/west conventions with current IAU polygons. Historical words are summarized without reproducing old coordinates.",
+        "The earlier possible association with Riccioli’s Claramontius is explicitly speculative in the1837 source and omitted."
+      ]
+    },
+    {
+      "id": "6163",
+      "claims": [
+        {
+          "claim": "Tycho commemorates Tycho Brahe, a Danish astronomer.",
+          "evidence": "Gazetteer origin names Tycho Brahe, Danish astronomer, 1546–1601; 1935 is IAU adoption, not initial naming.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/6163"
+        },
+        {
+          "claim": "Riccioli used Tycho in the 1651 lunar map.",
+          "evidence": "Library exhibition identifies the 1651 Almagestum novum map, credits Riccioli with names and specifically lists Tycho.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Tycho measured planetary positions without a telescope; Kepler used his Mars measurements.",
+          "evidence": "NASA describes Tycho’s outstanding pre-telescopic observations and Kepler’s use of his Mars data to infer elliptical motion.",
+          "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/"
+        },
+        {
+          "claim": "108-million-year date is conditional on Apollo 17 glass originating from Tycho.",
+          "evidence": "NASA explicitly says the samples are thought to come from Tycho, gives a radiometric age of 108 million years, and says direct sampling would help confirm the age.",
+          "url": "https://science.nasa.gov/resource/tycho-crater-on-the-moon-labeled/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/resource/tycho-crater-on-the-moon-labeled/",
+          "title": "NASA: Tycho Crater on the Moon"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: Riccioli’s 1651 Moon map"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/",
+          "title": "NASA: Orbits and Kepler’s Laws"
+        },
+        {
+          "url": "https://science.nasa.gov/resource/tycho-crater-on-the-moon-labeled/",
+          "title": "NASA: Tycho Crater"
+        }
+      ],
+      "uncertainties": [
+        "The link between Apollo 17 impact glass and Tycho is a proposed provenance, not a confirmed direct sample. Keep “可能 / thought to” and the conditional age wording.",
+        "Do not state Riccioli’s personal political or religious motive for choosing this particular crater."
+      ]
+    },
+    {
+      "id": "1296",
+      "claims": [
+        {
+          "claim": "Copernicus commemorates Polish astronomer Nicolaus Copernicus.",
+          "evidence": "Gazetteer origin: Nicholas, Polish astronomer, 1473–1543.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/1296"
+        },
+        {
+          "claim": "Riccioli named Copernicus in 1651 despite rejecting the moving-Earth doctrine.",
+          "evidence": "Linda Hall exhibition and map caption explicitly identify Copernicus as a Riccioli name and describe Riccioli as supporting a fixed Earth. No unproven motive is inferred.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Copernicus’s system made Earth a planet orbiting the Sun.",
+          "evidence": "NASA explains that Kepler supported the heliocentric Copernican system, with the Sun at the center and planets orbiting it.",
+          "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/"
+        },
+        {
+          "claim": "Lunar Orbiter 2 made the famous oblique Copernicus image on 23 November 1966 at about 45 km altitude.",
+          "evidence": "NASA mission history gives the date, altitude, three-dimensional effect and contemporary press description.",
+          "url": "https://science.nasa.gov/mission/lunar-orbiter-2/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/resource/copernicus-central-peak-another-layered-target/",
+          "title": "NASA: Copernicus Central Peak"
+        },
+        {
+          "url": "https://science.nasa.gov/moon/lunar-craters/",
+          "title": "NASA: Moon Craters, formation of central peaks and terraces"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/1296",
+          "title": "IAU / USGS: Copernicus"
+        },
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: Riccioli’s 1651 Moon map"
+        },
+        {
+          "url": "https://science.nasa.gov/mission/lunar-orbiter-2/",
+          "title": "NASA: Lunar Orbiter 2"
+        }
+      ],
+      "uncertainties": [
+        "Do not claim Riccioli secretly supported heliocentrism or deliberately punished its advocates; these are interpretations, not established naming motives.",
+        "The 45 km figure is spacecraft altitude, not distance from the camera to the crater."
+      ]
+    },
+    {
+      "id": "2990",
+      "claims": [
+        {
+          "claim": "Crater honors German astronomer Johannes Kepler.",
+          "evidence": "Gazetteer origin identifies Johannes, German astronomer, 1571–1630.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/2990"
+        },
+        {
+          "claim": "Riccioli assigned the name Kepler on his 1651 map.",
+          "evidence": "Library map caption explicitly lists Kepler among bright craters named by Riccioli.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Kepler formulated three laws and inferred elliptical planetary orbits from Tycho’s Mars observations.",
+          "evidence": "NASA’s overview explains the Mars problem, the failure of circular orbits and the three laws.",
+          "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/"
+        },
+        {
+          "claim": "Kepler central peak is off-center; the size-transition explanation is tentative.",
+          "evidence": "LROC image article directly describes irregular off-center peak and says this is most likely due to proximity to simple/complex crater transition size. Its lead image identifies boulders and small craters.",
+          "url": "https://www.lroc.im-ldi.com/images/263"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://lroc.im-ldi.com/images/1158",
+          "title": "LROC: Kepler Crater Landslide"
+        },
+        {
+          "url": "https://science.nasa.gov/image-article/apod-2022-december-8-orion-and-the-ocean-of-storms/",
+          "title": "NASA APOD: Orion and the Ocean of Storms, Kepler’s rays"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: Riccioli’s 1651 Moon map"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/orbits-and-keplers-laws/",
+          "title": "NASA: Orbits and Kepler’s Laws"
+        },
+        {
+          "url": "https://www.lroc.im-ldi.com/images/263",
+          "title": "LROC: Kepler’s Off-Center Peak"
+        }
+      ],
+      "uncertainties": [
+        "Keep the central-peak explanation tentative; LROC labels it a most-likely interpretation, not established causation."
+      ]
+    },
+    {
+      "id": "380",
+      "claims": [
+        {
+          "claim": "Namesake is the ancient Greek astronomer Aristarchus.",
+          "evidence": "Gazetteer lists Greek astronomer, approximately 310–230 BC.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/380"
+        },
+        {
+          "claim": "Riccioli named Aristarchus in 1651.",
+          "evidence": "Lunar Cartographic Dossier volume 1, historical section “1651 – RICCIOLI/GRIMALDI,” explicitly names Aristarchus, Kepler and Copernicus as Riccioli’s names. Search-indexed PDF text was readable; full PDF download returned 403 in this session.",
+          "url": "https://ntrs.nasa.gov/api/citations/19760010934/downloads/19760010934.pdf?attachment=true"
+        },
+        {
+          "claim": "Aristarchus came from Samos and proposed Earth going around the Sun long before Copernicus.",
+          "evidence": "NASA archived educational text identifies Aristarchus of Samos, gives approximate fourth/third-century BC dates and describes his heliocentric proposal.",
+          "url": "https://cdaweb.gsfc.nasa.gov/pub/documents/archived_websites/pwg.gsfc.nasa.gov/stargaze/Sarist.htm"
+        },
+        {
+          "claim": "Plateau has widespread pyroclastic deposits and Vallis Schröteri is the Moon’s largest sinuous rille.",
+          "evidence": "NASA region description explicitly states both the extensive pyroclastic deposit and the rille superlative.",
+          "url": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        {
+          "claim": "Impact exposes different lunar materials.",
+          "evidence": "NASA Moon Crater Cards describes the crater as exposing both mare and highland materials.",
+          "url": "https://www.nasa.gov/wp-content/uploads/2025/12/moon-image-cards.pdf?emrc=9efece"
+        },
+        {
+          "claim": "Aristarchus used the right-angle Sun–Moon–Earth geometry of the half Moon to estimate the ratio of solar to lunar distance; his observations were not sufficiently accurate.",
+          "evidence": "NASA archived Sarist.htm paragraphs on half Moon state the 90-degree angle at the Moon, derive the distance ratio, and explain that the very small angle was beyond his measuring precision.",
+          "url": "https://cdaweb.gsfc.nasa.gov/pub/documents/archived_websites/pwg.gsfc.nasa.gov/stargaze/Sarist.htm"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/",
+          "title": "NASA: Moon, Aristarchus Region"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/",
+          "title": "Linda Hall Library: Riccioli’s 1651 Moon map"
+        },
+        {
+          "url": "https://cdaweb.gsfc.nasa.gov/pub/documents/archived_websites/pwg.gsfc.nasa.gov/stargaze/Sarist.htm",
+          "title": "NASA: Aristarchus and Earth’s Orbit"
+        },
+        {
+          "url": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/",
+          "title": "NASA: Aristarchus Region"
+        }
+      ],
+      "uncertainties": [
+        "Do not say Aristarchus proved heliocentrism or infer why Riccioli picked this particular crater.",
+        "The NASA history PDF was verified via indexed text rather than a successful full download; metadata identifies it as NASA-CR-146400, 1975, government public-use work."
+      ]
+    },
+    {
+      "id": "4757",
+      "claims": [
+        {
+          "claim": "Namesake is Greek philosopher Plato.",
+          "evidence": "Gazetteer origin: Greek philosopher, approximately 428–347 BC.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4757"
+        },
+        {
+          "claim": "Aristotle studied with Plato.",
+          "evidence": "Stanford Encyclopedia of Philosophy’s Plato entry explicitly describes Aristotle as a student of Plato.",
+          "url": "https://plato.stanford.edu/entries/plato/"
+        },
+        {
+          "claim": "Riccioli’s 1651 map named Plato; his nomenclature included philosophers.",
+          "evidence": "Linda Hall exhibition names Plato among features named on the map; Paris Observatory explains the regions of ancient philosophers and astronomers.",
+          "url": "https://www.lindahall.org/experience/digital-exhibitions/the-face-of-the-moon/b-1610-1700/05-riccioli-giovanni-battista/"
+        },
+        {
+          "claim": "Plato floor is lava-flooded and flat; sunrise illuminates western rim while eastern peaks cast long shadows across floor.",
+          "evidence": "NASA’s 2026 northern observing guide explicitly describes these features and observing conditions.",
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/earths-moon/observe-the-moon/Moon_Map_2026_Northern.pdf"
+        },
+        {
+          "claim": "Riccioli divided the lunar map into regions for philosophers and astronomers from different historical and geographical traditions.",
+          "evidence": "Paris Observatory describes eight lunar regions with chronological and geographical groups including ancient Greece, Rome, medieval Europe and Arab civilization.",
+          "url": "https://bibnum.obspm.fr/princes-philosophers-astronomers-and-virtues-short-history-on-the-lunar-toponymy"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/earths-moon/observe-the-moon/Moon_Map_2026_Northern.pdf",
+          "title": "NASA: Moon Map 2026, Plato Crater"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4757",
+          "title": "IAU / USGS: Plato"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://bibnum.obspm.fr/princes-philosophers-astronomers-and-virtues-short-history-on-the-lunar-toponymy",
+          "title": "Paris Observatory: A History of Lunar Names"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/plato/",
+          "title": "Stanford Encyclopedia of Philosophy: Plato"
+        },
+        {
+          "url": "https://assets.science.nasa.gov/content/dam/science/psd/earths-moon/observe-the-moon/Moon_Map_2026_Northern.pdf",
+          "title": "NASA: 2026 Moon Observing Map"
+        }
+      ],
+      "uncertainties": [
+        "Sunrise is local to Plato; do not imply that every crescent or every Moon photograph shows these shadows."
+      ]
+    },
+    {
+      "id": "4004",
+      "claims": [
+        {
+          "claim": "Montes Apenninus takes its name from the terrestrial Apennines in Italy.",
+          "evidence": "Gazetteer lists Italy and “Named from terrestrial Apennines.” It lists 1961 as adoption, which is not the original naming date.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4004"
+        },
+        {
+          "claim": "The name Apennines survives from Hevelius’s 1647 Selenographia.",
+          "evidence": "The Polish Museum’s book entry dates the work to 1647, describes terrestrial naming, and lists Alps and Apennines among surviving names; it cautions that some surviving names were moved.",
+          "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw"
+        },
+        {
+          "claim": "Apollo 15 first used crewed lunar rover in 1971; Scott and Irwin made three excursions at Hadley-Apennine.",
+          "evidence": "NASA exploration history gives year, first rover, crew and three excursions, and places the site at the Imbrium rim’s base.",
+          "url": "https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/"
+        },
+        {
+          "claim": "Mountain front, mare and Hadley Rille were geological targets.",
+          "evidence": "NASA mission details and site description identify Hadley-Apennine exploration; Apollo 15 press kit names mountain front, mare and rille sampling targets.",
+          "url": "https://www.nasa.gov/missions/apollo/apollo-15-mission-details/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/apsr-jsc-09423.pdf",
+          "title": "NASA: Apollo Program Summary Report, Geology of the Apollo 15 Landing Site"
+        },
+        {
+          "url": "https://ntrs.nasa.gov/citations/19860013059",
+          "title": "NASA NTRS / USGS: Selection of the Apollo 15 landing site"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4004",
+          "title": "IAU / USGS: Montes Apenninus"
+        },
+        {
+          "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw",
+          "title": "Hevelius’s Selenographia (1647)"
+        },
+        {
+          "url": "https://science.nasa.gov/solar-system/moon/history-of-lunar-exploration/",
+          "title": "NASA: Apollo 15 at Hadley-Apennine"
+        }
+      ],
+      "uncertainties": [
+        "The museum states only four surviving Hevelius names remain at their original locations. Wording traces the name to his map without asserting identical 1647 and current boundaries.",
+        "IAU 1961 adoption is not the year the Apennines name was invented."
+      ]
+    },
+    {
+      "id": "4003",
+      "claims": [
+        {
+          "claim": "Montes Alpes borrows the terrestrial Alps name.",
+          "evidence": "Gazetteer origin states “Named from terrestrial Alps”; 1935 is IAU adoption.",
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4003"
+        },
+        {
+          "claim": "Alps survives from Hevelius’s 1647 naming scheme.",
+          "evidence": "Polish Museum book entry specifically lists Alps as a surviving Hevelius name and dates Selenographia to 1647.",
+          "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw"
+        },
+        {
+          "claim": "Alpine Valley floor hosts a sinuous rille more than 150 km long; a bottleneck produced pond and breached dam.",
+          "evidence": "NASA Vallis Alpes description explicitly gives flooded valley floor, rille length and the observed lava pond, breached dam and island.",
+          "url": "https://science.nasa.gov/photojournal/vallis-alpes/"
+        }
+      ],
+      "observationSources": [
+        {
+          "url": "https://science.nasa.gov/photojournal/vallis-alpes/",
+          "title": "NASA: Vallis Alpes"
+        },
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4003",
+          "title": "IAU / USGS: Montes Alpes"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://planetarynames.wr.usgs.gov/Feature/4003",
+          "title": "IAU / USGS: Montes Alpes"
+        },
+        {
+          "url": "https://artsandculture.google.com/asset/selenographia-sive-lunae-descriptio/5gElgLm84oNOaw",
+          "title": "Hevelius’s Selenographia (1647)"
+        },
+        {
+          "url": "https://science.nasa.gov/photojournal/vallis-alpes/",
+          "title": "NASA: A Rille Inside the Alpine Valley"
+        }
+      ],
+      "uncertainties": [
+        "Do not claim these lunar mountains formed by plate collision like terrestrial Alps.",
+        "The museum warns some surviving Hevelius names changed positions; text claims continuity of name, not identical historical borders."
+      ]
+    }
+  ]
+}
