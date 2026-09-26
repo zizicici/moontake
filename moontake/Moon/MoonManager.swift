@@ -71,4 +71,18 @@ final class MoonManager {
     func nextOccurrence(of quarter: Quarter, after date: Date) -> Date? {
         Moon.nextQuarter(quarter.rawValue, onOrAfter: date)
     }
+
+    struct IlluminationChange {
+        let start: Double
+        let end: Double
+    }
+
+    /// Raw illumination in time order: start of the civil day to the next midnight.
+    /// Keep decreasing values in that order; do not sort or substitute daily extrema.
+    func illuminationChange(during interval: DateInterval) -> IlluminationChange? {
+        guard interval.duration > 0, !Task.isCancelled,
+              let start = Moon.phase(at: interval.start)?.illumination,
+              let end = Moon.phase(at: interval.end)?.illumination else { return nil }
+        return IlluminationChange(start: start, end: end)
+    }
 }

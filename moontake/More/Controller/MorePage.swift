@@ -57,6 +57,7 @@ private enum MorePageFactory {
                 features: [
                     String(localized: "promotion.first"),
                     String(localized: "promotion.second"),
+                    String(localized: "promotion.moon_calendar"),
                     String(localized: "promotion.future"),
                 ],
                 gradientColors: [.skyColor.withAlphaComponent(0.85), .skyColor],

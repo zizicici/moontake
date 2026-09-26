@@ -38,6 +38,17 @@ class CameraViewController: UIViewController {
     private let previewView: AVCaptureVideoPreviewView = AVCaptureVideoPreviewView()
     private let moonFinder = MoonFinderManager()
     private let moonFinderView = MoonFinderView()
+    private let moonCalendarButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "calendar")
+        configuration.contentInsets = .zero
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.alpha = 0.75
+        button.accessibilityLabel = String(localized: "moon_calendar.title")
+        button.accessibilityIdentifier = "moonCalendar.open"
+        return button
+    }()
     private let moonFinderButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "moon.stars")
@@ -435,6 +446,13 @@ class CameraViewController: UIViewController {
             make.edges.equalTo(previewView)
         }
         view.bringSubviewToFront(moonFinderButton)
+        view.addSubview(moonCalendarButton)
+        moonCalendarButton.snp.makeConstraints { make in
+            make.right.equalTo(previewView).inset(6)
+            make.top.equalTo(previewView).inset(6)
+            make.height.width.equalTo(44)
+        }
+        moonCalendarButton.addTarget(self, action: #selector(moonCalendarButtonTapped), for: .touchUpInside)
         moonFinderView.isHidden = true
         moonFinderView.cameraGeometry = { [weak self] in
             guard let self, let device = self.captureDevice,
@@ -1137,6 +1155,17 @@ class CameraViewController: UIViewController {
         present(nav, animated: true)
     }
     
+    @objc
+    private func moonCalendarButtonTapped() {
+        closeMoonFinder()
+        let nav = UINavigationController(rootViewController: MoonCalendarViewController())
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(nav, animated: true)
+    }
+
     @objc
     func tutorialsButtonTapped() {
         closeMoonFinder()
