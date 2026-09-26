@@ -1776,6 +1776,540 @@
         }
       }
     },
+    "atlas.feature_reference" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صورة مرجعية من مدار القمر"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Referenzbild aus der Mondumlaufbahn"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orbital reference image"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen orbital de referencia"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen orbital de referencia"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image orbitale de référence"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月周回軌道からの参考画像"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem orbital de referência"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem orbital de referência"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Снимок с лунной орбиты"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Знімок із місячної орбіти"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轨道拍摄参考图"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "軌道拍攝參考圖"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "軌道拍攝參考圖"
+          }
+        }
+      }
+    },
+    "atlas.feature_reference.accessibility" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صورة مرجعية من المدار لمعلم %@، والشمال في الأعلى. تختلف الإضاءة عن صورتك."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Referenzbild von %@ aus der Mondumlaufbahn, Norden oben. Die Beleuchtung unterscheidet sich von deinem Foto."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orbital reference image of %@, north up. Lighting differs from your photo."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen orbital de referencia de %@, con el norte arriba. La iluminación difiere de la de tu foto."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagen orbital de referencia de %@, con el norte arriba. La iluminación difiere de la de tu foto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image orbitale de référence de %@, nord en haut. L’éclairage diffère de celui de votre photo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@を月周回軌道から撮影した参考画像。北が上です。光の当たり方は写真と異なります。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem orbital de referência de %@, com o norte para cima. A iluminação difere da sua foto."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem orbital de referência de %@, com o norte para cima. A iluminação é diferente da sua fotografia."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Орбитальный снимок объекта %@, север сверху. Освещение отличается от вашего снимка."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Орбітальний знімок об’єкта %@, північ угорі. Освітлення відрізняється від вашого фото."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@的轨道拍摄参考图，北方朝上。光照与你的照片不同。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@的軌道拍攝參考圖，北方朝上。光照與你的照片不同。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@的軌道拍攝參考圖，北方朝上。光照與你的相片不同。"
+          }
+        }
+      }
+    },
+    "atlas.feature.380.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أريستارخوس"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarchus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarchus"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarque"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アリスタルコス"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аристарх"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Арістарх"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯"
+          }
+        }
+      }
+    },
+    "atlas.feature.380.naming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سمّى ريتشيولي هذه الفوهة عام 1651 تكريمًا لأريستارخوس، الفلكي اليوناني القديم من ساموس. قبل كوبرنيكوس بزمن طويل، اقترح أريستارخوس أن الأرض تدور حول الشمس. واستخدم أيضًا المثلث القائم الذي تشكّله الأرض والقمر والشمس حين نرى نصف قرص القمر مضاءً لتقدير نسب المسافات بينها. لكن محدودية القياسات حالت دون دقة النتيجة العددية."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccioli benannte diesen Krater 1651 nach Aristarch von Samos, einem Astronomen der griechischen Antike. Lange vor Kopernikus schlug Aristarch vor, dass die Erde die Sonne umkreist. Außerdem nutzte er das rechtwinklige Dreieck, das Erde, Mond und Sonne bei Halbmond bilden, um ihre relativen Entfernungen abzuschätzen. Die begrenzte Messgenauigkeit führte jedoch zu einem ungenauen Zahlenwert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccioli named this crater in 1651 for Aristarchus, the ancient Greek astronomer from Samos. Long before Copernicus, Aristarchus proposed that Earth orbits the Sun. He also used the right triangle formed by Earth, Moon and Sun at half Moon to estimate their relative distances. Limited measurements kept his numerical result from being accurate."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccioli nombró este cráter en 1651 en honor a Aristarco, el astrónomo de la antigua Grecia nacido en Samos. Mucho antes de Copérnico, Aristarco propuso que la Tierra orbita alrededor del Sol. También usó el triángulo rectángulo que forman la Tierra, la Luna y el Sol en cuarto lunar para estimar sus distancias relativas. La precisión limitada de las medidas impidió que su resultado numérico fuera correcto."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riccioli nombró este cráter en 1651 en honor a Aristarco, el astrónomo de la antigua Grecia nacido en Samos. Mucho antes de Copérnico, Aristarco propuso que la Tierra orbita alrededor del Sol. También usó el triángulo rectángulo que forman la Tierra, la Luna y el Sol en cuarto lunar para estimar sus distancias relativas. La precisión limitada de las medidas impidió que su resultado numérico fuera correcto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En 1651, Riccioli a donné à ce cratère le nom d’Aristarque, l’astronome grec de l’île de Samos. Bien avant Copernic, Aristarque proposait que la Terre tourne autour du Soleil. Il s’est aussi servi du triangle rectangle formé par la Terre, la Lune et le Soleil à la demi-lune pour estimer leurs distances relatives. Le manque de précision des mesures a toutefois faussé son résultat numérique."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リッチョーリは1651年、サモス島の古代ギリシャの天文学者アリスタルコスにちなんで名付けました。アリスタルコスはコペルニクスよりはるか昔に、地球が太陽の周りを回ると提案しました。半月のときに地球、月、太陽が作る直角三角形から距離の比も推定しましたが、測定の限界により数値は正確になりませんでした。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em 1651, Riccioli deu à cratera o nome de Aristarco, o astrônomo da Grécia antiga nascido em Samos. Muito antes de Copérnico, Aristarco propôs que a Terra orbitava o Sol. Ele também usou o triângulo retângulo formado pela Terra, pela Lua e pelo Sol quando vemos metade do disco lunar iluminada para estimar suas distâncias relativas. As limitações das medições impediram que o resultado numérico fosse preciso."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em 1651, Riccioli deu à cratera o nome de Aristarco, o astrónomo da Grécia antiga nascido em Samos. Muito antes de Copérnico, Aristarco propôs que a Terra orbitava o Sol. Ele também usou o triângulo retângulo formado pela Terra, pela Lua e pelo Sol quando vemos metade do disco lunar iluminada para estimar as suas distâncias relativas. As limitações das medições impediram que o resultado numérico fosse preciso."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Риччоли назвал кратер в 1651 году в честь древнегреческого астронома Аристарха с Самоса. Задолго до Коперника Аристарх предположил, что Земля обращается вокруг Солнца. По прямоугольному треугольнику, который Земля, Луна и Солнце образуют при первой или последней четверти Луны, он также оценил соотношение расстояний между ними. Ограниченная точность измерений не позволила получить верный численный результат."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Річчолі назвав цей кратер 1651 року на честь Арістарха, давньогрецького астронома із Самоса. Задовго до Коперника Арістарх припустив, що Земля обертається навколо Сонця. Він також використав прямокутний трикутник, утворений Землею, Місяцем і Сонцем у першій або останній чверті Місяця, щоб оцінити співвідношення відстаней між ними. Обмежена точність вимірювань завадила отримати правильний числовий результат."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "里乔利在1651年，以来自萨摩斯的古希腊天文学家阿里斯塔克斯为这座环形山命名。早在哥白尼之前，他就提出地球绕太阳运行。他还利用上弦或下弦时地球、月球、太阳构成的直角三角形，估算彼此的相对距离，但有限的测量条件使计算结果不够准确。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "里喬利在1651年，以來自薩摩斯的古希臘天文學家阿里斯塔克斯為這座環形山命名。早在哥白尼之前，他就提出地球繞太陽運行。他還利用上弦或下弦時地球、月球、太陽構成的直角三角形，估算彼此的相對距離，但有限的測量條件使計算結果不夠準確。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "里喬利在1651年，以來自薩摩斯的古希臘天文學家阿里斯塔克斯為這座環形山命名。早在哥白尼之前，他就提出地球繞太陽運行。他還利用上弦或下弦時地球、月球、太陽構成的直角三角形，估算彼此的相對距離，但有限的測量條件使計算結果不夠準確。"
+          }
+        }
+      }
+    },
+    "atlas.feature.380.observation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "على خلفية محيط العواصف الداكنة، تظهر أريستارخوس غالبًا بقعة ساطعة لافتة. وهي من أكثر معالم القمر انعكاسًا للضوء، لذا يساعد التباين على تحديدها حتى عندما لا تتضح حافتها."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vor dem dunklen Hintergrund von Procellarum erscheint Aristarchus oft als auffälliger heller Punkt. Er zählt zu den am stärksten reflektierenden Formationen des Mondes. Der Kontrast hilft daher auch dann bei der Orientierung, wenn der Kraterrand unscharf ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Against the dark background of Procellarum, Aristarchus often appears as a striking bright spot. It is among the Moon’s most reflective features, so the contrast can help locate it even when its rim is unclear."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre el fondo oscuro de Procellarum, Aristarco suele aparecer como un punto brillante muy llamativo. Es una de las formaciones que más luz reflejan en la Luna, por lo que el contraste ayuda a localizarlo incluso si su borde no se distingue bien."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre el fondo oscuro de Procellarum, Aristarco suele aparecer como un punto brillante muy llamativo. Es una de las formaciones que más luz reflejan en la Luna, por lo que el contraste ayuda a localizarlo incluso si su borde no se distingue bien."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sur le fond sombre de Procellarum, Aristarque apparaît souvent comme un point très clair. C’est l’une des formations lunaires qui réfléchissent le plus la lumière. Ce contraste permet de la repérer même lorsque le bord du cratère reste flou."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "嵐の大洋の暗い背景の中で、アリスタルコスはひときわ明るい点に見えることがあります。月で特に反射率の高い地形の一つで、縁がはっきりしなくても明暗差が位置を探す助けになります。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre o fundo escuro do Oceano das Tempestades, Aristarco costuma aparecer como um ponto claro marcante. É uma das formações mais refletoras da Lua, por isso o contraste ajuda a localizá-la mesmo quando sua borda não está nítida."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre o fundo escuro do Oceano das Tempestades, Aristarco costuma aparecer como um ponto claro marcante. É uma das formações mais refletoras da Lua, por isso o contraste ajuda a localizá-la mesmo quando a sua borda não está nítida."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На тёмном фоне Океана Бурь Аристарх часто выглядит как резко выделяющееся светлое пятно. Это один из наиболее хорошо отражающих свет объектов Луны, поэтому контраст помогает найти его, даже когда край кратера неясен."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "На темному тлі Океану Бур Арістарх часто виглядає виразною яскравою цяткою. Це один із найсильніше відбивних об’єктів Місяця, тож контраст допомагає знайти його, навіть коли край кратера нечіткий."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在风暴洋的暗色背景上，阿里斯塔克斯常显为醒目的亮点。它是月球上反光最强的地形之一，即使坑缘不清楚，明暗反差也有助于定位。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在風暴洋的暗色背景上，阿里斯塔克斯常顯為醒目的亮點。它是月球上反光最強的地形之一，即使坑緣不清楚，明暗反差也有助於定位。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在風暴洋的暗色背景上，阿里斯塔克斯常顯為醒目的亮點。它是月球上反光最強的地形之一，即使坑緣不清楚，明暗反差也有助於定位。"
+          }
+        }
+      }
+    },
+    "atlas.feature.380.story" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقع أريستارخوس على هضبة تغطيها على نطاق واسع مواد ناتجة عن ثورات بركانية انفجارية. وبالقرب منها يقع وادي شروتر، أكبر أخدود قمري متعرج. تجمع المنطقة بين فوهة اصطدام ساطعة وآثار عملية مختلفة تمامًا: نشاط بركاني قديم."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarchus liegt auf einem Plateau, das großflächig mit Material explosiver Vulkanausbrüche bedeckt ist. In der Nähe verläuft Vallis Schröteri, die größte gewundene Rille des Mondes. Hier treffen ein heller Einschlagkrater und Spuren eines ganz anderen Vorgangs zusammen: früher Vulkanismus."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarchus stands on a plateau covered by extensive material from explosive volcanic eruptions. Nearby Vallis Schröteri is the Moon’s largest sinuous rille. The region brings together a bright impact crater and traces of a very different process: ancient volcanism."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco se alza en una meseta ampliamente cubierta por materiales de erupciones volcánicas explosivas. Cerca está Vallis Schröteri, el mayor surco sinuoso de la Luna. La región reúne un cráter de impacto brillante y huellas de un proceso muy distinto: el antiguo vulcanismo."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco se alza en una meseta ampliamente cubierta por materiales de erupciones volcánicas explosivas. Cerca está Vallis Schröteri, el mayor surco sinuoso de la Luna. La región reúne un cráter de impacto brillante y huellas de un proceso muy distinto: el antiguo vulcanismo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarque se trouve sur un plateau largement recouvert de matériaux issus d’éruptions volcaniques explosives. À proximité, Vallis Schröteri est la plus grande rainure sinueuse de la Lune. La région réunit un cratère d’impact lumineux et les traces d’un phénomène très différent : un volcanisme ancien."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アリスタルコスがある台地は、爆発的な火山噴火の物質に広く覆われています。近くのシュレーター谷は、月で最大の蛇行した溝です。この地域では、明るい衝突クレーターと、それとは異なる古い火山活動の痕跡を一緒に見ることができます。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco fica em um planalto extensamente coberto por material de erupções vulcânicas explosivas. Nas proximidades, o Vale de Schröter é o maior canal sinuoso da Lua. A região reúne uma cratera de impacto clara e vestígios de um processo muito diferente: o vulcanismo antigo."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aristarco fica num planalto extensamente coberto por material de erupções vulcânicas explosivas. Nas proximidades, o Vale de Schröter é o maior canal sinuoso da Lua. A região reúne uma cratera de impacto clara e vestígios de um processo muito diferente: o vulcanismo antigo."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Аристарх расположен на плато, широко покрытом материалом взрывных вулканических извержений. Рядом лежит Долина Шрётера — крупнейшая извилистая борозда Луны. Здесь яркий ударный кратер соседствует со следами совсем иного процесса: древнего вулканизма."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Арістарх розташований на плато, широко вкритому матеріалом вибухових вулканічних вивержень. Поряд лежить Долина Шретера — найбільша звивиста борозна Місяця. Тут поєдналися яскравий ударний кратер і сліди зовсім іншого процесу: давнього вулканізму."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯坐落在一片高原上，那里广泛覆盖着爆发式火山喷发留下的物质。附近的施勒特尔月谷是月球上最大的弯曲月溪。这片区域同时保留着一座明亮撞击坑，以及另一种截然不同的地质过程留下的痕迹：古代火山活动。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯坐落在一片高原上，那裡廣泛覆蓋著爆發式火山噴發留下的物質。附近的施勒特爾月谷是月球上最大的彎曲月溪。這片區域同時保留著一座明亮撞擊坑，以及另一種截然不同的地質過程留下的痕跡：古代火山活動。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿里斯塔克斯坐落在一片高原上，那裏廣泛覆蓋着爆發式火山噴發留下的物質。附近的施勒特爾月谷是月球上最大的彎曲月溪。這片區域同時保留着一座明亮撞擊坑，以及另一種截然不同的地質過程留下的痕跡：古代火山活動。"
+          }
+        }
+      }
+    },
     "atlas.feature.1296.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7116,362 +7650,6 @@
         }
       }
     },
-    "atlas.feature.380.label" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أريستارخوس"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarchus"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarchus"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarque"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アリスタルコス"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аристарх"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Арістарх"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯"
-          }
-        }
-      }
-    },
-    "atlas.feature.380.naming" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "سمّى ريتشيولي هذه الفوهة عام 1651 تكريمًا لأريستارخوس، الفلكي اليوناني القديم من ساموس. قبل كوبرنيكوس بزمن طويل، اقترح أريستارخوس أن الأرض تدور حول الشمس. واستخدم أيضًا المثلث القائم الذي تشكّله الأرض والقمر والشمس حين نرى نصف قرص القمر مضاءً لتقدير نسب المسافات بينها. لكن محدودية القياسات حالت دون دقة النتيجة العددية."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riccioli benannte diesen Krater 1651 nach Aristarch von Samos, einem Astronomen der griechischen Antike. Lange vor Kopernikus schlug Aristarch vor, dass die Erde die Sonne umkreist. Außerdem nutzte er das rechtwinklige Dreieck, das Erde, Mond und Sonne bei Halbmond bilden, um ihre relativen Entfernungen abzuschätzen. Die begrenzte Messgenauigkeit führte jedoch zu einem ungenauen Zahlenwert."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riccioli named this crater in 1651 for Aristarchus, the ancient Greek astronomer from Samos. Long before Copernicus, Aristarchus proposed that Earth orbits the Sun. He also used the right triangle formed by Earth, Moon and Sun at half Moon to estimate their relative distances. Limited measurements kept his numerical result from being accurate."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riccioli nombró este cráter en 1651 en honor a Aristarco, el astrónomo de la antigua Grecia nacido en Samos. Mucho antes de Copérnico, Aristarco propuso que la Tierra orbita alrededor del Sol. También usó el triángulo rectángulo que forman la Tierra, la Luna y el Sol en cuarto lunar para estimar sus distancias relativas. La precisión limitada de las medidas impidió que su resultado numérico fuera correcto."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Riccioli nombró este cráter en 1651 en honor a Aristarco, el astrónomo de la antigua Grecia nacido en Samos. Mucho antes de Copérnico, Aristarco propuso que la Tierra orbita alrededor del Sol. También usó el triángulo rectángulo que forman la Tierra, la Luna y el Sol en cuarto lunar para estimar sus distancias relativas. La precisión limitada de las medidas impidió que su resultado numérico fuera correcto."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En 1651, Riccioli a donné à ce cratère le nom d’Aristarque, l’astronome grec de l’île de Samos. Bien avant Copernic, Aristarque proposait que la Terre tourne autour du Soleil. Il s’est aussi servi du triangle rectangle formé par la Terre, la Lune et le Soleil à la demi-lune pour estimer leurs distances relatives. Le manque de précision des mesures a toutefois faussé son résultat numérique."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "リッチョーリは1651年、サモス島の古代ギリシャの天文学者アリスタルコスにちなんで名付けました。アリスタルコスはコペルニクスよりはるか昔に、地球が太陽の周りを回ると提案しました。半月のときに地球、月、太陽が作る直角三角形から距離の比も推定しましたが、測定の限界により数値は正確になりませんでした。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Em 1651, Riccioli deu à cratera o nome de Aristarco, o astrônomo da Grécia antiga nascido em Samos. Muito antes de Copérnico, Aristarco propôs que a Terra orbitava o Sol. Ele também usou o triângulo retângulo formado pela Terra, pela Lua e pelo Sol quando vemos metade do disco lunar iluminada para estimar suas distâncias relativas. As limitações das medições impediram que o resultado numérico fosse preciso."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Em 1651, Riccioli deu à cratera o nome de Aristarco, o astrónomo da Grécia antiga nascido em Samos. Muito antes de Copérnico, Aristarco propôs que a Terra orbitava o Sol. Ele também usou o triângulo retângulo formado pela Terra, pela Lua e pelo Sol quando vemos metade do disco lunar iluminada para estimar as suas distâncias relativas. As limitações das medições impediram que o resultado numérico fosse preciso."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Риччоли назвал кратер в 1651 году в честь древнегреческого астронома Аристарха с Самоса. Задолго до Коперника Аристарх предположил, что Земля обращается вокруг Солнца. По прямоугольному треугольнику, который Земля, Луна и Солнце образуют при первой или последней четверти Луны, он также оценил соотношение расстояний между ними. Ограниченная точность измерений не позволила получить верный численный результат."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Річчолі назвав цей кратер 1651 року на честь Арістарха, давньогрецького астронома із Самоса. Задовго до Коперника Арістарх припустив, що Земля обертається навколо Сонця. Він також використав прямокутний трикутник, утворений Землею, Місяцем і Сонцем у першій або останній чверті Місяця, щоб оцінити співвідношення відстаней між ними. Обмежена точність вимірювань завадила отримати правильний числовий результат."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "里乔利在1651年，以来自萨摩斯的古希腊天文学家阿里斯塔克斯为这座环形山命名。早在哥白尼之前，他就提出地球绕太阳运行。他还利用上弦或下弦时地球、月球、太阳构成的直角三角形，估算彼此的相对距离，但有限的测量条件使计算结果不够准确。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "里喬利在1651年，以來自薩摩斯的古希臘天文學家阿里斯塔克斯為這座環形山命名。早在哥白尼之前，他就提出地球繞太陽運行。他還利用上弦或下弦時地球、月球、太陽構成的直角三角形，估算彼此的相對距離，但有限的測量條件使計算結果不夠準確。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "里喬利在1651年，以來自薩摩斯的古希臘天文學家阿里斯塔克斯為這座環形山命名。早在哥白尼之前，他就提出地球繞太陽運行。他還利用上弦或下弦時地球、月球、太陽構成的直角三角形，估算彼此的相對距離，但有限的測量條件使計算結果不夠準確。"
-          }
-        }
-      }
-    },
-    "atlas.feature.380.observation" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "على خلفية محيط العواصف الداكنة، تظهر أريستارخوس غالبًا بقعة ساطعة لافتة. وهي من أكثر معالم القمر انعكاسًا للضوء، لذا يساعد التباين على تحديدها حتى عندما لا تتضح حافتها."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vor dem dunklen Hintergrund von Procellarum erscheint Aristarchus oft als auffälliger heller Punkt. Er zählt zu den am stärksten reflektierenden Formationen des Mondes. Der Kontrast hilft daher auch dann bei der Orientierung, wenn der Kraterrand unscharf ist."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Against the dark background of Procellarum, Aristarchus often appears as a striking bright spot. It is among the Moon’s most reflective features, so the contrast can help locate it even when its rim is unclear."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre el fondo oscuro de Procellarum, Aristarco suele aparecer como un punto brillante muy llamativo. Es una de las formaciones que más luz reflejan en la Luna, por lo que el contraste ayuda a localizarlo incluso si su borde no se distingue bien."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre el fondo oscuro de Procellarum, Aristarco suele aparecer como un punto brillante muy llamativo. Es una de las formaciones que más luz reflejan en la Luna, por lo que el contraste ayuda a localizarlo incluso si su borde no se distingue bien."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sur le fond sombre de Procellarum, Aristarque apparaît souvent comme un point très clair. C’est l’une des formations lunaires qui réfléchissent le plus la lumière. Ce contraste permet de la repérer même lorsque le bord du cratère reste flou."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "嵐の大洋の暗い背景の中で、アリスタルコスはひときわ明るい点に見えることがあります。月で特に反射率の高い地形の一つで、縁がはっきりしなくても明暗差が位置を探す助けになります。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre o fundo escuro do Oceano das Tempestades, Aristarco costuma aparecer como um ponto claro marcante. É uma das formações mais refletoras da Lua, por isso o contraste ajuda a localizá-la mesmo quando sua borda não está nítida."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre o fundo escuro do Oceano das Tempestades, Aristarco costuma aparecer como um ponto claro marcante. É uma das formações mais refletoras da Lua, por isso o contraste ajuda a localizá-la mesmo quando a sua borda não está nítida."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На тёмном фоне Океана Бурь Аристарх часто выглядит как резко выделяющееся светлое пятно. Это один из наиболее хорошо отражающих свет объектов Луны, поэтому контраст помогает найти его, даже когда край кратера неясен."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "На темному тлі Океану Бур Арістарх часто виглядає виразною яскравою цяткою. Це один із найсильніше відбивних об’єктів Місяця, тож контраст допомагає знайти його, навіть коли край кратера нечіткий."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在风暴洋的暗色背景上，阿里斯塔克斯常显为醒目的亮点。它是月球上反光最强的地形之一，即使坑缘不清楚，明暗反差也有助于定位。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在風暴洋的暗色背景上，阿里斯塔克斯常顯為醒目的亮點。它是月球上反光最強的地形之一，即使坑緣不清楚，明暗反差也有助於定位。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在風暴洋的暗色背景上，阿里斯塔克斯常顯為醒目的亮點。它是月球上反光最強的地形之一，即使坑緣不清楚，明暗反差也有助於定位。"
-          }
-        }
-      }
-    },
-    "atlas.feature.380.story" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تقع أريستارخوس على هضبة تغطيها على نطاق واسع مواد ناتجة عن ثورات بركانية انفجارية. وبالقرب منها يقع وادي شروتر، أكبر أخدود قمري متعرج. تجمع المنطقة بين فوهة اصطدام ساطعة وآثار عملية مختلفة تمامًا: نشاط بركاني قديم."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarchus liegt auf einem Plateau, das großflächig mit Material explosiver Vulkanausbrüche bedeckt ist. In der Nähe verläuft Vallis Schröteri, die größte gewundene Rille des Mondes. Hier treffen ein heller Einschlagkrater und Spuren eines ganz anderen Vorgangs zusammen: früher Vulkanismus."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarchus stands on a plateau covered by extensive material from explosive volcanic eruptions. Nearby Vallis Schröteri is the Moon’s largest sinuous rille. The region brings together a bright impact crater and traces of a very different process: ancient volcanism."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco se alza en una meseta ampliamente cubierta por materiales de erupciones volcánicas explosivas. Cerca está Vallis Schröteri, el mayor surco sinuoso de la Luna. La región reúne un cráter de impacto brillante y huellas de un proceso muy distinto: el antiguo vulcanismo."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco se alza en una meseta ampliamente cubierta por materiales de erupciones volcánicas explosivas. Cerca está Vallis Schröteri, el mayor surco sinuoso de la Luna. La región reúne un cráter de impacto brillante y huellas de un proceso muy distinto: el antiguo vulcanismo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarque se trouve sur un plateau largement recouvert de matériaux issus d’éruptions volcaniques explosives. À proximité, Vallis Schröteri est la plus grande rainure sinueuse de la Lune. La région réunit un cratère d’impact lumineux et les traces d’un phénomène très différent : un volcanisme ancien."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アリスタルコスがある台地は、爆発的な火山噴火の物質に広く覆われています。近くのシュレーター谷は、月で最大の蛇行した溝です。この地域では、明るい衝突クレーターと、それとは異なる古い火山活動の痕跡を一緒に見ることができます。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco fica em um planalto extensamente coberto por material de erupções vulcânicas explosivas. Nas proximidades, o Vale de Schröter é o maior canal sinuoso da Lua. A região reúne uma cratera de impacto clara e vestígios de um processo muito diferente: o vulcanismo antigo."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aristarco fica num planalto extensamente coberto por material de erupções vulcânicas explosivas. Nas proximidades, o Vale de Schröter é o maior canal sinuoso da Lua. A região reúne uma cratera de impacto clara e vestígios de um processo muito diferente: o vulcanismo antigo."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Аристарх расположен на плато, широко покрытом материалом взрывных вулканических извержений. Рядом лежит Долина Шрётера — крупнейшая извилистая борозда Луны. Здесь яркий ударный кратер соседствует со следами совсем иного процесса: древнего вулканизма."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Арістарх розташований на плато, широко вкритому матеріалом вибухових вулканічних вивержень. Поряд лежить Долина Шретера — найбільша звивиста борозна Місяця. Тут поєдналися яскравий ударний кратер і сліди зовсім іншого процесу: давнього вулканізму."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯坐落在一片高原上，那里广泛覆盖着爆发式火山喷发留下的物质。附近的施勒特尔月谷是月球上最大的弯曲月溪。这片区域同时保留着一座明亮撞击坑，以及另一种截然不同的地质过程留下的痕迹：古代火山活动。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯坐落在一片高原上，那裡廣泛覆蓋著爆發式火山噴發留下的物質。附近的施勒特爾月谷是月球上最大的彎曲月溪。這片區域同時保留著一座明亮撞擊坑，以及另一種截然不同的地質過程留下的痕跡：古代火山活動。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "阿里斯塔克斯坐落在一片高原上，那裏廣泛覆蓋着爆發式火山噴發留下的物質。附近的施勒特爾月谷是月球上最大的彎曲月溪。這片區域同時保留着一座明亮撞擊坑，以及另一種截然不同的地質過程留下的痕跡：古代火山活動。"
-          }
-        }
-      }
-    },
     "atlas.feature.4003.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9608,184 +9786,6 @@
         }
       }
     },
-    "atlas.feature_reference" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "صورة مرجعية من مدار القمر"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Referenzbild aus der Mondumlaufbahn"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orbital reference image"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagen orbital de referencia"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagen orbital de referencia"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Image orbitale de référence"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月周回軌道からの参考画像"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagem orbital de referência"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagem orbital de referência"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Снимок с лунной орбиты"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Знімок із місячної орбіти"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "轨道拍摄参考图"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軌道拍攝參考圖"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "軌道拍攝參考圖"
-          }
-        }
-      }
-    },
-    "atlas.feature_reference.accessibility" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "صورة مرجعية من المدار لمعلم %@، والشمال في الأعلى. تختلف الإضاءة عن صورتك."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Referenzbild von %@ aus der Mondumlaufbahn, Norden oben. Die Beleuchtung unterscheidet sich von deinem Foto."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Orbital reference image of %@, north up. Lighting differs from your photo."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagen orbital de referencia de %@, con el norte arriba. La iluminación difiere de la de tu foto."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagen orbital de referencia de %@, con el norte arriba. La iluminación difiere de la de tu foto."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Image orbitale de référence de %@, nord en haut. L’éclairage diffère de celui de votre photo."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@を月周回軌道から撮影した参考画像。北が上です。光の当たり方は写真と異なります。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagem orbital de referência de %@, com o norte para cima. A iluminação difere da sua foto."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagem orbital de referência de %@, com o norte para cima. A iluminação é diferente da sua fotografia."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Орбитальный снимок объекта %@, север сверху. Освещение отличается от вашего снимка."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Орбітальний знімок об’єкта %@, північ угорі. Освітлення відрізняється від вашого фото."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@的轨道拍摄参考图，北方朝上。光照与你的照片不同。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@的軌道拍攝參考圖，北方朝上。光照與你的照片不同。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@的軌道拍攝參考圖，北方朝上。光照與你的相片不同。"
-          }
-        }
-      }
-    },
     "atlas.hidden" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -10494,6 +10494,718 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "琳達霍爾圖書館：1651年的月圖"
+          }
+        }
+      }
+    },
+    "atlas.reading.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: الحلقة الجبلية تحت بحر الأمطار"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: der Gebirgsring unter Imbrium"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: the mountain ring beneath Imbrium"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el anillo montañoso bajo Imbrium"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el anillo montañoso bajo Imbrium"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : l’anneau montagneux enfoui sous Imbrium"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雨の海に埋もれた環状山地"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o anel de montanhas sob o Mar das Chuvas"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o anel de montanhas sob o Mar das Chuvas"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: горное кольцо под Морем Дождей"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: гірське кільце під Морем Дощів"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雨海下方的环形山脉"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雨海下方的環形山脈"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雨海下方的環形山脈"
+          }
+        }
+      }
+    },
+    "atlas.reading.3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: ما تكشفه ألوان القمر"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Was die Mondfarben verraten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: what lunar colors reveal"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: lo que revelan los colores lunares"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: lo que revelan los colores lunares"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : ce que révèlent les couleurs lunaires"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月の色から分かること"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o que as cores lunares revelam"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o que as cores lunares revelam"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: о чём говорят цвета Луны"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: про що розповідають кольори Місяця"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月面颜色透露的信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月面顏色透露的資訊"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月面顏色透露的資訊"
+          }
+        }
+      }
+    },
+    "atlas.reading.4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: تضاريس موقع هبوط أبولو 11"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: die Landschaft am Landeplatz von Apollo 11"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Apollo 11’s landing landscape"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el paisaje de aterrizaje del Apolo 11"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el paisaje de aterrizaje del Apolo 11"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : le paysage d’atterrissage d’Apollo 11"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：アポロ11号着陸地点の地形"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: a paisagem do pouso da Apollo 11"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: a paisagem da alunagem da Apollo 11"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: ландшафт посадки «Аполлона-11»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: краєвид посадки «Аполлона-11»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：阿波罗11号着陆区的地形"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：阿波羅11號著陸區的地形"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：阿波羅11號着陸區的地形"
+          }
+        }
+      }
+    },
+    "atlas.reading.5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: نتوءات بحر الأزمات وعيناته"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Rücken und Proben aus Crisium"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: the ridges and samples of Crisium"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: las crestas y muestras de Crisium"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: las crestas y muestras de Crisium"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : les rides et les échantillons de Crisium"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：危難の海の尾根と試料"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: as cristas e as amostras do Mar das Crises"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: as cristas e as amostras do Mar das Crises"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: гряды и образцы Моря Кризисов"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: гряди та зразки Моря Криз"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：危海的皱脊与样本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：危海的皺脊與樣本"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：危海的皺脊與樣本"
+          }
+        }
+      }
+    },
+    "atlas.reading.6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: جمع لونا 16 للعينات ليلًا"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Luna 16 nimmt nachts Proben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Luna 16’s nighttime sampling"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el muestreo nocturno de Luna 16"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: el muestreo nocturno de Luna 16"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : les prélèvements nocturnes de Luna 16"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：ルナ16号の夜間試料採取"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: a coleta noturna de amostras da Luna 16"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: a recolha noturna de amostras da Luna 16"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: ночной забор грунта «Луной-16»"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: нічний відбір ґрунту «Луною-16»"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月球16号的夜间采样"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月球16號的夜間採樣"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：月球16號的夜間採樣"
+          }
+        }
+      }
+    },
+    "atlas.reading.7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: حوض الرحيق الأوسع"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: das größere Nectaris-Becken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: the larger Nectaris basin"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: la gran cuenca de Nectaris"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: la gran cuenca de Nectaris"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS : le grand bassin de Nectaris"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS：神酒の海を囲む大きな盆地"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: a bacia maior do Mar do Néctar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: a bacia maior do Mar do Néctar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: обширный бассейн Моря Нектара"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS: великий басейн Моря Нектару"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS：规模更大的酒海盆地"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS：規模更大的酒海盆地"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USGS：規模更大的酒海盆地"
+          }
+        }
+      }
+    },
+    "atlas.reading.8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: الجدار المستقيم في بحر السحاب"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: die Lange Wand in Nubium"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: the Straight Wall in Nubium"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: la Muralla Recta en Nubium"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: la Muralla Recta en Nubium"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA : le Mur droit dans Nubium"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雲の海の直線壁"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o Muro Reto no Mar das Nuvens"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: o Muro Reto no Mar das Nuvens"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Прямая Стена в Море Облаков"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA: Пряма Стіна в Морі Хмар"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：云海中的直壁"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雲海中的直壁"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NASA：雲海中的直壁"
+          }
+        }
+      }
+    },
+    "atlas.reading.9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تاريخ تسمية معالم القمر"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geschichte der Mondnamen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A history of lunar naming"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia de los nombres lunares"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia de los nombres lunares"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Histoire des noms lunaires"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月面命名の歴史"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma história dos nomes lunares"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma história dos nomes lunares"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "История лунных названий"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Історія місячних назв"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月面命名史"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月面命名史"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月面命名史"
           }
         }
       }
@@ -11388,95 +12100,6 @@
         }
       }
     },
-    "atlas.reading.2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: الحلقة الجبلية تحت بحر الأمطار"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: der Gebirgsring unter Imbrium"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: the mountain ring beneath Imbrium"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el anillo montañoso bajo Imbrium"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el anillo montañoso bajo Imbrium"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : l’anneau montagneux enfoui sous Imbrium"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雨の海に埋もれた環状山地"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o anel de montanhas sob o Mar das Chuvas"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o anel de montanhas sob o Mar das Chuvas"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: горное кольцо под Морем Дождей"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: гірське кільце під Морем Дощів"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雨海下方的环形山脉"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雨海下方的環形山脈"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雨海下方的環形山脈"
-          }
-        }
-      }
-    },
     "atlas.reading.20" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12367,95 +12990,6 @@
         }
       }
     },
-    "atlas.reading.3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: ما تكشفه ألوان القمر"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Was die Mondfarben verraten"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: what lunar colors reveal"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: lo que revelan los colores lunares"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: lo que revelan los colores lunares"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : ce que révèlent les couleurs lunaires"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月の色から分かること"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o que as cores lunares revelam"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o que as cores lunares revelam"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: о чём говорят цвета Луны"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: про що розповідають кольори Місяця"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月面颜色透露的信息"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月面顏色透露的資訊"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月面顏色透露的資訊"
-          }
-        }
-      }
-    },
     "atlas.reading.30" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12897,540 +13431,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "NASA：阿爾卑斯谷中的月溪"
-          }
-        }
-      }
-    },
-    "atlas.reading.4" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: تضاريس موقع هبوط أبولو 11"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: die Landschaft am Landeplatz von Apollo 11"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Apollo 11’s landing landscape"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el paisaje de aterrizaje del Apolo 11"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el paisaje de aterrizaje del Apolo 11"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : le paysage d’atterrissage d’Apollo 11"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：アポロ11号着陸地点の地形"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: a paisagem do pouso da Apollo 11"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: a paisagem da alunagem da Apollo 11"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: ландшафт посадки «Аполлона-11»"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: краєвид посадки «Аполлона-11»"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：阿波罗11号着陆区的地形"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：阿波羅11號著陸區的地形"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：阿波羅11號着陸區的地形"
-          }
-        }
-      }
-    },
-    "atlas.reading.5" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: نتوءات بحر الأزمات وعيناته"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Rücken und Proben aus Crisium"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: the ridges and samples of Crisium"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: las crestas y muestras de Crisium"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: las crestas y muestras de Crisium"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : les rides et les échantillons de Crisium"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：危難の海の尾根と試料"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: as cristas e as amostras do Mar das Crises"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: as cristas e as amostras do Mar das Crises"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: гряды и образцы Моря Кризисов"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: гряди та зразки Моря Криз"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：危海的皱脊与样本"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：危海的皺脊與樣本"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：危海的皺脊與樣本"
-          }
-        }
-      }
-    },
-    "atlas.reading.6" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: جمع لونا 16 للعينات ليلًا"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Luna 16 nimmt nachts Proben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Luna 16’s nighttime sampling"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el muestreo nocturno de Luna 16"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: el muestreo nocturno de Luna 16"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : les prélèvements nocturnes de Luna 16"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：ルナ16号の夜間試料採取"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: a coleta noturna de amostras da Luna 16"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: a recolha noturna de amostras da Luna 16"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: ночной забор грунта «Луной-16»"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: нічний відбір ґрунту «Луною-16»"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月球16号的夜间采样"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月球16號的夜間採樣"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：月球16號的夜間採樣"
-          }
-        }
-      }
-    },
-    "atlas.reading.7" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: حوض الرحيق الأوسع"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: das größere Nectaris-Becken"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: the larger Nectaris basin"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: la gran cuenca de Nectaris"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: la gran cuenca de Nectaris"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS : le grand bassin de Nectaris"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS：神酒の海を囲む大きな盆地"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: a bacia maior do Mar do Néctar"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: a bacia maior do Mar do Néctar"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: обширный бассейн Моря Нектара"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS: великий басейн Моря Нектару"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS：规模更大的酒海盆地"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS：規模更大的酒海盆地"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "USGS：規模更大的酒海盆地"
-          }
-        }
-      }
-    },
-    "atlas.reading.8" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: الجدار المستقيم في بحر السحاب"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: die Lange Wand in Nubium"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: the Straight Wall in Nubium"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: la Muralla Recta en Nubium"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: la Muralla Recta en Nubium"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA : le Mur droit dans Nubium"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雲の海の直線壁"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o Muro Reto no Mar das Nuvens"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: o Muro Reto no Mar das Nuvens"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Прямая Стена в Море Облаков"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA: Пряма Стіна в Морі Хмар"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：云海中的直壁"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雲海中的直壁"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NASA：雲海中的直壁"
-          }
-        }
-      }
-    },
-    "atlas.reading.9" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تاريخ تسمية معالم القمر"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geschichte der Mondnamen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A history of lunar naming"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Historia de los nombres lunares"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Historia de los nombres lunares"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Histoire des noms lunaires"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月面命名の歴史"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uma história dos nomes lunares"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uma história dos nomes lunares"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "История лунных названий"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Історія місячних назв"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月面命名史"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月面命名史"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月面命名史"
           }
         }
       }
@@ -17475,12 +17475,6 @@
             "value" : "Основні фази Місяця"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主要月相"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17488,6 +17482,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主要月相"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "主要月相"
@@ -17654,12 +17654,6 @@
             "value" : "Завантаження фаз Місяця…"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在載入月相…"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17667,6 +17661,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在載入月相…"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在載入月相…"
@@ -17834,12 +17834,6 @@
             "value" : "Наступна повня %1$@, %2$@"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下次滿月 %1$@ %2$@"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17847,6 +17841,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下次滿月 %1$@ %2$@"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "下次滿月 %1$@ %2$@"
@@ -17924,12 +17924,6 @@
             "value" : "Наступний місяць"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下個月"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17937,6 +17931,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下個月"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "下個月"
@@ -18014,12 +18014,6 @@
             "value" : "Попередній місяць"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "上個月"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18027,6 +18021,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上個月"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "上個月"
@@ -18103,12 +18103,6 @@
             "value" : "Спробувати ще раз"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重試"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18116,6 +18110,12 @@
           }
         },
         "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重試"
+          }
+        },
+        "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重試"
@@ -18193,12 +18193,6 @@
             "value" : "Місячний календар"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月曆"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18209,6 +18203,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "月曆"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "月曆"
+          }
+        }
+      }
+    },
+    "moon_calendar.unavailable" : {
+      "comment" : "Calculation failed for the displayed month, which may not be the real current month. Retry or choose another month.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بيانات القمر لهذا الشهر غير متاحة. أعد المحاولة أو اختر شهرًا آخر."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für diesen Monat sind keine Monddaten verfügbar. Versuche es erneut oder wähle einen anderen Monat."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lunar data is unavailable for this month. Try again or choose another month."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos lunares de este mes no están disponibles. Reintenta o elige otro mes."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos lunares de este mes no están disponibles. Reintenta o elige otro mes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données lunaires de ce mois sont indisponibles. Réessayez ou choisissez un autre mois."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この月の月相データを取得できません。再試行するか、別の月を選んでください。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os dados lunares deste mês estão indisponíveis. Tente novamente ou escolha outro mês."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os dados lunares deste mês estão indisponíveis. Tente novamente ou escolha outro mês."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные о Луне за этот месяц недоступны. Повторите попытку или выберите другой месяц."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дані про Місяць за цей місяць недоступні. Спробуйте ще раз або виберіть інший місяць."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂时无法获取月相，请重试或切换月份。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暫時無法取得月相，請重試或切換月份。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暫時無法取得月相，請重試或切換月份。"
           }
         }
       }
@@ -18299,96 +18389,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "去解鎖"
-          }
-        }
-      }
-    },
-    "moon_calendar.unavailable" : {
-      "comment" : "Calculation failed for the displayed month, which may not be the real current month. Retry or choose another month.",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "بيانات القمر لهذا الشهر غير متاحة. أعد المحاولة أو اختر شهرًا آخر."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Für diesen Monat sind keine Monddaten verfügbar. Versuche es erneut oder wähle einen anderen Monat."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lunar data is unavailable for this month. Try again or choose another month."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los datos lunares de este mes no están disponibles. Reintenta o elige otro mes."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Los datos lunares de este mes no están disponibles. Reintenta o elige otro mes."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les données lunaires de ce mois sont indisponibles. Réessayez ou choisissez un autre mois."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この月の月相データを取得できません。再試行するか、別の月を選んでください。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os dados lunares deste mês estão indisponíveis. Tente novamente ou escolha outro mês."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Os dados lunares deste mês estão indisponíveis. Tente novamente ou escolha outro mês."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Данные о Луне за этот месяц недоступны. Повторите попытку или выберите другой месяц."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Дані про Місяць за цей місяць недоступні. Спробуйте ще раз або виберіть інший місяць."
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暫時無法取得月相，請重試或切換月份。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暂时无法获取月相，请重试或切换月份。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "暫時無法取得月相，請重試或切換月份。"
           }
         }
       }
@@ -19190,184 +19190,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "方位角 %.0f° · 高度角 %.0f°"
-          }
-        }
-      }
-    },
-    "moon_finder.ephemeris_error.detail" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تعذر تحميل بيانات القمر المطلوبة."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die benötigten Monddaten konnten nicht geladen werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The required moon data could not be loaded."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se han podido cargar los datos lunares necesarios."
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No se han podido cargar los datos lunares necesarios."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les données lunaires nécessaires n’ont pas pu être chargées."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "必要な月のデータを読み込めませんでした。"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível carregar os dados lunares necessários."
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não foi possível carregar os dados lunares necessários."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не удалось загрузить необходимые данные о Луне."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не вдалося завантажити необхідні дані про Місяць."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法加载所需的月亮数据。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法載入所需的月亮資料。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法載入所需的月亮資料。"
-          }
-        }
-      }
-    },
-    "moon_finder.ephemeris_error.title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "موقع القمر غير متاح"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mondposition nicht verfügbar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Moon position unavailable"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posición de la Luna no disponible"
-          }
-        },
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posición de la Luna no disponible"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Position de la Lune indisponible"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月の位置を取得できません"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posição da Lua indisponível"
-          }
-        },
-        "pt-PT" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Posição da Lua indisponível"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Положение Луны недоступно"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Положення Місяця недоступне"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月亮位置暂不可用"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月亮位置暫不可用"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "月亮位置暫不可用"
           }
         }
       }
