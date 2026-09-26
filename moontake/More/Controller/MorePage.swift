@@ -96,7 +96,7 @@ private enum MorePageFactory {
                 .init(type: .version, value: SpecificationsViewController.getAppVersion() ?? ""),
                 .init(type: .manufacturer, value: "@App君"),
                 .init(type: .publisher, value: "ZIZICICI LIMITED"),
-                .init(type: .dateOfProduction, value: "2026/09/23"),
+                .init(type: .dateOfProduction, value: "2026/09/26"),
                 .init(type: .license, value: "闽ICP备2023015823号-1A"),
             ],
             thirdPartyLibraries: [
