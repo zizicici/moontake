@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class TutorialsViewController: UIViewController {
+    private var didPositionInitialText = false
     var textView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.preferredFont(forTextStyle: .body)
@@ -46,8 +47,21 @@ class TutorialsViewController: UIViewController {
         }
         
         setupText()
-        
-        textView.scrollRangeToVisible(NSRange(location: 0, length: 1))
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard !didPositionInitialText else { return }
+        didPositionInitialText = true
+        // UITextView's content inset is settled only after the sheet and its
+        // navigation bar appear. Start at step 1 in the actual tutorial, too.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            guard let self else { return }
+            self.view.layoutIfNeeded()
+            self.textView.layoutIfNeeded()
+            self.textView.setContentOffset(
+                CGPoint(x: 0, y: -self.textView.adjustedContentInset.top), animated: false)
+        }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -118,9 +118,9 @@ final class MoonCalendarViewController: UIViewController {
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory,
-           let month {
-            buildEvents(month)
+        if previousTraitCollection?.preferredContentSizeCategory != traitCollection.preferredContentSizeCategory {
+            phaseLabel.numberOfLines = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? 0 : 1
+            if let month { buildEvents(month) }
         }
     }
 
@@ -142,6 +142,12 @@ final class MoonCalendarViewController: UIViewController {
     private func buildDetail() {
         style(selectedDateLabel, .subheadline, opacity: 0.7)
         style(phaseLabel, .title1)
+        // Keep long localized phase names beside the moon without pushing the
+        // last calendar event below the sheet's initial viewport. Accessibility
+        // text sizes can still use multiple lines.
+        phaseLabel.adjustsFontSizeToFitWidth = true
+        phaseLabel.minimumScaleFactor = 0.75
+        phaseLabel.numberOfLines = traitCollection.preferredContentSizeCategory.isAccessibilityCategory ? 0 : 1
         style(illuminationLabel, .subheadline, opacity: 0.85)
         illuminationLabel.accessibilityIdentifier = "moonCalendar.illumination"
         phaseLabel.accessibilityIdentifier = "moonCalendar.phase"

@@ -18,6 +18,14 @@ struct CustomSettings {
     var locationName: String?
 }
 
+private func exposureButtonFont(for title: String) -> UIFont {
+    let baseSize: CGFloat = 12
+    let baseFont = UIFont.systemFont(ofSize: baseSize)
+    let measuredWidth = (title as NSString).size(withAttributes: [.font: baseFont]).width
+    // Fit longer translations inside the exposure controls.
+    return UIFont.systemFont(ofSize: min(baseSize, baseSize * 42 / max(measuredWidth, 1)))
+}
+
 class CameraViewController: UIViewController {
     private var session: AVCaptureSession?
     private let sessionQueue = DispatchQueue(label: "capture")
@@ -91,18 +99,23 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "plus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = String(localized: "camera.exposure.increase.title")
+        configuration.titleLineBreakMode = .byClipping
+        let title = String(localized: "camera.exposure.increase.title")
+        configuration.title = title
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 12)
+            outgoing.font = exposureButtonFont(for: title)
 
             return outgoing
         })
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0)
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 4, bottom: 8, trailing: 4)
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "camera.exposure.increase.a11y")
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.7
+        button.titleLabel?.lineBreakMode = .byClipping
         
         return button
     }()
@@ -111,18 +124,23 @@ class CameraViewController: UIViewController {
         configuration.image = UIImage(systemName: "minus")
         configuration.imagePlacement = .top
         configuration.imagePadding = 10.0
-        configuration.title = String(localized: "camera.exposure.decrease.title")
+        configuration.titleLineBreakMode = .byClipping
+        let title = String(localized: "camera.exposure.decrease.title")
+        configuration.title = title
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
             var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 12)
+            outgoing.font = exposureButtonFont(for: title)
 
             return outgoing
         })
-        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0)
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 4, bottom: 8, trailing: 4)
 
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "camera.exposure.decrease.a11y")
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.7
+        button.titleLabel?.lineBreakMode = .byClipping
         
         return button
     }()

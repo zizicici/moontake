@@ -39,6 +39,10 @@ class AlbumViewController: UIViewController {
         super.viewDidLoad()
         
         if #available(iOS 26.0, *) {
+            // Keep the system's glass navigation bar while making its title
+            // readable against the app's dark sky background.
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.moonColor]
+            navigationController?.navigationBar.tintColor = .moonColor
         } else {
             updateNavigationBarStyle()
         }

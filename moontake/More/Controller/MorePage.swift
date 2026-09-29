@@ -16,20 +16,49 @@ func makeMorePageViewController() -> MoreViewController {
     )
 
     dataSource.controller = controller
-    let tutorialsItem = UIBarButtonItem(
-        title: String(localized: "tutorials.title"),
-        style: .plain,
-        target: dataSource,
-        action: #selector(MorePageDataSource.showTutorials)
-    )
+    let tutorialsTitle = String(localized: "tutorials.title")
+    let shareTitle = String(localized: "more.share")
+    let pageTitle = String(localized: "more.title")
+    let font = UIFont.systemFont(ofSize: 19)
+    func labelWidth(_ title: String) -> CGFloat {
+        (title as NSString).size(withAttributes: [.font: font]).width + 36
+    }
+    // Keep the center title visible when translated bar-button text is long.
+    // The image variants retain their full localized accessibility labels.
+    let availableWidth = min(UIScreen.main.bounds.width, 520) - 32
+    let titleWidth = labelWidth(pageTitle)
+    var tutorialsWidth = labelWidth(tutorialsTitle)
+    var shareWidth = labelWidth(shareTitle)
+    var tutorialsUsesImage = false
+    var shareUsesImage = false
+    if tutorialsWidth + shareWidth + titleWidth > availableWidth {
+        if shareWidth >= tutorialsWidth {
+            shareUsesImage = true
+            shareWidth = 56
+        } else {
+            tutorialsUsesImage = true
+            tutorialsWidth = 56
+        }
+    }
+    if tutorialsWidth + shareWidth + titleWidth > availableWidth {
+        tutorialsUsesImage = true
+        shareUsesImage = true
+    }
+
+    let tutorialsItem = tutorialsUsesImage
+        ? UIBarButtonItem(image: UIImage(systemName: "book"), style: .plain,
+                          target: dataSource, action: #selector(MorePageDataSource.showTutorials))
+        : UIBarButtonItem(title: tutorialsTitle, style: .plain,
+                          target: dataSource, action: #selector(MorePageDataSource.showTutorials))
+    tutorialsItem.accessibilityLabel = tutorialsTitle
     tutorialsItem.tintColor = .label
 
-    let shareItem = UIBarButtonItem(
-        title: String(localized: "more.share"),
-        style: .plain,
-        target: dataSource,
-        action: #selector(MorePageDataSource.shareApp)
-    )
+    let shareItem = shareUsesImage
+        ? UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain,
+                          target: dataSource, action: #selector(MorePageDataSource.shareApp))
+        : UIBarButtonItem(title: shareTitle, style: .plain,
+                          target: dataSource, action: #selector(MorePageDataSource.shareApp))
+    shareItem.accessibilityLabel = shareTitle
     shareItem.tintColor = .label
 
     if Language.current().isRightToLeft {

@@ -129,6 +129,8 @@ class ImageDetailViewController: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
+        // Leave room to scroll photo metadata clear of the persistent actions.
+        collectionView.contentInset.bottom = 88
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view)
