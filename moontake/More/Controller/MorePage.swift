@@ -111,8 +111,8 @@ private enum MorePageFactory {
             privacyPolicyURL: privacyPolicyURL,
             specificationsConfig: makeSpecificationsConfiguration(),
             appShowcase: AppShowcaseConfiguration(
-                apps: [.lemon, .coconut, .festivals, .pigeon, .one, .offDay, .tagDay, .pin, .campfire, .watermelon, .doufu],
-                displayCount: 4,
+                apps: [.watermelon, .pin],
+                displayCount: 2,
                 automaticallyIncludesFestivalsForChineseLocales: false
             )
         )
