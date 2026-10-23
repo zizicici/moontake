@@ -55,6 +55,11 @@ struct ImageInfo: Identifiable, Hashable {
     var height: Int
     var latitude: Double?
     var longitude: Double?
+
+    // Detail-page sources for captures that are not database records. These
+    // URLs are deliberately excluded from CodingKeys and are never persisted.
+    var temporaryOriginalURL: URL? = nil
+    var temporaryMovieURL: URL? = nil
 }
 
 extension ImageInfo: Codable {
@@ -85,6 +90,7 @@ extension ImageInfo: TimestampedRecord {
 
 extension ImageInfo {
     var originURL: URL? {
+        if let temporaryOriginalURL { return temporaryOriginalURL }
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("无法获取 Documents 目录")
             return nil
@@ -100,13 +106,15 @@ extension ImageInfo {
     }
     
     var pairedVideoURL: URL? {
-        originURL?.deletingLastPathComponent().appendingPathComponent("\(dataId).mov")
+        if temporaryOriginalURL != nil { return temporaryMovieURL }
+        return originURL?.deletingLastPathComponent().appendingPathComponent("\(dataId).mov")
     }
     var hasLivePhoto: Bool {
         pairedVideoURL.map { FileManager.default.fileExists(atPath: $0.path) } ?? false
     }
 
     var thumbnailURL: URL? {
+        if let temporaryOriginalURL { return temporaryOriginalURL }
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("无法获取 Documents 目录")
             return nil

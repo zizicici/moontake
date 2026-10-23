@@ -24,6 +24,14 @@ class ImageDetailCell: ImageInfoBaseCell {
     
     var imageView: UIImageView!
     private let livePlayback = LivePhotoPlaybackView()
+    private var temporaryPreview: UIImage?
+    private var isTemporary = false
+
+    func updateTemporary(with info: ImageInfo, preview: UIImage?) {
+        isTemporary = true
+        temporaryPreview = preview
+        update(with: info)
+    }
     
     private func setupViewsIfNeeded() {
         guard scrollView.superview == nil else {
@@ -54,7 +62,10 @@ class ImageDetailCell: ImageInfoBaseCell {
         
         if let imageInfo = state.imageInfo {
             livePlayback.load(imageInfo)
-            if let originURL = imageInfo.originURL {
+            if isTemporary {
+                imageView.kf.cancelDownloadTask()
+                imageView.image = temporaryPreview
+            } else if let originURL = imageInfo.originURL {
                 imageView.kf.setImage(with: originURL, options: [.cacheMemoryOnly])
             }
         }
@@ -63,6 +74,8 @@ class ImageDetailCell: ImageInfoBaseCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         livePlayback.reset()
+        isTemporary = false
+        temporaryPreview = nil
     }
     func stopLivePlayback() { livePlayback.stopPlayback() }
 

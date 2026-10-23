@@ -28,6 +28,7 @@ private func exposureButtonFont(for title: String) -> UIFont {
 
 class CameraViewController: UIViewController {
     private let tutorialProgress: CameraTutorialProgress
+    private let moonSharePrompt: MonthlyMoonSharePrompt
     private var tutorialController: TutorialsViewController?
     private var tutorialRequested = false
     private var hasPresentedAutomaticGuide = false
@@ -35,14 +36,18 @@ class CameraViewController: UIViewController {
     private var tutorialAccessibility: [(UIView, Bool)] = []
     private var tutorialFocusSliderMoved = false
 
-    init(tutorialProgress: CameraTutorialProgress = CameraTutorialProgress()) {
+    init(tutorialProgress: CameraTutorialProgress = CameraTutorialProgress(), moonSharePrompt: MonthlyMoonSharePrompt? = nil) {
         self.tutorialProgress = tutorialProgress
+        self.moonSharePrompt = moonSharePrompt ?? MonthlyMoonSharePrompt()
         super.init(nibName: nil, bundle: nil)
+        self.moonSharePrompt.onReady = { [weak self] in self?.showPendingTemporaryPhoto() }
     }
 
     required init?(coder: NSCoder) {
         tutorialProgress = CameraTutorialProgress()
+        moonSharePrompt = MonthlyMoonSharePrompt()
         super.init(coder: coder)
+        moonSharePrompt.onReady = { [weak self] in self?.showPendingTemporaryPhoto() }
     }
 
     private var session: AVCaptureSession?
@@ -53,6 +58,7 @@ class CameraViewController: UIViewController {
     private let photoOutput = AVCapturePhotoOutput()
     
     private var liveAudioInput: AVCaptureDeviceInput? // sessionQueue only
+    private var pendingTemporaryPhoto: CapturedPhoto?
     private var livePhotoEnabled = UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhoto.rawValue)
     private var livePhotoAudioEnabled = UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhotoAudio.rawValue)
     private var livePhotoSupported = false
@@ -586,6 +592,7 @@ class CameraViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshSharePrompt), name: .SettingsUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(whiteBalanceUpdated), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationAuthorizationDidChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationInformationDidChanged, object: nil)
@@ -708,7 +715,7 @@ class CameraViewController: UIViewController {
         switch photoAuthStatus {
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization(for: .addOnly) { authrized in
-                if authrized == .authorized {
+                if authrized == .authorized || authrized == .limited {
                     self.addPhotoPermissionAuthorized = .authorized
                 } else {
                     self.addPhotoPermissionAuthorized = .denied
@@ -721,16 +728,16 @@ class CameraViewController: UIViewController {
         case .authorized:
             addPhotoPermissionAuthorized = .authorized
         case .limited:
-            addPhotoPermissionAuthorized = .denied
+            addPhotoPermissionAuthorized = .authorized
         @unknown default:
             addPhotoPermissionAuthorized = .denied
         }
     }
     
     func showPermissionViewIfNeeded() {
-        if cameraPermissionAuthorized == .denied || addPhotoPermissionAuthorized == .denied {
+        if cameraPermissionAuthorized == .denied {
             permissionView.isHidden = moonFinder.isActive || tutorialController != nil
-            permissionView.update(showCameraButton: cameraPermissionAuthorized == .denied, showAlbumButton: addPhotoPermissionAuthorized == .denied)
+            permissionView.update(showCameraButton: true, showAlbumButton: false)
             captureButton.isEnabled = false
         } else {
             permissionView.isHidden = true
@@ -971,8 +978,8 @@ class CameraViewController: UIViewController {
         }
     }
     private func updateCaptureControls() {
-        let idle = !captureBusy && !livePhotoConfiguring
-        captureButton.isEnabled = idle && sessionReady && cameraPermissionAuthorized == .authorized && addPhotoPermissionAuthorized == .authorized
+        let idle = !captureBusy && !livePhotoConfiguring && pendingTemporaryPhoto == nil
+        captureButton.isEnabled = idle && sessionReady && cameraPermissionAuthorized == .authorized
         livePhotoButton.isEnabled = idle && sessionReady && livePhotoSupported
         livePhotoAudioButton.isEnabled = idle && sessionReady && livePhotoSupported && livePhotoEnabled
         for button in [albumButton, moreButton, moonCalendarButton, moonFinderButton] { button.isEnabled = !captureBusy }
@@ -1069,7 +1076,52 @@ class CameraViewController: UIViewController {
     private func showCaptureError(_ error: Error) {
         LivePhotoRecovery.present(error: error, in: self)
     }
+    func presentTemporaryPhoto(_ photo: CapturedPhoto) {
+        moonSharePrompt.discardPreviousCapture()
+        pendingTemporaryPhoto = photo
+        if tutorialController != nil { finishTutorial() }
+        showPendingTemporaryPhoto()
+    }
+
+    func handleSavedCapture(_ photo: CapturedPhoto, outcome: CaptureSaveOutcome) {
+        if outcome.needsTemporaryDetail {
+            presentTemporaryPhoto(photo)
+        } else {
+            moonSharePrompt.consider(photo)
+            if outcome.localSaved && !outcome.photosSaved {
+                showToast(text: String(localized: "capture.saved_locally"))
+            }
+            showPendingTemporaryPhoto()
+        }
+    }
+
+    private func showPendingTemporaryPhoto() {
+        moonSharePrompt.refreshPreferences()
+        guard let photo = pendingTemporaryPhoto ?? moonSharePrompt.pendingPhoto,
+              isCameraVisible, viewIfLoaded?.window != nil, !captureBusy, !livePhotoConfiguring,
+              tutorialController == nil, presentedViewController == nil,
+              UIApplication.shared.applicationState == .active else {
+            updateCaptureControls()
+            return
+        }
+        let isSaved = pendingTemporaryPhoto == nil
+        let detail = ImageDetailViewController(capturedPhoto: photo, isSaved: isSaved)
+        pendingTemporaryPhoto = nil
+        present(detail, animated: true) { [weak self, weak detail] in
+            if isSaved, detail?.viewIfLoaded?.window != nil { self?.moonSharePrompt.markPresented() }
+        }
+        updateCaptureControls()
+    }
+
+    @objc private func refreshSharePrompt() {
+        moonSharePrompt.refreshPreferences()
+    }
+
     @objc private func offerPendingLivePhotos() {
+        if pendingTemporaryPhoto != nil || moonSharePrompt.pendingPhoto != nil {
+            showPendingTemporaryPhoto()
+            return
+        }
         LivePhotoRecovery.offer(in: self) { [weak self] in
             self?.captureBusy == false && self?.livePhotoConfiguring == false
                 && self?.tutorialController == nil && self?.isCameraVisible == true
@@ -1077,6 +1129,7 @@ class CameraViewController: UIViewController {
     }
 
     @objc private func resumeCameraOverlays() {
+        moonSharePrompt.refreshPreferences()
         startTutorialIfNeeded()
         offerPendingLivePhotos()
     }
@@ -1087,10 +1140,13 @@ class CameraViewController: UIViewController {
         guard let videoPreviewLayerOrientation = AVCaptureVideoOrientation(interfaceOrientation: orientationLast) else {
             return
         }
-        guard cameraPermissionAuthorized == .authorized, addPhotoPermissionAuthorized == .authorized else {
+        guard cameraPermissionAuthorized == .authorized else {
             return
         }
-        guard !captureBusy, !livePhotoConfiguring, sessionReady else { return }
+        guard !captureBusy, !livePhotoConfiguring, pendingTemporaryPhoto == nil, sessionReady else { return }
+        // Clear an earlier share candidate before completing the tutorial,
+        // which may itself try to present a waiting photo.
+        moonSharePrompt.discardPreviousCapture()
         didPerformTutorialAction(.capture)
         let wantsLivePhoto = livePhotoEnabled
         // Begin before AVFoundation starts recording, not after its callbacks.
@@ -1150,7 +1206,7 @@ class CameraViewController: UIViewController {
                         self.previewView.videoPreviewLayer.opacity = 1
                     }
                 }
-            }, completionHandler: { photoCaptureProcessor, error in
+            }, completionHandler: { photoCaptureProcessor, error, capturedPhoto in
                 // When the capture is complete, remove a reference to the photo capture delegate so it can be deallocated.
                 self.sessionQueue.async {
                     self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = nil
@@ -1158,7 +1214,9 @@ class CameraViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.isProcessing = false; self.captureBusy = false
                     self.updateCaptureControls()
-                    if let error { self.showCaptureError(error) }
+                    if let capturedPhoto, let outcome = photoCaptureProcessor.saveOutcome {
+                        self.handleSavedCapture(capturedPhoto, outcome: outcome)
+                    } else if let error { self.showCaptureError(error) }
                 }
             }, photoProcessingHandler: { animate in
                 // Animates a spinner while photo is processing
@@ -1625,7 +1683,8 @@ extension CameraViewController {
               isCameraVisible, viewIfLoaded?.window != nil, presentedViewController == nil,
               UIApplication.shared.applicationState == .active,
               cameraPermissionAuthorized != .notDetermined, addPhotoPermissionAuthorized != .notDetermined,
-              !captureBusy, !livePhotoConfiguring else { return }
+              !captureBusy, !livePhotoConfiguring, pendingTemporaryPhoto == nil,
+              moonSharePrompt.pendingPhoto == nil else { return }
         let tip = !tutorialRequested && !tutorialProgress.shouldPresent
             ? tutorialProgress.unseenTips.randomElement() : nil
         guard tutorialRequested || tutorialProgress.shouldPresent || tip != nil else { return }

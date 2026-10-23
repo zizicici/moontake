@@ -12,6 +12,7 @@ extension UserDefaults {
         case LifetimeMemberShip = "com.zizicici.moontake.store.purchase.lifetime"
         case AppAlbum = "com.zizicici.moontake.settings.appAlbum"
         case SaveToAlbum = "com.zizicici.moontake.settings.saveToAlbum"
+        case MonthlyShare = "com.zizicici.moontake.settings.monthlyShare"
         case WatermarkType = "com.zizicici.moontake.settings.watermarkType"
         case LivePhotoAudio = "com.zizicici.moontake.settings.livePhotoAudio"
         case LivePhoto = "com.zizicici.moontake.settings.livePhoto"

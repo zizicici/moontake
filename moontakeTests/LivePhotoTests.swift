@@ -8,6 +8,44 @@ import XCTest
 @testable import moontake
 
 final class LivePhotoTests: XCTestCase {
+  func testTemporaryLiveExportPreservesWatermarkPairAndShareLifetime() async throws {
+    let id = UUID().uuidString
+    let data = try still(id: id, size: CGSize(width: 1600, height: 1200), type: .jpeg)
+    var capture: CapturedPhoto? = try await {
+      let resources = try LivePhotoResources()
+      try await movie(at: resources.movieURL, id: id, portrait: false, audio: false)
+      return CapturedPhoto(data: data, fileType: .jpeg, width: 1600, height: 1200, date: Date(),
+        location: nil, locationName: nil, targets: [.watermark], movieURL: resources.movieURL, resources: resources)
+    }()
+    weak var owner = capture?.resources
+    let originalMovie = try XCTUnwrap(capture?.movieURL)
+    var export: TemporaryPhotoExport? = try await TemporaryPhotoExport.prepare(
+      try XCTUnwrap(capture), target: .watermark, cancellation: LivePhotoCancellation())
+    XCTAssertEqual(LivePhotoWatermark.identifier(in: try XCTUnwrap(export?.data)), id)
+    XCTAssertEqual(UIImage(data: try XCTUnwrap(export?.data))?.size.height, 1560)
+    let stillURL = try XCTUnwrap(export?.photoURL)
+    let movieURL = try XCTUnwrap(export?.movieURL)
+    let ready = expectation(description: "Temporary watermarked Live Photo is playable")
+    let request = PHLivePhoto.request(withResourceFileURLs: [stillURL, movieURL], placeholderImage: nil,
+                                     targetSize: CGSize(width: 320, height: 312), contentMode: .aspectFit) { photo, info in
+      guard (info[PHLivePhotoInfoIsDegradedKey] as? Bool) != true else { return }
+      XCTAssertNotNil(photo, "\(info)")
+      ready.fulfill()
+    }
+    await fulfillment(of: [ready], timeout: 20)
+    PHLivePhoto.cancelRequest(withRequestID: request)
+    var providers = export?.itemProviders()
+    XCTAssertEqual(providers?.count, 2, "Sharing must include both the finished still and its video")
+    capture = nil; export = nil
+    XCTAssertNotNil(owner)
+    XCTAssertTrue(FileManager.default.fileExists(atPath: originalMovie.path))
+    XCTAssertTrue(FileManager.default.fileExists(atPath: movieURL.path))
+    providers = nil
+    XCTAssertNil(owner)
+    XCTAssertFalse(FileManager.default.fileExists(atPath: originalMovie.path))
+    XCTAssertFalse(FileManager.default.fileExists(atPath: movieURL.path))
+  }
+
   func testWatermarkedSilentLandscapePair() async throws {
     try await verifyPair(portrait: false, audio: false, fileType: .jpeg)
   }

@@ -158,6 +158,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         case whiteBalance
         case appAlbum
         case saveOptions
+        case monthlyShare
     }
 
     weak var controller: MoreViewController?
@@ -192,6 +193,8 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
             showProSettings(Settings.AppAlbumOption.self, from: controller)
         case .saveOptions:
             showProSettings(Settings.SaveToAlbumOption.self, from: controller)
+        case .monthlyShare:
+            showProSettings(Settings.MonthlyShareOption.self, from: controller, feature: .monthlyShare)
         }
     }
 
@@ -202,11 +205,12 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         }
     }
 
-    private func showProSettings<T: SettingsOption>(_ type: T.Type, from controller: UIViewController) {
+    private func showProSettings<T: SettingsOption>(_ type: T.Type, from controller: UIViewController,
+                                                   feature: MoontakeProFeature? = nil) {
         let options = SettingOptionsViewController<T>()
         options.errorHandler = { controller, error in
             guard error is SettingsSelectionError else { return false }
-            controller.presentMoontakePaywall()
+            controller.presentMoontakePaywall(highlighting: feature)
             return true
         }
         controller.navigationController?.pushViewController(options, animated: true)
@@ -287,6 +291,12 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
                     id: ItemID.appAlbum.rawValue,
                     title: String(localized: "settings.app_album.title"),
                     value: Settings.shared.getAppAlbumSettings().title,
+                    badge: proBadgeStyle()
+                ),
+                MoreCustomItem(
+                    id: ItemID.monthlyShare.rawValue,
+                    title: String(localized: "settings.monthly_share.title"),
+                    value: Settings.shared.getMonthlyShareSettings().title,
                     badge: proBadgeStyle()
                 ),
             ]

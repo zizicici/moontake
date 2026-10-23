@@ -5,7 +5,7 @@ import UIKit
 final class PhotoCaptureProcessor: NSObject {
     private(set) var requestedPhotoSettings: AVCapturePhotoSettings
     private let willCapturePhotoAnimation: () -> Void
-    private let completionHandler: (PhotoCaptureProcessor, Error?) -> Void
+    private let completionHandler: (PhotoCaptureProcessor, Error?, CapturedPhoto?) -> Void
     private let photoProcessingHandler: (Bool) -> Void
     private let liveRecordingHandler: (Bool) -> Void
     private let resources: LivePhotoResources?
@@ -18,13 +18,14 @@ final class PhotoCaptureProcessor: NSObject {
     private var movieURL: URL?
     private var captureError: Error?
     private var finished = false
+    private(set) var saveOutcome: CaptureSaveOutcome?
     var location: CLLocation?
 
     init(
         with settings: AVCapturePhotoSettings, resources: LivePhotoResources? = nil,
         backgroundTask: LivePhotoBackgroundTask? = nil,
         willCapturePhotoAnimation: @escaping () -> Void,
-        completionHandler: @escaping (PhotoCaptureProcessor, Error?) -> Void,
+        completionHandler: @escaping (PhotoCaptureProcessor, Error?, CapturedPhoto?) -> Void,
         photoProcessingHandler: @escaping (Bool) -> Void,
         liveRecordingHandler: @escaping (Bool) -> Void = { _ in }
     ) {
@@ -44,15 +45,15 @@ final class PhotoCaptureProcessor: NSObject {
         toDatabase = Settings.shared.getAppAlbumSettings() == .enable
         locationName = CustomSettings.shared.locationName
     }
-    private func finish(_ error: Error? = nil) {
+    private func finish(_ error: Error? = nil, capturedPhoto: CapturedPhoto? = nil) {
         guard !finished else { return }
         finished = true
         liveRecordingHandler(false)
         photoProcessingHandler(false)
         // A failed first disk write keeps its resources in the retry error.
-        if !(error is LivePhotoStagingFailure) { resources?.cleanUp() }
+        if capturedPhoto == nil && !(error is LivePhotoStagingFailure) { resources?.cleanUp() }
         backgroundTask?.end()
-        completionHandler(self, error)
+        completionHandler(self, error, capturedPhoto)
     }
 }
 
@@ -100,28 +101,19 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             finish(ImageSaver.LivePhotoSaveError.missingMovie)
             return
         }
-        if requestedPhotoSettings.livePhotoMovieFileURL != nil {
-            // Never silently save a static photo when Live was requested.
-            guard let movieURL else {
-                finish(ImageSaver.LivePhotoSaveError.missingMovie)
-                return
-            }
-            ImageSaver.saveLivePhoto(
-                photoData, movieURL: movieURL, targets: targets, fileType: fileType, location: location,
-                width: Int(image.size.width), height: Int(image.size.height), date: date,
-                customLocationName: locationName, toDatabase: toDatabase, backgroundTask: backgroundTask,
-                captureResources: resources
-            ) { [self] result in
-                switch result {
-                case .success: finish()
-                case .failure(let error): finish(error)
-                }
-            }
-        } else {
-            ImageSaver.saveImage(
-                photoData, targets: targets, fileType: fileType, location: location, width: Int(image.size.width),
-                height: Int(image.size.height), date: date, customLocationName: locationName, toDatabase: toDatabase
-            ) { [self] in finish() }
+        // Never silently turn a requested Live Photo into a still image.
+        if requestedPhotoSettings.livePhotoMovieFileURL != nil && movieURL == nil {
+            finish(ImageSaver.LivePhotoSaveError.missingMovie)
+            return
+        }
+        let captured = CapturedPhoto(
+            data: photoData, fileType: fileType, width: Int(image.size.width), height: Int(image.size.height),
+            date: date, location: location, locationName: locationName, targets: targets,
+            movieURL: movieURL, resources: resources)
+        Task {
+            let result = await CapturePhotoSaver().save(captured, toLocalAlbum: toDatabase, backgroundTask: backgroundTask)
+            saveOutcome = result
+            finish(capturedPhoto: captured)
         }
     }
 }

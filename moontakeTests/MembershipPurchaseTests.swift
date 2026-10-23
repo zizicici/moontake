@@ -12,7 +12,7 @@ final class MembershipPurchaseTests: XCTestCase {
     private var savedLifetime = false
     private var savedSubscriptions: [SubscriptionMembership] = []
     private var preferences: [String: Any] = [:]
-    private let preferenceKeys = [UserDefaults.Custom.AppAlbum.rawValue, UserDefaults.Custom.SaveToAlbum.rawValue]
+    private let preferenceKeys = [UserDefaults.Custom.AppAlbum.rawValue, UserDefaults.Custom.SaveToAlbum.rawValue, UserDefaults.Custom.MonthlyShare.rawValue]
 
     override func setUpWithError() throws {
         guard ProcessInfo.processInfo.environment["MOONTAKE_STOREKIT_TESTS"] == "1" else {
@@ -293,6 +293,145 @@ final class MembershipPurchaseTests: XCTestCase {
         XCTAssertEqual(paywall.selectedProductID, ProStatus.yearlyProductID)
         XCTAssertNotNil(find("paywall.product." + ProStatus.monthlyProductID, in: paywall.view))
         paywall.dismiss(animated: false)
+    }
+
+    func testTemporaryShareContinuesAfterMonthlyPurchase() async throws {
+        try await assertTemporaryShareAfterPurchase(ProStatus.monthlyProductID)
+    }
+
+    func testMonthlySharePreferenceDefaultsOnAndOnlyProCanDisableIt() throws {
+        let key = UserDefaults.Custom.MonthlyShare.rawValue
+        UserDefaults.standard.removeObject(forKey: key)
+        XCTAssertEqual(Settings.shared.getMonthlyShareSettings(), .enable)
+        XCTAssertFalse(Settings.shared.save(option: Settings.MonthlyShareOption.disable))
+        XCTAssertThrowsError(try Settings.MonthlyShareOption.setCurrent(.disable))
+        Store.shared.applyMembership(true)
+        XCTAssertEqual(Settings.shared.getMonthlyShareSettings(), .enable, "New members still default to enabled")
+        XCTAssertTrue(Settings.shared.save(option: Settings.MonthlyShareOption.disable))
+        XCTAssertEqual(Settings.shared.getMonthlyShareSettings(), .disable)
+        Store.shared.applyMembership(false)
+        XCTAssertEqual(Settings.shared.getMonthlyShareSettings(), .enable)
+        XCTAssertEqual(UserDefaults.standard.integer(forKey: key), Settings.MonthlyShareOption.disable.rawValue)
+        Store.shared.applyMembership(true)
+        XCTAssertEqual(Settings.shared.getMonthlyShareSettings(), .disable, "Restoring Pro preserves the user's choice")
+        XCTAssertTrue(MoontakeProBenefits.features.contains { $0.id == MoontakeProFeature.monthlyShare.rawValue })
+    }
+
+    func testTemporaryShareContinuesAfterYearlyPurchase() async throws {
+        try await assertTemporaryShareAfterPurchase(ProStatus.yearlyProductID)
+    }
+
+    func testTemporaryShareContinuesAfterLifetimePurchase() async throws {
+        try await assertTemporaryShareAfterPurchase(ProStatus.productID)
+    }
+
+    private func assertTemporaryShareAfterPurchase(_ productID: String) async throws {
+        try await loadProducts()
+        try await withTemporaryDetail { detail in
+            let paywall = try await openOriginalSharePaywall(detail)
+            find("paywall.product." + productID, in: paywall.view)?.sendActions(for: .touchUpInside)
+            let purchase = try XCTUnwrap(find("paywall.purchase", in: paywall.view))
+            XCTAssertTrue(purchase.isEnabled)
+            purchase.sendActions(for: .touchUpInside)
+            try await waitForUI { detail.presentedViewController is UIActivityViewController }
+            XCTAssertTrue(ProStatus.isPro)
+            XCTAssertNil(paywall.presentingViewController, "Sharing resumes after the paywall has dismissed")
+            XCTAssertNil(paywall.onMembershipActivated, "The continuation is consumed exactly once")
+            detail.dismiss(animated: false)
+            try await waitForUI { detail.presentedViewController == nil }
+            XCTAssertNotNil(detail.view.window, "Cancelling share keeps the temporary photo available")
+        }
+    }
+
+    func testTemporaryShareContinuesAfterRestore() async throws {
+        try await loadProducts()
+        try await withTemporaryDetail { detail in
+            let paywall = try await openOriginalSharePaywall(detail)
+            _ = try await session.buyProduct(identifier: ProStatus.productID)
+            Store.shared.applyMembership(false)
+            let restore = try XCTUnwrap(find("paywall.restore", in: paywall.view))
+            restore.sendActions(for: .touchUpInside)
+            try await waitForUI { detail.presentedViewController is UIActivityViewController }
+            XCTAssertTrue(ProStatus.isPro)
+        }
+    }
+
+    func testFailedPurchaseKeepsPhotoAndWatermarkedSharingAvailable() async throws {
+        try await loadProducts()
+        try await session.setSimulatedError(.purchase(.purchaseNotAllowed), forAPI: .purchase)
+        try await withTemporaryDetail { detail in
+            let paywall = try await openOriginalSharePaywall(detail)
+            let purchase = try XCTUnwrap(find("paywall.purchase", in: paywall.view))
+            purchase.sendActions(for: .touchUpInside)
+            try await waitForUI { purchase.isEnabled && paywall.presentedViewController is UIAlertController }
+            // A user acknowledges the StoreKit failure before closing the paywall.
+            await withCheckedContinuation { continuation in
+                paywall.dismiss(animated: false) { continuation.resume() }
+            }
+            XCTAssertFalse(ProStatus.isPro)
+            XCTAssertTrue(detail.presentedViewController === paywall)
+            try await closePaywallAndShareWatermarkedPhoto(paywall, detail: detail)
+        }
+    }
+
+    func testCancelledPaywallKeepsPhotoAndWatermarkedSharingAvailable() async throws {
+        try await loadProducts()
+        try await withTemporaryDetail { detail in
+            let paywall = try await openOriginalSharePaywall(detail)
+            try await closePaywallAndShareWatermarkedPhoto(paywall, detail: detail)
+        }
+    }
+
+    private func closePaywallAndShareWatermarkedPhoto(_ paywall: MoontakePaywallViewController,
+                                                     detail: ImageDetailViewController) async throws {
+        find("paywall.close", in: paywall.view)?.sendActions(for: .touchUpInside)
+        try await waitForUI {
+            detail.presentedViewController == nil && detail.view.window != nil && detail.transitionCoordinator == nil
+        }
+        detail.shareTemporaryPhoto(target: .watermark)
+        try await waitForUI { detail.presentedViewController is UIActivityViewController }
+        XCTAssertFalse(ProStatus.isPro)
+    }
+
+    private func openOriginalSharePaywall(_ detail: ImageDetailViewController) async throws -> MoontakePaywallViewController {
+        XCTAssertFalse(ProStatus.isPro)
+        let share = try XCTUnwrap(find("photo.temporary.share", in: detail.view) as? UIButton)
+        XCTAssertEqual(share.menu?.children.map(\.title), [String(localized: "photo.watermarked.title"), String(localized: "photo.original.title")])
+        detail.shareTemporaryPhoto(target: .origin)
+        try await waitForUI {
+            detail.presentedViewController is MoontakePaywallViewController
+                && detail.presentedViewController?.transitionCoordinator == nil
+        }
+        return try XCTUnwrap(detail.presentedViewController as? MoontakePaywallViewController)
+    }
+
+    private func withTemporaryDetail(_ operation: (ImageDetailViewController) async throws -> Void) async throws {
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.first as? UIWindowScene)
+        let previous = scene.keyWindow
+        let window = UIWindow(windowScene: scene)
+        let host = UIViewController()
+        window.rootViewController = host
+        window.makeKeyAndVisible()
+        defer { host.dismiss(animated: false); window.isHidden = true; window.rootViewController = nil; previous?.makeKeyAndVisible() }
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1
+        let data = UIGraphicsImageRenderer(size: CGSize(width: 1600, height: 1200), format: format).jpegData(withCompressionQuality: 0.8) { context in
+            UIColor.darkGray.setFill(); context.fill(CGRect(x: 0, y: 0, width: 1600, height: 1200))
+        }
+        let photo = CapturedPhoto(data: data, fileType: .jpeg, width: 1600, height: 1200,
+                                  date: Date(), location: nil, locationName: nil, targets: [.watermark], movieURL: nil, resources: nil)
+        let detail = ImageDetailViewController(temporaryPhoto: photo)
+        host.present(detail, animated: false)
+        try await waitForUI { find("photo.temporary.share", in: detail.view) != nil && detail.view.window != nil }
+        try await operation(detail)
+    }
+
+    private func waitForUI(file: StaticString = #filePath, line: UInt = #line, _ predicate: () -> Bool) async throws {
+        for _ in 0..<150 {
+            if predicate() { return }
+            try await Task.sleep(for: .milliseconds(100))
+        }
+        XCTFail("Timed out waiting for the purchase/share flow", file: file, line: line)
+        throw NSError(domain: "MembershipTests", code: 2)
     }
 
     private func loadProducts() async throws {

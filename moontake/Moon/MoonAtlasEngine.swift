@@ -119,48 +119,80 @@ actor MoonAtlasEngine {
 
     func recognize(_ photo: MoonAtlasPhoto, at date: Date, mirror: Bool = false) throws -> MoonAtlasResult {
         try autoreleasepool {
-            var observer: MoonSurfaceObserver = .geocentric
-            if let lat = photo.latitude, let lon = photo.longitude, lat.isFinite, lon.isFinite,
-               abs(lat) <= 90, abs(lon) <= 180 { observer = .earth(latitude: lat, longitude: lon) }
-            guard let surface = Moon.surface(at: date, observer: observer, north: .icrf) else {
-                throw MoonAtlasError.unavailableGeometry
-            }
+            let registration = try register(photo, at: date, mirror: mirror)
+            let (fit, surface, context, core, texture, geometry) = registration
             guard let root = Bundle.main.resourceURL?.appendingPathComponent("MoonAtlasResources"),
-                  let context = JSContext(), let image = photo.image.cgImage,
-                  let textureSource = CGImageSourceCreateWithURL(root.appendingPathComponent("assets/moon-color.jpg") as CFURL, nil),
-                  let textureImage = CGImageSourceCreateImageAtIndex(textureSource, 0, nil) else { throw MoonAtlasError.processing }
-            let code = try String(contentsOf: root.appendingPathComponent("moon-core.js"), encoding: .utf8)
-            context.evaluateScript(code)
-            guard context.exception == nil, let core = context.objectForKeyedSubscript("MoonAtlasCore"), !core.isUndefined else {
-                throw MoonAtlasError.processing
-            }
-            let texture: [String: Any] = ["data": try Self.pixels(textureImage, in: context), "width": textureImage.width, "height": textureImage.height]
-            let matrix = surface.bodyToView
-            let geometry: [String: Any] = [
-                "bodyToView": (0..<3).map { row in (0..<3).map { column in matrix[column][row] } },
-                "sunDirection": [surface.sunDirection.x, surface.sunDirection.y, surface.sunDirection.z]
-            ]
-            guard let gray = core.invokeMethod("gray", withArguments: [try Self.pixels(image, in: context)]),
-                  let model = core.invokeMethod("renderMoon", withArguments: [texture, geometry, 160]),
-                  let disc = core.invokeMethod("detectDisc", withArguments: [gray, image.width, image.height]) else {
-                throw MoonAtlasError.processing
-            }
-            var fit = MoonAtlasFit(x: Double(image.width) / 2, y: Double(image.height) / 2,
-                                   radius: Double(min(image.width, image.height)) * 0.28,
-                                   rotation: 0, mirror: mirror, accepted: false, reason: "disc")
-            if !disc.isNull, !disc.isUndefined {
-                guard let matched = core.invokeMethod("registerMoon", withArguments: [gray, image.width, image.height, disc, model, mirror]),
-                      let json = context.objectForKeyedSubscript("JSON")?.invokeMethod("stringify", withArguments: [matched])?.toString(),
-                      let data = json.data(using: .utf8) else { throw MoonAtlasError.processing }
-                fit = try JSONDecoder().decode(MoonAtlasFit.self, from: data)
-            }
-            guard context.exception == nil,
                   let render = core.invokeMethod("renderMoon", withArguments: [texture, geometry, 640]),
-                  let pixels = render.objectForKeyedSubscript("pixels") else { throw MoonAtlasError.processing }
+                  let pixels = render.objectForKeyedSubscript("pixels"), context.exception == nil else {
+                throw MoonAtlasError.processing
+            }
             let reference = try Self.referenceImage(pixels, size: 640, in: context)
             let features = try JSONDecoder().decode([MoonAtlasFeature].self, from: Data(contentsOf: root.appendingPathComponent("assets/features.json")))
             return MoonAtlasResult(fit: fit, surface: surface, reference: reference, features: features)
         }
+    }
+
+    /// Read-only eligibility check on this background actor. Uses the same maria
+    /// structure/texture/contrast gates as the atlas, without rendering its 640px
+    /// reference or loading labels. No reference pixels enter the captured photo.
+    func hasRecognizableMaria(in data: Data, at date: Date, latitude: Double?, longitude: Double?) throws -> Bool {
+        try autoreleasepool {
+            try Task.checkCancellation()
+            guard let source = CGImageSourceCreateWithData(data as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
+                  let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                    kCGImageSourceCreateThumbnailFromImageAlways: true,
+                    kCGImageSourceCreateThumbnailWithTransform: true,
+                    kCGImageSourceThumbnailMaxPixelSize: 1600
+                  ] as CFDictionary) else { throw MoonAtlasError.unreadablePhoto }
+            let photo = MoonAtlasPhoto(image: UIImage(cgImage: image), captureDate: date,
+                                       latitude: latitude, longitude: longitude)
+            let registration = try register(photo, at: date, mirror: false)
+            try Task.checkCancellation()
+            return registration.fit.accepted == true
+        }
+    }
+
+    private func register(_ photo: MoonAtlasPhoto, at date: Date, mirror: Bool) throws ->
+        (fit: MoonAtlasFit, surface: MoonSurface, context: JSContext, core: JSValue, texture: [String: Any], geometry: [String: Any]) {
+        try Task.checkCancellation()
+        var observer: MoonSurfaceObserver = .geocentric
+        if let lat = photo.latitude, let lon = photo.longitude, lat.isFinite, lon.isFinite,
+           abs(lat) <= 90, abs(lon) <= 180 { observer = .earth(latitude: lat, longitude: lon) }
+        guard let surface = Moon.surface(at: date, observer: observer, north: .icrf) else {
+            throw MoonAtlasError.unavailableGeometry
+        }
+        guard let root = Bundle.main.resourceURL?.appendingPathComponent("MoonAtlasResources"),
+              let context = JSContext(), let image = photo.image.cgImage,
+              let textureSource = CGImageSourceCreateWithURL(root.appendingPathComponent("assets/moon-color.jpg") as CFURL, nil),
+              let textureImage = CGImageSourceCreateImageAtIndex(textureSource, 0, nil) else { throw MoonAtlasError.processing }
+        let code = try String(contentsOf: root.appendingPathComponent("moon-core.js"), encoding: .utf8)
+        context.evaluateScript(code)
+        guard context.exception == nil, let core = context.objectForKeyedSubscript("MoonAtlasCore"), !core.isUndefined else {
+            throw MoonAtlasError.processing
+        }
+        let texture: [String: Any] = ["data": try Self.pixels(textureImage, in: context), "width": textureImage.width, "height": textureImage.height]
+        let matrix = surface.bodyToView
+        let geometry: [String: Any] = [
+            "bodyToView": (0..<3).map { row in (0..<3).map { column in matrix[column][row] } },
+            "sunDirection": [surface.sunDirection.x, surface.sunDirection.y, surface.sunDirection.z]
+        ]
+        guard let gray = core.invokeMethod("gray", withArguments: [try Self.pixels(image, in: context)]),
+              let model = core.invokeMethod("renderMoon", withArguments: [texture, geometry, 160]),
+              let disc = core.invokeMethod("detectDisc", withArguments: [gray, image.width, image.height]) else {
+            throw MoonAtlasError.processing
+        }
+        var fit = MoonAtlasFit(x: Double(image.width) / 2, y: Double(image.height) / 2,
+                               radius: Double(min(image.width, image.height)) * 0.28,
+                               rotation: 0, mirror: mirror, accepted: false, reason: "disc")
+        if !disc.isNull, !disc.isUndefined {
+            guard let matched = core.invokeMethod("registerMoon", withArguments: [gray, image.width, image.height, disc, model, mirror]),
+                  let json = context.objectForKeyedSubscript("JSON")?.invokeMethod("stringify", withArguments: [matched])?.toString(),
+                  let data = json.data(using: .utf8) else { throw MoonAtlasError.processing }
+            fit = try JSONDecoder().decode(MoonAtlasFit.self, from: data)
+        }
+        guard context.exception == nil else { throw MoonAtlasError.processing }
+        try Task.checkCancellation()
+        return (fit, surface, context, core, texture, geometry)
     }
 
     private static func pixels(_ image: CGImage, in context: JSContext) throws -> JSValue {

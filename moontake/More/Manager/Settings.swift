@@ -11,6 +11,31 @@ import MoreKit
 struct Settings {
     static let shared = Settings()
 
+    enum MonthlyShareOption: Int, Hashable {
+        case enable = 0
+        case disable = 1
+
+        var title: String {
+            switch self {
+            case .enable: return String(localized: "settings.app_album.enable")
+            case .disable: return String(localized: "settings.app_album.disable")
+            }
+        }
+    }
+
+    func getMonthlyShareSettings() -> MonthlyShareOption {
+        guard ProStatus.isPro else { return .enable }
+        return MonthlyShareOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.Custom.MonthlyShare.rawValue)) ?? .enable
+    }
+
+    @discardableResult
+    func save(option: MonthlyShareOption) -> Bool {
+        guard option == .enable || ProStatus.isPro else { return false }
+        UserDefaults.standard.set(option.rawValue, forKey: UserDefaults.Custom.MonthlyShare.rawValue)
+        NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+        return true
+    }
+
     enum AppAlbumOption: Int, Hashable {
         case enable = 0
         case disable = 1
@@ -235,6 +260,17 @@ extension Settings.AppAlbumOption: SettingsOption {
             throw SettingsSelectionError.proRequired
         }
         NotificationCenter.default.post(name: .SettingsUpdate, object: nil)
+    }
+}
+
+extension Settings.MonthlyShareOption: SettingsOption {
+    func getName() -> String { title }
+    static func getTitle() -> String { String(localized: "settings.monthly_share.title") }
+    static func getFooter() -> String? { String(localized: "settings.monthly_share.footer") }
+    static func getOptions() -> [Self] { [.enable, .disable] }
+    static var current: Self { Settings.shared.getMonthlyShareSettings() }
+    static func setCurrent(_ value: Self) throws {
+        guard Settings.shared.save(option: value) else { throw SettingsSelectionError.proRequired }
     }
 }
 

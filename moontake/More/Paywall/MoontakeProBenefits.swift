@@ -2,7 +2,7 @@ import UIKit
 import MoreKit
 
 enum MoontakeProFeature: String, CaseIterable {
-    case originals, calendar, album, albumSaving
+    case originals, calendar, album, albumSaving, monthlyShare
 
     var comparison: MoontakePaywallConfiguration.Feature {
         let title: String
@@ -30,6 +30,11 @@ enum MoontakeProFeature: String, CaseIterable {
             free = String(localized: "paywall.benefit.alwaysOn")
             pro = String(localized: "paywall.benefit.canDisable")
             explanation = String(localized: "paywall.info.albumSaving")
+        case .monthlyShare:
+            title = String(localized: "settings.monthly_share.title")
+            free = String(localized: "paywall.benefit.alwaysOn")
+            pro = String(localized: "paywall.benefit.canDisable")
+            explanation = String(localized: "settings.monthly_share.footer")
         }
         return .init(title: title, freeValue: free, proValue: pro, id: rawValue,
                      explanation: explanation, isSubfeature: self == .albumSaving)
@@ -44,7 +49,8 @@ enum MoontakeProBenefits {
 }
 
 extension UIViewController {
-    func presentMoontakePaywall(highlighting feature: MoontakeProFeature? = nil) {
+    func presentMoontakePaywall(highlighting feature: MoontakeProFeature? = nil,
+                               onMembershipActivated: (() -> Void)? = nil) {
         guard presentedViewController == nil else { return }
         view.endEditing(true)
         let paywall = MoontakePaywallViewController(configuration: .init(
@@ -56,7 +62,12 @@ extension UIViewController {
         ))
         paywall.modalPresentationStyle = .fullScreen
         paywall.onMembershipActivated = { [weak paywall] in
-            paywall?.dismiss(animated: ConsideringUser.animated)
+            guard let paywall, ProStatus.isPro, paywall.presentingViewController != nil,
+                  !paywall.isBeingDismissed else { return }
+            // Resume the requested action only once, after the paywall has left
+            // the presentation stack so the caller can open its next sheet.
+            paywall.onMembershipActivated = nil
+            paywall.dismiss(animated: ConsideringUser.animated, completion: onMembershipActivated)
         }
         present(paywall, animated: ConsideringUser.animated)
     }

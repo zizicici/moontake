@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Photos
+import AVFoundation
 
 struct ImageSaver {
     enum TargetType: String, Codable {
@@ -15,40 +16,53 @@ struct ImageSaver {
         case watermark
     }
     
-    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, customLocationName: String?, toDatabase: Bool, completion: (() -> ())?) {
-        PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
-            if status == .authorized {
-                Task {
-                    if targets.contains(.watermark) { await MoonManager.shared.prepare(at: date) }
-                    PHPhotoLibrary.shared().performChanges({
-                        let options = PHAssetResourceCreationOptions()
-                        options.uniformTypeIdentifier = fileType.system.rawValue
+    enum SaveError: LocalizedError {
+        case permission, rendering
+        var errorDescription: String? { String(localized: "capture.save_failed") }
+    }
 
-                        if targets.contains(.origin) {
-                            let creationRequest = PHAssetCreationRequest.forAsset()
-                            creationRequest.location = location
-                            creationRequest.addResource(with: .photo, data: photoData, options: options)
-                        }
-                        if targets.contains(.watermark), let newData = self.addWaterMark(for: photoData, date: date, customLocationName: customLocationName) {
-                            let creationRequest = PHAssetCreationRequest.forAsset()
-                            creationRequest.location = location
-                            creationRequest.addResource(with: .photo, data: newData, options: options)
-                        }
-                        if toDatabase {
-                            AlbumManager.shared.addImage(data: photoData, fileType: fileType, width: width, height: height, latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude)
-                        }
-                    }, completionHandler: { _, error in
-                        if let error = error {
-                            print("Error occurred while saving photo to photo library: \(error)")
-                        }
-                        completion?()
-                    })
+    static func saveImage(_ photoData: Data, targets: [TargetType], fileType: FileType, location: CLLocation?, width: Int, height: Int, date: Date, customLocationName: String?, toDatabase: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        Task {
+            // App storage is independent of the system photo library.
+            let localSaved = toDatabase && AlbumManager.shared.addImage(
+                data: photoData, fileType: fileType, width: width, height: height,
+                latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude, date: date)
+            do {
+                let status = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
+                guard status == .authorized || status == .limited else { throw SaveError.permission }
+                var marked: Data?
+                if targets.contains(.watermark) {
+                    await MoonManager.shared.prepare(at: date)
+                    guard let data = addWaterMark(for: photoData, date: date, customLocationName: customLocationName)
+                    else { throw SaveError.rendering }
+                    marked = data
                 }
-            } else {
-                completion?()
+                let watermarked = marked
+                try await PHPhotoLibrary.shared().performChanges {
+                    func create(_ data: Data, _ type: FileType) {
+                        let options = PHAssetResourceCreationOptions()
+                        options.uniformTypeIdentifier = type.system.rawValue
+                        let request = PHAssetCreationRequest.forAsset()
+                        request.location = location
+                        request.creationDate = date
+                        request.addResource(with: .photo, data: data, options: options)
+                    }
+                    if targets.contains(.origin) { create(photoData, fileType) }
+                    if let watermarked { create(watermarked, encodedFileType(watermarked)) }
+                }
+                completion(.success(()))
+            } catch {
+                completion(localSaved ? .success(()) : .failure(error))
             }
         }
     }
+
+    static func encodedFileType(_ data: Data) -> FileType {
+        guard let source = CGImageSourceCreateWithData(data as CFData, nil),
+              let type = CGImageSourceGetType(source) else { return .jpeg }
+        return FileType.generate(by: AVFileType(rawValue: type as String)) ?? .jpeg
+    }
+
 }
 
 extension ImageSaver {
