@@ -23,6 +23,7 @@ class ImageDetailCell: ImageInfoBaseCell {
     }()
     
     var imageView: UIImageView!
+    private let livePlayback = LivePhotoPlaybackView()
     
     private func setupViewsIfNeeded() {
         guard scrollView.superview == nil else {
@@ -38,6 +39,9 @@ class ImageDetailCell: ImageInfoBaseCell {
         imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         scrollView.addSubview(imageView)
+        imageView.isUserInteractionEnabled = true
+        imageView.addSubview(livePlayback)
+        livePlayback.snp.makeConstraints { $0.edges.equalToSuperview() }
         
         let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
@@ -49,12 +53,19 @@ class ImageDetailCell: ImageInfoBaseCell {
         setupViewsIfNeeded()
         
         if let imageInfo = state.imageInfo {
+            livePlayback.load(imageInfo)
             if let originURL = imageInfo.originURL {
                 imageView.kf.setImage(with: originURL, options: [.cacheMemoryOnly])
             }
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        livePlayback.reset()
+    }
+    func stopLivePlayback() { livePlayback.stopPlayback() }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         imageView.frame = bounds

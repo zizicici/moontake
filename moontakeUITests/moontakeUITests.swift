@@ -225,6 +225,73 @@ final class moontakeUITests: XCTestCase {
         add(returned)
     }
 
+    /// Preview/configuration only: never press the shutter or request microphone access.
+    @MainActor
+    func testLiveSoundDefaultsAndSilentToggleWithoutCapture() throws {
+        let app = XCUIApplication()
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        let live = app.buttons["camera.livePhoto"]
+        let sound = app.buttons["camera.livePhotoAudio"]
+        let location = app.buttons["camera.location"]
+        XCTAssertTrue(live.waitForExistence(timeout: 10))
+        XCTAssertTrue(sound.exists)
+        XCTAssertLessThanOrEqual(location.frame.maxX, live.frame.minX)
+        XCTAssertLessThanOrEqual(live.frame.maxX, sound.frame.minX)
+        XCTAssertFalse(sound.isSelected, "The initial sound preference must be off")
+#if !targetEnvironment(simulator)
+        let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: live)
+        awaitReady(ready)
+        XCTAssertFalse(live.isSelected, "Run with Live initially off, then restore it after verification")
+        live.tap()
+        let on = XCTNSPredicateExpectation(predicate: NSPredicate(format: "selected == true"), object: live)
+        wait(for: [on], timeout: 10)
+        XCTAssertFalse(sound.isSelected)
+        XCTAssertTrue(sound.isEnabled)
+        XCTAssertFalse(app.alerts.firstMatch.exists, "Silent Live must not ask for microphone access")
+        live.tap()
+        let off = XCTNSPredicateExpectation(predicate: NSPredicate(format: "selected == false"), object: live)
+        wait(for: [off], timeout: 10)
+        XCTAssertFalse(sound.isEnabled)
+#endif
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "Location Live Sound controls"; attachment.lifetime = .keepAlways; add(attachment)
+    }
+
+    /// Optional local simulator fixture; never acts on an unrelated pending capture.
+    /// Stage a Live pair with this job UUID in Application Support/PendingLivePhotos.
+    @MainActor
+    func testPendingLivePhotoRecoveryWithoutCapture() throws {
+#if targetEnvironment(simulator)
+        // Old simulator fixtures can leave a Photos deletion confirmation open.
+        // Decline it; this test never deletes Photos assets.
+        let system = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let staleDeletion = system.alerts.firstMatch
+        if staleDeletion.staticTexts.containing(NSPredicate(format: "label CONTAINS 'moontake' AND label CONTAINS 'delete'")).count > 0,
+           staleDeletion.buttons["Don't Allow"].exists {
+            staleDeletion.buttons["Don't Allow"].tap()
+        }
+        let app = XCUIApplication()
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launch()
+        let alert = app.alerts["livePhoto.recovery.83EEBDCA-0C63-4795-9903-D20A379956F1"]
+        guard alert.waitForExistence(timeout: 10) else { throw XCTSkip("No local recovery UI fixture staged") }
+        XCTAssertTrue(alert.buttons["稍后"].exists)
+        alert.buttons["重试保存"].tap()
+        XCTAssertTrue(app.alerts["正在保存 Live 照片…"].waitForExistence(timeout: 10))
+        let finished = XCTNSPredicateExpectation(predicate: NSPredicate(format: "count == 0"), object: app.alerts)
+        wait(for: [finished], timeout: 30)
+        app.terminate()
+        app.launch()
+        XCTAssertFalse(alert.waitForExistence(timeout: 3), "A completed save must not be offered again")
+#else
+        throw XCTSkip("Recovery fixture writes are confined to the simulator")
+#endif
+    }
+
+    @MainActor
+    private func awaitReady(_ expectation: XCTestExpectation) { wait(for: [expectation], timeout: 15) }
+
     @MainActor
     private func dismissMembership(in app: XCUIApplication, title: String) {
         let bar = app.navigationBars[title]

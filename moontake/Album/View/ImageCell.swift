@@ -37,6 +37,15 @@ class ImageInfoBaseCell: UICollectionViewCell {
 }
 
 class ImageCell: ImageInfoBaseCell {
+    private let liveBadge: UIImageView = {
+        let view = UIImageView(image: UIImage(systemName: "livephoto"))
+        view.tintColor = .white
+        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = 12
+        view.isHidden = true
+        view.accessibilityLabel = "Live Photo"
+        return view
+    }()
     var paperView: UIView = {
         let paperView = UIView()
         paperView.backgroundColor = .moonColor.withAlphaComponent(0.83)
@@ -66,6 +75,11 @@ class ImageCell: ImageInfoBaseCell {
             make.width.equalTo(contentView).offset(-6)
         }
         
+        contentView.addSubview(liveBadge)
+        liveBadge.snp.makeConstraints { make in
+            make.leading.top.equalTo(imageView).offset(6)
+            make.width.height.equalTo(24)
+        }
         paperView.snp.makeConstraints { make in
             make.edges.equalTo(imageView).inset(-3)
         }
@@ -75,6 +89,7 @@ class ImageCell: ImageInfoBaseCell {
         super.updateConfiguration(using: state)
         setupViewsIfNeeded()
         
+        liveBadge.isHidden = state.imageInfo?.hasLivePhoto != true
         if let imageInfo = state.imageInfo {
             if let thumbnailURL = imageInfo.thumbnailURL {
                 imageView.kf.setImage(with: thumbnailURL, options: [.loadDiskFileSynchronously])

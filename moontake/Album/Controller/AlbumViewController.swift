@@ -100,7 +100,12 @@ class AlbumViewController: UIViewController {
             self?.confirmClearAlbum()
         }
 
-        return UIMenu(children: [clearAction])
+        let recoveryAction = UIAction(title: String(localized: "live_photo.recovery.title"),
+            image: UIImage(systemName: "arrow.clockwise")) { [weak self] _ in
+            guard let self else { return }
+            LivePhotoRecovery.offer(in: self, showEmpty: true)
+        }
+        return UIMenu(children: [recoveryAction, clearAction])
     }
 
     func updateAlbumMenu() {

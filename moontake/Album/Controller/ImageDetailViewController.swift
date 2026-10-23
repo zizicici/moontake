@@ -305,6 +305,23 @@ class ImageDetailViewController: UIViewController {
         guard let originURL = imageInfo.originURL, let data = try? Data(contentsOf: originURL), let creationDate = imageInfo.creationDate else {
             return
         }
+        if imageInfo.hasLivePhoto, let movie = imageInfo.pairedVideoURL {
+            saveButton.isEnabled = false; deleteButton.isEnabled = false
+            ImageSaver.saveLivePhoto(data, movieURL: movie, targets: targets, fileType: imageInfo.fileType,
+                location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, date: creationDate,
+                customLocationName: customLocationName, toDatabase: false) { [weak self] result in
+                DispatchQueue.main.async {
+                    guard let self else { return }
+                    self.saveButton.isEnabled = true; self.deleteButton.isEnabled = true
+                    switch result {
+                    case .success: self.showToast(text: String(localized: "detail.save.toast"))
+                    case .failure(let error):
+                        LivePhotoRecovery.present(error: error, in: self)
+                    }
+                }
+            }
+            return
+        }
         ImageSaver.saveImage(data, targets: targets, fileType: imageInfo.fileType, location: imageInfo.location, width: imageInfo.width, height: imageInfo.height, date: creationDate, customLocationName: customLocationName, toDatabase: false) { [weak self] in
             DispatchQueue.main.async {
                 self?.showToast(text: String(localized: "detail.save.toast"))
@@ -339,6 +356,7 @@ class ImageDetailViewController: UIViewController {
             if let thumbnailURL = thumbnailURL {
                 deleteFile(at: thumbnailURL)
             }
+            if imageInfo.hasLivePhoto, let movie = imageInfo.pairedVideoURL { deleteFile(at: movie) }
             // Exit
             dismiss(animated: true)
         }
@@ -427,6 +445,10 @@ extension ImageDetailViewController {
 }
 
 extension ImageDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        (cell as? ImageDetailCell)?.stopLivePlayback()
+    }
+
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
     }

@@ -445,6 +445,95 @@
           }
         }
       }
+    },
+    "NSMicrophoneUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record sound with your Live Photos. You can still take silent Live Photos without microphone access."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用于录制 Live 照片的声音。不允许访问麦克风时，仍可拍摄静音 Live 照片。"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ton mit deinen Live Photos aufnehmen. Auch ohne Mikrofonzugriff kannst du weiterhin stumme Live Photos aufnehmen."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrez le son avec vos Live Photos. Vous pouvez toujours prendre des Live Photos muettes sans accès au microphone."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graba sonido con tus Live Photos. Puedes seguir tomando Live Photos sin sonido aunque no permitas el acceso al micrófono."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graba sonido con tus Live Photos. Puedes seguir tomando Live Photos sin sonido aunque no permitas el acceso al micrófono."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Photo と一緒に音声を録音します。マイクへのアクセスを許可しなくても、無音の Live Photo を撮影できます。"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grave som com suas Live Photos. Você ainda pode tirar Live Photos sem som mesmo sem acesso ao microfone."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grave som com as suas Live Photos. Pode continuar a tirar Live Photos sem som mesmo sem acesso ao microfone."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывайте звук вместе с Live Photos. Без доступа к микрофону вы по-прежнему сможете снимать Live Photos без звука."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записуйте звук разом із Live Photos. Без доступу до мікрофона ви й надалі зможете знімати Live Photos без звуку."
+          }
+        },
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سجّل الصوت مع Live Photos. يمكنك الاستمرار في التقاط Live Photos بلا صوت دون السماح بالوصول إلى الميكروفون."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用於錄製 Live 照片的聲音。即使不允許存取麥克風，仍可拍攝靜音 Live 照片。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用於錄製 Live 照片的聲音。即使不允許存取麥克風，仍可拍攝靜音 Live 照片。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

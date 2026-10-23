@@ -15,6 +15,8 @@ import CoreLocation
 enum FileType: Int, Codable {
     case jpeg = 0
     case heif
+    // Keep previously saved research images readable after switching feature branches.
+    case png
     
     var system: AVFileType {
         switch self {
@@ -22,6 +24,8 @@ enum FileType: Int, Codable {
             return .jpg
         case .heif:
             return .heic
+        case .png:
+            return AVFileType(rawValue: "public.png")
         }
     }
     
@@ -31,6 +35,8 @@ enum FileType: Int, Codable {
             return Self.jpeg
         case .heic:
             return Self.heif
+        case AVFileType(rawValue: "public.png"):
+            return Self.png
         default:
             return Self.jpeg
         }
@@ -93,6 +99,13 @@ extension ImageInfo {
         return thumbnailURL
     }
     
+    var pairedVideoURL: URL? {
+        originURL?.deletingLastPathComponent().appendingPathComponent("\(dataId).mov")
+    }
+    var hasLivePhoto: Bool {
+        pairedVideoURL.map { FileManager.default.fileExists(atPath: $0.path) } ?? false
+    }
+
     var thumbnailURL: URL? {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("无法获取 Documents 目录")

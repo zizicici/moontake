@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 struct ImageSaver {
-    enum TargetType {
+    enum TargetType: String, Codable {
         case origin
         case watermark
     }

@@ -34,6 +34,16 @@ class CameraViewController: UIViewController {
     private var captureDeviceInput: AVCaptureDeviceInput?
     private let photoOutput = AVCapturePhotoOutput()
     
+    private var liveAudioInput: AVCaptureDeviceInput? // sessionQueue only
+    private var livePhotoEnabled = UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhoto.rawValue)
+    private var livePhotoAudioEnabled = UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhotoAudio.rawValue)
+    private var livePhotoSupported = false
+    private var liveAudioActive = false
+    private var livePhotoConfiguring = false
+    private var captureBusy = false
+    private var sessionReady = false
+    private var liveRecording = false
+    private var liveSupportObservation: NSKeyValueObservation?
     private var inProgressPhotoCaptureDelegates = [Int64: PhotoCaptureProcessor]()
     
     private var isProcessing: Bool = false {
@@ -178,9 +188,32 @@ class CameraViewController: UIViewController {
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "location.title")
+        button.accessibilityIdentifier = "camera.location"
         button.alpha = 0.75
         button.showsMenuAsPrimaryAction = true
         
+        return button
+    }()
+    private let livePhotoButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "livephoto.slash")
+        configuration.contentInsets = .zero
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityIdentifier = "camera.livePhoto"
+        button.accessibilityLabel = String(localized: "live_photo.title")
+        button.accessibilityHint = String(localized: "live_photo.hint")
+        return button
+    }()
+    private let livePhotoAudioButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "mic.slash")
+        configuration.contentInsets = .zero
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityIdentifier = "camera.livePhotoAudio"
+        button.accessibilityLabel = String(localized: "live_photo.audio.title")
+        button.accessibilityHint = String(localized: "live_photo.audio.hint")
         return button
     }()
     private let moreButton: UIButton = {
@@ -430,6 +463,8 @@ class CameraViewController: UIViewController {
             make.width.greaterThanOrEqualTo(44.0)
             make.bottom.equalTo(previewView).inset(6)
         }
+        locationButton.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        locationButton.titleLabel?.lineBreakMode = .byTruncatingTail
         setupLocationButton()
         
         view.addSubview(permissionView)
@@ -451,6 +486,22 @@ class CameraViewController: UIViewController {
             make.bottom.equalTo(previewView).inset(6)
         }
         tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
+        view.addSubview(livePhotoButton)
+        livePhotoButton.snp.makeConstraints { make in
+            make.leading.equalTo(locationButton.snp.trailing).offset(6)
+            make.centerY.equalTo(locationButton)
+            make.width.height.equalTo(44)
+        }
+        view.addSubview(livePhotoAudioButton)
+        livePhotoAudioButton.snp.makeConstraints { make in
+            make.leading.equalTo(livePhotoButton.snp.trailing).offset(6)
+            make.centerY.equalTo(locationButton)
+            make.width.height.equalTo(44)
+            make.trailing.lessThanOrEqualTo(tutorialsButton.snp.leading).offset(-6)
+        }
+        livePhotoAudioButton.addTarget(self, action: #selector(toggleLivePhotoAudio), for: .touchUpInside)
+        livePhotoButton.addTarget(self, action: #selector(toggleLivePhoto), for: .touchUpInside)
+        updateLivePhotoButton()
 
         view.addSubview(moonFinderButton)
         moonFinderButton.snp.makeConstraints { make in
@@ -488,6 +539,8 @@ class CameraViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(closeMoonFinder),
                                                name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(offerPendingLivePhotos),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
         previewView.addGestureRecognizer(tapGesture)
@@ -546,6 +599,7 @@ class CameraViewController: UIViewController {
         checkCameraPermissions()
         checkPhotoPremissions()
         setupAndStartCaptureSession()
+        offerPendingLivePhotos()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -644,7 +698,7 @@ class CameraViewController: UIViewController {
             captureButton.isEnabled = false
         } else {
             permissionView.isHidden = true
-            captureButton.isEnabled = true
+            updateCaptureControls()
         }
     }
     
@@ -655,6 +709,12 @@ class CameraViewController: UIViewController {
         }
         
         sessionQueue.async {
+            if let session = self.session {
+                self.restoreLiveConfiguration()
+                if !session.isRunning { session.startRunning() }
+                self.publishSessionState()
+                return
+            }
             //init session
             self.session = AVCaptureSession()
             //start configuration
@@ -678,9 +738,11 @@ class CameraViewController: UIViewController {
             self.setupOutput()
             
             //commit configuration
+            self.configureLiveAudio(enabled: UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhoto.rawValue))
             self.session?.commitConfiguration()
             //start running it
             self.session?.startRunning()
+            self.publishSessionState()
         }
     }
     
@@ -691,6 +753,7 @@ class CameraViewController: UIViewController {
         
         sessionQueue.async {
             self.session?.stopRunning()
+            self.publishSessionState()
         }
     }
     
@@ -700,7 +763,9 @@ class CameraViewController: UIViewController {
         }
         
         sessionQueue.async {
+            self.restoreLiveConfiguration()
             self.session?.startRunning()
+            self.publishSessionState()
         }
     }
     
@@ -812,6 +877,16 @@ class CameraViewController: UIViewController {
                 photoOutput.isHighResolutionCaptureEnabled = true
             }
             photoOutput.maxPhotoQualityPrioritization = .quality
+            // Configure once before starting. Toggling only suspends/resumes the
+            // Live buffer, so it cannot tear down an in-flight capture pipeline.
+            if photoOutput.isLivePhotoCaptureSupported {
+                photoOutput.isLivePhotoCaptureEnabled = true
+                if #available(iOS 16.0, *) { photoOutput.preservesLivePhotoCaptureSuspendedOnSessionStop = true }
+                photoOutput.isLivePhotoCaptureSuspended = !UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhoto.rawValue)
+            }
+            liveSupportObservation = photoOutput.observe(\.isLivePhotoCaptureSupported, options: [.new]) { [weak self] _, _ in
+                self?.sessionQueue.async { self?.publishSessionState() }
+            }
             
             if let connection = photoOutput.connection(with: .video), connection.isVideoStabilizationSupported {
                 connection.preferredVideoStabilizationMode = .standard
@@ -848,6 +923,121 @@ class CameraViewController: UIViewController {
         }
     }
     
+    // All AVFoundation configuration stays on sessionQueue; all control state stays on main.
+    private func publishSessionState() {
+        let ready = session?.isRunning == true && photoOutput.connection(with: .video) != nil
+        let supported = photoOutput.isLivePhotoCaptureSupported && photoOutput.isLivePhotoCaptureEnabled
+        let audioActive = liveAudioInput != nil
+        DispatchQueue.main.async {
+            self.sessionReady = ready; self.livePhotoSupported = supported; self.liveAudioActive = audioActive
+            self.updateLivePhotoButton(); self.updateCaptureControls()
+        }
+    }
+    private func updateCaptureControls() {
+        let idle = !captureBusy && !livePhotoConfiguring
+        captureButton.isEnabled = idle && sessionReady && cameraPermissionAuthorized == .authorized && addPhotoPermissionAuthorized == .authorized
+        livePhotoButton.isEnabled = idle && sessionReady && livePhotoSupported
+        livePhotoAudioButton.isEnabled = idle && sessionReady && livePhotoSupported && livePhotoEnabled
+        for button in [albumButton, moreButton, tutorialsButton, moonCalendarButton, moonFinderButton] { button.isEnabled = !captureBusy }
+    }
+    private func updateLivePhotoButton() {
+        let active = livePhotoEnabled && livePhotoSupported
+        livePhotoButton.configuration?.image = UIImage(systemName: active ? "livephoto" : "livephoto.slash")
+        livePhotoButton.tintColor = liveRecording ? .systemRed : active ? .systemYellow : .moonColor
+        livePhotoButton.alpha = active ? 1 : 0.65
+        livePhotoButton.isSelected = active
+        let key = !livePhotoSupported ? "live_photo.unavailable" : liveRecording ? "live_photo.recording" : active ? "live_photo.on" : "live_photo.off"
+        livePhotoButton.accessibilityValue = String(localized: String.LocalizationValue(key))
+        let audible = active && liveAudioActive
+        livePhotoAudioButton.configuration?.image = UIImage(systemName: audible ? "mic" : "mic.slash")
+        livePhotoAudioButton.tintColor = audible ? .systemYellow : .moonColor
+        livePhotoAudioButton.alpha = audible ? 1 : 0.65
+        livePhotoAudioButton.isSelected = audible
+        livePhotoAudioButton.accessibilityValue = String(localized: String.LocalizationValue(audible ? "live_photo.audio.on" : "live_photo.audio.off"))
+    }
+    private func restoreLiveConfiguration() {
+        guard let session, inProgressPhotoCaptureDelegates.isEmpty else { return }
+        let enabled = UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhoto.rawValue)
+        session.beginConfiguration()
+        configureLiveAudio(enabled: enabled && photoOutput.isLivePhotoCaptureSupported)
+        if photoOutput.isLivePhotoCaptureSupported {
+            photoOutput.isLivePhotoCaptureEnabled = true
+            photoOutput.isLivePhotoCaptureSuspended = !enabled
+        }
+        session.commitConfiguration()
+    }
+    private func configureLiveAudio(enabled: Bool) {
+        guard let session else { return }
+        if enabled && UserDefaults.standard.bool(forKey: UserDefaults.Custom.LivePhotoAudio.rawValue)
+            && AVCaptureDevice.authorizationStatus(for: .audio) == .authorized {
+            if liveAudioInput == nil, let device = AVCaptureDevice.default(for: .audio),
+               let input = try? AVCaptureDeviceInput(device: device), session.canAddInput(input) {
+                session.addInput(input); liveAudioInput = input
+            }
+        } else if let input = liveAudioInput {
+            session.removeInput(input); liveAudioInput = nil
+        }
+    }
+    private func applyLiveConfiguration(enabled: Bool, audio: Bool) {
+        livePhotoConfiguring = true; updateCaptureControls()
+        sessionQueue.async {
+            guard let session = self.session, self.inProgressPhotoCaptureDelegates.isEmpty,
+                  self.photoOutput.isLivePhotoCaptureSupported, self.photoOutput.isLivePhotoCaptureEnabled else {
+                DispatchQueue.main.async { self.livePhotoConfiguring = false; self.updateCaptureControls() }
+                return
+            }
+            UserDefaults.standard.set(audio, forKey: UserDefaults.Custom.LivePhotoAudio.rawValue)
+            session.beginConfiguration()
+            self.configureLiveAudio(enabled: enabled)
+            self.photoOutput.isLivePhotoCaptureSuspended = !enabled
+            session.commitConfiguration()
+            UserDefaults.standard.set(enabled, forKey: UserDefaults.Custom.LivePhoto.rawValue)
+            let hasAudio = self.liveAudioInput != nil
+            DispatchQueue.main.async {
+                self.livePhotoEnabled = enabled; self.livePhotoAudioEnabled = audio; self.liveAudioActive = hasAudio; self.livePhotoConfiguring = false
+                self.updateLivePhotoButton(); self.updateCaptureControls()
+                let key = enabled ? (hasAudio ? "live_photo.on" : "live_photo.silent") : "live_photo.off"
+                self.showToast(text: String(localized: String.LocalizationValue(key)))
+            }
+        }
+    }
+    @objc private func toggleLivePhoto() {
+        guard !captureBusy, !livePhotoConfiguring, livePhotoSupported, sessionReady else { return }
+        applyLiveConfiguration(enabled: !livePhotoEnabled, audio: livePhotoAudioEnabled)
+    }
+    @objc private func toggleLivePhotoAudio() {
+        guard livePhotoEnabled, !captureBusy, !livePhotoConfiguring, livePhotoSupported, sessionReady else { return }
+        if liveAudioActive {
+            applyLiveConfiguration(enabled: true, audio: false); return
+        }
+        let enable = { [weak self] (allowed: Bool) in
+            DispatchQueue.main.async {
+                guard let self else { return }
+                if allowed { self.applyLiveConfiguration(enabled: true, audio: true) }
+                else {
+                    self.livePhotoConfiguring = false; self.updateCaptureControls()
+                    self.showToast(text: String(localized: "live_photo.audio.denied"))
+                }
+            }
+        }
+        // Merely enabling Live never asks for or captures microphone audio.
+        switch AVCaptureDevice.authorizationStatus(for: .audio) {
+        case .authorized: enable(true)
+        case .notDetermined:
+            livePhotoConfiguring = true; updateCaptureControls()
+            AVCaptureDevice.requestAccess(for: .audio, completionHandler: enable)
+        default: enable(false)
+        }
+    }
+    private func showCaptureError(_ error: Error) {
+        LivePhotoRecovery.present(error: error, in: self)
+    }
+    @objc private func offerPendingLivePhotos() {
+        LivePhotoRecovery.offer(in: self) { [weak self] in
+            self?.captureBusy == false && self?.livePhotoConfiguring == false
+        }
+    }
+
     //MARK:- Actions
     @objc
     func capturePhoto(_ sender: UIButton?) {
@@ -857,7 +1047,32 @@ class CameraViewController: UIViewController {
         guard cameraPermissionAuthorized == .authorized, addPhotoPermissionAuthorized == .authorized else {
             return
         }
+        guard !captureBusy, !livePhotoConfiguring, sessionReady else { return }
+        let wantsLivePhoto = livePhotoEnabled
+        // Begin before AVFoundation starts recording, not after its callbacks.
+        let backgroundTask = wantsLivePhoto ? LivePhotoBackgroundTask() : nil
+        captureBusy = true; isProcessing = true; updateCaptureControls()
         sessionQueue.async {
+            var handedOff = false
+            defer { if !handedOff { backgroundTask?.end() } }
+            guard self.session?.isRunning == true else {
+                DispatchQueue.main.async { self.captureBusy = false; self.isProcessing = false; self.updateCaptureControls() }; return
+            }
+            var resources: LivePhotoResources?
+            if wantsLivePhoto {
+                guard self.photoOutput.isLivePhotoCaptureEnabled, self.photoOutput.isLivePhotoCaptureSupported,
+                      !self.photoOutput.isLivePhotoCaptureSuspended else {
+                    DispatchQueue.main.async {
+                        self.captureBusy = false; self.isProcessing = false; self.updateCaptureControls()
+                        self.showCaptureError(ImageSaver.LivePhotoSaveError.missingMovie)
+                    }; return
+                }
+                do { resources = try LivePhotoResources() }
+                catch {
+                    DispatchQueue.main.async { self.captureBusy = false; self.isProcessing = false; self.updateCaptureControls(); self.showCaptureError(error) }
+                    return
+                }
+            }
             if let photoOutputConnection = self.photoOutput.connection(with: .video) {
                 photoOutputConnection.videoOrientation = videoPreviewLayerOrientation
             }
@@ -873,14 +1088,16 @@ class CameraViewController: UIViewController {
                 photoSettings.flashMode = .off
             }
             
-            photoSettings.isHighResolutionPhotoEnabled = true
+            if #available(iOS 16.0, *) { photoSettings.maxPhotoDimensions = self.photoOutput.maxPhotoDimensions }
+            else { photoSettings.isHighResolutionPhotoEnabled = self.photoOutput.isHighResolutionCaptureEnabled }
+            photoSettings.livePhotoMovieFileURL = resources?.movieURL
             if let previewPhotoPixelFormatType = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhotoPixelFormatType]
             }
             
             photoSettings.photoQualityPrioritization = .speed
             
-            let photoCaptureProcessor = PhotoCaptureProcessor(with: photoSettings, willCapturePhotoAnimation: {
+            let photoCaptureProcessor = PhotoCaptureProcessor(with: photoSettings, resources: resources, backgroundTask: backgroundTask, willCapturePhotoAnimation: {
                 // Flash the screen to signal that AVCam took a photo.
                 DispatchQueue.main.async {
                     self.isProcessing = true
@@ -889,13 +1106,15 @@ class CameraViewController: UIViewController {
                         self.previewView.videoPreviewLayer.opacity = 1
                     }
                 }
-            }, completionHandler: { photoCaptureProcessor in
+            }, completionHandler: { photoCaptureProcessor, error in
                 // When the capture is complete, remove a reference to the photo capture delegate so it can be deallocated.
                 self.sessionQueue.async {
                     self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = nil
                 }
                 DispatchQueue.main.async {
-                    self.isProcessing = false
+                    self.isProcessing = false; self.captureBusy = false
+                    self.updateCaptureControls()
+                    if let error { self.showCaptureError(error) }
                 }
             }, photoProcessingHandler: { animate in
                 // Animates a spinner while photo is processing
@@ -908,12 +1127,14 @@ class CameraViewController: UIViewController {
                         self.spinner.stopAnimating()
                     }
                 }
-            }
-            )
+            }, liveRecordingHandler: { recording in
+                DispatchQueue.main.async { self.liveRecording = recording; self.updateLivePhotoButton() }
+            })
             
             photoCaptureProcessor.location = Location.shared.location
             
             self.inProgressPhotoCaptureDelegates[photoCaptureProcessor.requestedPhotoSettings.uniqueID] = photoCaptureProcessor
+            handedOff = true
             self.photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureProcessor)
         }
     }

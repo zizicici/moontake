@@ -13,6 +13,8 @@ extension UserDefaults {
         case AppAlbum = "com.zizicici.moontake.settings.appAlbum"
         case SaveToAlbum = "com.zizicici.moontake.settings.saveToAlbum"
         case WatermarkType = "com.zizicici.moontake.settings.watermarkType"
+        case LivePhotoAudio = "com.zizicici.moontake.settings.livePhotoAudio"
+        case LivePhoto = "com.zizicici.moontake.settings.livePhoto"
         case ISO = "com.zizicici.moontake.settings.iso"
         case WhiteBalance = "com.zizicici.moontake.settings.whiteBalance"
         case LocationMetadataDisabled = "com.zizicici.moontake.settings.locationMetadataDisabled"

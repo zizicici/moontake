@@ -12,11 +12,28 @@ import UIKit
 class AlbumManager: NSObject {
     static let shared = AlbumManager()
     
-    func addImage(data: Data, fileType: FileType, width: Int, height: Int, latitude: Double?, longitude: Double?) {
-        let dataId = UUID().uuidString
-        if saveDataToDocumentsDirectory(data: data, fileName: dataId) {
-            let result = AppDatabase.shared.add(imageInfo: ImageInfo(dataId: dataId, fileType: fileType, width: width, height: height, latitude: latitude, longitude: longitude))
-            print(result)
+    @discardableResult
+    func addImage(data: Data, fileType: FileType, width: Int, height: Int, latitude: Double?, longitude: Double?, livePhotoMovieURL: URL? = nil, dataId: String = UUID().uuidString, date: Date? = nil) -> Bool {
+        var info = ImageInfo(dataId: dataId, fileType: fileType, width: width, height: height, latitude: latitude, longitude: longitude)
+        info.creationTime = date?.nanoSecondSince1970
+        // Replaying a durable save uses the same dataId, including a crash after
+        // the database commit but before the pending-save manifest was updated.
+        if AppDatabase.shared.containsImage(dataId: dataId) { return true }
+        guard saveDataToDocumentsDirectory(data: data, fileName: dataId) else { return false }
+        do {
+            if let livePhotoMovieURL {
+                guard let target = info.pairedVideoURL else { throw CocoaError(.fileWriteUnknown) }
+                // Remove only this job's incomplete pre-database copy, if any.
+                if FileManager.default.fileExists(atPath: target.path) { try FileManager.default.removeItem(at: target) }
+                try LivePhotoSaveStore.linkOrCopy(from: livePhotoMovieURL, to: target)
+            }
+            guard AppDatabase.shared.add(imageInfo: info) else { throw CocoaError(.fileWriteUnknown) }
+            return true
+        } catch {
+            for url in [info.originURL, info.thumbnailURL, info.pairedVideoURL].compactMap({ $0 }) {
+                try? FileManager.default.removeItem(at: url)
+            }
+            return false
         }
     }
 

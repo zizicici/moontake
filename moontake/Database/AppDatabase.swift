@@ -60,12 +60,18 @@ final class AppDatabase {
 }
 
 extension AppDatabase {
+    func containsImage(dataId: String) -> Bool {
+        (try? dbWriter?.read { db in
+            try ImageInfo.filter(Column("data_id") == dataId).fetchCount(db) > 0
+        }) == true
+    }
+
     func add(imageInfo: ImageInfo) -> Bool {
-        guard imageInfo.id == nil else {
+        guard imageInfo.id == nil, let dbWriter else {
             return false
         }
         do {
-            try dbWriter?.write{ db in
+            try dbWriter.write{ db in
                 var saveImageInfo = imageInfo
                 try saveImageInfo.save(db)
             }
