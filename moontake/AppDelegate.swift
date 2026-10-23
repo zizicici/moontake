@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         _ = AppDatabase.shared
         MoreKit.configure(
-            productID: "com.zizicici.moontake.iap.lifetime",
+            productID: ProStatus.productID,
+            subscriptionProductIDs: ProStatus.subscriptionProductIDs,
             membershipKey: UserDefaults.Custom.LifetimeMemberShip.rawValue
         )
         MoreKitAppearance.shared = MoreKitAppearance(

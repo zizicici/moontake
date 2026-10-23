@@ -256,21 +256,10 @@ class ImageDetailViewController: UIViewController {
     }
     
     func saveOriginPhoto() {
-        if User.shared.proTier() == .lifetime {
+        if ProStatus.isPro {
             savePhoto(for: [.origin])
         } else {
-            let alertController = UIAlertController(title: String(localized: "detail.alert.membership.title"), message: nil, preferredStyle: .actionSheet)
-            let cancelAction = UIAlertAction(title: String(localized: "action.cancel"), style: .cancel) { _ in
-                //
-            }
-            let learnMoreAction = UIAlertAction(title: String(localized: "membership.learn_more"), style: .default) { [weak self] _ in
-                self?.jumpToMore()
-            }
-
-            alertController.addAction(cancelAction)
-            alertController.addAction(learnMoreAction)
-            alertController.popoverPresentationController?.sourceView = saveButton
-            present(alertController, animated: true, completion: nil)
+            presentMoontakePaywall(highlighting: .originals)
         }
     }
     
@@ -383,11 +372,6 @@ class ImageDetailViewController: UIViewController {
         view.makeToast(text, duration: 0.5, position: .center, title: nil, image: nil, style: style, completion: nil)
     }
     
-    func jumpToMore() {
-        let settingsVC = makeMorePageViewController()
-        let nav = UINavigationController(rootViewController: settingsVC)
-        present(nav, animated: true)
-    }
 }
 
 extension ImageDetailViewController {

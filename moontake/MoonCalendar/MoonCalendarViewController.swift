@@ -299,7 +299,7 @@ final class MoonCalendarViewController: UIViewController {
 
     private func showMembership() {
         guard presentedViewController == nil else { return }
-        present(UINavigationController(rootViewController: makeMorePageViewController()), animated: true)
+        presentMoontakePaywall(highlighting: .calendar)
     }
 
     private func formatted(_ date: Date, template: String) -> String {

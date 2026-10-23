@@ -16,6 +16,7 @@ struct Language {
         case es419
         case fr
         case ja
+        case ko
         case ptBR
         case ptPT
         case ru
@@ -40,6 +41,8 @@ struct Language {
                 "Français"
             case .ja:
                 "日本語"
+            case .ko:
+                "한국어"
             case .ptBR:
                 "Português (Brasil)"
             case .ptPT:
@@ -96,6 +99,8 @@ struct Language {
             return .fr
         case "ja":
             return .ja
+        case "ko":
+            return .ko
         case "pt-BR":
             return .ptBR
         case "pt-PT":
@@ -127,6 +132,8 @@ struct Language {
             return .fr
         case "ja":
             return .ja
+        case "ko":
+            return .ko
         case "pt":
             return .ptBR
         case "ru":

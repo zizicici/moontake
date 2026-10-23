@@ -101,6 +101,7 @@ struct Settings {
     }
     
     func getAppAlbumSettings() -> AppAlbumOption {
+        guard ProStatus.isPro else { return .enable }
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.AppAlbum.rawValue)
         return AppAlbumOption(rawValue: rawValue ?? 0) ?? .enable
     }
@@ -108,7 +109,7 @@ struct Settings {
     @discardableResult
     func save(option: AppAlbumOption) -> Bool {
         let allowSave: Bool
-        if User.shared.proTier() == .none {
+        if !ProStatus.isPro {
             switch option {
             case .enable:
                 allowSave = true
@@ -126,13 +127,14 @@ struct Settings {
     }
 
     func getSaveToAlbumSettings() -> SaveToAlbumOption {
+        guard ProStatus.isPro else { return .photoWithWatermark }
         let rawValue = UserDefaults.standard.getInt(forKey: UserDefaults.Custom.SaveToAlbum.rawValue)
         return SaveToAlbumOption(rawValue: rawValue ?? 0) ?? .photoWithWatermark
     }
     
     func save(option: SaveToAlbumOption) -> Bool {
         var allowSave: Bool = false
-        if User.shared.proTier() == .none {
+        if !ProStatus.isPro {
             switch option {
             case .photoWithWatermark:
                 allowSave = true
@@ -190,7 +192,7 @@ struct Settings {
 
 }
 
-private enum SettingsSelectionError: LocalizedError {
+enum SettingsSelectionError: LocalizedError {
     case proRequired
 
     var errorDescription: String? {
@@ -212,7 +214,7 @@ extension Settings.AppAlbumOption: SettingsOption {
 
     static func getFooter() -> String? {
         let baseFooter = String(localized: "settings.app_album.footer")
-        guard User.shared.proTier() != .lifetime else {
+        guard !ProStatus.isPro else {
             return baseFooter
         }
 
@@ -247,7 +249,7 @@ extension Settings.SaveToAlbumOption: SettingsOption {
 
     static func getFooter() -> String? {
         let baseFooter = String(localized: "settings.save.footer")
-        guard User.shared.proTier() != .lifetime else {
+        guard !ProStatus.isPro else {
             return baseFooter
         }
 

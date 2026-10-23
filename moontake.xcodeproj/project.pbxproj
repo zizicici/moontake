@@ -278,6 +278,7 @@
 				"zh-Hant",
 				"zh-HK",
 				ja,
+				ko,
 				fr,
 				de,
 				uk,
@@ -805,7 +806,7 @@
 			repositoryURL = "https://github.com/zizicici/MoreKit";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.1;
+				minimumVersion = 2.1.0;
 			};
 		};
 		452FF7A330681DF800B9B85F /* XCRemoteSwiftPackageReference "SkyKit" */ = {

@@ -26,14 +26,14 @@ enum HintInfo: Hashable {
         switch self {
         case .empty(let proTier):
             switch proTier {
-            case .lifetime:
+            case .lifetime, .subscription:
                 return nil
             case .none:
                 return String(localized: "hint.promotion")
             }
         case .normal(let proTier):
             switch proTier {
-            case .lifetime:
+            case .lifetime, .subscription:
                 return String(localized: "hint.wish")
             case .none:
                 return String(localized: "hint.promotion")
@@ -44,9 +44,9 @@ enum HintInfo: Hashable {
     var shouldShowPurchaseEntry: Bool {
         switch self {
         case .empty(let proTier):
-            return proTier != .lifetime
+            return proTier == .none
         case .normal(let proTier):
-            return proTier != .lifetime
+            return proTier == .none
         }
     }
 }

@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "id": "D5A4D483-328C-43D4-B90E-792C45F5D32C",
+      "name": "StoreKit",
+      "options": {}
+    }
+  ],
+  "defaultOptions": {
+    "environmentVariableEntries": [
+      {
+        "key": "MOONTAKE_STOREKIT_TESTS",
+        "value": "1"
+      }
+    ],
+    "storeKitConfigurationFileReference": {
+      "identifier": "Memberships.storekit"
+    },
+    "targetForVariableExpansion": {
+      "containerPath": "container:moontake.xcodeproj",
+      "identifier": "63F8069C2A59ACCC00135630",
+      "name": "moontake"
+    }
+  },
+  "testTargets": [
+    {
+      "parallelizable": false,
+      "selectedTests": [
+        "MembershipPurchaseTests"
+      ],
+      "target": {
+        "containerPath": "container:moontake.xcodeproj",
+        "identifier": "63F806B22A59ACCD00135630",
+        "name": "moontakeTests"
+      }
+    }
+  ],
+  "version": 1
+}

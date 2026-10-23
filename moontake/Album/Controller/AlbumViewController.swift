@@ -131,7 +131,7 @@ class AlbumViewController: UIViewController {
             guard let self = self else { return }
             cell.update(with: item)
             cell.buttonClosure = { [weak self] in
-                self?.jumpToMore()
+                self?.presentMoontakePaywall(highlighting: .album)
             }
         }
         
@@ -184,7 +184,7 @@ class AlbumViewController: UIViewController {
         
         var targetImages: [ImageInfo]
         let targetCount = 12
-        if User.shared.proTier() != .lifetime && rawImages.count > targetCount {
+        if !ProStatus.isPro && rawImages.count > targetCount {
             targetImages = Array(rawImages.prefix(targetCount))
         } else {
             targetImages = rawImages
@@ -212,11 +212,6 @@ class AlbumViewController: UIViewController {
         updateAlbumMenu()
     }
     
-    func jumpToMore() {
-        let settingsVC = makeMorePageViewController()
-        let nav = UINavigationController(rootViewController: settingsVC)
-        present(nav, animated: true)
-    }
 
     func confirmClearAlbum() {
         let alertController = UIAlertController(

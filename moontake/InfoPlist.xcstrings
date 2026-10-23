@@ -87,6 +87,12 @@
             "state" : "translated",
             "value" : "moontake"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moontake"
+          }
         }
       }
     },
@@ -175,6 +181,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اسمح بالوصول إلى الكاميرا لالتقاط الصور باستخدام moontake"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moontake로 사진을 촬영하려면 카메라 접근을 허용해 주세요."
           }
         }
       }
@@ -265,6 +277,12 @@
             "state" : "translated",
             "value" : "اسمح بالوصول إلى الموقع للعثور على القمر وإضافة إحداثيات GPS إلى الصور عند تفعيل الخيار."
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "달을 찾기 위해 위치 접근을 허용해 주세요. 사진 위치 기록을 켠 경우 사진에 GPS 좌표도 저장됩니다."
+          }
         }
       }
     },
@@ -353,6 +371,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usa el movimiento del dispositivo y la brújula para orientar la cámara hacia la Luna."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기의 움직임과 나침반을 사용해 카메라가 달을 향하도록 안내합니다."
           }
         }
       }
@@ -443,6 +467,12 @@
             "state" : "translated",
             "value" : "اسمح بالوصول إلى مكتبة الصور لحفظ الصور مباشرةً في مكتبة الصور عند استخدام moontake"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "moontake를 사용할 때 사진을 사진 보관함에 바로 저장하려면 사진 보관함 접근을 허용해 주세요."
+          }
         }
       }
     },
@@ -531,6 +561,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "用於錄製 Live 照片的聲音。即使不允許存取麥克風，仍可拍攝靜音 Live 照片。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Photo와 함께 사운드를 녹음합니다. 마이크 접근을 허용하지 않아도 소리 없는 Live Photo를 촬영할 수 있습니다."
           }
         }
       }

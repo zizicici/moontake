@@ -133,7 +133,7 @@ private enum MorePageFactory {
                 .init(name: "JPL Lunar Ephemeris", version: "DE440", urlString: "https://ssd.jpl.nasa.gov/planets/eph_export.html"),
                 .init(name: "GRDB.swift", version: "6.29.3", urlString: "https://github.com/groue/GRDB.swift"),
                 .init(name: "Kingfisher", version: "7.12.0", urlString: "https://github.com/onevcat/Kingfisher"),
-                .init(name: "MoreKit", version: "2.0.1", urlString: "https://github.com/zizicici/MoreKit"),
+                .init(name: "MoreKit", version: "2.1.0", urlString: "https://github.com/zizicici/MoreKit"),
                 .init(name: "SkyKit", version: "1.0.0", urlString: "https://github.com/zizicici/SkyKit"),
                 .init(name: "SnapKit", version: "5.7.1", urlString: "https://github.com/SnapKit/SnapKit"),
                 .init(name: "Toast", version: "5.1.1", urlString: "https://github.com/scalessec/Toast-Swift"),
@@ -150,6 +150,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
     }
 
     private enum ItemID: String {
+        case pro
         case language
         case iso
         case whiteBalance
@@ -161,7 +162,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
 
     func sections(for controller: MoreViewController) -> [MoreSectionType] {
         [
-            .membership,
+            .custom(MoreCustomSection(id: "pro", items: [.init(id: ItemID.pro.rawValue, title: "moontake Pro")])),
             .custom(settingsSection()),
             .custom(photoSavingSection()),
             .contact,
@@ -176,6 +177,8 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         }
 
         switch itemID {
+        case .pro:
+            controller.presentMoontakePaywall()
         case .language:
             controller.jumpToSettings()
         case .iso:
@@ -183,10 +186,27 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
         case .whiteBalance:
             controller.enterSettings(Settings.WhiteBalanceOption.self)
         case .appAlbum:
-            controller.enterSettings(Settings.AppAlbumOption.self)
+            showProSettings(Settings.AppAlbumOption.self, from: controller)
         case .saveOptions:
-            controller.enterSettings(Settings.SaveToAlbumOption.self)
+            showProSettings(Settings.SaveToAlbumOption.self, from: controller)
         }
+    }
+
+    func moreViewController(_ controller: MoreViewController, cellFor item: MoreCustomItem) -> UITableViewCell? {
+        guard item.id == ItemID.pro.rawValue else { return nil }
+        return MoontakeProEntryCell(isPro: ProStatus.isPro) { [weak controller] in
+            controller?.presentMoontakePaywall()
+        }
+    }
+
+    private func showProSettings<T: SettingsOption>(_ type: T.Type, from controller: UIViewController) {
+        let options = SettingOptionsViewController<T>()
+        options.errorHandler = { controller, error in
+            guard error is SettingsSelectionError else { return false }
+            controller.presentMoontakePaywall()
+            return true
+        }
+        controller.navigationController?.pushViewController(options, animated: true)
     }
 
     func additionalReloadNotifications() -> [Notification.Name] {
@@ -216,7 +236,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
     }
 
     private func proBadgeStyle() -> MoreBadgeStyle? {
-        guard User.shared.proTier() != .lifetime else {
+        guard !ProStatus.isPro else {
             return nil
         }
 

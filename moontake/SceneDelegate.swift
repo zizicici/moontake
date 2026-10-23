@@ -17,6 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["MOONTAKE_STOREKIT_TESTS"] == "1" {
+            window?.rootViewController = UIViewController()
+            window?.makeKeyAndVisible()
+            return
+        }
+        #endif
         window?.rootViewController = CameraViewController()
         window?.makeKeyAndVisible()
     }
