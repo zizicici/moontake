@@ -245,11 +245,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
             return nil
         }
 
-        return MoreBadgeStyle(
-            text: "Pro",
-            textColor: .skyColor,
-            backgroundColor: .systemYellow
-        )
+        return MoontakeProBenefits.badgeStyle
     }
 
     private func settingsSection() -> MoreCustomSection {

@@ -86,7 +86,7 @@ final class TutorialsViewController: UIViewController, UIPopoverPresentationCont
                         let popover = TipUIPopoverViewController(tip, sourceItem: self.anchor)
                         popover.imageSize = CGSize(width: 24, height: 24)
                         if #available(iOS 18.0, *) {
-                            popover.imageStyle = Color(uiColor: .skyColor)
+                            popover.imageStyle = Color(uiColor: CameraTutorialStep.symbolColor)
                         }
                         popover.presentationDelegate = self
                         self.show(popover)
@@ -212,7 +212,7 @@ private final class LegacyCameraTipController: UIViewController {
         close.setContentHuggingPriority(.required, for: .horizontal)
         let icon = UIImageView(image: UIImage(systemName: step.symbolName))
         icon.preferredSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular)
-        icon.tintColor = .skyColor
+        icon.tintColor = CameraTutorialStep.symbolColor
         icon.adjustsImageSizeForAccessibilityContentSizeCategory = true
         icon.setContentHuggingPriority(.required, for: .horizontal)
         icon.setContentCompressionResistancePriority(.required, for: .horizontal)

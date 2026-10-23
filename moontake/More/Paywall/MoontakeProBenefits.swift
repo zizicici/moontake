@@ -44,6 +44,7 @@ enum MoontakeProFeature: String, CaseIterable {
 }
 
 enum MoontakeProBenefits {
+    static let badgeStyle = MoreBadgeStyle(text: "Pro", textColor: .skyColor, backgroundColor: .systemYellow)
     static let title = "moontake Pro"
     static var features: [MoontakePaywallConfiguration.Feature] { MoontakeProFeature.allCases.map(\.comparison) }
 }

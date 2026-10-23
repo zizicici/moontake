@@ -103,10 +103,11 @@ final class LivePhotoTests: XCTestCase {
       XCTAssertLessThanOrEqual(sound.frame.maxX, live.frame.minX)
       XCTAssertEqual(locationButton.frame.width, 44, accuracy: 0.1)
       XCTAssertEqual(live.frame.width, 44, accuracy: 0.1)
-      XCTAssertEqual(sound.frame.width, 44, accuracy: 0.1)
+      XCTAssertEqual(sound.frame.width, 0, accuracy: 0.1)
       XCTAssertEqual(live.frame.maxX, width - 6, accuracy: 0.1)
     }
     XCTAssertFalse(sound.isSelected)
+    XCTAssertTrue(sound.isHidden, "The microphone is only shown when Live Photo is on")
     XCTAssertFalse(UserDefaults.standard.bool(forKey: keys[1]))
   }
 

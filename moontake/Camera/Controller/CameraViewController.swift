@@ -217,7 +217,6 @@ class CameraViewController: UIViewController {
         button.accessibilityLabel = String(localized: "location.title")
         button.accessibilityIdentifier = "camera.location"
         button.alpha = 0.65
-        button.showsMenuAsPrimaryAction = true
         
         return button
     }()
@@ -257,6 +256,7 @@ class CameraViewController: UIViewController {
         button.accessibilityIdentifier = "camera.livePhotoAudio"
         button.accessibilityLabel = String(localized: "live_photo.audio.title")
         button.accessibilityHint = String(localized: "live_photo.audio.hint")
+        button.isHidden = true
         return button
     }()
     private let moreButton: UIButton = {
@@ -498,6 +498,7 @@ class CameraViewController: UIViewController {
             make.height.width.equalTo(44)
             make.bottom.equalTo(previewView).inset(6)
         }
+        locationButton.addTarget(self, action: #selector(toggleLocation), for: .touchUpInside)
         view.addSubview(locationNameButton)
         locationNameButton.snp.makeConstraints { make in
             make.leading.equalTo(locationButton.snp.trailing).offset(6)
@@ -508,7 +509,7 @@ class CameraViewController: UIViewController {
         locationNameButton.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         locationNameButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         locationNameButton.addTarget(self, action: #selector(setupCustomLocationName), for: .touchUpInside)
-        reloadLocationMenu()
+        updateLocationButtons()
         
         permissionView.snp.makeConstraints { make in
             make.edges.equalTo(previewView)
@@ -529,10 +530,11 @@ class CameraViewController: UIViewController {
             make.width.height.equalTo(44)
         }
         livePhotoAudioButton.snp.makeConstraints { make in
-            make.trailing.equalTo(livePhotoButton.snp.leading).offset(-6)
+            make.trailing.equalTo(livePhotoButton.snp.leading)
             make.leading.greaterThanOrEqualTo(locationNameButton.snp.trailing).offset(6)
             make.centerY.equalTo(locationButton)
-            make.width.height.equalTo(44)
+            make.width.equalTo(0)
+            make.height.equalTo(44)
         }
         livePhotoAudioButton.addTarget(self, action: #selector(toggleLivePhotoAudio), for: .touchUpInside)
         livePhotoButton.addTarget(self, action: #selector(toggleLivePhoto), for: .touchUpInside)
@@ -594,8 +596,8 @@ class CameraViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(ISOUpdated), name: NSNotification.Name.ISOUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshSharePrompt), name: .SettingsUpdate, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(whiteBalanceUpdated), name: NSNotification.Name.WhiteBalanceUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationAuthorizationDidChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadLocationMenu), name: NSNotification.Name.LocationInformationDidChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLocationButtons), name: NSNotification.Name.LocationAuthorizationDidChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLocationButtons), name: NSNotification.Name.LocationInformationDidChanged, object: nil)
 
         observation = observe(\.presentationController, options: [.old, .new]) { [weak self] _, change in
             print("presentationController changed")
@@ -987,14 +989,19 @@ class CameraViewController: UIViewController {
     private func updateLivePhotoButton() {
         let active = livePhotoEnabled && livePhotoSupported
         livePhotoButton.configuration?.image = UIImage(systemName: active ? "livephoto" : "livephoto.slash")
-        livePhotoButton.tintColor = liveRecording ? .systemRed : active ? .systemYellow : .moonColor
+        livePhotoButton.tintColor = liveRecording ? .systemRed : .moonColor
         livePhotoButton.alpha = active ? 1 : 0.65
         livePhotoButton.isSelected = active
         let key = !livePhotoSupported ? "live_photo.unavailable" : liveRecording ? "live_photo.recording" : active ? "live_photo.on" : "live_photo.off"
         livePhotoButton.accessibilityValue = String(localized: String.LocalizationValue(key))
         let audible = active && liveAudioActive
+        livePhotoAudioButton.isHidden = !active
+        livePhotoAudioButton.snp.updateConstraints { make in
+            make.width.equalTo(active ? 44 : 0)
+            make.trailing.equalTo(livePhotoButton.snp.leading).offset(active ? -6 : 0)
+        }
         livePhotoAudioButton.configuration?.image = UIImage(systemName: audible ? "mic" : "mic.slash")
-        livePhotoAudioButton.tintColor = audible ? .systemYellow : .moonColor
+        livePhotoAudioButton.tintColor = .moonColor
         livePhotoAudioButton.alpha = audible ? 1 : 0.65
         livePhotoAudioButton.isSelected = audible
         livePhotoAudioButton.accessibilityValue = String(localized: String.LocalizationValue(audible ? "live_photo.audio.on" : "live_photo.audio.off"))
@@ -1558,63 +1565,34 @@ extension CameraViewController {
     }
 
     @objc
-    func reloadLocationMenu() {
+    func updateLocationButtons() {
         let authorization = Location.shared.authorizationStatus()
         let authorized = authorization == .authorizedAlways || authorization == .authorizedWhenInUse
         let active = authorized && !Location.shared.manualDisable
         locationButton.configuration?.image = UIImage(systemName: active ? "mappin.and.ellipse" : "mappin.slash")
-        locationButton.tintColor = active ? .systemYellow : .moonColor
+        locationButton.tintColor = .moonColor
         locationButton.alpha = active ? 1 : 0.65
         locationButton.isSelected = active
         locationNameButton.isHidden = !active
         locationNameButton.isSelected = active
         locationNameButton.tintColor = locationButton.tintColor
         let name = CustomSettings.shared.locationName?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let title = name.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "location.title")
+        let title = name.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "location.custom.none")
         locationNameButton.configuration?.title = title
         locationNameButton.accessibilityLabel = title
-        
-        var menuChildren: [UIMenuElement] = []
-        
-        switch authorization {
+    }
+
+    @objc private func toggleLocation() {
+        switch Location.shared.authorizationStatus() {
         case .notDetermined:
-            let requestPermissionAction = UIAction(title: String(localized: "location.permission.request_access"), image: UIImage(systemName: "mappin.circle")) { _ in
-                Location.shared.requestAuthorization()
-            }
-            menuChildren.append(requestPermissionAction)
+            Location.shared.requestAuthorization()
         case .restricted, .denied:
-            let settingsAction = UIAction(title: String(localized: "location.permission.denied"), image: UIImage(systemName: "gearshape.circle")) { [weak self] _ in
-                self?.jumpToSettings()
-            }
-            menuChildren.append(settingsAction)
+            jumpToSettings()
         case .authorizedAlways, .authorizedWhenInUse:
-            if Location.shared.manualDisable {
-                let enableAction = UIAction(title: String(localized: "location.metadata.enable"), image: UIImage(systemName: "mappin.circle")) { _ in
-                    Location.shared.manual(disable: false)
-                }
-                menuChildren.append(enableAction)
-            } else {
-                let disableAction = UIAction(title: String(localized: "location.metadata.disable"), image: UIImage(systemName: "mappin.slash.circle")) { _ in
-                    Location.shared.manual(disable: true)
-                }
-                menuChildren.append(disableAction)
-            }
+            Location.shared.manual(disable: !Location.shared.manualDisable)
         @unknown default:
             break
         }
-        
-        let customNameAction = UIAction(title: CustomSettings.shared.locationName ?? "", image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis")) { [weak self] action in
-            self?.setupCustomLocationName()
-        }
-        if #available(iOS 16.0, *) {
-            customNameAction.subtitle = String(localized: "location.custom.intro")
-        }
-        
-        let divider = UIMenu(title: String(localized: "location.custom.title"), options: . displayInline, children: [customNameAction])
-        
-        menuChildren.append(divider)
-        
-        locationButton.menu = UIMenu(children: menuChildren)
     }
     
     func stopLocationUpdateIfNeeded() {
@@ -1639,7 +1617,7 @@ extension CameraViewController {
             if let text = alertController.textFields?.first?.text {
                 let name = text.trimmingCharacters(in: .whitespacesAndNewlines)
                 CustomSettings.shared.locationName = name.isEmpty ? nil : name
-                self?.reloadLocationMenu()
+                self?.updateLocationButtons()
             } else {
                 //
             }

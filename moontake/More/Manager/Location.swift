@@ -37,7 +37,7 @@ class Location: NSObject {
             manualDisable = saved
         } else {
             // Preserve geotagging for existing authorized users. New users opt in
-            // from the photo-location menu, independently of finder permission.
+            // from the photo-location button, independently of finder permission.
             let status = locationManager.authorizationStatus
             manualDisable = status != .authorizedAlways && status != .authorizedWhenInUse
             UserDefaults.standard.set(manualDisable, forKey: key)

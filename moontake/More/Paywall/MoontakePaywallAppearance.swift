@@ -52,33 +52,36 @@ final class MoontakePaywallBackground: UIView {
 final class MoontakeProTitleView: UIView {
     private let name = UILabel()
     private let badge = UILabel()
+    private let badgeBackground = UIView()
+    private let badgeStyle: MoreBadgeStyle?
     private let stack = UIStackView()
     private let pointSize: CGFloat
     private let weight: UIFont.Weight
     private let textStyle: UIFont.TextStyle
 
-    init(pointSize: CGFloat, weight: UIFont.Weight, textStyle: UIFont.TextStyle, color: UIColor = .label) {
+    init(pointSize: CGFloat, weight: UIFont.Weight, textStyle: UIFont.TextStyle, color: UIColor = .label,
+         badgeStyle: MoreBadgeStyle? = nil) {
         self.pointSize = pointSize
         self.weight = weight
         self.textStyle = textStyle
+        self.badgeStyle = badgeStyle
         super.init(frame: .zero)
         name.text = "moontake"
         name.textColor = color
         name.adjustsFontForContentSizeCategory = true
-        badge.text = "Pro"
-        badge.textColor = .skyColor
+        badge.text = badgeStyle?.text ?? "Pro"
+        badge.textColor = badgeStyle?.textColor ?? .skyColor
         badge.adjustsFontForContentSizeCategory = true
-        let badgeBackground = UIView()
-        badgeBackground.backgroundColor = .moonColor
-        badgeBackground.layer.cornerRadius = 6
-        badgeBackground.layer.cornerCurve = .continuous
+        badgeBackground.backgroundColor = badgeStyle?.backgroundColor ?? .moonColor
+        badgeBackground.layer.cornerCurve = badgeStyle == nil ? .continuous : .circular
+        badgeBackground.insetsLayoutMarginsFromSafeArea = false
         badge.translatesAutoresizingMaskIntoConstraints = false
         badgeBackground.addSubview(badge)
         NSLayoutConstraint.activate([
-            badge.leadingAnchor.constraint(equalTo: badgeBackground.leadingAnchor, constant: 8),
-            badge.trailingAnchor.constraint(equalTo: badgeBackground.trailingAnchor, constant: -8),
-            badge.topAnchor.constraint(equalTo: badgeBackground.topAnchor, constant: 3),
-            badge.bottomAnchor.constraint(equalTo: badgeBackground.bottomAnchor, constant: -3)
+            badge.leadingAnchor.constraint(equalTo: badgeBackground.layoutMarginsGuide.leadingAnchor),
+            badge.trailingAnchor.constraint(equalTo: badgeBackground.layoutMarginsGuide.trailingAnchor),
+            badge.topAnchor.constraint(equalTo: badgeBackground.layoutMarginsGuide.topAnchor),
+            badge.bottomAnchor.constraint(equalTo: badgeBackground.layoutMarginsGuide.bottomAnchor)
         ])
         stack.addArrangedSubview(name)
         stack.addArrangedSubview(badgeBackground)
@@ -110,7 +113,20 @@ final class MoontakeProTitleView: UIView {
 
     private func updateTypography() {
         name.font = UIFontMetrics(forTextStyle: textStyle).scaledFont(for: .systemFont(ofSize: pointSize, weight: weight), compatibleWith: traitCollection)
-        badge.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: .systemFont(ofSize: pointSize >= 30 ? 15 : 12, weight: .bold), compatibleWith: traitCollection)
+        if let style = badgeStyle {
+            // Match MoreKit's settings badges, including Dynamic Type scaling.
+            let metrics = UIFontMetrics(forTextStyle: .caption2)
+            badge.font = metrics.scaledFont(for: style.font, compatibleWith: traitCollection)
+            func scaled(_ value: CGFloat) -> CGFloat { metrics.scaledValue(for: value, compatibleWith: traitCollection) }
+            badgeBackground.directionalLayoutMargins = .init(top: scaled(style.contentInsets.top),
+                leading: scaled(style.contentInsets.left), bottom: scaled(style.contentInsets.bottom),
+                trailing: scaled(style.contentInsets.right))
+            badgeBackground.layer.cornerRadius = scaled(style.cornerRadius)
+        } else {
+            badge.font = UIFontMetrics(forTextStyle: .caption1).scaledFont(for: .systemFont(ofSize: pointSize >= 30 ? 15 : 12, weight: .bold), compatibleWith: traitCollection)
+            badgeBackground.directionalLayoutMargins = .init(top: 3, leading: 8, bottom: 3, trailing: 8)
+            badgeBackground.layer.cornerRadius = 6
+        }
         invalidateIntrinsicContentSize()
     }
 }

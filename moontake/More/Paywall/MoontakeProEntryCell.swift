@@ -2,7 +2,8 @@ import UIKit
 
 final class MoontakeProEntryCell: UITableViewCell {
     private let gradient = CAGradientLayer()
-    private let titleView = MoontakeProTitleView(pointSize: 20, weight: .bold, textStyle: .title3, color: .white)
+    private let titleView = MoontakeProTitleView(pointSize: 20, weight: .bold, textStyle: .title3,
+                                               color: .white, badgeStyle: MoontakeProBenefits.badgeStyle)
     private let subtitleLabel = UILabel()
     private let button = UIButton(type: .system)
     private let row = UIStackView()
@@ -27,7 +28,7 @@ final class MoontakeProEntryCell: UITableViewCell {
         configuration.title = isPro ? String(localized: "pro.entry.viewBenefits") : String(localized: "paywall.choosePlan")
         configuration.titleAlignment = .center
         configuration.titleLineBreakMode = .byWordWrapping
-        configuration.baseBackgroundColor = .white
+        configuration.baseBackgroundColor = .moonColor
         configuration.baseForegroundColor = .skyColor
         configuration.cornerStyle = .fixed
         configuration.background.cornerRadius = 14

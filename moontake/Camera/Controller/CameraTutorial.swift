@@ -39,6 +39,7 @@ enum CameraTutorialStep: String, CaseIterable {
 
     static let basics: [Self] = [.zoom, .tapFocus, .focus, .exposure, .capture]
     static let tips: [Self] = [.livePhoto, .location, .moonFinder, .moonCalendar, .album, .settings]
+    static let symbolColor = UIColor { $0.userInterfaceStyle == .dark ? .moonColor : .skyColor }
 
     var instruction: String { String(localized: String.LocalizationValue("tutorial.camera." + rawValue)) }
 
@@ -71,9 +72,10 @@ struct CameraControlTip: Tip {
     var title: Text { Text(verbatim: step.instruction) }
     var image: Image? {
         if #available(iOS 18.0, *) { return Image(systemName: step.symbolName) }
-        // iOS 17 has no TipKit imageStyle property.
-        guard let symbol = UIImage(systemName: step.symbolName) else { return nil }
-        return Image(uiImage: symbol.withTintColor(.skyColor, renderingMode: .alwaysOriginal))
+        // iOS 17 has no imageStyle; keep the adaptive color in the symbol palette.
+        let configuration = UIImage.SymbolConfiguration(paletteColors: [CameraTutorialStep.symbolColor])
+        guard let symbol = UIImage(systemName: step.symbolName, withConfiguration: configuration) else { return nil }
+        return Image(uiImage: symbol).renderingMode(.original)
     }
     var options: [Option] { IgnoresDisplayFrequency(true) }
 
