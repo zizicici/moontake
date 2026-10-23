@@ -2,8 +2,43 @@ import XCTest
 import CoreLocation
 
 final class moontakeUITests: XCTestCase {
+    // These tests exercise other camera features; onboarding has its own tests.
+    private let completedTutorialArguments = [
+        "-com.zizicici.moontake.tutorial.camera.version", "1",
+        "-com.zizicici.moontake.tutorial.camera.seenTips",
+        "(livePhoto, location, moonFinder, moonCalendar, album, settings)",
+    ]
     override func setUpWithError() throws {
         continueAfterFailure = false
+    }
+
+    @MainActor
+    func testTutorialAdvancesThroughCameraGesturesWithoutNextButton() throws {
+#if targetEnvironment(simulator)
+        let app = XCUIApplication()
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US",
+                               "-com.zizicici.moontake.tutorial.camera.version", "0"]
+        app.launch()
+        defer { app.terminate() }
+        XCTAssertTrue(app.staticTexts["Spread or pinch two fingers to zoom."].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.buttons["Next"].exists)
+        let preview = app.otherElements["camera.preview"]
+        XCTAssertTrue(preview.waitForExistence(timeout: 5))
+        preview.pinch(withScale: 1.3, velocity: 1)
+        XCTAssertTrue(app.staticTexts["Tap your subject to focus."].waitForExistence(timeout: 5))
+        preview.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        XCTAssertTrue(app.staticTexts["Drag the slider to fine-tune focus."].waitForExistence(timeout: 5))
+        app.sliders["camera.focus"].adjust(toNormalizedSliderPosition: 0.7)
+        XCTAssertTrue(app.staticTexts["Tap − to darken, + to brighten."].waitForExistence(timeout: 5))
+        app.buttons["Lighten Image"].tap()
+        XCTAssertTrue(app.staticTexts["Hold steady and tap the shutter to shoot."].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["Next"].exists)
+        // End using the system close button. Never take a photo in this test.
+        app.buttons["Close"].tap()
+        XCTAssertTrue(app.buttons["camera.more"].waitForExistence(timeout: 5))
+#else
+        throw XCTSkip("Gesture verification is confined to the simulator; never capture a photo")
+#endif
     }
 
     @MainActor
@@ -229,7 +264,7 @@ final class moontakeUITests: XCTestCase {
     @MainActor
     func testLiveSoundDefaultsAndSilentToggleWithoutCapture() throws {
         let app = XCUIApplication()
-        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"] + completedTutorialArguments
         app.launch()
         let live = app.buttons["camera.livePhoto"]
         let sound = app.buttons["camera.livePhotoAudio"]
@@ -272,7 +307,7 @@ final class moontakeUITests: XCTestCase {
             staleDeletion.buttons["Don't Allow"].tap()
         }
         let app = XCUIApplication()
-        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"] + completedTutorialArguments
         app.launch()
         let alert = app.alerts["livePhoto.recovery.83EEBDCA-0C63-4795-9903-D20A379956F1"]
         guard alert.waitForExistence(timeout: 10) else { throw XCTSkip("No local recovery UI fixture staged") }
@@ -305,7 +340,7 @@ final class moontakeUITests: XCTestCase {
     @MainActor
     private func launchApp(language: String = "en") -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-AppleLanguages", "(\(language))", "-AppleLocale", language == "en" ? "en_US" : "zh_CN"]
+        app.launchArguments = ["-AppleLanguages", "(\(language))", "-AppleLocale", language == "en" ? "en_US" : "zh_CN"] + completedTutorialArguments
         addUIInterruptionMonitor(withDescription: "System permission") { alert in
             // A simulator has no camera; deny permissions and exercise navigation/settings.
             let deny = alert.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'Allow' AND label CONTAINS[c] 't'")).firstMatch

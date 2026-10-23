@@ -18,6 +18,8 @@ extension UserDefaults {
         case ISO = "com.zizicici.moontake.settings.iso"
         case WhiteBalance = "com.zizicici.moontake.settings.whiteBalance"
         case LocationMetadataDisabled = "com.zizicici.moontake.settings.locationMetadataDisabled"
+        case CameraTutorialVersion = "com.zizicici.moontake.tutorial.camera.version"
+        case CameraTutorialTips = "com.zizicici.moontake.tutorial.camera.seenTips"
     }
 }
 

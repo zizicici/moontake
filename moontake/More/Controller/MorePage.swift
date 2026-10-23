@@ -8,8 +8,9 @@
 import UIKit
 import MoreKit
 
-func makeMorePageViewController() -> MoreViewController {
+func makeMorePageViewController(onShowTutorial: (() -> Void)? = nil) -> MoreViewController {
     let dataSource = MorePageDataSource()
+    dataSource.onShowTutorial = onShowTutorial
     let controller = MoreViewController(
         configuration: MorePageFactory.makeConfiguration(),
         dataSource: dataSource
@@ -51,6 +52,7 @@ func makeMorePageViewController() -> MoreViewController {
         : UIBarButtonItem(title: tutorialsTitle, style: .plain,
                           target: dataSource, action: #selector(MorePageDataSource.showTutorials))
     tutorialsItem.accessibilityLabel = tutorialsTitle
+    tutorialsItem.accessibilityIdentifier = "settings.tutorial"
     tutorialsItem.tintColor = .label
 
     let shareItem = shareUsesImage
@@ -159,6 +161,7 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
     }
 
     weak var controller: MoreViewController?
+    var onShowTutorial: (() -> Void)?
 
     func sections(for controller: MoreViewController) -> [MoreSectionType] {
         [
@@ -215,13 +218,11 @@ private final class MorePageDataSource: NSObject, MoreViewControllerDataSource {
 
     @objc
     func showTutorials() {
-        guard let controller else {
-            return
+        if let onShowTutorial {
+            onShowTutorial()
+        } else if let camera = controller?.view.window?.rootViewController as? CameraViewController {
+            camera.restartTutorial()
         }
-
-        let tutorialsVC = TutorialsViewController()
-        let nav = UINavigationController(rootViewController: tutorialsVC)
-        controller.navigationController?.present(nav, animated: true)
     }
 
     @objc

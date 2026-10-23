@@ -27,6 +27,24 @@ private func exposureButtonFont(for title: String) -> UIFont {
 }
 
 class CameraViewController: UIViewController {
+    private let tutorialProgress: CameraTutorialProgress
+    private var tutorialController: TutorialsViewController?
+    private var tutorialRequested = false
+    private var hasPresentedAutomaticGuide = false
+    private var isCameraVisible = false
+    private var tutorialAccessibility: [(UIView, Bool)] = []
+    private var tutorialFocusSliderMoved = false
+
+    init(tutorialProgress: CameraTutorialProgress = CameraTutorialProgress()) {
+        self.tutorialProgress = tutorialProgress
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        tutorialProgress = CameraTutorialProgress()
+        super.init(coder: coder)
+    }
+
     private var session: AVCaptureSession?
     private let sessionQueue = DispatchQueue(label: "capture")
     
@@ -90,6 +108,7 @@ class CameraViewController: UIViewController {
         button.layer.masksToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityLabel = String(localized: "camera.capture.a11y")
+        button.accessibilityIdentifier = "camera.capture"
 
         return button
     }()
@@ -158,6 +177,7 @@ class CameraViewController: UIViewController {
         var slider = UISlider()
         slider.minimumTrackTintColor = .moonColor.withAlphaComponent(0.83)
         slider.accessibilityLabel = String(localized: "camera.focus.title")
+        slider.accessibilityIdentifier = "camera.focus"
 
         return slider
     }()
@@ -177,6 +197,7 @@ class CameraViewController: UIViewController {
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "album.title")
+        button.accessibilityIdentifier = "camera.album"
         
         return button
     }()
@@ -223,18 +244,7 @@ class CameraViewController: UIViewController {
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "more.title")
-        
-        return button
-    }()
-    private let tutorialsButton: UIButton = {
-        var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(systemName: "questionmark.circle")
-        configuration.contentInsets = .zero
-        
-        let button = UIButton(configuration: configuration)
-        button.tintColor = .moonColor
-        button.accessibilityLabel = String(localized: "tutorials.title")
-        button.alpha = 0.75
+        button.accessibilityIdentifier = "camera.more"
         
         return button
     }()
@@ -334,6 +344,7 @@ class CameraViewController: UIViewController {
         view.backgroundColor = .skyColor
         
         view.addSubview(previewView)
+        previewView.accessibilityIdentifier = "camera.preview"
         if isRegularHorizontalSizeClass {
             previewView.snp.makeConstraints { make in
                 make.leading.equalTo(view).inset(80)
@@ -400,6 +411,7 @@ class CameraViewController: UIViewController {
             }
         }
         lensPositionSlider.addTarget(self, action: #selector(lensPositionValueChanged(_:)), for: .valueChanged)
+        lensPositionSlider.addTarget(self, action: #selector(lensPositionInteractionEnded), for: [.touchUpInside, .touchUpOutside])
         lensPositionSlider.setThumbImage(UIImage(systemName: "rectangle.portrait.fill")?.withTintColor(.moonColor, renderingMode: .alwaysOriginal), for: .normal)
         
         view.addSubview(sliderLabel)
@@ -479,25 +491,18 @@ class CameraViewController: UIViewController {
             self?.jumpToSettings()
         }
         
-        view.addSubview(tutorialsButton)
-        tutorialsButton.snp.makeConstraints { make in
-            make.trailing.equalTo(previewView).inset(6)
-            make.height.width.equalTo(44.0)
-            make.bottom.equalTo(previewView).inset(6)
-        }
-        tutorialsButton.addTarget(self, action: #selector(tutorialsButtonTapped), for: .touchUpInside)
         view.addSubview(livePhotoButton)
+        view.addSubview(livePhotoAudioButton)
         livePhotoButton.snp.makeConstraints { make in
-            make.leading.equalTo(locationButton.snp.trailing).offset(6)
+            make.trailing.equalTo(livePhotoAudioButton.snp.leading).offset(-6)
+            make.leading.greaterThanOrEqualTo(locationButton.snp.trailing).offset(6)
             make.centerY.equalTo(locationButton)
             make.width.height.equalTo(44)
         }
-        view.addSubview(livePhotoAudioButton)
         livePhotoAudioButton.snp.makeConstraints { make in
-            make.leading.equalTo(livePhotoButton.snp.trailing).offset(6)
+            make.trailing.equalTo(previewView).inset(6)
             make.centerY.equalTo(locationButton)
             make.width.height.equalTo(44)
-            make.trailing.lessThanOrEqualTo(tutorialsButton.snp.leading).offset(-6)
         }
         livePhotoAudioButton.addTarget(self, action: #selector(toggleLivePhotoAudio), for: .touchUpInside)
         livePhotoButton.addTarget(self, action: #selector(toggleLivePhoto), for: .touchUpInside)
@@ -539,7 +544,7 @@ class CameraViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(closeMoonFinder),
                                                name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(offerPendingLivePhotos),
+        NotificationCenter.default.addObserver(self, selector: #selector(resumeCameraOverlays),
                                                name: UIApplication.didBecomeActiveNotification, object: nil)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(focusTap(_:)))
@@ -596,15 +601,22 @@ class CameraViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        isCameraVisible = true
         checkCameraPermissions()
         checkPhotoPremissions()
         setupAndStartCaptureSession()
-        offerPendingLivePhotos()
+        resumeCameraOverlays()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        isCameraVisible = false
         closeMoonFinder()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tutorialController?.view.setNeedsLayout()
     }
 
     @objc private func toggleMoonFinder() {
@@ -693,13 +705,14 @@ class CameraViewController: UIViewController {
     
     func showPermissionViewIfNeeded() {
         if cameraPermissionAuthorized == .denied || addPhotoPermissionAuthorized == .denied {
-            permissionView.isHidden = moonFinder.isActive
+            permissionView.isHidden = moonFinder.isActive || tutorialController != nil
             permissionView.update(showCameraButton: cameraPermissionAuthorized == .denied, showAlbumButton: addPhotoPermissionAuthorized == .denied)
             captureButton.isEnabled = false
         } else {
             permissionView.isHidden = true
             updateCaptureControls()
         }
+        startTutorialIfNeeded()
     }
     
     //MARK:- Camera Setup
@@ -938,7 +951,7 @@ class CameraViewController: UIViewController {
         captureButton.isEnabled = idle && sessionReady && cameraPermissionAuthorized == .authorized && addPhotoPermissionAuthorized == .authorized
         livePhotoButton.isEnabled = idle && sessionReady && livePhotoSupported
         livePhotoAudioButton.isEnabled = idle && sessionReady && livePhotoSupported && livePhotoEnabled
-        for button in [albumButton, moreButton, tutorialsButton, moonCalendarButton, moonFinderButton] { button.isEnabled = !captureBusy }
+        for button in [albumButton, moreButton, moonCalendarButton, moonFinderButton] { button.isEnabled = !captureBusy }
     }
     private func updateLivePhotoButton() {
         let active = livePhotoEnabled && livePhotoSupported
@@ -1035,7 +1048,13 @@ class CameraViewController: UIViewController {
     @objc private func offerPendingLivePhotos() {
         LivePhotoRecovery.offer(in: self) { [weak self] in
             self?.captureBusy == false && self?.livePhotoConfiguring == false
+                && self?.tutorialController == nil && self?.isCameraVisible == true
         }
+    }
+
+    @objc private func resumeCameraOverlays() {
+        startTutorialIfNeeded()
+        offerPendingLivePhotos()
     }
 
     //MARK:- Actions
@@ -1048,6 +1067,7 @@ class CameraViewController: UIViewController {
             return
         }
         guard !captureBusy, !livePhotoConfiguring, sessionReady else { return }
+        didPerformTutorialAction(.capture)
         let wantsLivePhoto = livePhotoEnabled
         // Begin before AVFoundation starts recording, not after its callbacks.
         let backgroundTask = wantsLivePhoto ? LivePhotoBackgroundTask() : nil
@@ -1145,6 +1165,18 @@ class CameraViewController: UIViewController {
         sessionQueue.async {
             self.update(lensPosition: value)
         }
+        if sender.isTracking {
+            tutorialFocusSliderMoved = true
+        } else {
+            // VoiceOver adjusts a slider without a touch-up event.
+            didPerformTutorialAction(.focus)
+        }
+    }
+
+    @objc private func lensPositionInteractionEnded() {
+        guard tutorialFocusSliderMoved else { return }
+        tutorialFocusSliderMoved = false
+        didPerformTutorialAction(.focus)
     }
     
     func update(lensPosition: Float) {
@@ -1219,6 +1251,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func plusShutterScale() {
+        defer { didPerformTutorialAction(.exposure) }
         guard let first = exposureStops.first else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex != 0 ? exposureStops[currentIndex - 1] : first
@@ -1235,6 +1268,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func minusShutterScale() {
+        defer { didPerformTutorialAction(.exposure) }
         guard let last = exposureStops.last else { return }
         if let currentIndex = exposureStops.firstIndex(of: self.shutterScale) {
             let nextStop = currentIndex + 1 < exposureStops.count ? exposureStops[currentIndex + 1] : last
@@ -1266,6 +1300,7 @@ class CameraViewController: UIViewController {
     
     @objc
     func focusTap(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard gestureRecognizer.state == .ended else { return }
         let location = gestureRecognizer.location(in: gestureRecognizer.view)
         let devicePoint = previewView.videoPreviewLayer.captureDevicePointConverted(fromLayerPoint: location)
         addFocusViewAt(location)
@@ -1284,6 +1319,7 @@ class CameraViewController: UIViewController {
                 }
             }
         }
+        didPerformTutorialAction(.tapFocus)
     }
     
     func addFocusViewAt(_ location: CGPoint) {
@@ -1323,6 +1359,11 @@ class CameraViewController: UIViewController {
     
     @objc
     func handlePinchToZoomRecognizer(_ gesture: UIPinchGestureRecognizer) {
+        // An ended pinch can already have zero touches. Observe it before the
+        // hardware/touch-count guards, and don't advance on cancellation.
+        if gesture.state == .ended, abs(gesture.scale - 1) > 0.01 {
+            didPerformTutorialAction(.zoom)
+        }
         guard let captureDevice = captureDevice else {
             return
         }
@@ -1380,7 +1421,9 @@ class CameraViewController: UIViewController {
     @objc
     func moreButtonTapped() {
         closeMoonFinder()
-        let settingsVC = makeMorePageViewController()
+        let settingsVC = makeMorePageViewController(onShowTutorial: { [weak self] in
+            self?.restartTutorial()
+        })
         let nav = UINavigationController(rootViewController: settingsVC)
         present(nav, animated: true)
     }
@@ -1405,14 +1448,6 @@ class CameraViewController: UIViewController {
         present(nav, animated: true)
     }
 
-    @objc
-    func tutorialsButtonTapped() {
-        closeMoonFinder()
-        let tutorialsVC = TutorialsViewController()
-        let nav = UINavigationController(rootViewController: tutorialsVC)
-        present(nav, animated: true)
-    }
-    
     func jumpToSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else {
            return
@@ -1436,6 +1471,10 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController {
+    func didPerformTutorialAction(_ step: CameraTutorialStep) {
+        tutorialController?.didPerform(step)
+    }
+
     func setupLocationButton() {
         locationButton.configurationUpdateHandler = { button in
             var config = button.configuration
@@ -1550,5 +1589,109 @@ extension UIAlertController {
 extension String {
     func isValidLocationName() -> Bool{
         return count > 0 && count < 150
+    }
+}
+
+extension CameraViewController {
+    /// Settings returns to the existing camera, retaining its zoom and exposure.
+    func restartTutorial() {
+        tutorialRequested = true
+        guard tutorialController == nil else { return }
+        if presentedViewController != nil {
+            dismiss(animated: true) { [weak self] in self?.startTutorialIfNeeded() }
+        } else {
+            startTutorialIfNeeded()
+        }
+    }
+
+    private func startTutorialIfNeeded() {
+        guard tutorialController == nil, tutorialRequested || !hasPresentedAutomaticGuide,
+              isCameraVisible, viewIfLoaded?.window != nil, presentedViewController == nil,
+              UIApplication.shared.applicationState == .active,
+              cameraPermissionAuthorized != .notDetermined, addPhotoPermissionAuthorized != .notDetermined,
+              !captureBusy, !livePhotoConfiguring else { return }
+        let tip = !tutorialRequested && !tutorialProgress.shouldPresent
+            ? tutorialProgress.unseenTips.randomElement() : nil
+        guard tutorialRequested || tutorialProgress.shouldPresent || tip != nil else { return }
+        let guide = TutorialsViewController(steps: tip.map { [$0] } ?? CameraTutorialStep.basics, isTip: tip != nil)
+        hasPresentedAutomaticGuide = true
+        tutorialController = guide
+        closeMoonFinder()
+        guide.targetRects = { [weak self] step, overlay in
+            self?.tutorialTargets(for: step, in: overlay) ?? []
+        }
+        guide.interactionViews = { [weak self] step in self?.tutorialInteractionViews(for: step) ?? [] }
+        guide.onFinish = { [weak self] in self?.finishTutorial() }
+        guide.onShowStep = { [weak self] step in
+            guard let self else { return }
+            if tip != nil { self.tutorialProgress.recordTipShown(step) }
+            let controls = tip == nil ? self.tutorialInteractionViews(for: step) : []
+            self.tutorialAccessibility.forEach {
+                $0.0.accessibilityElementsHidden = $0.1 || !controls.contains($0.0)
+            }
+        }
+        // Expose the current control to VoiceOver alongside the tip.
+        tutorialAccessibility = view.subviews.map { ($0, $0.accessibilityElementsHidden) }
+        tutorialAccessibility.forEach { $0.0.accessibilityElementsHidden = true }
+        addChild(guide)
+        view.addSubview(guide.view)
+        guide.view.snp.makeConstraints { $0.edges.equalToSuperview() }
+        guide.didMove(toParent: self)
+        view.layoutIfNeeded()
+    }
+
+    private func finishTutorial() {
+        guard let guide = tutorialController else { return }
+        if !guide.isTip { tutorialProgress.complete() }
+        tutorialRequested = false
+        guide.willMove(toParent: nil)
+        guide.view.removeFromSuperview()
+        guide.removeFromParent()
+        tutorialController = nil
+        tutorialAccessibility.forEach { $0.0.accessibilityElementsHidden = $0.1 }
+        tutorialAccessibility.removeAll()
+        showPermissionViewIfNeeded()
+        UIAccessibility.post(notification: .screenChanged,
+                             argument: permissionView.isHidden ? captureButton : permissionView)
+        offerPendingLivePhotos()
+    }
+
+    private func tutorialTargets(for step: CameraTutorialStep, in overlay: UIView) -> [CGRect] {
+        func rect(_ target: UIView) -> CGRect { target.convert(target.bounds, to: overlay) }
+        switch step {
+        case .zoom, .tapFocus:
+            let preview = rect(previewView)
+            let size = CGSize(width: min(preview.width - 48, 260), height: min(preview.height * 0.3, 160))
+            return [CGRect(x: preview.midX - size.width / 2, y: preview.midY - size.height / 2,
+                           width: size.width, height: size.height)]
+        case .focus:
+            return [rect(lensPositionSlider)]
+        case .exposure:
+            return [rect(minusButton), rect(plusButton)]
+        case .livePhoto:
+            return [rect(livePhotoButton)]
+        case .location:
+            return [rect(locationButton)]
+        case .moonFinder:
+            return [rect(moonFinderButton)]
+        case .moonCalendar:
+            return [rect(moonCalendarButton)]
+        case .capture:
+            return [rect(captureButton)]
+        case .album:
+            return [rect(albumButton)]
+        case .settings:
+            return [rect(moreButton)]
+        }
+    }
+
+    private func tutorialInteractionViews(for step: CameraTutorialStep) -> [UIView] {
+        switch step {
+        case .zoom, .tapFocus: return [previewView]
+        case .focus: return [lensPositionSlider]
+        case .exposure: return [minusButton, plusButton]
+        case .capture: return [captureButton]
+        default: return []
+        }
     }
 }
