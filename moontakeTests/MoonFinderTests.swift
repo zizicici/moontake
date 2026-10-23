@@ -11,6 +11,131 @@ final class MoonFinderTests: XCTestCase {
                                                m21: 0, m22: 0, m23: 1,
                                                m31: -1, m32: 0, m33: 0)
 
+    @MainActor
+    func testDirectionGuideWorksWithoutCameraForTurnsTiltAndAlignment() async throws {
+        let view = MoonFinderView(frame: CGRect(x: 0, y: 0, width: 390, height: 650))
+        view.backgroundColor = .skyColor
+        // UIVisualEffectView needs a window and a hierarchy snapshot to render its mask correctly.
+        let scene = try XCTUnwrap(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let previousWindow = scene.keyWindow
+        let window = UIWindow(windowScene: scene)
+        let controller = UIViewController()
+        controller.view = view
+        window.rootViewController = controller
+        window.makeKeyAndVisible()
+        defer {
+            window.isHidden = true
+            window.rootViewController = nil
+            previousWindow?.makeKeyAndVisible()
+        }
+        window.layoutIfNeeded()
+        // Finish the window's appearance transition before sampling its first guidance state.
+        try await Task.sleep(for: .milliseconds(500))
+        XCTAssertNil(view.cameraGeometry)
+        let pitchedUp = CMRotationMatrix(m11: 0, m12: -1, m13: 0,
+            m21: -sin(.pi / 4), m22: 0, m23: cos(.pi / 4),
+            m31: -cos(.pi / 4), m32: 0, m33: -sin(.pi / 4))
+        let cases: [(String, Double, Double, CMRotationMatrix, Double, Bool)] = [
+            ("right", 30, 0, facingNorth, .pi / 2, false),
+            ("left", 330, 0, facingNorth, -.pi / 2, false),
+            ("up", 0, 30, facingNorth, 0, false),
+            ("down", 0, 15, pitchedUp, .pi, false),
+            ("behind", 180, 10, facingNorth, .pi / 2, false),
+            ("aligned", 0, 4, facingNorth, 0, true)
+        ]
+        for (name, azimuth, altitude, attitude, rotation, aligned) in cases {
+            let position = MoonPosition(azimuth: azimuth, altitude: altitude)
+            view.update(MoonFinderState(status: .tracking, position: position,
+                guidance: .calculate(position: position, attitude: attitude)))
+            view.layoutIfNeeded()
+            let indicator = try XCTUnwrap(element("moonFinder.direction", in: view))
+            XCTAssertFalse(indicator.isHidden, name)
+            XCTAssertEqual(indicator.center.x, view.bounds.midX, accuracy: 0.1)
+            XCTAssertEqual(indicator.transform.a, cos(rotation), accuracy: 0.001)
+            XCTAssertEqual(indicator.transform.b, sin(rotation), accuracy: 0.001)
+            XCTAssertTrue(try XCTUnwrap(element("moonFinder.target", in: view)).isHidden)
+            XCTAssertTrue(try XCTUnwrap(element("moonFinder.arrow", in: view)).isHidden)
+            let title = try XCTUnwrap(element("moonFinder.status", in: view) as? UILabel)
+            let key = aligned ? "moon_finder.direction.aligned.title"
+                : name == "behind" ? "moon_finder.turn_around.title" : "moon_finder.tracking.title"
+            XCTAssertEqual(title.text, String(localized: String.LocalizationValue(key)))
+            XCTAssertNil(view.hitTest(indicator.center, with: nil))
+            // Let the blur's text mask commit before capturing the rendered screen.
+            try await Task.sleep(for: .milliseconds(100))
+            let screenshot = UIGraphicsImageRenderer(bounds: window.bounds).image { _ in
+                window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
+            }
+            let attachment = XCTAttachment(image: screenshot)
+            attachment.name = "Camera-free direction: " + name
+            attachment.lifetime = .keepAlways
+            add(attachment)
+        }
+    }
+
+    @MainActor
+    func testDirectionGuideSwitchesWithPreviewAndClearsWhenTrackingStops() throws {
+        let view = MoonFinderView(frame: CGRect(x: 0, y: 0, width: 390, height: 650))
+        let position = MoonPosition(azimuth: 8, altitude: 8)
+        let tracking = MoonFinderState(status: .tracking, position: position,
+            guidance: .calculate(position: position, attitude: facingNorth))
+        view.update(tracking)
+        view.layoutIfNeeded()
+        let indicator = try XCTUnwrap(element("moonFinder.direction", in: view))
+        let target = try XCTUnwrap(element("moonFinder.target", in: view))
+        XCTAssertFalse(indicator.isHidden)
+        view.cameraGeometry = { [weak view] in view.map { ($0.bounds, 70, 1) } }
+        view.update(tracking)
+        view.layoutIfNeeded()
+        XCTAssertTrue(indicator.isHidden)
+        XCTAssertFalse(target.isHidden)
+        view.cameraGeometry = nil
+        view.update(tracking)
+        view.layoutIfNeeded()
+        XCTAssertFalse(indicator.isHidden)
+        XCTAssertTrue(target.isHidden)
+        for status: MoonFinderState.Status in [.locationDenied, .locating, .locationUnavailable,
+            .calibrating, .sensorsUnavailable, .belowHorizon, .ephemerisUnavailable] {
+            view.update(MoonFinderState(status: status))
+            view.layoutIfNeeded()
+            XCTAssertTrue(indicator.isHidden)
+            XCTAssertTrue(target.isHidden)
+            XCTAssertTrue(try XCTUnwrap(element("moonFinder.arrow", in: view)).isHidden)
+        }
+    }
+
+    @MainActor private func element(_ id: String, in root: UIView) -> UIView? {
+        if root.accessibilityIdentifier == id { return root }
+        return root.subviews.lazy.compactMap { self.element(id, in: $0) }.first
+    }
+
+    func testSensorSelectionFallsBackToMagneticButNeverAnArbitraryHeading() {
+        let all: CMAttitudeReferenceFrame = [.xTrueNorthZVertical, .xMagneticNorthZVertical, .xArbitraryZVertical]
+        XCTAssertEqual(MoonFinderManager.preferredReferenceFrame(available: all, failed: []), .xTrueNorthZVertical)
+        XCTAssertEqual(MoonFinderManager.preferredReferenceFrame(available: all, failed: .xTrueNorthZVertical), .xMagneticNorthZVertical)
+        XCTAssertEqual(MoonFinderManager.preferredReferenceFrame(available: .xMagneticNorthZVertical, failed: []), .xMagneticNorthZVertical)
+        XCTAssertNil(MoonFinderManager.preferredReferenceFrame(available: .xArbitraryZVertical, failed: []))
+        XCTAssertNil(MoonFinderManager.preferredReferenceFrame(available: all, failed: [.xTrueNorthZVertical, .xMagneticNorthZVertical]))
+    }
+
+    @MainActor
+    func testMagneticGuideNeverProjectsATargetOrClaimsAlignment() throws {
+        let view = MoonFinderView(frame: CGRect(x: 0, y: 0, width: 390, height: 650))
+        view.cameraGeometry = { [weak view] in view.map { ($0.bounds, 70, 1) } }
+        let position = MoonPosition(azimuth: 0, altitude: 4)
+        let guidance = MoonGuidance.calculate(position: position, attitude: facingNorth)
+        XCTAssertTrue(guidance.isAligned)
+        view.update(MoonFinderState(status: .tracking, position: position, guidance: guidance, usesMagneticNorth: true))
+        view.layoutIfNeeded()
+        XCTAssertFalse(try XCTUnwrap(element("moonFinder.direction", in: view)).isHidden)
+        XCTAssertTrue(try XCTUnwrap(element("moonFinder.target", in: view)).isHidden)
+        XCTAssertTrue(try XCTUnwrap(element("moonFinder.arrow", in: view)).isHidden)
+        let title = try XCTUnwrap(element("moonFinder.status", in: view) as? UILabel)
+        XCTAssertEqual(title.text, String(localized: "moon_finder.magnetic.title"))
+        view.update(MoonFinderState(status: .tracking, position: position, guidance: guidance))
+        view.layoutIfNeeded()
+        XCTAssertTrue(try XCTUnwrap(element("moonFinder.direction", in: view)).isHidden)
+        XCTAssertFalse(try XCTUnwrap(element("moonFinder.target", in: view)).isHidden)
+    }
 
     @MainActor
     func testAROverlayTargetArrowAndTouchPassthrough() throws {

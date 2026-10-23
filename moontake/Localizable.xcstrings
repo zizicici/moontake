@@ -2229,7 +2229,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "리치올리는 1651년 사모스 출신의 고대 그리스 천문학자 아리스타르코스의 이름을 따서 이 크레이터를 명명했습니다. 아리스타르코스는 코페르니쿠스보다 훨씬 앞서 지구가 태양 주위를 돈다고 제안했습니다. 또한 반달일 때 지구·달·태양이 이루는 직각삼각형을 이용해 이들 사이의 상대적인 거리를 추정했습니다. 당시 측정의 한계 때문에 계산 결과는 정확하지 않았습니다."
+            "value" : "리치올리는 1651년 사모스 출신의 고대 그리스 천문학자 아리스타르코스의 이름을 따서 이 크레이터를 명명했습니다. 아리스타르코스는 코페르니쿠스보다 훨씬 앞서 지구가 태양 주위를 돈다고 제안했습니다. 또한 반달일 때 지구, 달, 태양이 이루는 직각삼각형을 이용해 이들 사이의 상대적인 거리를 추정했습니다. 당시 측정의 한계 때문에 계산 결과는 정확하지 않았습니다."
           }
         },
         "pt-BR" : {
@@ -24110,91 +24110,373 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "السمت %.0f° · الارتفاع %.0f°"
+            "value" : "السمت %.0f°، الارتفاع %.0f°"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Azimut %.0f° · Höhe %.0f°"
+            "value" : "Azimut %.0f°, Höhe %.0f°"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Azimuth %.0f° · Altitude %.0f°"
+            "value" : "Azimuth %.0f°, Altitude %.0f°"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acimut %.0f° · Altura %.0f°"
+            "value" : "Acimut %.0f°, Altura %.0f°"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Acimut %.0f° · Altura %.0f°"
+            "value" : "Acimut %.0f°, Altura %.0f°"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Azimut %.0f° · Hauteur %.0f°"
+            "value" : "Azimut %.0f°, Hauteur %.0f°"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "方位角 %.0f° · 高度角 %.0f°"
+            "value" : "方位角 %.0f°、高度角 %.0f°"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "방위각 %.0f° · 고도 %.0f°"
+            "value" : "방위각 %.0f°, 고도 %.0f°"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Azimute %.0f° · Altura %.0f°"
+            "value" : "Azimute %.0f°, Altura %.0f°"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Azimute %.0f° · Altura %.0f°"
+            "value" : "Azimute %.0f°, Altura %.0f°"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Азимут %.0f° · Высота %.0f°"
+            "value" : "Азимут %.0f°, Высота %.0f°"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Азимут %.0f° · Висота %.0f°"
+            "value" : "Азимут %.0f°, Висота %.0f°"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "方位角 %.0f° · 高度角 %.0f°"
+            "value" : "方位角 %.0f°，高度角 %.0f°"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "方位角 %.0f° · 高度角 %.0f°"
+            "value" : "方位角 %.0f°，高度角 %.0f°"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "方位角 %.0f° · 高度角 %.0f°"
+            "value" : "方位角 %.0f°，高度角 %.0f°"
+          }
+        }
+      }
+    },
+    "moon_finder.direction.aligned.detail" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابحث عن القمر في السماء باتجاه ظهر هاتفك. قد تكون البوصلة غير دقيقة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche den Mond am Himmel in Richtung der Telefonrückseite. Der Kompass kann abweichen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look for the Moon in the sky toward the back of your phone. The compass may be off."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la Luna en el cielo hacia donde apunta la parte trasera del teléfono. La brújula puede tener desviaciones."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca la Luna en el cielo hacia donde apunta la parte trasera del teléfono. La brújula puede tener desviaciones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cherchez la Lune dans le ciel, dans la direction du dos du téléphone. La boussole peut manquer de précision."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンの背面が向く空で月を探してください。コンパスには誤差があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "휴대전화 뒷면이 향하는 하늘에서 달을 찾아보세요. 나침반에 오차가 있을 수 있습니다."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procure a Lua no céu na direção para a qual a parte de trás do celular aponta. A bússola pode ter desvios."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procure a Lua no céu na direção para a qual a parte de trás do telemóvel aponta. A bússola pode ter desvios."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ищите Луну в небе в направлении задней стороны телефона. Компас может ошибаться."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Шукайте Місяць на небі в напрямку задньої сторони телефона. Компас може помилятися."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "朝手机背面指向的天空寻找月亮，指南针可能有偏差。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "朝手機背面指向的天空尋找月亮，指南針可能有偏差。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "朝手機背面指向的天空尋找月亮，指南針可能有偏差。"
+          }
+        }
+      }
+    },
+    "moon_finder.direction.aligned.title" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاتجاه مضبوط تقريبًا"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In etwa ausgerichtet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roughly aligned"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alineación aproximada"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alineación aproximada"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction approximativement alignée"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おおよそ月の方向です"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대략적인 방향이 맞았습니다"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direção aproximadamente alinhada"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direção aproximadamente alinhada"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Направление примерно найдено"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Напрямок приблизно знайдено"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向大致对准"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向大致對準"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "方向大致對準"
+          }
+        }
+      }
+    },
+    "moon_finder.direction.detail" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدر هاتفك ليشير ظهره نحو القمر. بقي نحو %.0f°."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drehe dein Telefon, sodass die Rückseite zum Mond zeigt. Noch etwa %.0f°."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn your phone so its back points toward the Moon. About %.0f° to go."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gira el teléfono para orientar la parte trasera hacia la Luna. Faltan unos %.0f°."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gira el teléfono para orientar la parte trasera hacia la Luna. Faltan unos %.0f°."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tournez le téléphone pour orienter son dos vers la Lune. Encore environ %.0f°."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スマートフォンの背面を月に向けるように回してください。あと約%.0f°です。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "휴대전화 뒷면이 달을 향하도록 돌리세요. 약 %.0f° 남았습니다."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gire o celular para que a parte de trás aponte para a Lua. Faltam cerca de %.0f°."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rode o telemóvel para que a parte de trás aponte para a Lua. Faltam cerca de %.0f°."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поверните телефон задней стороной к Луне. Осталось примерно %.0f°."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поверніть телефон задньою стороною до Місяця. Залишилося приблизно %.0f°."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转动手机，让背面朝向月亮，还差约 %.0f°。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轉動手機，讓背面朝向月亮，還差約 %.0f°。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轉動手機，讓背面朝向月亮，還差約 %.0f°。"
           }
         }
       }
@@ -24765,6 +25047,196 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暫時無法定位"
+          }
+        }
+      }
+    },
+    "moon_finder.magnetic.detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدر هاتفك باتباع السهم لتوجيه ظهره نحو القمر. يعتمد هذا التقدير على الشمال المغناطيسي، لذا قد يكون الاتجاه غير دقيق."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drehe dein Telefon dem Pfeil folgend mit der Rückseite zum Mond. Die Schätzung nutzt magnetisch Nord und kann abweichen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn your phone so its back follows the arrow toward the Moon. This estimate uses magnetic north, so the direction may be off."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gira el teléfono siguiendo la flecha para orientar su parte trasera hacia la Luna. Esta estimación usa el norte magnético y puede desviarse."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gira el teléfono siguiendo la flecha para orientar su parte trasera hacia la Luna. Esta estimación usa el norte magnético y puede desviarse."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tournez le téléphone en suivant la flèche pour orienter son dos vers la Lune. Cette estimation utilise le nord magnétique et peut être décalée."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "矢印に沿ってスマートフォンを動かし、背面を月に向けてください。磁北を基準にした目安のため、方向がずれる場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "화살표를 따라 휴대폰을 돌려 뒷면이 달을 향하게 하세요. 자북을 기준으로 추정하므로 방향에 오차가 있을 수 있습니다."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gire o telefone seguindo a seta para apontar a parte de trás para a Lua. Esta estimativa usa o norte magnético e pode apresentar desvios."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rode o telemóvel seguindo a seta para apontar a parte de trás para a Lua. Esta estimativa usa o norte magnético e pode apresentar desvios."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поверните телефон по стрелке задней стороной к Луне. Оценка основана на магнитном севере, поэтому направление может быть неточным."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поверніть телефон за стрілкою задньою стороною до Місяця. Оцінка ґрунтується на магнітній півночі, тому напрямок може бути неточним."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沿箭头转动手机，让背面朝向月亮。当前按磁北估算，方向可能有偏差。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沿箭頭轉動手機，讓背面朝向月亮。目前以磁北估算，方向可能有偏差。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沿箭嘴轉動手機，讓背面朝向月亮。目前以磁北估算，方向可能有偏差。"
+          }
+        }
+      }
+    },
+    "moon_finder.magnetic.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتجاه تقريبي (الشمال المغناطيسي)"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungefähre Richtung (magnetisch Nord)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approximate direction (magnetic north)"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección aproximada (norte magnético)"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección aproximada (norte magnético)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction approximative (nord magnétique)"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "おおよその方向（磁北）"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "대략적인 방향(자북)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direção aproximada (norte magnético)"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direção aproximada (norte magnético)"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Примерное направление (магнитный север)"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Приблизний напрямок (магнітна північ)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大概方向（磁北）"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大概方向（磁北）"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "大概方向（磁北）"
           }
         }
       }
@@ -36836,7 +37308,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "두 손가락을 벌리거나 오므려 확대·축소하세요."
+            "value" : "두 손가락을 벌리거나 오므려 확대하거나 축소하세요."
           }
         },
         "pt-BR" : {

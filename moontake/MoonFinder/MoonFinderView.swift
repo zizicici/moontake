@@ -2,7 +2,8 @@ import UIKit
 import SnapKit
 import SkyKit
 
-/// A transparent HUD over the existing camera. Only the Settings button consumes touches.
+/// Uses the preview when available, otherwise gives sensor-based direction guidance.
+/// Only the Settings button consumes touches.
 final class MoonFinderView: UIView {
     var settingsAction: (() -> Void)?
     var cameraGeometry: (() -> (imageRect: CGRect, fieldOfView: Double, zoom: Double)?)?
@@ -17,6 +18,13 @@ final class MoonFinderView: UIView {
     private let targetLabel = UILabel()
     private let edgeArrow = UIImageView(image: UIImage(systemName: "arrow.up",
         withConfiguration: UIImage.SymbolConfiguration(pointSize: 26, weight: .semibold)))
+    private let directionIndicator = UIImageView()
+    private let directionArrow = UIImage(systemName: "arrow.up",
+        withConfiguration: UIImage.SymbolConfiguration(pointSize: 36, weight: .semibold))
+    private let directionAligned = UIImage(systemName: "checkmark",
+        withConfiguration: UIImage.SymbolConfiguration(pointSize: 36, weight: .semibold))
+    private let directionCompass = UIImage(systemName: "safari",
+        withConfiguration: UIImage.SymbolConfiguration(pointSize: 36, weight: .semibold))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,6 +98,15 @@ final class MoonFinderView: UIView {
         edgeArrow.layer.cornerRadius = 22
         edgeArrow.accessibilityIdentifier = "moonFinder.arrow"
         addSubview(edgeArrow)
+        directionIndicator.bounds = CGRect(x: 0, y: 0, width: 72, height: 72)
+        directionIndicator.contentMode = .center
+        directionIndicator.tintColor = .moonColor
+        directionIndicator.backgroundColor = .black.withAlphaComponent(0.55)
+        directionIndicator.layer.cornerRadius = 36
+        directionIndicator.accessibilityIdentifier = "moonFinder.direction"
+        // The status panel describes the same guidance for VoiceOver.
+        directionIndicator.isAccessibilityElement = false
+        addSubview(directionIndicator)
         update(state)
     }
 
@@ -138,12 +155,16 @@ final class MoonFinderView: UIView {
         targetRing.isHidden = true
         targetLabel.isHidden = true
         edgeArrow.isHidden = true
+        directionIndicator.isHidden = true
         guard state.status == .tracking, let guidance = state.guidance else { return }
-        titleLabel.text = String(localized: guidance.isBehindCamera
-            ? "moon_finder.turn_around.title" : "moon_finder.tracking.title")
-        detailLabel.text = String.localizedStringWithFormat(
-            String(localized: "moon_finder.tracking.detail"), guidance.angularDistance)
-        guard let geometry = cameraGeometry?() else { return }
+        if state.usesMagneticNorth {
+            updateDirectionGuide(guidance)
+            return
+        }
+        guard let geometry = cameraGeometry?() else {
+            updateDirectionGuide(guidance)
+            return
+        }
         // Reserve space for the top-left toggle, the bottom status and marker labels.
         let imageBounds = geometry.imageRect.intersection(bounds)
         let safeBounds = CGRect(x: imageBounds.minX + 32, y: max(imageBounds.minY + 32, 104),
@@ -151,7 +172,11 @@ final class MoonFinderView: UIView {
                                 height: min(imageBounds.maxY - 32, bounds.maxY - 106 - max(120, statusPanel.bounds.height))
                                     - max(imageBounds.minY + 32, 104))
         guard let projection = MoonProjection.project(guidance, imageRect: geometry.imageRect,
-            horizontalFieldOfView: geometry.fieldOfView, zoom: geometry.zoom, markerBounds: safeBounds) else { return }
+            horizontalFieldOfView: geometry.fieldOfView, zoom: geometry.zoom, markerBounds: safeBounds) else {
+            updateDirectionGuide(guidance)
+            return
+        }
+        symbolView.image = UIImage(systemName: "viewfinder")
         if projection.isOnScreen {
             targetRing.isHidden = false
             targetLabel.isHidden = false
@@ -166,9 +191,38 @@ final class MoonFinderView: UIView {
             titleLabel.text = String(localized: "moon_finder.aligned.title")
             detailLabel.text = String(localized: "moon_finder.aligned.detail")
         } else {
+            titleLabel.text = String(localized: guidance.isBehindCamera
+                ? "moon_finder.turn_around.title" : "moon_finder.tracking.title")
+            detailLabel.text = String.localizedStringWithFormat(
+                String(localized: "moon_finder.tracking.detail"), guidance.angularDistance)
             edgeArrow.isHidden = false
             edgeArrow.center = projection.point
             edgeArrow.transform = CGAffineTransform(rotationAngle: projection.arrowRotation)
         }
+    }
+
+    private func updateDirectionGuide(_ guidance: MoonGuidance) {
+        // This is a turning cue, not an estimated projection onto a made-up lens.
+        symbolView.image = UIImage(systemName: "safari")
+        if state.usesMagneticNorth {
+            titleLabel.text = String(localized: "moon_finder.magnetic.title")
+            detailLabel.text = String(localized: "moon_finder.magnetic.detail")
+        } else if guidance.isAligned {
+            titleLabel.text = String(localized: "moon_finder.direction.aligned.title")
+            detailLabel.text = String(localized: "moon_finder.direction.aligned.detail")
+        } else {
+            titleLabel.text = String(localized: guidance.isBehindCamera
+                ? "moon_finder.turn_around.title" : "moon_finder.tracking.title")
+            detailLabel.text = String.localizedStringWithFormat(
+                String(localized: "moon_finder.direction.detail"), guidance.angularDistance)
+        }
+        let top = bounds.minY + 104
+        let bottom = min(bounds.maxY - 56, statusPanel.frame.minY - 24)
+        guard bottom - top >= directionIndicator.bounds.height, bounds.width >= 96 else { return }
+        directionIndicator.isHidden = false
+        directionIndicator.center = CGPoint(x: bounds.midX, y: (top + bottom) / 2)
+        directionIndicator.image = guidance.isAligned
+            ? (state.usesMagneticNorth ? directionCompass : directionAligned) : directionArrow
+        directionIndicator.transform = guidance.isAligned ? .identity : CGAffineTransform(rotationAngle: guidance.arrowRotation)
     }
 }

@@ -9,6 +9,7 @@ struct MoonFinderState {
     let status: Status
     var position: MoonPosition?
     var guidance: MoonGuidance?
+    var usesMagneticNorth = false
 }
 
 /// Owns sampling only while the finder is open. Its location request is independent
@@ -23,7 +24,10 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
     private var motionReceivedAt: Date?
     private var timer: Timer?
     private var locationFailed = false
-    private var motionFailed = false
+    private var motionReferenceFrame: CMAttitudeReferenceFrame?
+    private var failedReferenceFrames: CMAttitudeReferenceFrame = []
+    private var motionRetryAfter: Date?
+    private var motionGeneration = 0
     private var cachedPosition: MoonPosition?
     private var calculatedAt: Date?
 
@@ -50,7 +54,8 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
         _ = Location.shared
         isActive = true
         locationFailed = false
-        motionFailed = false
+        failedReferenceFrames = []
+        motionRetryAfter = nil
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.refresh()
         }
@@ -62,7 +67,7 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
         timer?.invalidate()
         timer = nil
         locationManager.stopUpdatingLocation()
-        motionManager.stopDeviceMotionUpdates()
+        stopMotion()
         location = nil
         motion = nil
         motionReceivedAt = nil
@@ -81,7 +86,7 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
             refresh()
         case .denied, .restricted:
             locationManager.stopUpdatingLocation()
-            motionManager.stopDeviceMotionUpdates()
+            stopMotion()
             location = nil
             motion = nil
             refresh()
@@ -90,22 +95,56 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
-    private var supportsGuidance: Bool {
-        motionManager.isDeviceMotionAvailable && CLLocationManager.headingAvailable()
-            && CMMotionManager.availableAttitudeReferenceFrames().contains(.xTrueNorthZVertical)
+    static func preferredReferenceFrame(available: CMAttitudeReferenceFrame,
+                                        failed: CMAttitudeReferenceFrame) -> CMAttitudeReferenceFrame? {
+        [.xTrueNorthZVertical, .xMagneticNorthZVertical].first {
+            available.contains($0) && !failed.contains($0)
+        }
     }
 
-    private func startMotionIfNeeded() {
-        guard supportsGuidance, !motionManager.isDeviceMotionActive, !motionFailed else { return }
-        // This fuses gyroscope, accelerometer and magnetometer, correcting magnetic
-        // north to true north. Never substitute magnetic north for lunar azimuth.
-        motionManager.startDeviceMotionUpdates(using: .xTrueNorthZVertical, to: .main) { [weak self] motion, error in
-            guard let self, self.isActive else { return }
-            self.motionFailed = error != nil
+    private func stopMotion() {
+        motionGeneration += 1
+        motionManager.stopDeviceMotionUpdates()
+        motionReferenceFrame = nil
+        motion = nil
+        motionReceivedAt = nil
+    }
+
+    private func startMotionIfNeeded(now: Date) -> Bool {
+        guard motionManager.isDeviceMotionAvailable else { return false }
+        if let retryAfter = motionRetryAfter {
+            guard now >= retryAfter else { return false }
+            failedReferenceFrames = []
+            motionRetryAfter = nil
+        }
+        guard let referenceFrame = Self.preferredReferenceFrame(
+            available: CMMotionManager.availableAttitudeReferenceFrames(), failed: failedReferenceFrames) else {
+            return false
+        }
+        if motionManager.isDeviceMotionActive, motionReferenceFrame == referenceFrame { return true }
+        stopMotion()
+        motionReferenceFrame = referenceFrame
+        let generation = motionGeneration
+        // Some devices advertise true north but reject it at startup. Magnetic
+        // north remains usable for an explicitly approximate, non-projected cue.
+        motionManager.startDeviceMotionUpdates(using: referenceFrame, to: .main) { [weak self] motion, error in
+            guard let self, self.isActive, self.motionGeneration == generation else { return }
+            if let error = error as NSError?,
+               !(error.domain == CMErrorDomain && error.code == Int(CMErrorDeviceRequiresMovement.rawValue)) {
+                self.failedReferenceFrames.insert(referenceFrame)
+                self.stopMotion()
+                if Self.preferredReferenceFrame(available: CMMotionManager.availableAttitudeReferenceFrames(),
+                                                failed: self.failedReferenceFrames) == nil {
+                    self.motionRetryAfter = Date().addingTimeInterval(5)
+                }
+                self.refresh()
+                return
+            }
             self.motion = motion
             self.motionReceivedAt = motion == nil ? nil : Date()
             self.refresh()
         }
+        return true
     }
 
     static func isUsable(_ location: CLLocation, now: Date) -> Bool {
@@ -134,31 +173,27 @@ final class MoonFinderManager: NSObject, CLLocationManagerDelegate {
             calculatedAt = now
         }
         guard let position = cachedPosition else {
-            motionManager.stopDeviceMotionUpdates()
-            motion = nil
-            motionReceivedAt = nil
+            stopMotion()
             onUpdate?(MoonFinderState(status: .ephemerisUnavailable))
             return
         }
         if position.altitude < 0 {
-            motionManager.stopDeviceMotionUpdates()
-            motion = nil
-            motionReceivedAt = nil
+            stopMotion()
             onUpdate?(MoonFinderState(status: .belowHorizon, position: position))
             return
         }
-        guard supportsGuidance, !motionFailed else {
+        guard startMotionIfNeeded(now: now) else {
             onUpdate?(MoonFinderState(status: .sensorsUnavailable, position: position))
             return
         }
-        startMotionIfNeeded()
         guard let motion, let receivedAt = motionReceivedAt, now.timeIntervalSince(receivedAt) < 2,
               motion.magneticField.accuracy == .medium || motion.magneticField.accuracy == .high else {
             onUpdate?(MoonFinderState(status: .calibrating, position: position))
             return
         }
         let guidance = MoonGuidance.calculate(position: position, attitude: motion.attitude.rotationMatrix)
-        onUpdate?(MoonFinderState(status: .tracking, position: position, guidance: guidance))
+        onUpdate?(MoonFinderState(status: .tracking, position: position, guidance: guidance,
+                                 usesMagneticNorth: motionReferenceFrame == .xMagneticNorthZVertical))
     }
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {

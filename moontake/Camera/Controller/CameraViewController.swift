@@ -561,7 +561,8 @@ class CameraViewController: UIViewController {
         moonCalendarButton.addTarget(self, action: #selector(moonCalendarButtonTapped), for: .touchUpInside)
         moonFinderView.isHidden = true
         moonFinderView.cameraGeometry = { [weak self] in
-            guard let self, let device = self.captureDevice,
+            guard let self, self.cameraPermissionAuthorized == .authorized, self.sessionReady,
+                  let device = self.captureDevice,
                   self.previewView.videoPreviewLayer.connection != nil else { return nil }
             let imageRect = self.previewView.videoPreviewLayer.layerRectConverted(
                 fromMetadataOutputRect: CGRect(x: 0, y: 0, width: 1, height: 1))
