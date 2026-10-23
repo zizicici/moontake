@@ -131,9 +131,9 @@ final class CameraTutorialTests: XCTestCase {
         let live = try XCTUnwrap(find("camera.livePhoto", in: camera.view))
         let sound = try XCTUnwrap(find("camera.livePhotoAudio", in: camera.view))
         let location = try XCTUnwrap(find("camera.location", in: camera.view))
-        XCTAssertLessThanOrEqual(location.frame.maxX, live.frame.minX)
-        XCTAssertLessThan(live.frame.maxX, sound.frame.minX)
-        XCTAssertEqual(sound.frame.maxX, camera.view.bounds.maxX - 6, accuracy: 0.5)
+        XCTAssertLessThanOrEqual(location.frame.maxX, sound.frame.minX)
+        XCTAssertLessThan(sound.frame.maxX, live.frame.minX)
+        XCTAssertEqual(live.frame.maxX, camera.view.bounds.maxX - 6, accuracy: 0.5)
         try saveSnapshot("tutorial-livePhoto")
         tip.currentTip.invalidate(reason: .tipClosed)
         await waitUntil { self.guide(in: camera) == nil }
@@ -153,6 +153,44 @@ final class CameraTutorialTests: XCTestCase {
         let restarted = try await waitForTip(in: camera, step: .zoom)
         XCTAssertNotEqual(restarted.currentTip.id, firstID)
         XCTAssertTrue(progress.shouldPresent)
+    }
+
+    func testMoonToolsOpenWithoutCameraOrPhotoPermissions() async throws {
+        progress.complete()
+        CameraTutorialStep.tips.forEach { progress.recordTipShown($0) }
+        let camera = try await openCamera()
+        XCTAssertEqual(camera.cameraPermissionAuthorized, .denied)
+        XCTAssertEqual(camera.addPhotoPermissionAuthorized, .denied)
+        let finder = try XCTUnwrap(find("moonFinder.toggle", in: camera.view) as? UIButton)
+        XCTAssertTrue(finder.isEnabled)
+        let finderCenter = finder.convert(CGPoint(x: finder.bounds.midX, y: finder.bounds.midY), to: camera.view)
+        let finderHit = camera.view.hitTest(finderCenter, with: nil)
+        XCTAssertTrue(finderHit === finder || finderHit?.isDescendant(of: finder) == true,
+                      "The permission overlay must not intercept the finder button")
+        let geotagDisabled = Location.shared.manualDisable
+        finder.sendActions(for: .touchUpInside)
+        let panel = try XCTUnwrap(find("moonFinder.panel", in: camera.view))
+        XCTAssertFalse(panel.isHidden)
+        XCTAssertEqual(finder.accessibilityLabel, String(localized: "moon_finder.close"))
+        if Location.shared.authorizationStatus() == .denied {
+            XCTAssertFalse(try XCTUnwrap(find("moonFinder.settings", in: panel)).isHidden)
+            XCTAssertTrue(try XCTUnwrap(find("moonFinder.coordinates", in: panel)).isHidden)
+        }
+        camera.showPermissionViewIfNeeded()
+        XCTAssertFalse(panel.isHidden, "Refreshing denied permissions must not dismiss the finder")
+        finder.sendActions(for: .touchUpInside)
+        XCTAssertTrue(panel.isHidden)
+        XCTAssertEqual(Location.shared.manualDisable, geotagDisabled)
+        let button = try XCTUnwrap(find("moonCalendar.open", in: camera.view) as? UIButton)
+        XCTAssertTrue(button.isEnabled)
+        let center = button.convert(CGPoint(x: button.bounds.midX, y: button.bounds.midY), to: camera.view)
+        let hit = camera.view.hitTest(center, with: nil)
+        XCTAssertTrue(hit === button || hit?.isDescendant(of: button) == true,
+                      "The permission overlay must not intercept the calendar button")
+        button.sendActions(for: .touchUpInside)
+        await waitUntil { camera.presentedViewController?.isBeingPresented == false }
+        let navigation = try XCTUnwrap(camera.presentedViewController as? UINavigationController)
+        XCTAssertTrue(navigation.topViewController is MoonCalendarViewController)
     }
 
     func testWrongActionsAndCancelledPinchDoNotAdvanceAndSliderWaitsForRelease() async throws {

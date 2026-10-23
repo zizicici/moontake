@@ -43,7 +43,7 @@ class ImageCell: ImageInfoBaseCell {
         view.backgroundColor = .black.withAlphaComponent(0.5)
         view.layer.cornerRadius = 12
         view.isHidden = true
-        view.accessibilityLabel = "Live Photo"
+        view.accessibilityLabel = String(localized: "live_photo.title")
         return view
     }()
     var paperView: UIView = {

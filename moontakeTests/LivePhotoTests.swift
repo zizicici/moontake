@@ -54,16 +54,19 @@ final class LivePhotoTests: XCTestCase {
       return view.subviews.compactMap { find(id, in: $0) }.first
     }
     let locationButton = find("camera.location", in: camera.view)!
+    let locationNameButton = find("camera.locationName", in: camera.view)!
     let live = find("camera.livePhoto", in: camera.view)!
     let sound = find("camera.livePhotoAudio", in: camera.view)!
     for width in [320.0, 393.0, 852.0] {
       camera.view.frame = CGRect(x: 0, y: 0, width: width, height: 852)
       camera.view.layoutIfNeeded()
-      XCTAssertLessThanOrEqual(locationButton.frame.maxX, live.frame.minX)
-      XCTAssertLessThanOrEqual(live.frame.maxX, sound.frame.minX)
+      XCTAssertLessThanOrEqual(locationButton.frame.maxX, locationNameButton.frame.minX)
+      XCTAssertLessThanOrEqual(locationNameButton.frame.maxX, sound.frame.minX)
+      XCTAssertLessThanOrEqual(sound.frame.maxX, live.frame.minX)
+      XCTAssertEqual(locationButton.frame.width, 44, accuracy: 0.1)
       XCTAssertEqual(live.frame.width, 44, accuracy: 0.1)
       XCTAssertEqual(sound.frame.width, 44, accuracy: 0.1)
-      XCTAssertLessThanOrEqual(sound.frame.maxX, width)
+      XCTAssertEqual(live.frame.maxX, width - 6, accuracy: 0.1)
     }
     XCTAssertFalse(sound.isSelected)
     XCTAssertFalse(UserDefaults.standard.bool(forKey: keys[1]))

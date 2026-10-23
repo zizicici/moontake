@@ -271,8 +271,8 @@ final class moontakeUITests: XCTestCase {
         let location = app.buttons["camera.location"]
         XCTAssertTrue(live.waitForExistence(timeout: 10))
         XCTAssertTrue(sound.exists)
-        XCTAssertLessThanOrEqual(location.frame.maxX, live.frame.minX)
-        XCTAssertLessThanOrEqual(live.frame.maxX, sound.frame.minX)
+        XCTAssertLessThanOrEqual(location.frame.maxX, sound.frame.minX)
+        XCTAssertLessThanOrEqual(sound.frame.maxX, live.frame.minX)
         XCTAssertFalse(sound.isSelected, "The initial sound preference must be off")
 #if !targetEnvironment(simulator)
         let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: live)
@@ -291,6 +291,68 @@ final class moontakeUITests: XCTestCase {
 #endif
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "Location Live Sound controls"; attachment.lifetime = .keepAlways; add(attachment)
+    }
+
+    /// Preview and location-name editing only; never press the shutter.
+    @MainActor
+    func testLocationNameEditingAndVisibilityWithoutCapture() throws {
+#if targetEnvironment(simulator)
+        let app = XCUIApplication()
+        app.launchArguments = ["-AppleLanguages", "(zh-Hans)", "-AppleLocale", "zh_CN"]
+            + completedTutorialArguments
+        app.launch()
+        defer { app.terminate() }
+        let location = app.buttons["camera.location"]
+        let name = app.buttons["camera.locationName"]
+        XCTAssertTrue(location.waitForExistence(timeout: 10))
+        if location.isSelected {
+            location.tap()
+            app.buttons["不记录位置信息"].tap()
+        }
+        XCTAssertFalse(name.exists)
+        // The simulator must grant the app location access before this test.
+        location.tap()
+        let enable = app.buttons["记录位置信息"]
+        guard enable.waitForExistence(timeout: 3) else {
+            throw XCTSkip("Grant simulator location access before running location editing regression")
+        }
+        enable.tap()
+        XCTAssertTrue(name.waitForExistence(timeout: 3))
+        XCTAssertEqual(name.label, "位置信息")
+        name.tap()
+        let editor = app.alerts["自定义地名"]
+        XCTAssertTrue(editor.waitForExistence(timeout: 3))
+        let text = "Marina Bay"
+        editor.textFields.firstMatch.typeText(text)
+        editor.buttons["好的"].tap()
+        XCTAssertEqual(name.label, text)
+        XCTAssertLessThanOrEqual(location.frame.maxX, name.frame.minX)
+        XCTAssertLessThanOrEqual(name.frame.maxX, app.buttons["camera.livePhotoAudio"].frame.minX)
+        location.tap()
+        app.buttons["不记录位置信息"].tap()
+        XCTAssertFalse(name.exists)
+        location.tap()
+        app.buttons["记录位置信息"].tap()
+        XCTAssertEqual(name.label, text, "Switching location off must preserve the custom name")
+        app.buttons["moonCalendar.open"].tap()
+        XCTAssertTrue(app.buttons["moonCalendar.close"].waitForExistence(timeout: 5))
+        app.buttons["moonCalendar.close"].tap()
+        XCTAssertTrue(name.waitForExistence(timeout: 3))
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "Editable location with sound left of Live"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        name.tap()
+        XCTAssertTrue(editor.waitForExistence(timeout: 3))
+        XCTAssertEqual(editor.textFields.firstMatch.value as? String, text)
+        editor.textFields.firstMatch.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: text.count))
+        editor.buttons["好的"].tap()
+        XCTAssertEqual(name.label, "位置信息", "Clearing a name must leave the edit entry available")
+        location.tap()
+        app.buttons["不记录位置信息"].tap()
+#else
+        throw XCTSkip("Location editing regression uses the simulator")
+#endif
     }
 
     /// Optional local simulator fixture; never acts on an unrelated pending capture.

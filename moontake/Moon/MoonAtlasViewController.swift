@@ -269,11 +269,11 @@ final class MoonAtlasViewController: UIViewController {
         let accepted = fit?.accepted == true
         recognitionState = accepted ? .ready : .needsAdjustment
         setStatus(accepted ? nil : String(localized: "atlas.needs_adjustment"))
-        statusLabel.accessibilityValue = accepted ? "ready" : "needsAdjustment"
         updateMenu(enabled: true)
     }
 
     private func setStatus(_ message: String?) {
+        // VoiceOver reads the localized label text, without internal state names.
         statusLabel.text = message
         statusRow.isHidden = message?.isEmpty ?? true
     }
@@ -285,7 +285,6 @@ final class MoonAtlasViewController: UIViewController {
         setReference(false)
         setBusy(false); recognitionState = .failed
         setStatus(error.localizedDescription)
-        statusLabel.accessibilityValue = "failed"
         if entrancePhase != .expanding { finishEntrance() }
     }
 

@@ -204,15 +204,31 @@ class CameraViewController: UIViewController {
     private let locationButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "mappin.slash")
-        configuration.imagePadding = 10.0
+        configuration.contentInsets = .zero
         
         let button = UIButton(configuration: configuration)
         button.tintColor = .moonColor
         button.accessibilityLabel = String(localized: "location.title")
         button.accessibilityIdentifier = "camera.location"
-        button.alpha = 0.75
+        button.alpha = 0.65
         button.showsMenuAsPrimaryAction = true
         
+        return button
+    }()
+    private let locationNameButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        configuration.titleLineBreakMode = .byTruncatingTail
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = .systemFont(ofSize: 13)
+            return outgoing
+        }
+        let button = UIButton(configuration: configuration)
+        button.tintColor = .moonColor
+        button.accessibilityIdentifier = "camera.locationName"
+        button.accessibilityHint = String(localized: "location.custom.intro")
+        button.isHidden = true
         return button
     }()
     private let livePhotoButton: UIButton = {
@@ -468,18 +484,26 @@ class CameraViewController: UIViewController {
             button.configuration = config
         }
         
+        // Permission guidance covers the preview, not the independent controls.
+        view.addSubview(permissionView)
         view.addSubview(locationButton)
         locationButton.snp.makeConstraints { make in
             make.leading.equalTo(previewView).inset(6)
-            make.height.equalTo(44.0)
-            make.width.greaterThanOrEqualTo(44.0)
+            make.height.width.equalTo(44)
             make.bottom.equalTo(previewView).inset(6)
         }
-        locationButton.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        locationButton.titleLabel?.lineBreakMode = .byTruncatingTail
-        setupLocationButton()
+        view.addSubview(locationNameButton)
+        locationNameButton.snp.makeConstraints { make in
+            make.leading.equalTo(locationButton.snp.trailing).offset(6)
+            make.centerY.equalTo(locationButton)
+            make.height.equalTo(44)
+            make.width.greaterThanOrEqualTo(44)
+        }
+        locationNameButton.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        locationNameButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        locationNameButton.addTarget(self, action: #selector(setupCustomLocationName), for: .touchUpInside)
+        reloadLocationMenu()
         
-        view.addSubview(permissionView)
         permissionView.snp.makeConstraints { make in
             make.edges.equalTo(previewView)
         }
@@ -494,13 +518,13 @@ class CameraViewController: UIViewController {
         view.addSubview(livePhotoButton)
         view.addSubview(livePhotoAudioButton)
         livePhotoButton.snp.makeConstraints { make in
-            make.trailing.equalTo(livePhotoAudioButton.snp.leading).offset(-6)
-            make.leading.greaterThanOrEqualTo(locationButton.snp.trailing).offset(6)
+            make.trailing.equalTo(previewView).inset(6)
             make.centerY.equalTo(locationButton)
             make.width.height.equalTo(44)
         }
         livePhotoAudioButton.snp.makeConstraints { make in
-            make.trailing.equalTo(previewView).inset(6)
+            make.trailing.equalTo(livePhotoButton.snp.leading).offset(-6)
+            make.leading.greaterThanOrEqualTo(locationNameButton.snp.trailing).offset(6)
             make.centerY.equalTo(locationButton)
             make.width.height.equalTo(44)
         }
@@ -1475,36 +1499,26 @@ extension CameraViewController {
         tutorialController?.didPerform(step)
     }
 
-    func setupLocationButton() {
-        locationButton.configurationUpdateHandler = { button in
-            var config = button.configuration
-            switch Location.shared.authorizationStatus() {
-            case .notDetermined:
-                config?.image = UIImage(systemName: "mappin.slash")
-            case .restricted, .denied:
-                config?.image = UIImage(systemName: "mappin.slash", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.systemRed, .moonColor]))
-            case .authorizedAlways, .authorizedWhenInUse:
-                if Location.shared.manualDisable {
-                    config?.image = UIImage(systemName: "mappin.slash")
-                } else {
-                    config?.image = UIImage(systemName: "mappin.and.ellipse", withConfiguration: UIImage.SymbolConfiguration(paletteColors: [.moonColor, .systemGreen]))
-                }
-            @unknown default:
-                config?.image = UIImage(systemName: "mappin.slash")
-            }
-            config?.title = CustomSettings.shared.locationName
-            
-            button.configuration = config
-        }
-    }
-    
     @objc
     func reloadLocationMenu() {
-        locationButton.setNeedsUpdateConfiguration()
+        let authorization = Location.shared.authorizationStatus()
+        let authorized = authorization == .authorizedAlways || authorization == .authorizedWhenInUse
+        let active = authorized && !Location.shared.manualDisable
+        locationButton.configuration?.image = UIImage(systemName: active ? "mappin.and.ellipse" : "mappin.slash")
+        locationButton.tintColor = active ? .systemYellow : .moonColor
+        locationButton.alpha = active ? 1 : 0.65
+        locationButton.isSelected = active
+        locationNameButton.isHidden = !active
+        locationNameButton.isSelected = active
+        locationNameButton.tintColor = locationButton.tintColor
+        let name = CustomSettings.shared.locationName?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let title = name.flatMap { $0.isEmpty ? nil : $0 } ?? String(localized: "location.title")
+        locationNameButton.configuration?.title = title
+        locationNameButton.accessibilityLabel = title
         
         var menuChildren: [UIMenuElement] = []
         
-        switch Location.shared.authorizationStatus() {
+        switch authorization {
         case .notDetermined:
             let requestPermissionAction = UIAction(title: String(localized: "location.permission.request_access"), image: UIImage(systemName: "mappin.circle")) { _ in
                 Location.shared.requestAuthorization()
@@ -1553,7 +1567,8 @@ extension CameraViewController {
         Location.shared.resumeLocationUpdate()
     }
     
-    func setupCustomLocationName() {
+    @objc func setupCustomLocationName() {
+        guard presentedViewController == nil else { return }
         let alertController = UIAlertController(title: String(localized: "location.custom.title"), message: String(localized: "location.custom.input.message"), preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = ""
@@ -1564,7 +1579,8 @@ extension CameraViewController {
         }
         let okAction = UIAlertAction(title: String(localized: "action.ok"), style: .default) { [weak self] _ in
             if let text = alertController.textFields?.first?.text {
-                CustomSettings.shared.locationName = text
+                let name = text.trimmingCharacters(in: .whitespacesAndNewlines)
+                CustomSettings.shared.locationName = name.isEmpty ? nil : name
                 self?.reloadLocationMenu()
             } else {
                 //
