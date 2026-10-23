@@ -70,9 +70,9 @@ final class MoontakeProTitleView: UIView {
         name.textColor = color
         name.adjustsFontForContentSizeCategory = true
         badge.text = badgeStyle?.text ?? "Pro"
-        badge.textColor = badgeStyle?.textColor ?? .skyColor
+        badge.textColor = badgeStyle?.textColor ?? MoontakeProBenefits.badgeStyle.textColor
         badge.adjustsFontForContentSizeCategory = true
-        badgeBackground.backgroundColor = badgeStyle?.backgroundColor ?? .moonColor
+        badgeBackground.backgroundColor = badgeStyle?.backgroundColor ?? MoontakeProBenefits.badgeStyle.backgroundColor
         badgeBackground.layer.cornerCurve = badgeStyle == nil ? .continuous : .circular
         badgeBackground.insetsLayoutMarginsFromSafeArea = false
         badge.translatesAutoresizingMaskIntoConstraints = false

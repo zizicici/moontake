@@ -28,8 +28,8 @@ final class MoontakeProEntryCell: UITableViewCell {
         configuration.title = isPro ? String(localized: "pro.entry.viewBenefits") : String(localized: "paywall.choosePlan")
         configuration.titleAlignment = .center
         configuration.titleLineBreakMode = .byWordWrapping
-        configuration.baseBackgroundColor = .moonColor
-        configuration.baseForegroundColor = .skyColor
+        configuration.baseBackgroundColor = MoontakeProBenefits.badgeStyle.backgroundColor
+        configuration.baseForegroundColor = MoontakeProBenefits.badgeStyle.textColor
         configuration.cornerStyle = .fixed
         configuration.background.cornerRadius = 14
         configuration.contentInsets = .init(top: 12, leading: 14, bottom: 12, trailing: 14)
